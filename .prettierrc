@@ -1,5 +1,5 @@
 {
-	"trailingComma": "es5",
+	"trailingComma": "all",
 	"useTabs": true,
 	"tabWidth": 2,
 	"semi": false,
@@ -8,5 +8,7 @@
 	"arrowParens": "avoid",
 	"bracketSpacing": true,
 	"proseWrap": "never",
-	"printWidth": 100
+	"printWidth": 100,
+	"jsxSingleQuote": true,
+	"htmlWhitespaceSensitivity": "ignore"
 }

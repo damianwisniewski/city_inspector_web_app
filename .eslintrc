@@ -1,7 +1,26 @@
 {
-	"extends": "react-app",
-	"plugins": ["prettier"],
+	"extends": ["react-app", "prettier", "prettier/react"],
+	"plugins": ["prettier", "react"],
 	"rules": {
+		"camelcase": "error",
+		"eqeqeq": "error",
+		"no-eval": "error",
+		"no-extend-native": "error",
+		"no-multi-str": "error",
+		"no-var": "error",
+		"prefer-const": "error",
+		"no-console": "off",
+		"arrow-spacing": "error",
+		"block-spacing": "error",
+		"brace-style": "error",
+		"constructor-super": "error",
+		"lines-between-class-members": "error",
+		"no-multiple-empty-lines": "error",
+		"no-multi-spaces": "error",
+		"rest-spread-spacing": "error",
 		"prettier/prettier": "error"
+	},
+	"globals": {
+		"browser": true
 	}
 }
