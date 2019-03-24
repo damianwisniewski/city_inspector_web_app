@@ -7,7 +7,7 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint src/**/*.js src/**/*.jsx scripts/**/*.js test/**/*.js",
+		"lint": "eslint src/**/*.js src/**/*.jsx scripts/**/*.js e2e-tests/**/*.js",
 		"test:e2e": "wdio wdio.conf.js",
 		"release": "git push heroku master"
 	},
@@ -27,6 +27,7 @@
 	},
 	"dependencies": {
 		"chai": "^4.2.0",
+		"node-sass": "^4.11.0",
 		"prop-types": "^15.7.2",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",

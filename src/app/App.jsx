@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import logo from '../assets/images/logo.svg'
-import './App.css'
+import './App.scss'
 
 class App extends Component {
 	static defaultProps = {
@@ -19,21 +19,11 @@ class App extends Component {
 		const { stest } = this.props
 		return (
 			<div className='App'>
-				<header className='App-header'>
-					<img src={logo} className='App-logo' alt='logo' />
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
-					<a
-						className='App-link'
-						href='https://reactjs.org'
-						rel='noopener noreferrer'
-						target='_blank'
-					>
-						Learn React
-						{stest ? <div /> : <div>fdgjd ndk gdfsdsff dfdfdfdi</div>}
-					</a>
-				</header>
+				<nav>
+					<ul>
+						<li>test</li>
+					</ul>
+				</nav>
 			</div>
 		)
 	}

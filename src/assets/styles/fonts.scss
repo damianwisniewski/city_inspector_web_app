@@ -1,0 +1,57 @@
+@import './colors.scss';
+
+/*
+ * Font Family
+ */
+$primary_font: 'Lato', sans-serif;
+$secondary_font: 'Montserrat', sans-serif;
+
+/*
+ * Font Wights
+ */
+$primary_weight_light: 300;
+$primary_weight_regular: 400;
+$primary_weight_bold: 700;
+
+$secondary_weight_medium: 600;
+$secondary_weight_bold: 700;
+
+/*
+ * Font Sizes
+ */
+$primary_small: 12;
+$primary_medium: 16;
+$primary_larger: 18;
+$primary_big: 20;
+$primary_huge: 25;
+
+$secondary_small: 14;
+$secondary_medium: 18;
+$secondary_big: 30;
+
+/*
+ * Font Mixins
+ */
+@mixin header_font {
+	font-family: $primary_font;
+	font-size: 16px;
+	color: $primary_darker_blue;
+}
+
+@mixin content_font {
+	font-family: $primary_font;
+	font-size: 20px;
+	color: $dark_gray;
+}
+
+@mixin content_font {
+	font-family: $primary_font;
+	font-size: 20px;
+	color: $dark_gray;
+}
+
+@mixin content_font {
+	font-family: $secondary_font;
+	font-size: 20px;
+	color: $dark_gray;
+}
