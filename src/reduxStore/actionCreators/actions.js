@@ -1,5 +1,10 @@
 import { SET_USER_AUTH } from '../actionTypes/actionTypes'
 
+/**
+ * Set information is user is Authorized
+ * @memberof userDataReducer
+ * @argument {boolean} booleanValue
+ */
 export function authUser(booleanValue) {
 	return {
 		type: SET_USER_AUTH,

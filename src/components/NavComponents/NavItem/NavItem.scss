@@ -1,0 +1,61 @@
+@import '../../../assets/styles/index';
+
+.nav_item {
+	margin: 0 10px;
+	text-align: center;
+
+	@media only screen and (max-width: 950px) {
+		background-color: $primary_light_blue;
+		border-radius: 5px;
+		margin: 10px;
+	}
+
+	.nav_button {
+		width: 100%;
+
+		border: 0;
+		outline: 0;
+
+		padding: 0;
+		margin: 0;
+
+		background-color: transparent;
+
+		cursor: pointer;
+	}
+
+	.nav_link,
+	.nav_button {
+		font-family: $primary_font;
+		font-size: 15px;
+		text-decoration: none;
+		color: $primary_light_blue;
+		white-space: nowrap;
+
+		transition: all 0.2s ease-in;
+
+		@media only screen and (max-width: 950px) {
+			display: flex;
+			align-items: center;
+			padding: 10px;
+			color: $primary_dark_blue;
+
+			&::before {
+				margin-left: 0;
+				margin-right: auto;
+			}
+		}
+
+		&:not(.navigation_active):hover {
+			color: $gray;
+		}
+
+		&.navigation_active {
+			color: $white;
+
+			&::before {
+				color: $white;
+			}
+		}
+	}
+}

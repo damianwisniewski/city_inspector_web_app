@@ -67,7 +67,7 @@ module.exports = class TestserverService {
 			const callback = res => {
 				if (res.statusCode === 200) {
 					console.log(
-						`${chalk.black.bgBlue(' CONNECTION ')} testserver status ${chalk.green('✔︎')}`,
+						`${chalk.black.bgGreen(' TESTSERVER ')} testserver connection ${chalk.green('✔︎')}`,
 					)
 					resolve()
 				} else {
@@ -88,7 +88,9 @@ module.exports = class TestserverService {
 				})
 			} else {
 				http.get(this.url, callback).on('error', () => {
-					console.log(`${chalk.black.bgBlue(' CONNECTION ')} testserver status ${chalk.red('✖')}`)
+					console.log(
+						`${chalk.black.bgGreen(' TESTSERVER ')} testserver connection ${chalk.red('✖')}`,
+					)
 					reject()
 				})
 			}
@@ -114,7 +116,9 @@ module.exports = class TestserverService {
 					options.retriesNumber--
 					setTimeout(() => this.repeatableRequest(options, callback), options.timeout)
 				} else {
-					console.log(`${chalk.black.bgBlue(' CONNECTION ')} testserver status ${chalk.red('✖')}`)
+					console.log(
+						`${chalk.black.bgGreen(' TESTSERVER ')} testserver connection ${chalk.red('✖')}`,
+					)
 					reject()
 				}
 			})
@@ -125,9 +129,9 @@ module.exports = class TestserverService {
 	 * Kills process and notifies about connection problem
 	 */
 	stopProcessWithError() {
-		console.log(`${chalk.black.bgBlue(' CONNECTION ')} testserver status ${chalk.red('✖')}`)
+		console.log(`${chalk.black.bgGreen(' TESTSERVER ')} testserver connection ${chalk.red('✖')}`)
 		console.log(
-			chalk.black.bgBlue(' CONNECTION '),
+			chalk.black.bgGreen(' TESTSERVER '),
 			'Connection with localserver failed for some reason, check build process!',
 		)
 		process.exit(1)

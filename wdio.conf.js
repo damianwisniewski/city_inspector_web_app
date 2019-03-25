@@ -1,9 +1,12 @@
 const capabilities = require('./scripts/wdioBrowserFilter')
 const TestserverService = require('./scripts/TestserverService')
 
+console.log(capabilities)
+if (process.argv.includes('--skip')) process.exit(0)
+
 exports.config = {
 	runner: 'local',
-	specs: ['./test/specs/**/*.js'],
+	specs: ['./src/**/*.e2e.test.js'],
 	maxInstances: 1,
 	maxInstancesPerCapability: 1,
 	capabilities,
@@ -18,7 +21,7 @@ exports.config = {
 	reporters: ['spec'],
 	mochaOpts: {
 		ui: 'bdd',
-		timeout: 60000,
+		timeout: 6000,
 	},
 
 	// =====
@@ -43,7 +46,9 @@ exports.config = {
 	 * @param {Array.<Object>} capabilities list of capabilities details
 	 * @param {Array.<String>} specs List of spec file paths that are to be run
 	 */
-	// beforeSession(config, capabilities, specs) {},
+	// beforeSession(config, capabilities, specs) {
+	// 	console.log(config)
+	// },
 
 	/**
 	 * Gets executed before test execution begins. At this point you can access to all global
@@ -51,7 +56,7 @@ exports.config = {
 	 * @param {Array.<Object>} capabilities list of capabilities details
 	 * @param {Array.<String>} specs List of spec file paths that are to be run
 	 */
-	// before: function (capabilities, specs) {
+	// before: function(capabilities, specs) {
 	// },
 
 	/**
@@ -66,14 +71,16 @@ exports.config = {
 	 * Hook that gets executed before the suite starts
 	 * @param {Object} suite suite details
 	 */
-	// beforeSuite: function (suite) {
+	// beforeSuite: function(suite) {
+	// 	console.log(suite)
 	// },
 
 	/**
 	 * Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
 	 * @param {Object} test test details
 	 */
-	// beforeTest: function (test) {
+	// beforeTest: function(test) {
+	// 	console.log(test)
 	// },
 
 	/**

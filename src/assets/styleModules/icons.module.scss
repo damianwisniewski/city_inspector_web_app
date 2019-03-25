@@ -1,0 +1,29 @@
+$icons: (
+	map: '\f5a0',
+	plus: '\f0fe',
+	pin: '\f08d',
+	eye: '\f06e',
+	bell: '\f0f3',
+	cogs: '\f085',
+	logout: '\f2f5',
+	menu: '\f0c9',
+	help: '\f059',
+	exit: '\f057',
+);
+
+@mixin commonIonStyles {
+	display: block;
+	font-family: 'Font Awesome 5 Free';
+	font-size: 20px;
+	font-weight: 900;
+	padding: 5px;
+}
+
+@each $name, $code in $icons {
+	.#{$name} {
+		&::before {
+			@include commonIonStyles;
+			content: $code;
+		}
+	}
+}

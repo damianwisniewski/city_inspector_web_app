@@ -1,0 +1,45 @@
+@import '../../../assets/styles/index';
+
+$buttonColors: (
+	red: $red,
+	green: $green,
+	white: $white,
+	blue: $blue,
+);
+
+.custom-button {
+	font-family: $secondary_font;
+	font-size: 14px;
+	font-weight: 900;
+
+	padding: 10px 20px;
+	margin: 0 10px;
+
+	box-shadow: $small_shadow;
+	border-radius: 5px;
+
+	border: none;
+	outline: none;
+
+	transition: background-color 0.1s ease-out;
+
+	cursor: pointer;
+
+	// Creates separate styles for each button color
+	@each $name, $color in $buttonColors {
+		$font-color: $white;
+
+		@if $name == white {
+			$font-color: $dark_gray;
+		}
+
+		&.#{$name} {
+			background-color: $color;
+			color: $font-color;
+
+			&:active {
+				background-color: darken($color: $color, $amount: 10%);
+			}
+		}
+	}
+}

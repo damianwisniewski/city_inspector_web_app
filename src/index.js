@@ -7,9 +7,9 @@ import { Provider } from 'react-redux'
 
 import './index.css'
 
-import App from './app/App'
+import App from './containers/App/App'
 
-import reduxStore from './app/reduxStore'
+import reduxStore from './reduxStore'
 
 import * as serviceWorker from './serviceWorker'
 

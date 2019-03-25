@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> (Auth) should contains proper Navigation items 1`] = `
+<nav
+  className="navigation"
+>
+  <img
+    alt="logo"
+    className="logo"
+    src="logo.svg"
+  />
+  <ul
+    className="navigation_list "
+    id="navList"
+    onClick={[Function]}
+  >
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={true}
+      icon="map"
+      id="mapLink"
+      to="/"
+      type="link"
+    >
+      Mapa
+    </NavItem>
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={true}
+      icon="plus"
+      id="plusLink"
+      to="/nowe_zgloszenie"
+      type="link"
+    >
+      Nowe zgłoszenie
+    </NavItem>
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={true}
+      icon="pin"
+      id="pinLink"
+      to="/twoje_zgloszenia"
+      type="link"
+    >
+      Twoje zgłoszenia
+    </NavItem>
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={true}
+      icon="eye"
+      id="eyeLink"
+      to="/subskrypcje"
+      type="link"
+    >
+      Subskrypcje
+    </NavItem>
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={false}
+      icon="bell"
+      id="bellLink"
+      type="button"
+    >
+      Powiadomienia
+    </NavItem>
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={true}
+      icon="cogs"
+      id="cogsLink"
+      to="/ustawienia"
+      type="link"
+    >
+      Ustawienia
+    </NavItem>
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={false}
+      icon="logout"
+      id="logoutLink"
+      type="button"
+    >
+      Wyloguj
+    </NavItem>
+  </ul>
+  <button
+    className="navigation_menu_button menu"
+    id="menuToggleButton"
+    onClick={[Function]}
+  />
+</nav>
+`;
+
+exports[`<Navbar /> (Non-Auth) should contains proper Navigation items 1`] = `
+<nav
+  className="navigation"
+>
+  <img
+    alt="logo"
+    className="logo"
+    src="logo.svg"
+  />
+  <ul
+    className="navigation_list "
+    id="navList"
+    onClick={[Function]}
+  >
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={true}
+      icon="map"
+      id="mapLink"
+      to="/"
+      type="link"
+    >
+      Mapa
+    </NavItem>
+    <NavItem
+      action={[Function]}
+      className=""
+      exact={false}
+      icon="help"
+      id="helpLink"
+      type="button"
+    >
+      Pomoc
+    </NavItem>
+    <NavButton
+      action={[Function]}
+      color="white"
+      id="registerButton"
+    >
+      Rejestracja
+    </NavButton>
+    <NavButton
+      action={[Function]}
+      color="blue"
+      id="loginButton"
+    >
+      Rejestracja
+    </NavButton>
+  </ul>
+  <button
+    className="navigation_menu_button menu"
+    id="menuToggleButton"
+    onClick={[Function]}
+  />
+</nav>
+`;
