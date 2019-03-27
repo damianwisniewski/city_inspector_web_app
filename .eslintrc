@@ -1,7 +1,8 @@
 {
 	"extends": ["react-app", "prettier", "prettier/react"],
-	"plugins": ["prettier", "react"],
+	"plugins": ["prettier", "react", "compat"],
 	"rules": {
+		"compat/compat": "error",
 		"camelcase": "error",
 		"eqeqeq": "error",
 		"no-eval": "error",
@@ -22,5 +23,8 @@
 	},
 	"globals": {
 		"browser": true
+	},
+	"settings": {
+		"polyfills": ["Object.assign", "Promise"]
 	}
 }
