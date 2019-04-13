@@ -46,6 +46,7 @@ NavItem.defaultProps = {
 }
 
 NavItem.propTypes = {
+	id: PropTypes.string,
 	children: PropTypes.node,
 	icon: PropTypes.string,
 	exact: PropTypes.bool,

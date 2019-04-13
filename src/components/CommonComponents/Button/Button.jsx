@@ -3,8 +3,13 @@ import PropTypes from 'prop-types'
 
 import './Button.scss'
 
-const Button = ({ id, color, className, type, children, onClick }) => (
-	<button id={id} type={type} onClick={onClick} className={`custom-button ${color} ${className}`}>
+const Button = ({ color, className, type, children, onClick, ...props }) => (
+	<button
+		{...props}
+		type={type}
+		onClick={onClick}
+		className={`custom-button ${color} ${className}`}
+	>
 		{children}
 	</button>
 )

@@ -33,6 +33,6 @@
 		"browser": true
 	},
 	"settings": {
-		"polyfills": ["Object.assign", "Promise"]
+		"polyfills": ["Object.assign", "Promise", "fetch"]
 	}
 }
