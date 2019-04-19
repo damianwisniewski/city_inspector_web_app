@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PopupLink /> should render correctly 1`] = `
+<button
+  className="FakeCssClass_2 "
+  data-to="FakePopup"
+>
+  Example text
+</button>
+`;

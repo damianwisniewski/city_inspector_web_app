@@ -8,5 +8,6 @@
 	"prettier.disableLanguages": ["js"],
 	"files.autoSave": "onFocusChange",
 	"editor.trimAutoWhitespace": false,
-	"prettier.htmlWhitespaceSensitivity": "ignore"
+	"prettier.htmlWhitespaceSensitivity": "ignore",
+	"prettier.eslintIntegration": true
 }

@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import './Navbar.scss'
+import iconAssets from '../../assets/styleModules/icons.module.scss'
+
+import logo from '../../assets/images/logo.svg'
 
 import NavItem from '../../components/NavComponents/NavItem/NavItem'
-import logo from '../../assets/images/logo.svg'
-import iconAssets from '../../assets/styleModules/icons.module.scss'
 import NavButton from '../../components/NavComponents/NavButton/NavButton'
 
 class Navbar extends Component {
@@ -16,6 +17,8 @@ class Navbar extends Component {
 	state = {
 		isDrawerOpen: false,
 	}
+
+	onClickDrawerToggle = () => this.setState({ isDrawerOpen: !this.state.isDrawerOpen })
 
 	/**
 	 * Close drawer after click nav item.
@@ -29,11 +32,6 @@ class Navbar extends Component {
 		if (drawerState && e.target.type) {
 			this.setState({ isDrawerOpen: false })
 		}
-	}
-
-	onClickDrawerToggle = () => {
-		const drawerState = this.state.isDrawerOpen
-		this.setState({ isDrawerOpen: !drawerState })
 	}
 
 	createAuthNavigation = () => {
@@ -57,13 +55,13 @@ class Navbar extends Component {
 				<NavItem id='eyeLink' exact icon='eye' type='link' to='/subskrypcje'>
 					Subskrypcje
 				</NavItem>
-				<NavItem id='bellLink' action={() => {}} icon='bell' type='button'>
+				<NavItem id='bellLink' icon='bell' type='button' to='Settings'>
 					Powiadomienia
 				</NavItem>
 				<NavItem id='cogsLink' exact icon='cogs' type='link' to='/ustawienia'>
 					Ustawienia
 				</NavItem>
-				<NavItem id='logoutLink' action={() => {}} icon='logout' type='button'>
+				<NavItem id='logoutLink' icon='logout' type='button' to='LogoutPopup'>
 					Wyloguj
 				</NavItem>
 			</ul>
@@ -82,14 +80,14 @@ class Navbar extends Component {
 				<NavItem id='mapLink' exact icon='map' type='link' to='/'>
 					Mapa
 				</NavItem>
-				<NavItem id='helpLink' action={() => {}} icon='help' type='button'>
+				<NavItem id='helpLink' icon='help' type='button' to='HelpPopup'>
 					Pomoc
 				</NavItem>
-				<NavButton id='registerButton' action={() => {}} color='white'>
+				<NavButton id='registerButton' color='white' to='SignupPopup'>
 					Rejestracja
 				</NavButton>
-				<NavButton id='loginButton' action={() => {}} color='blue'>
-					Rejestracja
+				<NavButton id='loginButton' color='blue' to='LoginPopup'>
+					Logowanie
 				</NavButton>
 			</ul>
 		)

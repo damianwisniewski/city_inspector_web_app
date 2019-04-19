@@ -2,11 +2,11 @@ import React from 'react'
 
 import './NavButton.scss'
 
-import Button from '../../CommonComponents/Button/Button'
+import { PopupLink } from '../../PopupComponents/PopupRouting'
 
-const NavButton = ({ action, ...props }) => (
-	<li className='nav-button'>
-		<Button {...props} onClick={action} />
+const NavButton = props => (
+	<li className='nav-button-wrapper'>
+		<PopupLink className={`nav-button ${props.color}`} {...props} />
 	</li>
 )
 

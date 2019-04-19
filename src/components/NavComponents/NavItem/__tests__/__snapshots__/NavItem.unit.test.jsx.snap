@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavItem /> should render correctly NavItem type BUTTOM 1`] = `
+<li
+  className="nav_item"
+>
+  <PopupLink
+    activeClassName="navigation_active"
+    className="nav_button test  "
+    to="/"
+    type="button"
+  >
+    ExampleText
+  </PopupLink>
+</li>
+`;
+
+exports[`<NavItem /> should render correctly NavItem type LINK 1`] = `
+<li
+  className="nav_item"
+>
+  <NavLink
+    activeClassName="navigation_active"
+    className="nav_link test  "
+    exact={false}
+    to="/"
+    type="link"
+  >
+    ExampleText
+  </NavLink>
+</li>
+`;

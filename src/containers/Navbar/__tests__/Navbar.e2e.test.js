@@ -14,8 +14,8 @@ describe('<Navbar />', () => {
 			browser.setWindowSize(1300, 800)
 		})
 
-		AuthNaigationTests()
-		//TODO: NonAuthNaigationTests
+		// AuthNaigationTests()
+		NonAuthNaigationTests()
 	})
 
 	/**
@@ -52,14 +52,62 @@ describe('<Navbar />', () => {
 			expect($('#navList').isDisplayedInViewport()).to.be.true
 
 			browserHelper.customClick('#menuToggleButton')
-			browser.$('#navList').waitUntilHide('#navList')
+			browserHelper.waitUntilHide('#navList')
 			expect($('#navList').isDisplayedInViewport()).to.be.false
 		})
 
-		AuthNaigationTests()
-		//TODO: NonAuthNaigationTests
+		// AuthNaigationTests()
+		NonAuthNaigationTests()
 	})
 })
+
+function NonAuthNaigationTests() {
+	describe('with NonAuth navigation', () => {
+		it('MAPA - should change location to "/", after click "mapLink"', () => {
+			browserHelper.customClick('#mapLink')
+			const container = browser.$('#MapView')
+			expect(browser.getUrl()).to.match(/\/$/)
+			expect(browser.getTitle()).to.be.equal(`Mapa | ${REACT_APP_TITLE}`)
+			expect(container.isDisplayed()).to.be.true
+		})
+
+		it('POMOC - should open help popup, after click navigation button with id "helpLink"', () => {
+			browserHelper.customClick('#helpLink')
+			const HelpPopup = browser.$('#HelpPopup')
+
+			browser.pause(500)
+			expect(HelpPopup.isExisting()).to.be.true
+			expect(HelpPopup.isDisplayedInViewport()).to.be.true
+
+			browserHelper.customClick('#popupCloseButton')
+			expect(HelpPopup.isExisting()).to.be.false
+		})
+
+		it(`REJESTRACJA - should open signup popup, after click navigation button with id "registerButton" and close it after click close button`, () => {
+			browserHelper.customClick('#registerButton')
+			const SignupPopup = browser.$('#SignupPopup')
+
+			browser.pause(500)
+			expect(SignupPopup.isExisting()).to.be.true
+			expect(SignupPopup.isDisplayedInViewport()).to.be.true
+
+			browserHelper.customClick('#popupCloseButton')
+			expect(SignupPopup.isExisting()).to.be.false
+		})
+
+		it(`LOGOWANIE - should open signup popup, after click navigation button with id "registerButton" and close it after click close button`, () => {
+			browserHelper.customClick('#loginButton')
+			const LoginPopup = browser.$('#LoginPopup')
+
+			browser.pause(500)
+			expect(LoginPopup.isExisting()).to.be.true
+			expect(LoginPopup.isDisplayedInViewport()).to.be.true
+
+			browserHelper.customClick('#popupCloseButton')
+			expect(LoginPopup.isExisting()).to.be.false
+		})
+	})
+}
 
 function AuthNaigationTests() {
 	describe('with Auth navigation', () => {
@@ -101,6 +149,18 @@ function AuthNaigationTests() {
 			expect(browser.getUrl()).to.match(/\/ustawienia$/)
 			expect(browser.getTitle()).to.be.equal(`Ustawienia | ${REACT_APP_TITLE}`)
 			expect(container.isDisplayed()).to.be.true
+		})
+
+		it('should open help popup, after click navigation button with id "helpLink"', () => {
+			browserHelper.customClick('#helpLink')
+			const HelpPopup = browser.$('#HelpPopup')
+
+			browser.pause(500)
+			expect(HelpPopup.isExisting()).to.be.true
+			expect(HelpPopup.isDisplayedInViewport()).to.be.true
+
+			browserHelper.customClick('#popupCloseButton')
+			expect(HelpPopup.isExisting()).to.be.false
 		})
 	})
 }

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavButton /> should render properly, with props like color and to 1`] = `
+<li
+  className="nav-button-wrapper"
+>
+  <PopupLink
+    className="nav-button blue"
+    color="blue"
+    to="MockPopup"
+  >
+    Example Text
+  </PopupLink>
+</li>
+`;

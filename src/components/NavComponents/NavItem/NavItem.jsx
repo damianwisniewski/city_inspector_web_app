@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom'
 
 import './NavItem.scss'
 import iconAssets from '../../../assets/styleModules/icons.module.scss'
+import { PopupLink } from '../../PopupComponents/PopupRouting'
 
-const NavItem = ({ id, children, type, className, icon, action, exact, to }) => {
+const NavItem = ({ id, children, type, className, icon, exact, to }) => {
 	function createProperChild() {
 		if (type === 'link') {
 			return (
@@ -22,14 +23,15 @@ const NavItem = ({ id, children, type, className, icon, action, exact, to }) => 
 			)
 		} else {
 			return (
-				<button
+				<PopupLink
 					id={id}
 					type={type}
-					onClick={action}
+					to={to}
+					activeClassName='navigation_active'
 					className={`nav_button ${iconAssets[icon]} ${className} `}
 				>
 					{children}
-				</button>
+				</PopupLink>
 			)
 		}
 	}
@@ -42,7 +44,6 @@ NavItem.defaultProps = {
 	icon: '',
 	exact: false,
 	className: '',
-	action: () => {},
 }
 
 NavItem.propTypes = {
@@ -52,15 +53,7 @@ NavItem.propTypes = {
 	exact: PropTypes.bool,
 	className: PropTypes.string,
 	type: PropTypes.oneOf(['link', 'button']).isRequired,
-	action: PropTypes.func,
-	to: function(props, propName) {
-		if (props.type === 'button' && props[propName]) {
-			return new Error(
-				`VERIFICATION FAILED!
-				You cannot specify property 'to' for NavItem type 'button'`,
-			)
-		}
-	},
+	to: PropTypes.string.isRequired,
 }
 
 export default NavItem

@@ -2,6 +2,7 @@ import React from 'react'
 import NavItem from '../NavItem'
 import { configure, shallow, ShallowWrapper } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import toJson from 'enzyme-to-json'
 
 configure({ adapter: new Adapter() })
 
@@ -12,65 +13,26 @@ describe('<NavItem />', () => {
 	let NavItemComponent
 	const NavItemText = 'ExampleText'
 	const location = '/'
+	const icon = 'test'
 	const linkType = 'link'
 	const buttonType = 'button'
-	const onClickFunc = jest.fn()
 
-	test('should render <li /> element as a wrapper', () => {
+	test('should render correctly NavItem type BUTTOM', () => {
 		NavItemComponent = shallow(
-			<NavItem type='button' action={onClickFunc}>
+			<NavItem icon={icon} type={buttonType} to={location}>
 				{NavItemText}
 			</NavItem>,
 		)
-		expect(NavItemComponent.getElement().type).toBe('li')
+		expect(toJson(NavItemComponent)).toMatchSnapshot()
 	})
 
-	describe('{ type="link" }', () => {
-		beforeEach(() => {
-			NavItemComponent = shallow(
-				<NavItem type={linkType} to={location}>
-					{NavItemText}
-				</NavItem>,
-			)
-		})
+	test('should render correctly NavItem type LINK', () => {
+		NavItemComponent = shallow(
+			<NavItem icon={icon} type={linkType} to={location}>
+				{NavItemText}
+			</NavItem>,
+		)
 
-		test('should contains children passed inside', () => {
-			expect(NavItemComponent.contains(NavItemText)).toBe(true)
-		})
-
-		test('should contains some necessary props', () => {
-			expect(NavItemComponent.find('NavLink').props()).toMatchObject({
-				activeClassName: expect.any(String),
-				to: location,
-				exact: expect.any(Boolean),
-				type: linkType,
-			})
-		})
-	})
-
-	describe('{ type="button" }', () => {
-		beforeEach(() => {
-			NavItemComponent = shallow(
-				<NavItem type='button' action={onClickFunc}>
-					{NavItemText}
-				</NavItem>,
-			)
-		})
-
-		test('should contains children passed inside', () => {
-			expect(NavItemComponent.text()).toBe(NavItemText)
-		})
-
-		test('should contains some necessary props', () => {
-			expect(NavItemComponent.find('button').props()).toMatchObject({
-				type: buttonType,
-				onClick: onClickFunc,
-			})
-		})
-
-		test('should call function passed in action prop, after click', () => {
-			NavItemComponent.find('button').simulate('click')
-			expect(onClickFunc).toBeCalled()
-		})
+		expect(toJson(NavItemComponent)).toMatchSnapshot()
 	})
 })
