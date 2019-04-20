@@ -1,4 +1,4 @@
-import { SET_USER_AUTH } from '../actionTypes/actionTypes'
+import { SET_USER_AUTH } from '../actionTypes/userDataActionTypes'
 
 /**
  * Set information is user is Authorized

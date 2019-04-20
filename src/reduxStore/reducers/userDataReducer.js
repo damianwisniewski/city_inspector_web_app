@@ -1,7 +1,11 @@
-import { SET_USER_AUTH } from '../actionTypes/actionTypes'
+import { SET_USER_AUTH } from '../actionTypes/userDataActionTypes'
 
 const initialState = {
 	isUserAuth: false,
+	data: {
+		nickname: '',
+		email: '',
+	},
 }
 
 const userDataReducer = (state = initialState, action) => {
