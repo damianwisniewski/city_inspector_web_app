@@ -5,28 +5,33 @@ export const PopupContext = React.createContext()
 class PopupRouter extends Component {
 	state = {
 		componentName: '',
+		additionalProps: {},
 	}
 
 	handleClosePopup = () => {
-		this.setState({ componentName: '' })
+		this.setState({
+			componentName: '',
+			additionalProps: {},
+		})
 	}
 
-	handleOpenPopup = e => {
+	handleOpenPopup = (e, additionalProps = {}) => {
 		if (e.target) {
-			this.setState({ componentName: e.target.dataset.to })
+			this.setState({ componentName: e.target.dataset.to, additionalProps })
 		} else {
-			this.setState({ componentName: e })
+			this.setState({ componentName: e, additionalProps })
 		}
 	}
 
 	render() {
 		const { children } = this.props
-		const { componentName } = this.state
+		const { componentName, additionalProps } = this.state
 
 		return (
 			<PopupContext.Provider
 				value={{
 					componentName,
+					additionalProps,
 					handleClosePopup: this.handleClosePopup,
 					handleOpenPopup: this.handleOpenPopup,
 				}}

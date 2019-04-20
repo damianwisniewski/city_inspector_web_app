@@ -6,7 +6,8 @@ class PopupRedirect extends Component {
 	static contextType = PopupContext
 
 	componentDidMount() {
-		this.context.handleOpenPopup(this.props.to)
+		const { to, ...rest } = this.props
+		this.context.handleOpenPopup(this.props.to, rest)
 	}
 
 	render() {

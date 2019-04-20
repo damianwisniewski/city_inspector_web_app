@@ -7,11 +7,15 @@ const PopupSwitch = props => {
 		const { children } = props
 
 		if (componentName && children) {
+			let PopupToRender
+
 			if (Array.isArray(children)) {
-				return children.find(({ props }) => props.path === componentName) || null
+				PopupToRender = children.find(({ props }) => props.path === componentName) || null
+			} else {
+				PopupToRender = children.props.path === componentName ? children : null
 			}
 
-			return children.props.path === componentName ? children : null
+			return PopupToRender
 		}
 
 		return null

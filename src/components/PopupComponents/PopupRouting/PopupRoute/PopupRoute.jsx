@@ -8,7 +8,7 @@ class PopupRoute extends Component {
 
 	render() {
 		const { component, closeButton, darkOverlay } = this.props
-		const { handleClosePopup } = this.context
+		const { handleClosePopup, additionalProps } = this.context
 
 		return (
 			<Popup
@@ -16,6 +16,7 @@ class PopupRoute extends Component {
 				darkOverlay={darkOverlay}
 				onOverlayClick={handleClosePopup}
 				onButtonClose={handleClosePopup}
+				{...additionalProps}
 			>
 				{React.createElement(component)}
 			</Popup>

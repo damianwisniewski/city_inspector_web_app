@@ -21,3 +21,5 @@ const userDataReducer = (state = initialState, action) => {
 }
 
 export default userDataReducer
+
+export const isUserAuth = () => userDataReducer.isUserAuth

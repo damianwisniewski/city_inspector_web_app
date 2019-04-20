@@ -8,6 +8,8 @@ import './App.scss'
 // Popup Routing
 import { PopupRouter, PopupSwitch, PopupRoute } from '../../components/PopupComponents/PopupRouting'
 
+import withAuth from '../../hocs/withAuthorization'
+
 // Routes
 import Navbar from '../Navbar/Navbar'
 import MapView from '../Routes/MapView/MapView'
@@ -37,10 +39,10 @@ class App extends Component {
 						<main className='content'>
 							<Switch>
 								<Route exact path='/' component={MapView} />
-								<Route exact path='/nowe_zgloszenie' component={NewNotification} />
-								<Route exact path='/twoje_zgloszenia' component={YourNotification} />
-								<Route exact path='/subskrypcje' component={Subscription} />
-								<Route exact path='/ustawienia' component={Settings} />
+								<Route exact path='/nowe_zgloszenie' component={withAuth(NewNotification)} />
+								<Route exact path='/twoje_zgloszenia' component={withAuth(YourNotification)} />
+								<Route exact path='/subskrypcje' component={withAuth(Subscription)} />
+								<Route exact path='/ustawienia' component={withAuth(Settings)} />
 								<Route component={NotFound} />
 							</Switch>
 						</main>
