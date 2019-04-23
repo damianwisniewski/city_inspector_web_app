@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { PopupRedirect } from '../components/PopupComponents/PopupRouting'
-import { isUserAuth } from '../reduxStore/reducers/userDataReducer'
 import { Redirect } from 'react-router'
+
+import { PopupRedirect } from '../../components/PopupComponents/PopupRouting'
+import { isUserAuth } from '../../reduxStore/reducers/userDataReducer'
 
 export default function withAuth(WrappedComponent) {
 	return class extends Component {

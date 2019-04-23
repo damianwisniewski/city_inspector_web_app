@@ -8,7 +8,7 @@ import './App.scss'
 // Popup Routing
 import { PopupRouter, PopupSwitch, PopupRoute } from '../../components/PopupComponents/PopupRouting'
 
-import withAuth from '../../hocs/withAuthorization'
+import withAuth from '../../HOCs/withAuth/withAuth'
 
 // Routes
 import Navbar from '../Navbar/Navbar'

@@ -65,10 +65,9 @@ function NonAuthNaigationTests() {
 	describe('with NonAuth navigation', () => {
 		it('MAPA - should change location to "/", after click "mapLink"', () => {
 			browserHelper.customClick('#mapLink')
-			const container = browser.$('#MapView')
 			expect(browser.getUrl()).to.match(/\/$/)
 			expect(browser.getTitle()).to.be.equal(`Mapa | ${REACT_APP_TITLE}`)
-			expect(container.isDisplayed()).to.be.true
+			expect($('#MapView').isDisplayed()).to.be.true
 		})
 
 		it('POMOC - should open help popup, after click navigation button with id "helpLink"', () => {
@@ -113,42 +112,37 @@ function AuthNaigationTests() {
 	describe('with Auth navigation', () => {
 		it('should change location to "/nowe_zgloszenie", after click "plusLink"', () => {
 			browserHelper.customClick('#plusLink')
-			const container = browser.$('#NewNotification')
 			expect(browser.getUrl()).to.match(/\/nowe_zgloszenie$/)
 			expect(browser.getTitle()).to.be.equal(`Nowe zgłoszenie | ${REACT_APP_TITLE}`)
-			expect(container.isDisplayed()).to.be.true
+			expect($('#NewNotification').isDisplayed()).to.be.true
 		})
 
 		it('should change location to "/", after click "mapLink"', () => {
 			browserHelper.customClick('#mapLink')
-			const container = browser.$('#MapView')
 			expect(browser.getUrl()).to.match(/\/$/)
 			expect(browser.getTitle()).to.be.equal(`Mapa | ${REACT_APP_TITLE}`)
-			expect(container.isDisplayed()).to.be.true
+			expect($('#MapView').isDisplayed()).to.be.true
 		})
 
 		it('should change location to "/twoje_zgloszenia", after click "pinLink"', () => {
 			browserHelper.customClick('#pinLink')
-			const container = browser.$('#YourNotification')
 			expect(browser.getUrl()).to.match(/\/twoje_zgloszenia$/)
 			expect(browser.getTitle()).to.be.equal(`Twoje zgłoszenia | ${REACT_APP_TITLE}`)
-			expect(container.isDisplayed()).to.be.true
+			expect($('#YourNotification').isDisplayed()).to.be.true
 		})
 
 		it('should change location to "/subskrypcje", after click "eyeLink"', () => {
 			browserHelper.customClick('#eyeLink')
-			const container = browser.$('#Subscription')
 			expect(browser.getUrl()).to.match(/\/subskrypcje$/)
 			expect(browser.getTitle()).to.be.equal(`Subskrypcje | ${REACT_APP_TITLE}`)
-			expect(container.isDisplayed()).to.be.true
+			expect($('#Subscription').isDisplayed()).to.be.true
 		})
 
 		it('should change location to "/ustawienia", after click "cogsLink"', () => {
 			browserHelper.customClick('#cogsLink')
-			const container = browser.$('#Settings')
 			expect(browser.getUrl()).to.match(/\/ustawienia$/)
 			expect(browser.getTitle()).to.be.equal(`Ustawienia | ${REACT_APP_TITLE}`)
-			expect(container.isDisplayed()).to.be.true
+			expect($('#Settings').isDisplayed()).to.be.true
 		})
 
 		it('should open help popup, after click navigation button with id "helpLink"', () => {

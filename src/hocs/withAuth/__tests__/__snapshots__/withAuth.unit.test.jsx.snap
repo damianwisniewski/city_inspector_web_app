@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withAuth() HOC should render Component for authorized user 1`] = `<Component />`;
+
+exports[`withAuth() HOC should render Redirections for non-authorized user 1`] = `
+<Fragment>
+  <Redirect
+    to="/"
+  />
+  <PopupRedirect
+    message="Nie masz dostępu do tych zasobów. Aby korzystać w pełni z aplikacji musisz się zalogować!"
+    to="LoginPopup"
+  />
+</Fragment>
+`;
