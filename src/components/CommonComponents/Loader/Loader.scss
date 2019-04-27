@@ -1,0 +1,39 @@
+@import '../../../assets/styles/index';
+
+.Loader {
+	position: relative;
+	width: 100%;
+	text-align: center;
+
+	&::after {
+		content: '\f110';
+		display: block;
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 900;
+		padding: 5px;
+		color: $primary_light_blue;
+		animation: rotate infinite 1.3s cubic-bezier(0.28, 0.81, 1, 1);
+	}
+
+	&--small {
+		font-size: 20px;
+	}
+
+	&--medium {
+		font-size: 30px;
+	}
+
+	&--large {
+		font-size: 45px;
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
