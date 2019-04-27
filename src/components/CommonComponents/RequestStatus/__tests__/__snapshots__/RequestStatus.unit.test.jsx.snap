@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RequestStatus /> should render correctly RequestStatus with direction horizontal 1`] = `
+<Fragment>
+  <div>
+    <p>
+      Test
+    </p>
+  </div>
+</Fragment>
+`;
+
+exports[`<RequestStatus /> should render correctly RequestStatus with direction vertical 1`] = `
+<Fragment>
+  <div>
+    <p>
+      Test
+    </p>
+  </div>
+</Fragment>
+`;
+
+exports[`<RequestStatus /> should render correctly RequestStatus with requestState failed 1`] = `
+<Fragment>
+  <Status
+    id="FakeID-status"
+    message="Fake error message"
+    position="horizontal"
+    type="error"
+  />
+</Fragment>
+`;
+
+exports[`<RequestStatus /> should render correctly RequestStatus with requestState pending 1`] = `
+<Fragment>
+  <Loader
+    id="FakeID-loader"
+    size="medium"
+  />
+</Fragment>
+`;
+
+exports[`<RequestStatus /> should render correctly RequestStatus with requestState succeeded 1`] = `
+<Fragment>
+  <div>
+    <p>
+      Test
+    </p>
+  </div>
+</Fragment>
+`;
