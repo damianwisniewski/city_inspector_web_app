@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Status /> should render correctly Status type correct 1`] = `
+<p
+  className="status-component status-component--correct status-component--horizontal correct"
+  id="mockId"
+>
+  ExampleText
+</p>
+`;
+
+exports[`<Status /> should render correctly Status type error 1`] = `
+<p
+  className="status-component status-component--error status-component--horizontal error"
+  id="mockId"
+>
+  ExampleText
+</p>
+`;
+
+exports[`<Status /> should render correctly Status type warning 1`] = `
+<p
+  className="status-component status-component--warning status-component--horizontal warning"
+  id="mockId"
+>
+  ExampleText
+</p>
+`;
+
+exports[`<Status /> should render correctly Status with position horizontal 1`] = `
+<p
+  className="status-component status-component--correct status-component--horizontal correct"
+  id="mockId"
+>
+  ExampleText
+</p>
+`;
+
+exports[`<Status /> should render correctly Status with position vertical 1`] = `
+<p
+  className="status-component status-component--correct status-component--vertical correct"
+  id="mockId"
+>
+  ExampleText
+</p>
+`;

@@ -1,0 +1,33 @@
+@import '../../../assets/styles/index';
+
+.status-component {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: inherit;
+	color: inherit;
+
+	&::before {
+		font-size: inherit;
+	}
+
+	&--error::before {
+		color: $red;
+	}
+
+	&--warning::before {
+		color: $yellow;
+	}
+
+	&--correct::before {
+		color: $green;
+	}
+
+	&--horizonal {
+		flex-direction: row;
+	}
+
+	&--vertical {
+		flex-direction: column;
+	}
+}
