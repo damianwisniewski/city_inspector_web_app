@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should render correctly Input, with floatingLabel value equal false 1`] = `
+<div
+  className="input-wrapper"
+>
+  <input
+    className="input-wrapper__field"
+    data-animate={false}
+    id="mockId"
+    placeholder="mock placeholder"
+  />
+  <label
+    className="input-wrapper__label"
+    htmlFor="mockId"
+  >
+    mockText
+  </label>
+</div>
+`;
+
+exports[`<Input /> should render correctly Input, with floatingLabel value equal true 1`] = `
+<div
+  className="input-wrapper"
+>
+  <input
+    className="input-wrapper__field"
+    data-animate={true}
+    id="mockId"
+    placeholder="mock placeholder"
+  />
+  <label
+    className="input-wrapper__label"
+    htmlFor="mockId"
+  >
+    mockText
+  </label>
+</div>
+`;

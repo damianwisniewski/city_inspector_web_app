@@ -2,7 +2,7 @@
 
 exports[`(Popup) <Overlay /> should render correctly Overlay with proper classNames, for dark prop equal false 1`] = `
 <div
-  className="popup-overlay transparent"
+  className="popup-overlay popup-overlay--transparent"
   id="overlay"
   onClick={[Function]}
 >
@@ -12,7 +12,7 @@ exports[`(Popup) <Overlay /> should render correctly Overlay with proper classNa
 
 exports[`(Popup) <Overlay /> should render correctly Overlay with proper classNames, for dark prop equal true 1`] = `
 <div
-  className="popup-overlay dark"
+  className="popup-overlay popup-overlay--dark"
   id="overlay"
   onClick={[Function]}
 >

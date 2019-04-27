@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Group /> should render correctly Group 1`] = `
+<section
+  className="form-group"
+  data-name="mockName"
+>
+  <input />
+</section>
+`;

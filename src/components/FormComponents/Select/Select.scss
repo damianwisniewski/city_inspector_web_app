@@ -1,0 +1,81 @@
+@import '../../../assets/styles/index';
+
+.input-wrapper--select {
+	z-index: 1;
+
+	.field__output {
+		position: relative;
+		z-index: 1;
+		background-color: $white;
+		margin: 0;
+		width: 99%;
+		height: 99%;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 0 10px;
+
+		&::after {
+			content: '\f107';
+			font-family: 'Font Awesome 5 Free';
+			font-size: 18px;
+			font-weight: 900;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+
+	.input-wrapper__select-list {
+		position: absolute;
+		top: 33px;
+		left: 50%;
+		z-index: -1;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		background-color: $white;
+		color: $dark_gray;
+		box-shadow: $shadow;
+		width: 98%;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		opacity: 0;
+		overflow: hidden;
+		visibility: hidden;
+		border-top: none;
+		max-height: 200px;
+		transform: translateX(-50%) translateY(-35px);
+		transition: opacity 0.3s linear, transform 0.3s linear, visibility 0.3s linear;
+		transition-delay: 0.1s;
+
+		& li {
+			padding: 5px 10px;
+		}
+	}
+
+	div.input-wrapper__field--select {
+		padding: 0;
+	}
+
+	div.input-wrapper__field--focused {
+		border: 1px solid $primary_blue;
+		box-shadow: $shine;
+
+		& li:hover {
+			background-color: $primary_blue;
+			color: $white;
+		}
+
+		& ~ .input-wrapper__label {
+			color: $blue;
+		}
+
+		& .input-wrapper__select-list {
+			visibility: visible;
+			opacity: 1;
+			transform: translateX(-50%) translateY(0%);
+		}
+	}
+}

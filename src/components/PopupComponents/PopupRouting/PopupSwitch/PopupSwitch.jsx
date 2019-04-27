@@ -21,11 +21,7 @@ const PopupSwitch = props => {
 		return null
 	}
 
-	return (
-		<div>
-			<PopupContext.Consumer>{findChosenElement}</PopupContext.Consumer>
-		</div>
-	)
+	return <PopupContext.Consumer>{findChosenElement}</PopupContext.Consumer>
 }
 
 PopupSwitch.propTypes = {

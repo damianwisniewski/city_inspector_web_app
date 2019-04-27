@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checkbox /> should render correctly Checkbox 1`] = `
+<div
+  className="input-wrapper"
+>
+  <input
+    className="input-wrapper__field"
+    id="mockId"
+    type="checkbox"
+  />
+  <label
+    className="input-wrapper__label"
+    htmlFor="mockId"
+  >
+    ExampleText
+  </label>
+</div>
+`;

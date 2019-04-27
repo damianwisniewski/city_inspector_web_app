@@ -32,6 +32,7 @@ exports[`<NavItem /> should render also CloseButton for property closeButton=tru
 exports[`<NavItem /> should render correctly without specyfi any props 1`] = `
 <Overlay
   dark={false}
+  onOverlayClick={[Function]}
 >
   <div
     className="popup-container"

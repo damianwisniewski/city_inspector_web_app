@@ -13,15 +13,20 @@ const Overlay = ({ dark, onOverlayClick, children }) => {
 		<div
 			id='overlay'
 			onClick={handleClick}
-			className={`popup-overlay ${dark ? 'dark' : 'transparent'}`}
+			className={`popup-overlay ${dark ? 'popup-overlay--dark' : 'popup-overlay--transparent'}`}
 		>
 			{children}
 		</div>
 	)
 }
 
+Overlay.defaultProps = {
+	dark: false,
+	onOverlayClick: () => {},
+}
+
 Overlay.propTypes = {
-	dark: PropTypes.bool.isRequired,
+	dark: PropTypes.bool,
 	onOverlayClick: PropTypes.func,
 	children: PropTypes.element.isRequired,
 }

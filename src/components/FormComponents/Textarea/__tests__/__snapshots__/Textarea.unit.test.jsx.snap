@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Textarea /> should render correctly Textarea, with floatingLabel value equal false 1`] = `
+<div
+  className="input-wrapper"
+>
+  <textarea
+    className="input-wrapper__field"
+    data-animate={false}
+    id="mockId"
+    placeholder="mock placeholder"
+  />
+  <label
+    className="input-wrapper__label"
+    htmlFor="mockId"
+  >
+    mockTextarea
+  </label>
+</div>
+`;
+
+exports[`<Textarea /> should render correctly Textarea, with floatingLabel value equal true 1`] = `
+<div
+  className="input-wrapper"
+>
+  <textarea
+    className="input-wrapper__field"
+    data-animate={true}
+    id="mockId"
+    placeholder="mock placeholder"
+  />
+  <label
+    className="input-wrapper__label"
+    htmlFor="mockId"
+  >
+    mockTextarea
+  </label>
+</div>
+`;
