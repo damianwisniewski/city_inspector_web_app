@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tooltip /> should mount correctly Tooltip 1`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="center"
+  positionVertical="bottom"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--bottom-center drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with attr hoverable 1`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="center"
+  positionVertical="bottom"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--bottom-center drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with attr hoverable 2`] = `
+<Tooltip
+  hoverable={false}
+  positionHorizontal="center"
+  positionVertical="bottom"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--bottom-center"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with attr show 1`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="center"
+  positionVertical="bottom"
+  show={true}
+>
+  <div
+    className="drop-down drop-down--bottom-center drop-down--hoverable drop-down--show"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with attr show 2`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="center"
+  positionVertical="bottom"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--bottom-center drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with positionVertical=bottom and one any positionHorizontal 1`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="left"
+  positionVertical="bottom"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--bottom-left drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with positionVertical=bottom and one any positionHorizontal 2`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="center"
+  positionVertical="bottom"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--bottom-center drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with positionVertical=bottom and one any positionHorizontal 3`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="right"
+  positionVertical="bottom"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--bottom-right drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with positionVertical=top and one any positionHorizontal 1`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="left"
+  positionVertical="top"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--top-left drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with positionVertical=top and one any positionHorizontal 2`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="center"
+  positionVertical="top"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--top-center drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
+
+exports[`<Tooltip /> should mount correctly Tooltip with positionVertical=top and one any positionHorizontal 3`] = `
+<Tooltip
+  hoverable={true}
+  positionHorizontal="right"
+  positionVertical="top"
+  show={false}
+>
+  <div
+    className="drop-down drop-down--top-right drop-down--hoverable"
+  >
+    ExampleText
+  </div>
+</Tooltip>
+`;
