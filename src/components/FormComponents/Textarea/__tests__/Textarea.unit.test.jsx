@@ -18,18 +18,14 @@ describe('<Textarea />', () => {
 
 	test('should render correctly Textarea, with floatingLabel value equal true', () => {
 		TextareaElement = shallow(
-			<Textarea floatingLabel placeholder={placeholder} id={id}>
-				{TextareaContent}
-			</Textarea>,
+			<Textarea floatingLabel placeholder={placeholder} id={id} label={TextareaContent} />,
 		)
 		expect(toJson(TextareaElement)).toMatchSnapshot()
 	})
 
 	test('should render correctly Textarea, with floatingLabel value equal false', () => {
 		TextareaElement = shallow(
-			<Textarea floatingLabel={false} placeholder={placeholder} id={id}>
-				{TextareaContent}
-			</Textarea>,
+			<Textarea floatingLabel={false} placeholder={placeholder} id={id} label={TextareaContent} />,
 		)
 		expect(toJson(TextareaElement)).toMatchSnapshot()
 	})

@@ -8,12 +8,12 @@ exports[`<Radio /> should render correctly Radio 1`] = `
     className="input-wrapper__field"
     id="mockId"
     type="radio"
-  />
+  >
+    mockText
+  </input>
   <label
     className="input-wrapper__label"
     htmlFor="mockId"
-  >
-    mockText
-  </label>
+  />
 </div>
 `;

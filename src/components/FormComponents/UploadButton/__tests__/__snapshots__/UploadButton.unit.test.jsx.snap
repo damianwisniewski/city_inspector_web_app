@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UploadButton /> should render correctly UploadButton 1`] = `
+<div
+  className="input-wrapper input-wrapper--upload"
+>
+  <input
+    accept="image/*"
+    className="input-wrapper__field"
+    id="mockId"
+    multiple={true}
+    onChange={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="file"
+  />
+  <label
+    className="input-wrapper__upload-label "
+    htmlFor="mockId"
+  >
+    fakeLabel
+    <p
+      className="input-wrapper__upload-instruction"
+    >
+      Kliknij w pole lub przeciągnij plik
+    </p>
+    <div
+      className="input-wrapper__upload-status"
+    />
+  </label>
+</div>
+`;
+
+exports[`<UploadButton /> should render correctly UploadButton with error state 1`] = `
+<div
+  className="input-wrapper input-wrapper--upload"
+>
+  <input
+    accept="image/*"
+    className="input-wrapper__field"
+    id="mockId"
+    multiple={true}
+    onChange={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="file"
+  />
+  <label
+    className="input-wrapper__upload-label "
+    htmlFor="mockId"
+  >
+    fakeLabel
+    <p
+      className="input-wrapper__upload-instruction"
+    >
+      Kliknij w pole lub przeciągnij plik
+    </p>
+    <div
+      className="input-wrapper__upload-status"
+    >
+      <Status
+        message="fake error message"
+        position="horizontal"
+        type="error"
+      />
+    </div>
+  </label>
+</div>
+`;
+
+exports[`<UploadButton /> should render correctly UploadButton with loaded state equal true 1`] = `
+<div
+  className="input-wrapper input-wrapper--upload"
+>
+  <input
+    accept="image/*"
+    className="input-wrapper__field"
+    id="mockId"
+    multiple={true}
+    onChange={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="file"
+  />
+  <label
+    className="input-wrapper__upload-label "
+    htmlFor="mockId"
+  >
+    fakeLabel
+    <p
+      className="input-wrapper__upload-instruction"
+    >
+      Kliknij w pole lub przeciągnij plik
+    </p>
+    <div
+      className="input-wrapper__upload-status"
+    >
+      <Status
+        message="Załadowano 3 pliki"
+        position="horizontal"
+        type="correct"
+      />
+    </div>
+  </label>
+</div>
+`;
+
+exports[`<UploadButton /> should render correctly UploadButton with loading state equal true 1`] = `
+<div
+  className="input-wrapper input-wrapper--upload"
+>
+  <input
+    accept="image/*"
+    className="input-wrapper__field"
+    id="mockId"
+    multiple={true}
+    onChange={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="file"
+  />
+  <label
+    className="input-wrapper__upload-label "
+    htmlFor="mockId"
+  >
+    fakeLabel
+    <p
+      className="input-wrapper__upload-instruction"
+    >
+      Kliknij w pole lub przeciągnij plik
+    </p>
+    <div
+      className="input-wrapper__upload-status"
+    >
+      <Loader
+        id="mockId-loader"
+        size="small"
+      />
+    </div>
+  </label>
+</div>
+`;
+
+exports[`<UploadButton /> should render correctly UploadButton with onDropArea state equal true 1`] = `
+<div
+  className="input-wrapper input-wrapper--upload"
+>
+  <input
+    accept="image/*"
+    className="input-wrapper__field"
+    id="mockId"
+    multiple={true}
+    onChange={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="file"
+  />
+  <label
+    className="input-wrapper__upload-label input-wrapper__upload-label--active"
+    htmlFor="mockId"
+  >
+    fakeLabel
+    <p
+      className="input-wrapper__upload-instruction"
+    >
+      Kliknij w pole lub przeciągnij plik
+    </p>
+    <div
+      className="input-wrapper__upload-status"
+    />
+  </label>
+</div>
+`;

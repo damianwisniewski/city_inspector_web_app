@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Input = ({ id, placeholder, children, floatingLabel, ...rest }) => (
+const Input = ({ id, placeholder, label, floatingLabel, ...rest }) => (
 	<div className='input-wrapper'>
 		<input
 			{...rest}
@@ -11,15 +11,19 @@ const Input = ({ id, placeholder, children, floatingLabel, ...rest }) => (
 			placeholder={placeholder}
 		/>
 		<label className='input-wrapper__label' htmlFor={id}>
-			{children}
+			{label}
 		</label>
 	</div>
 )
 
+Input.defaultProps = {
+	label: '',
+}
+
 Input.propTypes = {
 	id: PropTypes.string.isRequired,
 	placeholder: PropTypes.string.isRequired,
-	children: PropTypes.string.isRequired,
+	label: PropTypes.string,
 	floatingLabel: PropTypes.bool.isRequired,
 }
 

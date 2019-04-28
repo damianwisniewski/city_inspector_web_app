@@ -8,7 +8,8 @@
 		"eject": "react-scripts eject",
 		"mock-api": "json-server --watch mockServerRestApi/index.js --port 4000",
 		"lint": "eslint src/**/*.js src/**/*.jsx scripts/**/*.js",
-		"test": "react-scripts test --testMatch '<rootDir>/src/**/?(*.)unit.test.{js,jsx}'",
+		"test:unit": "react-scripts test --testMatch '<rootDir>/src/**/?(*.)unit.test.{js,jsx}'",
+		"test:unit:watch": "npm run test:unit -- --watch",
 		"test:e2e": "wdio wdio.conf.js",
 		"release": "git push heroku master"
 	},

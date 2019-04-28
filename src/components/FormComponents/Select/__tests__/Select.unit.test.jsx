@@ -12,15 +12,16 @@ describe('<Select />', () => {
 	 * @type {ShallowWrapper}
 	 */
 	let SelectElement
-	const SelectLabel = 'mockText'
 	const id = 'mockId'
 	const onSelectOption = () => {}
-	const options = ['mock1', 'mock2', 'mock3']
 
 	beforeEach(() => {
 		SelectElement = shallow(
-			<Select onSelectOption={onSelectOption} options={options} id={id}>
-				{SelectLabel}
+			<Select onSelectOption={onSelectOption} id={id}>
+				<option value=''>placeholder</option>
+				<option value='Value1'>Value1</option>
+				<option value='Value2'>Value2</option>
+				<option value='Value3'>Value3</option>
 			</Select>,
 			{ lifecycleExperimental: true },
 		)
@@ -36,7 +37,7 @@ describe('<Select />', () => {
 	})
 
 	test('should render correctly Select with selected value in state', () => {
-		SelectElement.setState({ selected: options[2] })
+		SelectElement.setState({ selected: 'Value1' })
 		expect(toJson(SelectElement)).toMatchSnapshot()
 	})
 
@@ -45,11 +46,11 @@ describe('<Select />', () => {
 			.at(1)
 			.simulate('click', {
 				target: {
-					textContent: options[1],
+					textContent: 'Value1',
 				},
 			})
 
-		expect(SelectElement.state().selected).toBe(options[1])
+		expect(SelectElement.state().selected).toBe('Value1')
 	})
 
 	test('should call onSelectOption function from props, after click list item (option)', () => {
@@ -59,14 +60,14 @@ describe('<Select />', () => {
 			.at(1)
 			.simulate('click', {
 				target: {
-					textContent: options[1],
+					textContent: 'Value1',
 				},
 			})
 
 		expect(spy).toBeCalledTimes(1)
 		expect(spy).toBeCalledWith({
 			target: {
-				textContent: options[1],
+				textContent: 'Value1',
 			},
 		})
 	})

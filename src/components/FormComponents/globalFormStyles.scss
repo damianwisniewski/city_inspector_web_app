@@ -32,7 +32,7 @@
 		background-color: $white;
 		height: 35px;
 		cursor: pointer;
-		-webkit-appearance: inherit;
+		appearance: inherit;
 
 		&:focus {
 			outline: none;
@@ -77,7 +77,7 @@
 	&__field[type='radio'] {
 		margin: 0 5px;
 		align-self: center;
-		-webkit-appearance: inherit;
+		appearance: inherit;
 		border: 1px solid gray;
 		font-size: 0;
 		width: 15px;

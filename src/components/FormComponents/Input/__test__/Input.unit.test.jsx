@@ -18,18 +18,14 @@ describe('<Input />', () => {
 
 	test('should render correctly Input, with floatingLabel value equal true', () => {
 		InputElement = shallow(
-			<Input floatingLabel placeholder={placeholder} id={id}>
-				{InputText}
-			</Input>,
+			<Input floatingLabel placeholder={placeholder} id={id} label={InputText} />,
 		)
 		expect(toJson(InputElement)).toMatchSnapshot()
 	})
 
 	test('should render correctly Input, with floatingLabel value equal false', () => {
 		InputElement = shallow(
-			<Input floatingLabel={false} placeholder={placeholder} id={id}>
-				{InputText}
-			</Input>,
+			<Input floatingLabel={false} placeholder={placeholder} id={id} label={InputText} />,
 		)
 		expect(toJson(InputElement)).toMatchSnapshot()
 	})

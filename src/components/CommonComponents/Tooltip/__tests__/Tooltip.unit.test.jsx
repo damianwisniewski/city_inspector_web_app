@@ -1,5 +1,5 @@
 import React from 'react'
-import { configure, mount, ShallowWrapper } from 'enzyme'
+import { configure, shallow, ShallowWrapper } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import toJson from 'enzyme-to-json'
 
@@ -14,14 +14,15 @@ describe('<Tooltip />', () => {
 	let StatusElement
 	const FakeMessage = 'ExampleText'
 
-	test('should mount correctly Tooltip', () => {
-		StatusElement = mount(<Tooltip>{FakeMessage}</Tooltip>)
+	beforeEach(() => {
+		StatusElement = shallow(<Tooltip>{FakeMessage}</Tooltip>, { disableLifecycleMethods: true })
+	})
+
+	test('should render correctly Tooltip', () => {
 		expect(toJson(StatusElement)).toMatchSnapshot()
 	})
 
-	test('should mount correctly Tooltip with attr hoverable', () => {
-		StatusElement = mount(<Tooltip>{FakeMessage}</Tooltip>)
-
+	test('should render correctly Tooltip with attr hoverable', () => {
 		StatusElement.setProps({ hoverable: true })
 		expect(toJson(StatusElement)).toMatchSnapshot()
 
@@ -29,9 +30,7 @@ describe('<Tooltip />', () => {
 		expect(toJson(StatusElement)).toMatchSnapshot()
 	})
 
-	test('should mount correctly Tooltip with attr show', () => {
-		StatusElement = mount(<Tooltip>{FakeMessage}</Tooltip>)
-
+	test('should render correctly Tooltip with attr show', () => {
 		StatusElement.setProps({ show: true })
 		expect(toJson(StatusElement)).toMatchSnapshot()
 
@@ -39,8 +38,8 @@ describe('<Tooltip />', () => {
 		expect(toJson(StatusElement)).toMatchSnapshot()
 	})
 
-	test('should mount correctly Tooltip with positionVertical=top and one any positionHorizontal', () => {
-		StatusElement = mount(<Tooltip positionVertical='top'>{FakeMessage}</Tooltip>)
+	test('should render correctly Tooltip with positionVertical=top and one any positionHorizontal', () => {
+		StatusElement.setProps({ positionVertical: 'top' })
 
 		StatusElement.setProps({ positionHorizontal: 'left' })
 		expect(toJson(StatusElement)).toMatchSnapshot()
@@ -52,8 +51,8 @@ describe('<Tooltip />', () => {
 		expect(toJson(StatusElement)).toMatchSnapshot()
 	})
 
-	test('should mount correctly Tooltip with positionVertical=bottom and one any positionHorizontal', () => {
-		StatusElement = mount(<Tooltip positionVertical='bottom'>{FakeMessage}</Tooltip>)
+	test('should render correctly Tooltip with positionVertical=bottom and one any positionHorizontal', () => {
+		StatusElement.setProps({ positionVertical: 'bottom' })
 
 		StatusElement.setProps({ positionHorizontal: 'left' })
 		expect(toJson(StatusElement)).toMatchSnapshot()

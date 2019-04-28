@@ -4,21 +4,23 @@ import PropTypes from 'prop-types'
 import './Select.scss'
 
 class Select extends Component {
+	static option = ({ children, ...rest }) => <option {...rest}>{children}</option>
+
 	state = {
 		focused: false,
 		selected: '',
 	}
 
 	componentDidMount() {
-		this.setState({ selected: this.props.options[0] })
-		document.addEventListener('click', this.toggleSelectFocus)
+		document.addEventListener('mousedown', this.toggleSelectFocus)
 	}
 
 	componentWillUnmount() {
-		document.removeEventListener('click', this.toggleSelectFocus)
+		document.removeEventListener('mousedown', this.toggleSelectFocus)
 	}
 
 	toggleSelectFocus = e => {
+		e.preventDefault()
 		if (this.field.contains(e.target) || this.label.contains(e.target)) {
 			this.setState({ focused: true })
 		} else {
@@ -27,41 +29,52 @@ class Select extends Component {
 	}
 
 	setValue = e => {
+		const { onSelectOption } = this.props
 		this.setState({ selected: e.target.textContent })
-		this.props.onSelectOption(e)
+		if (onSelectOption) onSelectOption(e)
 	}
 
 	render() {
-		const { options, id, children, ...rest } = this.props
+		const { id, children, label, ...rest } = this.props
 		const { focused, selected } = this.state
 		const focusClass = focused ? 'input-wrapper__field--focused' : ''
 
 		return (
 			<div className='input-wrapper input-wrapper--select'>
 				<div className={`input-wrapper__field input-wrapper__field--select ${focusClass}`}>
-					<p {...rest} className='field__output' ref={field => (this.field = field)} id={id}>
-						{selected}
-					</p>
+					<select
+						{...rest}
+						className='field__output'
+						ref={field => (this.field = field)}
+						id={id}
+						value={selected}
+						onChange={() => {}}
+					>
+						{children}
+					</select>
 					<ul data-amount={3} className='input-wrapper__select-list'>
-						{options.map((option, index) => (
+						{children.map((option, index) => (
 							<li data-type='list-item' onClick={this.setValue} key={option + '_' + index}>
-								{option}
+								{option.props.children}
 							</li>
 						))}
 					</ul>
 				</div>
-				<span ref={label => (this.label = label)} className='input-wrapper__label' htmlFor={id}>
-					{children}
-				</span>
+				<label ref={label => (this.label = label)} className='input-wrapper__label' htmlFor={id}>
+					{label}
+				</label>
 			</div>
 		)
 	}
 }
 
+Select.defaultProps = {
+	label: '',
+}
+
 Select.propTypes = {
 	id: PropTypes.string.isRequired,
-	options: PropTypes.arrayOf(PropTypes.string).isRequired,
-	children: PropTypes.string.isRequired,
+	label: PropTypes.string,
 	onSelectOption: PropTypes.func.isRequired,
 }
 

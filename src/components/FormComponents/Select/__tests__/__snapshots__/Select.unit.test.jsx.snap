@@ -7,46 +7,72 @@ exports[`<Select /> should render correctly Select 1`] = `
   <div
     className="input-wrapper__field input-wrapper__field--select "
   >
-    <p
+    <select
       className="field__output"
       id="mockId"
+      onChange={[Function]}
       onSelectOption={[Function]}
+      value=""
     >
-      mock1
-    </p>
+      <option
+        value=""
+      >
+        placeholder
+      </option>
+      <option
+        value="Value1"
+      >
+        Value1
+      </option>
+      <option
+        value="Value2"
+      >
+        Value2
+      </option>
+      <option
+        value="Value3"
+      >
+        Value3
+      </option>
+    </select>
     <ul
       className="input-wrapper__select-list"
       data-amount={3}
     >
       <li
         data-type="list-item"
-        key="mock1_0"
+        key="[object Object]_0"
         onClick={[Function]}
       >
-        mock1
+        placeholder
       </li>
       <li
         data-type="list-item"
-        key="mock2_1"
+        key="[object Object]_1"
         onClick={[Function]}
       >
-        mock2
+        Value1
       </li>
       <li
         data-type="list-item"
-        key="mock3_2"
+        key="[object Object]_2"
         onClick={[Function]}
       >
-        mock3
+        Value2
+      </li>
+      <li
+        data-type="list-item"
+        key="[object Object]_3"
+        onClick={[Function]}
+      >
+        Value3
       </li>
     </ul>
   </div>
-  <span
+  <label
     className="input-wrapper__label"
     htmlFor="mockId"
-  >
-    mockText
-  </span>
+  />
 </div>
 `;
 
@@ -57,46 +83,72 @@ exports[`<Select /> should render correctly Select with focus state 1`] = `
   <div
     className="input-wrapper__field input-wrapper__field--select input-wrapper__field--focused"
   >
-    <p
+    <select
       className="field__output"
       id="mockId"
+      onChange={[Function]}
       onSelectOption={[Function]}
+      value=""
     >
-      mock1
-    </p>
+      <option
+        value=""
+      >
+        placeholder
+      </option>
+      <option
+        value="Value1"
+      >
+        Value1
+      </option>
+      <option
+        value="Value2"
+      >
+        Value2
+      </option>
+      <option
+        value="Value3"
+      >
+        Value3
+      </option>
+    </select>
     <ul
       className="input-wrapper__select-list"
       data-amount={3}
     >
       <li
         data-type="list-item"
-        key="mock1_0"
+        key="[object Object]_0"
         onClick={[Function]}
       >
-        mock1
+        placeholder
       </li>
       <li
         data-type="list-item"
-        key="mock2_1"
+        key="[object Object]_1"
         onClick={[Function]}
       >
-        mock2
+        Value1
       </li>
       <li
         data-type="list-item"
-        key="mock3_2"
+        key="[object Object]_2"
         onClick={[Function]}
       >
-        mock3
+        Value2
+      </li>
+      <li
+        data-type="list-item"
+        key="[object Object]_3"
+        onClick={[Function]}
+      >
+        Value3
       </li>
     </ul>
   </div>
-  <span
+  <label
     className="input-wrapper__label"
     htmlFor="mockId"
-  >
-    mockText
-  </span>
+  />
 </div>
 `;
 
@@ -107,45 +159,71 @@ exports[`<Select /> should render correctly Select with selected value in state 
   <div
     className="input-wrapper__field input-wrapper__field--select "
   >
-    <p
+    <select
       className="field__output"
       id="mockId"
+      onChange={[Function]}
       onSelectOption={[Function]}
+      value="Value1"
     >
-      mock3
-    </p>
+      <option
+        value=""
+      >
+        placeholder
+      </option>
+      <option
+        value="Value1"
+      >
+        Value1
+      </option>
+      <option
+        value="Value2"
+      >
+        Value2
+      </option>
+      <option
+        value="Value3"
+      >
+        Value3
+      </option>
+    </select>
     <ul
       className="input-wrapper__select-list"
       data-amount={3}
     >
       <li
         data-type="list-item"
-        key="mock1_0"
+        key="[object Object]_0"
         onClick={[Function]}
       >
-        mock1
+        placeholder
       </li>
       <li
         data-type="list-item"
-        key="mock2_1"
+        key="[object Object]_1"
         onClick={[Function]}
       >
-        mock2
+        Value1
       </li>
       <li
         data-type="list-item"
-        key="mock3_2"
+        key="[object Object]_2"
         onClick={[Function]}
       >
-        mock3
+        Value2
+      </li>
+      <li
+        data-type="list-item"
+        key="[object Object]_3"
+        onClick={[Function]}
+      >
+        Value3
       </li>
     </ul>
   </div>
-  <span
+  <label
     className="input-wrapper__label"
     htmlFor="mockId"
-  >
-    mockText
-  </span>
+  />
 </div>
 `;

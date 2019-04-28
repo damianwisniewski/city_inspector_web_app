@@ -8,66 +8,58 @@ import Status from '../../CommonComponents/Status/Status'
 class UploadButton extends Component {
 	state = {
 		onDropArea: false,
-		loading: true,
+		loading: false,
+		loadingFromDropEvent: false,
 		loaded: false,
-		isDragAndDrop: true,
-		isFileApi: true,
 		files: [],
 		error: '',
 	}
 
-	componentDidMount() {
-		const div = document.createElement('div')
-
-		this.setState({
-			isDragAndDrop: 'draggable' in div || ('ondragstart' in div && 'ondrop' in div),
-			isFileApi: 'FormData' in window && 'FileReader' in window,
-		})
-	}
-
 	initImageLoaders = files => {
-		const { accept } = this.props.accept
+		const { acceptsFile } = this.props
 
-		console.log(this.props)
-		console.log(accept)
 		const imageLoaders = []
 
-		for (let i = 0; i < files.length; i++) {
-			const file = files[i]
+		if (!files.length) {
+			// IE11 for catalog instead of file will have file equal empty array
+			imageLoaders.push(Promise.reject('Wybrano niepoprawny plik!'))
+		} else {
+			for (let i = 0; i < files.length; i++) {
+				const file = files[i]
 
-			if (file.type.startsWith(this.props.accept)) {
-				console.log(file.type.startsWith(this.props.accept))
-				imageLoaders.push(
-					new Promise((resolve, reject) => {
-						const reader = new FileReader()
+				if (file.type.startsWith(acceptsFile)) {
+					imageLoaders.push(
+						new Promise((resolve, reject) => {
+							const reader = new FileReader()
 
-						reader.addEventListener('load', event => {
-							resolve(<img src={event.target.result} alt={file.name} />)
-						})
+							reader.addEventListener('load', event => {
+								resolve(<img src={event.target.result} alt={file.name} />)
+							})
 
-						reader.addEventListener('error', () => {
-							reject('Przepraszamy wystąpił błąd!')
-						})
+							reader.addEventListener('error', () => {
+								reject('Przepraszamy wystąpił błąd!')
+							})
 
-						reader.readAsDataURL(file)
-					}),
-				)
-			} else {
-				imageLoaders.push(Promise.reject('Wybrano niepoprawny plik!'))
+							reader.readAsDataURL(file)
+						}),
+					)
+				} else {
+					imageLoaders.push(Promise.reject('Wybrano niepoprawny plik!'))
+				}
 			}
 		}
 
 		return imageLoaders
 	}
 
-	getFiles = e => {
-		const files = e.target.files
+	getFiles = files => {
 		const imageLoaders = this.initImageLoaders(files)
 
 		Promise.all(imageLoaders)
 			.then(images => {
 				this.setState({
 					loading: false,
+					loadingFromDropEvent: false,
 					loaded: true,
 					error: '',
 					files: images,
@@ -82,8 +74,17 @@ class UploadButton extends Component {
 					error: errorMessage,
 					loading: false,
 					loaded: false,
+					loadingFromDropEvent: false,
 				})
 			})
+	}
+
+	/**
+	 * To prevent IE11 reloading page with image as content
+	 */
+	handleDragOver = e => {
+		e.preventDefault()
+		e.stopPropagation()
 	}
 
 	outOfDropArea = () => {
@@ -94,26 +95,48 @@ class UploadButton extends Component {
 		this.setState({ onDropArea: true })
 	}
 
-	handleOnChange = e => {
+	handleDrop = e => {
+		const files = e.dataTransfer.files
+
 		this.setState({
 			onDropArea: false,
 			loading: true,
+			loadingFromDropEvent: true,
 			loaded: false,
 		})
 
-		this.getFiles(e)
+		this.getFiles(files)
+	}
+
+	handleOnChange = e => {
+		if (this.state.loadingFromDropEvent) return
+		const files = e.target.files
+
+		this.setState({
+			onDropArea: false,
+			loading: true,
+			loadingFromDropEvent: true,
+			loaded: false,
+		})
+
+		this.getFiles(files)
 	}
 
 	render() {
-		const { id, children } = this.props
+		// eslint-disable-next-line no-unused-vars
+		const { id, label, onAddImages, acceptsFile, ...rest } = this.props
 		const { onDropArea, loaded, loading, files, error } = this.state
 
 		return (
 			<div className='input-wrapper input-wrapper--upload'>
 				<input
-					onDrop={this.outOfDropArea}
+					{...rest}
+					ref={input => (this.input = input)}
+					accept='image/*'
+					onDrop={this.handleDrop}
 					onDragEnter={this.inDropArea}
 					onDragLeave={this.outOfDropArea}
+					onDragOver={this.handleDragOver}
 					onChange={this.handleOnChange}
 					type='file'
 					multiple
@@ -126,16 +149,18 @@ class UploadButton extends Component {
 					}`}
 					htmlFor={id}
 				>
-					{children}
+					{label}
 					<p className='input-wrapper__upload-instruction'>Kliknij w pole lub przeciągnij plik</p>
 					<div className='input-wrapper__upload-status'>
 						{error && <Status type='error' message={this.state.error} />}
 						{loading && <Loader id={`${id}-loader`} size='small' />}
 						{loaded && (
-							<p>
-								{`Załadowano ${files.length} `}
-								{files.length === 1 ? 'plik' : files.length <= 4 ? 'pliki' : 'plików'}
-							</p>
+							<Status
+								type='correct'
+								message={`Załadowano ${files.length} ${
+									files.length === 1 ? 'plik' : files.length <= 4 ? 'pliki' : 'plików'
+								}`}
+							/>
 						)}
 					</div>
 				</label>
@@ -145,10 +170,14 @@ class UploadButton extends Component {
 }
 
 UploadButton.propTypes = {
+	label: '',
+}
+
+UploadButton.propTypes = {
 	id: PropTypes.string.isRequired,
-	children: PropTypes.node.isRequired,
+	label: PropTypes.string,
 	onAddImages: PropTypes.func.isRequired,
-	accept: PropTypes.string.isRequired,
+	acceptsFile: PropTypes.string.isRequired,
 }
 
 export default UploadButton

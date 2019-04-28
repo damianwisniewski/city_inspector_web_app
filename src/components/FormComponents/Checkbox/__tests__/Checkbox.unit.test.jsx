@@ -16,7 +16,7 @@ describe('<Checkbox />', () => {
 	const id = 'mockId'
 
 	test('should render correctly Checkbox', () => {
-		CheckoutElement = shallow(<Checkbox id={id}>{CheckoutText}</Checkbox>)
+		CheckoutElement = shallow(<Checkbox id={id} label={CheckoutText} />)
 		expect(toJson(CheckoutElement)).toMatchSnapshot()
 	})
 })
