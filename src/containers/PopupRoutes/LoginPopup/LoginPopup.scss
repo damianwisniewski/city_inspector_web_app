@@ -1,0 +1,35 @@
+@import '../../../assets/styles/index';
+
+.login {
+	width: 300px;
+	height: 300px;
+	text-align: center;
+	position: relative;
+
+	&__header {
+		font-size: 20px;
+		font-family: $secondary_font;
+		color: $light_gray;
+		background-color: $primary_blue;
+		margin: 15px 10px;
+		padding: 10px;
+		border-radius: 5px;
+		box-shadow: $inset-shadow;
+		text-shadow: $text-shadow;
+	}
+
+	&__buttons-wrapper {
+		margin-top: 20px;
+		margin-bottom: 10px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	&__description {
+		font-size: 15px;
+		margin: 10px;
+		color: $dark_gray;
+	}
+}

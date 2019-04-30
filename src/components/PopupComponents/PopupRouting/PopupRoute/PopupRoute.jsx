@@ -18,7 +18,7 @@ class PopupRoute extends Component {
 				onButtonClose={handleClosePopup}
 				{...additionalProps}
 			>
-				{React.createElement(component)}
+				{React.createElement(component, { closePopup: handleClosePopup })}
 			</Popup>
 		)
 	}

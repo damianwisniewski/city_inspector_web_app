@@ -98,13 +98,15 @@ class Navbar extends Component {
 
 		return (
 			<nav className='navigation'>
-				<img src={logo} className='logo' alt='logo' />
-				{isUserAuth ? this.createAuthNavigation() : this.createNavigation()}
-				<button
-					id='menuToggleButton'
-					onClick={this.onClickDrawerToggle}
-					className={`navigation_menu_button ${iconAssets.menu}`}
-				/>
+				<div className='navigation__container'>
+					<img src={logo} className='logo' alt='logo' />
+					{isUserAuth ? this.createAuthNavigation() : this.createNavigation()}
+					<button
+						id='menuToggleButton'
+						onClick={this.onClickDrawerToggle}
+						className={`navigation_menu_button ${iconAssets.menu}`}
+					/>
+				</div>
 			</nav>
 		)
 	}

@@ -43,6 +43,12 @@
 				color: $blue;
 			}
 		}
+
+		&:-webkit-autofill {
+			& + .input-wrapper__label {
+				color: $blue;
+			}
+		}
 	}
 
 	&__field[data-animate='true'] {
@@ -71,6 +77,14 @@
 				opacity: 1;
 			}
 		}
+
+		&:-webkit-autofill {
+			& + .input-wrapper__label {
+				left: calc(1em + 10px);
+				transform: translateY(0%);
+				font-size: 13px;
+			}
+		}
 	}
 
 	&__field[type='checkbox'],
@@ -82,13 +96,15 @@
 		font-size: 0;
 		width: 15px;
 		height: 15px;
+		min-width: 15px;
+		min-height: 15px;
 		border-radius: 2px;
 		cursor: pointer;
 		transition: all 0.15s linear;
 
 		& + .input-wrapper__label {
 			position: static;
-			align-self: center;
+			text-align: start;
 			font-size: 15px;
 			transform: translateY(0%);
 		}

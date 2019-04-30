@@ -4,20 +4,24 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	min-width: 300px;
+	min-width: 290px;
+	max-width: calc(100% - 26px);
 	min-height: 200px;
+	max-height: calc(100% - 26px);
 	align-content: stretch;
 	background-color: $white;
 	border-radius: 5px;
 	box-shadow: $shadow;
 	padding: 15px;
+	margin: 13px;
 	animation: 0.5s 1 forwards resize;
 
 	& > *:not(button) {
 		min-width: 100%;
 		min-height: 100%;
 		border-radius: 5px;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 
 	&__extra-message {

@@ -8,7 +8,7 @@ const Button = ({ color, className, type, children, onClick, ...props }) => (
 		{...props}
 		type={type}
 		onClick={onClick}
-		className={`custom-button ${color} ${className}`}
+		className={`${type === 'text' ? 'text-button' : 'button'} ${color} ${className}`}
 	>
 		{children}
 	</button>

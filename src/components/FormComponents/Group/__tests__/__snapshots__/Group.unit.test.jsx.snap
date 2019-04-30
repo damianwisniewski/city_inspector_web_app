@@ -2,7 +2,7 @@
 
 exports[`<Group /> should render correctly Group 1`] = `
 <section
-  className="form-group"
+  className="form-group form-group--column"
   data-name="mockName"
 >
   <input />

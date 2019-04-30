@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> should render correctly LoginPopup 1`] = `
+<div
+  className="login"
+  id="LoginPopup"
+>
+  <h2
+    className="login__header"
+  >
+    Logowanie
+  </h2>
+  <p
+    className="login__description"
+  >
+    Wpisz następujące dane aby się zalogować
+  </p>
+  <Form>
+    <Input
+      autocomplete="username"
+      floatingLabel={true}
+      id="email-field"
+      label="e-mail"
+      pattern=".+@.+"
+      placeholder="Wpisz tutaj swój email..."
+      required={true}
+      type="email"
+    />
+    <Input
+      autocomplete="current-password"
+      floatingLabel={true}
+      id="password-field"
+      label="hasło"
+      placeholder="Podaj hasło..."
+      required={true}
+      type="password"
+    />
+    <Button
+      className=""
+      color="blue"
+      id="forgotten-pass-button"
+      onClick={[Function]}
+      type="text"
+    >
+      Zapomniałeś hasła?
+    </Button>
+    <div
+      className="login__buttons-wrapper"
+    >
+      <Button
+        className=""
+        color="white"
+        id="inform-close-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Anuluj
+      </Button>
+      <Button
+        className=""
+        color="blue"
+        id="submit-button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Zaloguj
+      </Button>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`<Loader /> should render correctly LoginPopup with remember password for state forgottenPassword true 1`] = `
+<div
+  className="login"
+  id="LoginPopup"
+>
+  <h2
+    className="login__header"
+  >
+    Resetowanie hasła
+  </h2>
+  <p
+    className="login__description"
+  >
+    Podaj adres e-mail na który zarejestrowane jest konto
+  </p>
+  <Form>
+    <Input
+      autocomplete="email"
+      floatingLabel={true}
+      id="email-field"
+      label="e-mail"
+      pattern=".+@.+"
+      placeholder="Wpisz tutaj swój email..."
+      required={true}
+      type="email"
+    />
+    <div
+      className="login__buttons-wrapper"
+    >
+      <Button
+        className=""
+        color="white"
+        id="inform-close-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Anuluj
+      </Button>
+      <Button
+        className=""
+        color="blue"
+        id="submit-button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Resetuj
+      </Button>
+    </div>
+  </Form>
+</div>
+`;

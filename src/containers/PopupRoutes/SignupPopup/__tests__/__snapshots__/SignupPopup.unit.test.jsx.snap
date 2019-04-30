@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignupPopup /> should render correctly SignupPopup 1`] = `
+<div
+  className="signup"
+  id="SignupPopup"
+>
+  <h2
+    className="signup__header"
+  >
+    Rejestracja
+  </h2>
+  <p
+    className="signup__description"
+  >
+    Wpisz następujące dane aby się zarejestrować
+  </p>
+  <Form
+    className="signup__form"
+  >
+    <div
+      className="signup__required"
+    >
+      <Input
+        autoComplete="username"
+        floatingLabel={true}
+        id="email-field"
+        label="E-mail*"
+        pattern=".+@.+"
+        placeholder="Podaj swój adres email..."
+        required={true}
+        type="email"
+      />
+      <Input
+        autoComplete="new-password"
+        floatingLabel={true}
+        id="password-field"
+        label="Hasło*"
+        name="password"
+        placeholder="Podaj hasło..."
+        required={true}
+        type="password"
+      />
+      <Input
+        autoComplete="current-password"
+        floatingLabel={true}
+        id="repeat-password-field"
+        label="Powtórz hasło*"
+        placeholder="Powtórz hasło..."
+        required={true}
+        type="password"
+      />
+      <Input
+        autoComplete="username"
+        floatingLabel={true}
+        id="nickname-field"
+        label="Nickname*"
+        pattern=".+@.+"
+        placeholder="Podaj swój adres email..."
+        required={true}
+        type="text"
+      />
+    </div>
+    <Group
+      direction="column"
+      name="opcjonalnie"
+    >
+      <Input
+        autoComplete="given-name"
+        floatingLabel={true}
+        id="name-field"
+        label="Imię"
+        placeholder="Podaj swoje imię..."
+        type="text"
+      />
+      <Input
+        autoComplete="family-name"
+        floatingLabel={true}
+        id="surname-field"
+        label="Nazwisko"
+        placeholder="Podaj swoje nazwisko..."
+        type="text"
+      />
+      <Input
+        autoComplete="address-level2"
+        floatingLabel={true}
+        id="city-field"
+        label="Miasto"
+        name="city"
+        placeholder="Podaj swoje miasto..."
+        type="text"
+      />
+    </Group>
+    <div
+      className="signup__agreements-wrapper"
+    >
+      <Checkbox
+        id="agreement_1"
+        label="Czy wyrażasz zgodę na otrzymywanie informacji mailowych od serwisu \\"City Inspector\\", dotyczących zmian w serwisie oraz aktualizacji zgłoszeń."
+      />
+      <Checkbox
+        id="agreement_2"
+        label="Czy twoje dane takie jak e-mail, imię i nazwisko oraz miasto, mają być widocznie dla innych zarejestowanych użytkowników."
+      />
+    </div>
+    <div
+      className="signup__buttons-wrapper"
+    >
+      <Button
+        className=""
+        color="white"
+        id="inform-close-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Anuluj
+      </Button>
+      <Button
+        className=""
+        color="blue"
+        id="submit-button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Zaloguj
+      </Button>
+    </div>
+  </Form>
+</div>
+`;

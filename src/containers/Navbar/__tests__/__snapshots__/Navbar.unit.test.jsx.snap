@@ -4,92 +4,96 @@ exports[`<Navbar /> (Auth) should contains proper Navigation items 1`] = `
 <nav
   className="navigation"
 >
-  <img
-    alt="logo"
-    className="logo"
-    src="logo.svg"
-  />
-  <ul
-    className="navigation_list "
-    id="navList"
-    onClick={[Function]}
+  <div
+    className="navigation__container"
   >
-    <NavItem
-      className=""
-      exact={true}
-      icon="map"
-      id="mapLink"
-      to="/"
-      type="link"
+    <img
+      alt="logo"
+      className="logo"
+      src="logo.svg"
+    />
+    <ul
+      className="navigation_list "
+      id="navList"
+      onClick={[Function]}
     >
-      Mapa
-    </NavItem>
-    <NavItem
-      className=""
-      exact={true}
-      icon="plus"
-      id="plusLink"
-      to="/nowe_zgloszenie"
-      type="link"
-    >
-      Nowe zgłoszenie
-    </NavItem>
-    <NavItem
-      className=""
-      exact={true}
-      icon="pin"
-      id="pinLink"
-      to="/twoje_zgloszenia"
-      type="link"
-    >
-      Twoje zgłoszenia
-    </NavItem>
-    <NavItem
-      className=""
-      exact={true}
-      icon="eye"
-      id="eyeLink"
-      to="/subskrypcje"
-      type="link"
-    >
-      Subskrypcje
-    </NavItem>
-    <NavItem
-      className=""
-      exact={false}
-      icon="bell"
-      id="bellLink"
-      to="Settings"
-      type="button"
-    >
-      Powiadomienia
-    </NavItem>
-    <NavItem
-      className=""
-      exact={true}
-      icon="cogs"
-      id="cogsLink"
-      to="/ustawienia"
-      type="link"
-    >
-      Ustawienia
-    </NavItem>
-    <NavItem
-      className=""
-      exact={false}
-      icon="logout"
-      id="logoutLink"
-      to="LogoutPopup"
-      type="button"
-    >
-      Wyloguj
-    </NavItem>
-  </ul>
-  <button
-    className="navigation_menu_button menu"
-    id="menuToggleButton"
-    onClick={[Function]}
-  />
+      <NavItem
+        className=""
+        exact={true}
+        icon="map"
+        id="mapLink"
+        to="/"
+        type="link"
+      >
+        Mapa
+      </NavItem>
+      <NavItem
+        className=""
+        exact={true}
+        icon="plus"
+        id="plusLink"
+        to="/nowe_zgloszenie"
+        type="link"
+      >
+        Nowe zgłoszenie
+      </NavItem>
+      <NavItem
+        className=""
+        exact={true}
+        icon="pin"
+        id="pinLink"
+        to="/twoje_zgloszenia"
+        type="link"
+      >
+        Twoje zgłoszenia
+      </NavItem>
+      <NavItem
+        className=""
+        exact={true}
+        icon="eye"
+        id="eyeLink"
+        to="/subskrypcje"
+        type="link"
+      >
+        Subskrypcje
+      </NavItem>
+      <NavItem
+        className=""
+        exact={false}
+        icon="bell"
+        id="bellLink"
+        to="Settings"
+        type="button"
+      >
+        Powiadomienia
+      </NavItem>
+      <NavItem
+        className=""
+        exact={true}
+        icon="cogs"
+        id="cogsLink"
+        to="/ustawienia"
+        type="link"
+      >
+        Ustawienia
+      </NavItem>
+      <NavItem
+        className=""
+        exact={false}
+        icon="logout"
+        id="logoutLink"
+        to="LogoutPopup"
+        type="button"
+      >
+        Wyloguj
+      </NavItem>
+    </ul>
+    <button
+      className="navigation_menu_button menu"
+      id="menuToggleButton"
+      onClick={[Function]}
+    />
+  </div>
 </nav>
 `;
 
@@ -97,55 +101,59 @@ exports[`<Navbar /> (Non-Auth) should contains proper Navigation items 1`] = `
 <nav
   className="navigation"
 >
-  <img
-    alt="logo"
-    className="logo"
-    src="logo.svg"
-  />
-  <ul
-    className="navigation_list "
-    id="navList"
-    onClick={[Function]}
+  <div
+    className="navigation__container"
   >
-    <NavItem
-      className=""
-      exact={true}
-      icon="map"
-      id="mapLink"
-      to="/"
-      type="link"
+    <img
+      alt="logo"
+      className="logo"
+      src="logo.svg"
+    />
+    <ul
+      className="navigation_list "
+      id="navList"
+      onClick={[Function]}
     >
-      Mapa
-    </NavItem>
-    <NavItem
-      className=""
-      exact={false}
-      icon="help"
-      id="helpLink"
-      to="HelpPopup"
-      type="button"
-    >
-      Pomoc
-    </NavItem>
-    <NavButton
-      color="white"
-      id="registerButton"
-      to="SignupPopup"
-    >
-      Rejestracja
-    </NavButton>
-    <NavButton
-      color="blue"
-      id="loginButton"
-      to="LoginPopup"
-    >
-      Logowanie
-    </NavButton>
-  </ul>
-  <button
-    className="navigation_menu_button menu"
-    id="menuToggleButton"
-    onClick={[Function]}
-  />
+      <NavItem
+        className=""
+        exact={true}
+        icon="map"
+        id="mapLink"
+        to="/"
+        type="link"
+      >
+        Mapa
+      </NavItem>
+      <NavItem
+        className=""
+        exact={false}
+        icon="help"
+        id="helpLink"
+        to="HelpPopup"
+        type="button"
+      >
+        Pomoc
+      </NavItem>
+      <NavButton
+        color="white"
+        id="registerButton"
+        to="SignupPopup"
+      >
+        Rejestracja
+      </NavButton>
+      <NavButton
+        color="blue"
+        id="loginButton"
+        to="LoginPopup"
+      >
+        Logowanie
+      </NavButton>
+    </ul>
+    <button
+      className="navigation_menu_button menu"
+      id="menuToggleButton"
+      onClick={[Function]}
+    />
+  </div>
 </nav>
 `;

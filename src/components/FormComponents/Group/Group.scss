@@ -1,6 +1,9 @@
 @import '../../../assets/styles/index';
 
 .form-group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 	border: 1px solid $gray;
 	position: relative;
 	margin: 10px;
@@ -22,5 +25,13 @@
 		background-color: $white;
 		overflow: hidden;
 		text-align: center;
+	}
+
+	&--column {
+		flex-direction: column;
+	}
+
+	&--row {
+		flex-direction: row;
 	}
 }
