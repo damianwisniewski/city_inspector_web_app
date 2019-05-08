@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RequestStatus /> should render correctly RequestStatus with direction horizontal 1`] = `
-<Fragment>
-  <div>
-    <p>
-      Test
-    </p>
-  </div>
-</Fragment>
-`;
-
-exports[`<RequestStatus /> should render correctly RequestStatus with direction vertical 1`] = `
-<Fragment>
-  <div>
-    <p>
-      Test
-    </p>
-  </div>
-</Fragment>
-`;
-
 exports[`<RequestStatus /> should render correctly RequestStatus with requestState failed 1`] = `
 <Fragment>
   <Status

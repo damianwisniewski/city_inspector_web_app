@@ -2,23 +2,33 @@ import userDataReducer from '../userDataReducer'
 import { SET_USER_AUTH } from '../../actionTypes/userDataActionTypes'
 
 describe('userDataReducer', () => {
-	it('should set value isUserAuth for action type - SET_USER_AUTH', () => {
+	it('should set value isUserAuth and data for action type - SET_USER_AUTH', () => {
 		const initialState = {
-			fakeValue: 'test',
 			isUserAuth: false,
-			anotherfakeValue: [],
+			data: {
+				nickname: '',
+				email: '',
+			},
 		}
 		const testAction = {
 			type: SET_USER_AUTH,
-			isUserAuth: true,
+			userData: {
+				isAuth: true,
+				data: {
+					nickname: 'fake_nickname',
+					email: 'fake_email',
+				},
+			},
 		}
 
 		const reducer = userDataReducer(initialState, testAction)
 
 		expect(reducer).toEqual({
-			fakeValue: 'test',
 			isUserAuth: true,
-			anotherfakeValue: [],
+			data: {
+				nickname: 'fake_nickname',
+				email: 'fake_email',
+			},
 		})
 	})
 })

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ForgottenPassPopup /> should render correctly ForgottenPassPopup 1`] = `
+<div
+  className="reminder"
+  id="reminder-popup"
+>
+  <h2
+    className="reminder__header"
+  >
+    Resetowanie hasła
+  </h2>
+  <p
+    className="reminder__description"
+  >
+    Podaj adres e-mail na który zarejestrowane jest konto
+  </p>
+  <Form
+    onSubmit={[Function]}
+  >
+    <Input
+      autocomplete="email"
+      floatingLabel={true}
+      id="reminder-email-field"
+      inputRef={[Function]}
+      label="e-mail"
+      onChange={[Function]}
+      pattern=".+@.+"
+      placeholder="Wpisz tutaj swój email..."
+      required={true}
+      type="email"
+      value=""
+    />
+    <RequestStatus
+      direction="horizontal"
+      errorMessage="Przepraszamy coś poszło nie tak!"
+      requestState="initial"
+      size="small"
+    >
+      <Status
+        id="reminder-status"
+        message="Jeśli podałeś poprawny email, przypomnienie zostało wysłane"
+        position="vertical"
+        type="correct"
+      />
+    </RequestStatus>
+    <div
+      className="reminder__buttons-wrapper"
+    >
+      <Button
+        category="button"
+        className=""
+        color="white"
+        id="reminder-close-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Anuluj
+      </Button>
+      <Button
+        category="button"
+        className=""
+        color="blue"
+        id="reminder-submit-button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Resetuj
+      </Button>
+    </div>
+  </Form>
+</div>
+`;

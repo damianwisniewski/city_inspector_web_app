@@ -13,7 +13,8 @@ const userDataReducer = (state = initialState, action) => {
 		case SET_USER_AUTH:
 			return {
 				...state,
-				isUserAuth: action.isUserAuth,
+				isUserAuth: action.userData.isAuth,
+				data: action.userData.data,
 			}
 		default:
 			return state
@@ -21,5 +22,3 @@ const userDataReducer = (state = initialState, action) => {
 }
 
 export default userDataReducer
-
-export const isUserAuth = () => userDataReducer.isUserAuth

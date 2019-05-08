@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should render correctly with some additionally props 1`] = `
+<button
+  className="text-button green test-class"
+  onClick={[Function]}
+  type="submit"
+>
+  ExampleText
+</button>
+`;
+
+exports[`<Button /> should render correctly without any props 1`] = `
+<button
+  className="button white "
+  onClick={[Function]}
+  type="button"
+>
+  ExampleText
+</button>
+`;

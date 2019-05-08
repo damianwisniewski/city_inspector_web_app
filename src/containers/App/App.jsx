@@ -24,6 +24,7 @@ import HelpPopup from '../PopupRoutes/HelpPopup/HelpPopup'
 import LoginPopup from '../PopupRoutes/LoginPopup/LoginPopup'
 import SignupPopup from '../PopupRoutes/SignupPopup/SignupPopup'
 import LogoutPopup from '../PopupRoutes/LogoutPopup/LogoutPopup'
+import ForgottenPassPopup from '../PopupRoutes/ForgottenPassPopup/ForgottenPassPopup'
 
 class App extends Component {
 	static defaultProps = {
@@ -49,6 +50,12 @@ class App extends Component {
 						<PopupSwitch>
 							<PopupRoute darkOverlay closeButton path='HelpPopup' component={HelpPopup} />
 							<PopupRoute darkOverlay closeButton path='LoginPopup' component={LoginPopup} />
+							<PopupRoute
+								darkOverlay
+								closeButton
+								path='ForgottenPassPopup'
+								component={ForgottenPassPopup}
+							/>
 							<PopupRoute darkOverlay closeButton path='SignupPopup' component={SignupPopup} />
 							<PopupRoute darkOverlay closeButton path='LogoutPopup' component={LogoutPopup} />
 						</PopupSwitch>

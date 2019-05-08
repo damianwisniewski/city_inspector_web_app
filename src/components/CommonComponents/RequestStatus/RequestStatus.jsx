@@ -5,26 +5,28 @@ import PropTypes from 'prop-types'
 import Loader from '../Loader/Loader'
 import Status from '../Status/Status'
 
-const RequestStatus = ({ id, requestState, children, errorMessage, direction }) => (
+const RequestStatus = ({ id, requestState, children, errorMessage, direction, size }) => (
 	<Fragment>
-		{requestState === 'pending' && <Loader id={`${id}-loader`} />}
+		{requestState === 'pending' && <Loader size={size} id={`${id}-loader`} />}
 		{requestState === 'failed' && (
 			<Status id={`${id}-status`} position={direction} type='error' message={errorMessage} />
 		)}
 		{requestState === 'succeeded' && children}
-		{requestState === 'initial' && children}
 	</Fragment>
 )
 
 RequestStatus.defaultProps = {
 	direction: 'horizontal',
+	size: 'medium',
+	errorMessage: 'Przepraszamy coś poszło nie tak!',
 }
 
 RequestStatus.propTypes = {
 	requestState: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
-	errorMessage: PropTypes.string.isRequired,
-	direction: PropTypes.string,
+	errorMessage: PropTypes.string,
+	direction: PropTypes.oneOf(['horizontal', 'vertical']),
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
 }
 
 export default RequestStatus

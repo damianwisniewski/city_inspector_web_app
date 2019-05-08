@@ -152,10 +152,11 @@ class UploadButton extends Component {
 					{label}
 					<p className='input-wrapper__upload-instruction'>Kliknij w pole lub przeciągnij plik</p>
 					<div className='input-wrapper__upload-status'>
-						{error && <Status type='error' message={this.state.error} />}
+						{error && <Status id={`${id}-status`} type='error' message={this.state.error} />}
 						{loading && <Loader id={`${id}-loader`} size='small' />}
 						{loaded && (
 							<Status
+								id={`${id}-status`}
 								type='correct'
 								message={`Załadowano ${files.length} ${
 									files.length === 1 ? 'plik' : files.length <= 4 ? 'pliki' : 'plików'

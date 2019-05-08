@@ -9,9 +9,22 @@ configure({ adapter: new Adapter() })
 
 describe('<SignupPopup />', () => {
 	let SignupPopupElement
+	const resetState = jest.fn()
+
+	beforeEach(() => {
+		SignupPopupElement = shallow(
+			<SignupPopup.WrappedComponent
+				resetRequestRegisterStatus={resetState}
+				registerRequestStatus='initial'
+			/>,
+		)
+	})
+
+	test('should call resetState after mount', () => {
+		expect(resetState).toBeCalled()
+	})
 
 	test('should render correctly SignupPopup', () => {
-		SignupPopupElement = shallow(<SignupPopup />)
 		expect(toJson(SignupPopupElement)).toMatchSnapshot()
 	})
 })

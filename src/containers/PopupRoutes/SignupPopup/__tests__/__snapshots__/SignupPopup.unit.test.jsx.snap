@@ -17,48 +17,69 @@ exports[`<SignupPopup /> should render correctly SignupPopup 1`] = `
   </p>
   <Form
     className="signup__form"
+    onSubmit={[Function]}
   >
     <div
       className="signup__required"
     >
       <Input
-        autoComplete="username"
+        autoComplete="email"
+        data-type="email"
         floatingLabel={true}
         id="email-field"
+        inputRef={[Function]}
         label="E-mail*"
+        onChange={[Function]}
         pattern=".+@.+"
         placeholder="Podaj swój adres email..."
         required={true}
         type="email"
+        value=""
       />
       <Input
         autoComplete="new-password"
+        data-type="password"
         floatingLabel={true}
         id="password-field"
+        inputRef={[Function]}
         label="Hasło*"
+        maxLength="12"
+        minLength="6"
         name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
         placeholder="Podaj hasło..."
         required={true}
         type="password"
+        value=""
       />
       <Input
-        autoComplete="current-password"
+        autoComplete="new-password"
+        data-type="repeatedPassword"
         floatingLabel={true}
         id="repeat-password-field"
+        inputRef={[Function]}
         label="Powtórz hasło*"
+        maxLength="12"
+        minLength="6"
+        onBlur={[Function]}
+        onChange={[Function]}
         placeholder="Powtórz hasło..."
         required={true}
         type="password"
+        value=""
       />
       <Input
-        autoComplete="username"
+        data-type="nickname"
         floatingLabel={true}
         id="nickname-field"
+        inputRef={[Function]}
         label="Nickname*"
-        pattern=".+@.+"
+        onChange={[Function]}
         placeholder="Podaj swój adres email..."
         required={true}
         type="text"
+        value=""
       />
     </div>
     <Group
@@ -67,28 +88,40 @@ exports[`<SignupPopup /> should render correctly SignupPopup 1`] = `
     >
       <Input
         autoComplete="given-name"
+        data-type="firstname"
         floatingLabel={true}
         id="name-field"
+        inputRef={[Function]}
         label="Imię"
+        onChange={[Function]}
         placeholder="Podaj swoje imię..."
         type="text"
+        value=""
       />
       <Input
         autoComplete="family-name"
+        data-type="lastname"
         floatingLabel={true}
-        id="surname-field"
+        id="lastname-field"
+        inputRef={[Function]}
         label="Nazwisko"
+        onChange={[Function]}
         placeholder="Podaj swoje nazwisko..."
         type="text"
+        value=""
       />
       <Input
         autoComplete="address-level2"
+        data-type="city"
         floatingLabel={true}
         id="city-field"
+        inputRef={[Function]}
         label="Miasto"
         name="city"
+        onChange={[Function]}
         placeholder="Podaj swoje miasto..."
         type="text"
+        value=""
       />
     </Group>
     <div
@@ -103,10 +136,24 @@ exports[`<SignupPopup /> should render correctly SignupPopup 1`] = `
         label="Czy twoje dane takie jak e-mail, imię i nazwisko oraz miasto, mają być widocznie dla innych zarejestowanych użytkowników."
       />
     </div>
+    <RequestStatus
+      direction="horizontal"
+      errorMessage="Przepraszamy coś poszło nie tak!"
+      requestState="initial"
+      size="small"
+    >
+      <Status
+        id="login-status"
+        message="Konto zostało utworzone, możesz się zalogować"
+        position="horizontal"
+        type="correct"
+      />
+    </RequestStatus>
     <div
       className="signup__buttons-wrapper"
     >
       <Button
+        category="button"
         className=""
         color="white"
         id="inform-close-button"
@@ -116,13 +163,14 @@ exports[`<SignupPopup /> should render correctly SignupPopup 1`] = `
         Anuluj
       </Button>
       <Button
+        category="button"
         className=""
         color="blue"
         id="submit-button"
         onClick={[Function]}
         type="submit"
       >
-        Zaloguj
+        Zarejestruj
       </Button>
     </div>
   </Form>

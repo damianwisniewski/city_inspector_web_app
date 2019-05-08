@@ -63,6 +63,7 @@ exports[`<UploadButton /> should render correctly UploadButton with error state 
       className="input-wrapper__upload-status"
     >
       <Status
+        id="mockId-status"
         message="fake error message"
         position="horizontal"
         type="error"
@@ -102,6 +103,7 @@ exports[`<UploadButton /> should render correctly UploadButton with loaded state
       className="input-wrapper__upload-status"
     >
       <Status
+        id="mockId-status"
         message="Załadowano 3 pliki"
         position="horizontal"
         type="correct"

@@ -7,16 +7,28 @@ import LoginPopup from '../LoginPopup'
 
 configure({ adapter: new Adapter() })
 
-describe('<Loader />', () => {
+describe('<LoginPopup />', () => {
 	let LoginPopupElement
+	const resetState = jest.fn()
+
+	beforeEach(() => {
+		LoginPopupElement = shallow(
+			<LoginPopup.WrappedComponent
+				resetLoginRequestStatus={resetState}
+				loginRequestState='initial'
+			/>,
+		)
+	})
+
+	test('should call resetRequestState after mount', () => {
+		expect(resetState).toBeCalled()
+	})
 
 	test('should render correctly LoginPopup', () => {
-		LoginPopupElement = shallow(<LoginPopup />)
 		expect(toJson(LoginPopupElement)).toMatchSnapshot()
 	})
 
 	test('should render correctly LoginPopup with remember password for state forgottenPassword true', () => {
-		LoginPopupElement = shallow(<LoginPopup />)
 		LoginPopupElement.setState({ forgottenPassword: true })
 		expect(toJson(LoginPopupElement)).toMatchSnapshot()
 	})

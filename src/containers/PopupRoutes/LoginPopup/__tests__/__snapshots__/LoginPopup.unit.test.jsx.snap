@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Loader /> should render correctly LoginPopup 1`] = `
+exports[`<LoginPopup /> should render correctly LoginPopup 1`] = `
 <div
   className="login"
-  id="LoginPopup"
+  id="login-popup"
 >
   <h2
     className="login__header"
@@ -15,51 +15,77 @@ exports[`<Loader /> should render correctly LoginPopup 1`] = `
   >
     Wpisz następujące dane aby się zalogować
   </p>
-  <Form>
+  <Form
+    onSubmit={[Function]}
+  >
     <Input
-      autocomplete="username"
+      autoComplete="username"
+      data-type="email"
       floatingLabel={true}
-      id="email-field"
+      id="login-email-field"
+      inputRef={[Function]}
       label="e-mail"
+      onChange={[Function]}
       pattern=".+@.+"
       placeholder="Wpisz tutaj swój email..."
       required={true}
       type="email"
+      value=""
     />
     <Input
-      autocomplete="current-password"
+      autoComplete="current-password"
+      data-type="password"
       floatingLabel={true}
-      id="password-field"
+      id="login-password-field"
+      inputRef={[Function]}
       label="hasło"
+      onChange={[Function]}
       placeholder="Podaj hasło..."
       required={true}
       type="password"
+      value=""
     />
     <Button
+      category="text"
       className=""
       color="blue"
-      id="forgotten-pass-button"
+      id="login-forgotten-pass-button"
       onClick={[Function]}
-      type="text"
+      type="button"
     >
       Zapomniałeś hasła?
     </Button>
+    <RequestStatus
+      direction="horizontal"
+      errorMessage="Przepraszamy coś poszło nie tak!"
+      requestState="initial"
+      size="small"
+    >
+      <Status
+        id="login-status"
+        message="Niepoprawny email lub hasło"
+        position="horizontal"
+        type="error"
+      />
+    </RequestStatus>
     <div
       className="login__buttons-wrapper"
     >
       <Button
+        category="button"
         className=""
         color="white"
-        id="inform-close-button"
+        id="login-close-button"
         onClick={[Function]}
         type="button"
       >
         Anuluj
       </Button>
       <Button
+        category="button"
         className=""
         color="blue"
-        id="submit-button"
+        id="login-submit-button"
         onClick={[Function]}
         type="submit"
       >
@@ -70,52 +96,96 @@ exports[`<Loader /> should render correctly LoginPopup 1`] = `
 </div>
 `;
 
-exports[`<Loader /> should render correctly LoginPopup with remember password for state forgottenPassword true 1`] = `
+exports[`<LoginPopup /> should render correctly LoginPopup with remember password for state forgottenPassword true 1`] = `
 <div
   className="login"
-  id="LoginPopup"
+  id="login-popup"
 >
   <h2
     className="login__header"
   >
-    Resetowanie hasła
+    Logowanie
   </h2>
   <p
     className="login__description"
   >
-    Podaj adres e-mail na który zarejestrowane jest konto
+    Wpisz następujące dane aby się zalogować
   </p>
-  <Form>
+  <Form
+    onSubmit={[Function]}
+  >
     <Input
-      autocomplete="email"
+      autoComplete="username"
+      data-type="email"
       floatingLabel={true}
-      id="email-field"
+      id="login-email-field"
+      inputRef={[Function]}
       label="e-mail"
+      onChange={[Function]}
       pattern=".+@.+"
       placeholder="Wpisz tutaj swój email..."
       required={true}
       type="email"
+      value=""
     />
+    <Input
+      autoComplete="current-password"
+      data-type="password"
+      floatingLabel={true}
+      id="login-password-field"
+      inputRef={[Function]}
+      label="hasło"
+      onChange={[Function]}
+      placeholder="Podaj hasło..."
+      required={true}
+      type="password"
+      value=""
+    />
+    <Button
+      category="text"
+      className=""
+      color="blue"
+      id="login-forgotten-pass-button"
+      onClick={[Function]}
+      type="button"
+    >
+      Zapomniałeś hasła?
+    </Button>
+    <RequestStatus
+      direction="horizontal"
+      errorMessage="Przepraszamy coś poszło nie tak!"
+      requestState="initial"
+      size="small"
+    >
+      <Status
+        id="login-status"
+        message="Niepoprawny email lub hasło"
+        position="horizontal"
+        type="error"
+      />
+    </RequestStatus>
     <div
       className="login__buttons-wrapper"
     >
       <Button
+        category="button"
         className=""
         color="white"
-        id="inform-close-button"
+        id="login-close-button"
         onClick={[Function]}
         type="button"
       >
         Anuluj
       </Button>
       <Button
+        category="button"
         className=""
         color="blue"
-        id="submit-button"
+        id="login-submit-button"
         onClick={[Function]}
         type="submit"
       >
-        Resetuj
+        Zaloguj
       </Button>
     </div>
   </Form>

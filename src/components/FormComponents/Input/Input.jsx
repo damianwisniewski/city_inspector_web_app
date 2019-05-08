@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Input = ({ id, placeholder, label, floatingLabel, ...rest }) => (
+const Input = ({ id, placeholder, label, floatingLabel, inputRef, ...rest }) => (
 	<div className='input-wrapper'>
 		<input
 			{...rest}
+			ref={inputRef}
 			data-animate={floatingLabel}
 			className='input-wrapper__field'
 			id={id}
@@ -18,6 +19,7 @@ const Input = ({ id, placeholder, label, floatingLabel, ...rest }) => (
 
 Input.defaultProps = {
 	label: '',
+	inputRef: () => {},
 }
 
 Input.propTypes = {
@@ -25,6 +27,7 @@ Input.propTypes = {
 	placeholder: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	floatingLabel: PropTypes.bool.isRequired,
+	inputRef: PropTypes.func,
 }
 
 export default Input

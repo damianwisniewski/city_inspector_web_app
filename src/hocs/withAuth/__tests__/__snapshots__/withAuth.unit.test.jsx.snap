@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withAuth() HOC should render Component for authorized user 1`] = `<Component />`;
+exports[`withAuth() HOC should render Component for authorized user 1`] = `
+<Component
+  isUserAuth={true}
+/>
+`;
 
 exports[`withAuth() HOC should render Redirections for non-authorized user 1`] = `
 <Fragment>

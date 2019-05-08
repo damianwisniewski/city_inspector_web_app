@@ -1,106 +1,132 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+import './LoginPopup.scss'
 
 import { Form, Input } from '../../../components/FormComponents'
 import Button from '../../../components/CommonComponents/Button/Button'
+import Status from '../../../components/CommonComponents/Status/Status'
+import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
+import { PopupRedirect } from '../../../components/PopupComponents/PopupRouting'
 
-import './LoginPopup.scss'
-// import Status from '../../../components/CommonComponents/Status/Status'
+// actions
+import {
+	sagaRequestLogin,
+	resetLoginRequestStatus,
+} from '../../../reduxStore/actionCreators/requestActions'
 
 class LoginPopup extends Component {
 	state = {
-		forgottenPassword: false,
-		loginFailed: false,
+		forgottenPass: false,
+		email: '',
+		password: '',
+	}
+
+	componentDidMount() {
+		this.props.resetLoginRequestStatus()
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.isUserAuth) {
+			this.props.closePopup()
+		}
 	}
 
 	handleForgottenPassword = () => {
+		this.setState({ forgottenPass: true })
+	}
+
+	handleInputChanges = e => {
+		const field = e.target.dataset.type
+
 		this.setState({
-			forgottenPassword: true,
+			[field]: e.target.value,
 		})
 	}
 
-	render() {
-		const { closePopup } = this.props
-		const { forgottenPassword } = this.state
+	handleUserLogin = e => {
+		e.preventDefault()
 
-		if (forgottenPassword) {
-			return (
-				<div id='LoginPopup' className='login'>
-					<h2 className='login__header'>Resetowanie hasła</h2>
-					<p className='login__description'>
-						Podaj adres e-mail na który zarejestrowane jest konto
-					</p>
-					<Form>
-						<Input
-							id='email-field'
-							label='e-mail'
-							placeholder='Wpisz tutaj swój email...'
-							floatingLabel
-							type='email'
-							autocomplete='email'
-							pattern='.+@.+'
-							required
-						/>
-						<div className='login__buttons-wrapper'>
-							<Button id='inform-close-button' color='white' onClick={closePopup}>
-								Anuluj
-							</Button>
-							<Button id='submit-button' type='submit' color='blue'>
-								Resetuj
-							</Button>
-						</div>
-					</Form>
-				</div>
-			)
-		} else {
-			return (
-				<div id='LoginPopup' className='login'>
-					<h2 className='login__header'>Logowanie</h2>
-					{/* <Status id='login-status' type='error' message='Niepoprawny email lub hasło' /> */}
-					<p className='login__description'>Wpisz następujące dane aby się zalogować</p>
-					<Form>
-						<Input
-							id='email-field'
-							label='e-mail'
-							placeholder='Wpisz tutaj swój email...'
-							floatingLabel
-							type='email'
-							autocomplete='username'
-							pattern='.+@.+'
-							required
-						/>
-						<Input
-							id='password-field'
-							label='hasło'
-							placeholder='Podaj hasło...'
-							floatingLabel
-							type='password'
-							autocomplete='current-password'
-							required
-						/>
-						<Button
-							id='forgotten-pass-button'
-							type='text'
-							color='blue'
-							onClick={this.handleForgottenPassword}
-						>
-							Zapomniałeś hasła?
-						</Button>
-						<div className='login__buttons-wrapper'>
-							<Button id='inform-close-button' color='white' onClick={closePopup}>
-								Anuluj
-							</Button>
-							<Button id='submit-button' type='submit' color='blue'>
-								Zaloguj
-							</Button>
-						</div>
-					</Form>
-				</div>
-			)
+		const { email, password } = this.state
+		this.props.sagaRequestLogin({ email, password })
+	}
+
+	render() {
+		const { isUserAuth, loginRequestState, closePopup } = this.props
+		const { email, password, forgottenPass } = this.state
+
+		if (forgottenPass) {
+			return <PopupRedirect to='ForgottenPassPopup' />
 		}
+
+		return (
+			<div id='login-popup' className='login'>
+				<h2 className='login__header'>Logowanie</h2>
+				<p className='login__description'>Wpisz następujące dane aby się zalogować</p>
+				<Form onSubmit={this.handleUserLogin}>
+					<Input
+						id='login-email-field'
+						data-type='email'
+						onChange={this.handleInputChanges}
+						value={email}
+						label='e-mail'
+						placeholder='Wpisz tutaj swój email...'
+						floatingLabel
+						type='email'
+						autoComplete='username'
+						pattern='.+@.+'
+						required
+					/>
+					<Input
+						id='login-password-field'
+						data-type='password'
+						onChange={this.handleInputChanges}
+						value={password}
+						label='hasło'
+						placeholder='Podaj hasło...'
+						floatingLabel
+						type='password'
+						autoComplete='current-password'
+						required
+					/>
+					<Button
+						id='login-forgotten-pass-button'
+						category='text'
+						color='blue'
+						onClick={this.handleForgottenPassword}
+					>
+						Zapomniałeś hasła?
+					</Button>
+					<RequestStatus size='small' requestState={loginRequestState}>
+						{isUserAuth ? (
+							<Status id='login-status' type='correct' message='Jesteś zalogowany' />
+						) : (
+							<Status id='login-status' type='error' message='Niepoprawny email lub hasło' />
+						)}
+					</RequestStatus>
+					<div className='login__buttons-wrapper'>
+						<Button id='login-close-button' color='white' onClick={closePopup}>
+							Anuluj
+						</Button>
+						<Button id='login-submit-button' type='submit' color='blue'>
+							Zaloguj
+						</Button>
+					</div>
+				</Form>
+			</div>
+		)
 	}
 }
 
-// LoginPopup.propTypes = {}
+const mapStateToProps = state => ({
+	isUserAuth: state.user.isUserAuth,
+	loginRequestState: state.requests.loginRequestStatus,
+})
 
-export default LoginPopup
+export default connect(
+	mapStateToProps,
+	{
+		sagaRequestLogin,
+		resetLoginRequestStatus,
+	},
+)(LoginPopup)

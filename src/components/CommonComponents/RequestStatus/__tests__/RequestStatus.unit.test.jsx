@@ -46,32 +46,4 @@ describe('<RequestStatus />', () => {
 		)
 		expect(toJson(RequestStatusElement)).toMatchSnapshot()
 	})
-
-	test('should render correctly RequestStatus with direction horizontal', () => {
-		RequestStatusElement = shallow(
-			<RequestStatus
-				id={id}
-				requestState='initial'
-				direction='horizontal'
-				errorMessage={errorMessage}
-			>
-				{children}
-			</RequestStatus>,
-		)
-		expect(toJson(RequestStatusElement)).toMatchSnapshot()
-	})
-
-	test('should render correctly RequestStatus with direction vertical', () => {
-		RequestStatusElement = shallow(
-			<RequestStatus
-				id={id}
-				requestState='initial'
-				direction='vertical'
-				errorMessage={errorMessage}
-			>
-				{children}
-			</RequestStatus>,
-		)
-		expect(toJson(RequestStatusElement)).toMatchSnapshot()
-	})
 })
