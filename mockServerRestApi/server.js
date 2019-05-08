@@ -8,22 +8,30 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 
-server.post('/userAuth', (req, res) => {
-	const requestedUser = routes.users.find(user => user.email === req.body.email)
-	const isAuth = requestedUser.password === req.body.password
+server.post('/login', (req, res) => {
+	const body = req.body
+	const requestedUser = routes.users.find(user => user.email === body.email) || false
+	const isAuth = requestedUser && requestedUser.password === body.password
 
 	res.json({
-		email: req.body.email,
 		isAuth,
+		data: {
+			email: requestedUser ? requestedUser.email : '',
+			nickname: requestedUser ? requestedUser.nickname : '',
+		},
 	})
 })
 
-server.put('/newUser', (req, res) => {
+server.post('/remind', (req, res) => {
+	res.status(200).send()
+})
+
+server.put('/register_user', (req, res) => {
 	const isValid = req.body.email && req.body.password && req.body.nickname
 
 	if (isValid) {
 		routes.users.push(req.body)
-		res.status(201).send()
+		res.status(201).send({})
 	} else {
 		res.status(400).send()
 	}
