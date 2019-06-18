@@ -31,5 +31,9 @@
 
 	&--vertical {
 		flex-direction: column;
+
+		&::before {
+			padding: 0;
+		}
 	}
 }

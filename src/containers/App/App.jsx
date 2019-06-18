@@ -25,6 +25,7 @@ import LoginPopup from '../PopupRoutes/LoginPopup/LoginPopup'
 import SignupPopup from '../PopupRoutes/SignupPopup/SignupPopup'
 import LogoutPopup from '../PopupRoutes/LogoutPopup/LogoutPopup'
 import ForgottenPassPopup from '../PopupRoutes/ForgottenPassPopup/ForgottenPassPopup'
+import Notification from '../Routes/Notification/Notification'
 
 class App extends Component {
 	static defaultProps = {
@@ -40,6 +41,7 @@ class App extends Component {
 						<main className='content'>
 							<Switch>
 								<Route exact path='/' component={MapView} />
+								<Route exact path='/zgloszenie/:id' component={Notification} />
 								<Route exact path='/nowe_zgloszenie' component={withAuth(NewNotification)} />
 								<Route exact path='/twoje_zgloszenia' component={withAuth(YourNotification)} />
 								<Route exact path='/subskrypcje' component={withAuth(Subscription)} />

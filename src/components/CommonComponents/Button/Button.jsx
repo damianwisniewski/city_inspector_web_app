@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 
 import './Button.scss'
 
-const Button = ({ color, className, type, children, category, onClick, ...props }) => (
+const Button = ({ color, className, type, children, category, size, onClick, ...props }) => (
 	<button
 		{...props}
 		type={type}
 		onClick={onClick}
-		className={`${category === 'text' ? 'text-button' : 'button'} ${color} ${className}`}
+		className={`${
+			category === 'text' ? 'text-button' : 'button'
+		} button--${size} ${color} ${className}`}
 	>
 		{children}
 	</button>
@@ -16,6 +18,7 @@ const Button = ({ color, className, type, children, category, onClick, ...props 
 
 Button.defaultProps = {
 	color: 'white',
+	size: 'medium',
 	children: '',
 	className: '',
 	type: 'button',
@@ -25,6 +28,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
 	color: PropTypes.oneOf(['white', 'blue', 'green', 'red']),
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	children: PropTypes.node,
 	className: PropTypes.string,
 	onClick: PropTypes.func,

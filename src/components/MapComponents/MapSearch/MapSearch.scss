@@ -1,0 +1,156 @@
+@import '../../../assets/styles/index';
+
+.search {
+	background-color: $primary_dark_blue;
+	padding: 5px;
+	border-radius: 3px;
+	margin: 10px;
+	box-sizing: content-box;
+	opacity: 0.8;
+	text-align: center;
+	box-shadow: $small_shadow !important;
+	border: 0 !important;
+	color: $white;
+	width: 250px;
+	height: 40px;
+	line-height: 30px;
+	transition: opacity 0.2s linear;
+
+	&__close-button {
+		display: none;
+		width: 100%;
+		margin: 2px;
+		margin-bottom: 10px;
+		font-size: 13px;
+		line-height: 1.5em;
+		font-weight: bold;
+		border-radius: 3px;
+		outline: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	@media screen and (max-width: 600px) {
+		&--focused {
+			width: 100%;
+			margin: 0;
+			height: 100%;
+			top: 0;
+			left: 0;
+			position: fixed;
+			z-index: 1000 !important;
+			padding: 10px;
+			box-sizing: border-box;
+			opacity: 1;
+			border-radius: 0;
+
+			& .search__close-button {
+				display: block;
+			}
+
+			@media screen and (max-width: 600px) {
+				& .search__control {
+					height: unset;
+					align-items: center;
+				}
+			}
+		}
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&__control {
+		display: flex;
+		flex-direction: row-reverse;
+		height: 100%;
+		align-items: center;
+
+		&::before {
+			min-width: 30px;
+			max-width: 30px;
+			height: 30px;
+			line-height: 30px;
+			color: $white;
+		}
+	}
+
+	&__field {
+		border: none;
+		outline: none;
+		border-radius: 3px;
+		width: 100%;
+		margin: 2px;
+		color: $dark_gray;
+		padding: 7px 5px;
+		font-size: 15px;
+	}
+
+	&__list {
+		max-height: 200px;
+		width: 100%;
+		border-radius: 3px;
+		background-color: $white;
+		color: $darker_gray;
+		text-align: left;
+		list-style: none;
+		padding: 5px 10px;
+		overflow: auto;
+		position: absolute;
+		left: 0;
+		top: 100%;
+		margin: 1px 0;
+		box-shadow: $small_shadow;
+
+		@media screen and (max-width: 600px) {
+			position: static;
+			width: unset;
+			margin: 10px 2px;
+			max-height: unset;
+		}
+	}
+
+	&__item {
+		display: block;
+		border-radius: 3px;
+		background-color: $gray;
+		margin-bottom: 5px;
+		padding: 5px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+
+		&:hover {
+			background-color: lighten($primary_light_blue, 10%);
+		}
+
+		&-city {
+			margin: 5px 0;
+			font-weight: bold;
+			line-height: 1em;
+			font-size: 13px;
+		}
+
+		&-region {
+			margin: 5px 0;
+			font-size: 12px;
+			line-height: 1em;
+		}
+	}
+
+	[class*='icons_loader']::before {
+		animation: rotate infinite 2s cubic-bezier(0.28, 0.81, 1, 1);
+	}
+
+	@keyframes rotate {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}

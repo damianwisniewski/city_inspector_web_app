@@ -1,0 +1,38 @@
+@import '../../assets/styles/index';
+
+div.leaflet-bar {
+	box-shadow: $small_shadow !important;
+	border: 0 !important;
+
+	a {
+		background-color: $primary_dark_blue;
+		opacity: 0.8;
+		border: 1px solid $primary_blue;
+		color: $white;
+		transition: opacity 0.2s linear;
+
+		&:hover {
+			opacity: 1;
+			background-color: $primary_dark_blue;
+			color: $white;
+		}
+	}
+}
+
+.leaflet-left {
+	left: 50%;
+	transform: translateX(-50%);
+
+	@media screen and (max-width: 600px) {
+		left: 0;
+		transform: none;
+	}
+}
+
+.leaflet-left,
+.leaflet-right,
+.leaflet-top,
+.leaflet-bottom,
+.leaflet-control {
+	z-index: 499;
+}

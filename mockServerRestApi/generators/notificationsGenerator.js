@@ -38,18 +38,38 @@ const ramdomCategory = () => {
 	}
 }
 
-exports.notificationsData = amount => {
+const randomUserId = users => {
+	const randomIndex = Math.round(Math.abs(Math.random() * users.length - 1))
+
+	return users[randomIndex]['nickname']
+}
+
+exports.notificationsData = (amount, users) => {
 	const notifications = []
 
 	for (let i = 0; i < amount; i++) {
 		notifications.push({
+			user: randomUserId(users),
 			category: ramdomCategory(),
-			id: faker.random.uuid(),
+			id: faker.random.number(999999),
 			status: ramdomStatus(),
 			title: faker.name.title(),
 			description: faker.lorem.paragraph(),
 			address: faker.address.streetAddress(true),
-			localization: [faker.address.latitude(), faker.address.longitude()],
+			localization: [
+				// lat
+				faker.random.number({
+					min: 49.0273953314,
+					max: 54.8515359564,
+					precision: 0.0000001,
+				}),
+				// lon
+				faker.random.number({
+					min: 14.0745211117,
+					max: 24.0299857927,
+					precision: 0.0000001,
+				}),
+			],
 			photos: generateImages(),
 			date: faker.date.past(),
 		})

@@ -1,31 +1,33 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 import './ForgottenPassPopup.scss'
+
+import { requester } from '../../../services/requester/requester'
 
 import { Form, Input } from '../../../components/FormComponents'
 import Button from '../../../components/CommonComponents/Button/Button'
 import Status from '../../../components/CommonComponents/Status/Status'
 import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
 
-// actions
-import {
-	sagaPassRemind,
-	resetPassRemindRequestStatus,
-} from '../../../reduxStore/actionCreators/requestActions'
-
 class ForgottenPassPopup extends Component {
 	state = {
+		sendRequestStatus: 'initial',
 		email: '',
-	}
-
-	componentDidMount() {
-		this.props.resetPassRemindRequestStatus()
 	}
 
 	handleRemainPass = e => {
 		e.preventDefault()
-		this.props.sagaPassRemind(this.state.email)
+
+		this.setState({ sendRequestStatus: 'pending' })
+
+		requester
+			.post('remind_pass', { email: this.state.email })
+			.then(() => {
+				this.setState({ sendRequestStatus: 'succeeded' })
+			})
+			.catch(() => {
+				this.setState({ sendRequestStatus: 'failed' })
+			})
 	}
 
 	handleInputChanges = e => {
@@ -35,8 +37,8 @@ class ForgottenPassPopup extends Component {
 	}
 
 	render() {
-		const { passReminderRequestStatus, closePopup } = this.props
-		const { email } = this.state
+		const { closePopup } = this.props
+		const { email, sendRequestStatus } = this.state
 
 		return (
 			<div id='reminder-popup' className='reminder'>
@@ -57,7 +59,7 @@ class ForgottenPassPopup extends Component {
 						pattern='.+@.+'
 						required
 					/>
-					<RequestStatus size='small' requestState={passReminderRequestStatus}>
+					<RequestStatus size='medium' requestState={sendRequestStatus}>
 						<Status
 							id='reminder-status'
 							type='correct'
@@ -79,14 +81,4 @@ class ForgottenPassPopup extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	passReminderRequestStatus: state.requests.passReminderRequestStatus,
-})
-
-export default connect(
-	mapStateToProps,
-	{
-		sagaPassRemind,
-		resetPassRemindRequestStatus,
-	},
-)(ForgottenPassPopup)
+export default ForgottenPassPopup

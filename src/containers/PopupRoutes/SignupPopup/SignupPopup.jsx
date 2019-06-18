@@ -1,24 +1,20 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 import './SignupPopup.scss'
+
+import { requester } from '../../../services/requester/requester'
 
 import { Form, Input, Group, Checkbox } from '../../../components/FormComponents'
 import Button from '../../../components/CommonComponents/Button/Button'
 import Status from '../../../components/CommonComponents/Status/Status'
 import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
 
-// actions
-import {
-	sagaRequestRegister,
-	resetRequestRegisterStatus,
-} from '../../../reduxStore/actionCreators/requestActions'
-
 class SignupPopup extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
+			requestState: 'initial',
 			email: '',
 			password: '',
 			repeatedPassword: '',
@@ -31,10 +27,6 @@ class SignupPopup extends Component {
 		this.repeatPassInput = React.createRef()
 	}
 
-	componentDidMount() {
-		this.props.resetRequestRegisterStatus()
-	}
-
 	comparePasswords = () => {
 		if (this.state.password !== this.state.repeatedPassword) {
 			this.repeatPassInput.setCustomValidity('Hasła muszą być identyczne!')
@@ -45,7 +37,21 @@ class SignupPopup extends Component {
 
 	registerUser = e => {
 		e.preventDefault()
-		this.props.sagaRequestRegister(this.state)
+
+		const newUserData = { ...this.state }
+		delete newUserData.requestState
+		delete newUserData.repeatedPassword
+
+		this.setState({ requestState: 'pending' })
+
+		requester
+			.post('create_user', newUserData)
+			.then(() => {
+				this.setState({ sendRequestStatus: 'succeeded' })
+			})
+			.catch(() => {
+				this.setState({ sendRequestStatus: 'failed' })
+			})
 	}
 
 	handleInputChanges = e => {
@@ -62,8 +68,17 @@ class SignupPopup extends Component {
 	}
 
 	render() {
-		const { closePopup, registerRequestStatus } = this.props
-		const { city, email, firstname, lastname, nickname, password, repeatedPassword } = this.state
+		const { closePopup } = this.props
+		const {
+			city,
+			email,
+			firstname,
+			lastname,
+			nickname,
+			password,
+			repeatedPassword,
+			requestState,
+		} = this.state
 
 		return (
 			<div id='SignupPopup' className='signup'>
@@ -178,13 +193,15 @@ class SignupPopup extends Component {
 							label='Czy twoje dane takie jak e-mail, imię i nazwisko oraz miasto, mają być widocznie dla innych zarejestowanych użytkowników.'
 						/>
 					</div>
-					<RequestStatus size='small' requestState={registerRequestStatus}>
-						<Status
-							id='login-status'
-							type='correct'
-							message='Konto zostało utworzone, możesz się zalogować'
-						/>
-					</RequestStatus>
+					<div className='signup__request-status'>
+						<RequestStatus size='small' requestState={requestState}>
+							<Status
+								id='login-status'
+								type='correct'
+								message='Konto zostało utworzone, możesz się zalogować'
+							/>
+						</RequestStatus>
+					</div>
 					{/* Buttons*/}
 					<div className='signup__buttons-wrapper'>
 						<Button id='inform-close-button' color='white' onClick={closePopup}>
@@ -200,14 +217,4 @@ class SignupPopup extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	registerRequestStatus: state.requests.registerRequestStatus,
-})
-
-export default connect(
-	mapStateToProps,
-	{
-		sagaRequestRegister,
-		resetRequestRegisterStatus,
-	},
-)(SignupPopup)
+export default SignupPopup

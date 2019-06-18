@@ -23,7 +23,7 @@ server.post('/login', (req, res) => {
 })
 
 server.post('/remind', (req, res) => {
-	res.status(200).send()
+	res.sendStatus(204)
 })
 
 server.put('/register_user', (req, res) => {

@@ -1,10 +1,7 @@
 import {
 	CHECK_LOGIN_REQUESTED,
 	CHECK_LOGIN_INITIAL,
-	PASS_REMIND_REQUESTED,
-	PASS_REMIND_INITIAL,
-	REGISTER_REQUESTED,
-	REGISTER_INITIAL,
+	GET_NOTIFICATIONS_REQUESTED,
 } from '../actionTypes/requestActionTypes'
 
 export function sagaRequestLogin(loginData) {
@@ -20,28 +17,9 @@ export function resetLoginRequestStatus() {
 	}
 }
 
-export function sagaPassRemind(email) {
+export function sagaRequestNotifications(params) {
 	return {
-		type: PASS_REMIND_REQUESTED,
-		email,
-	}
-}
-
-export function resetPassRemindRequestStatus() {
-	return {
-		type: PASS_REMIND_INITIAL,
-	}
-}
-
-export function sagaRequestRegister(userData) {
-	return {
-		type: REGISTER_REQUESTED,
-		userData,
-	}
-}
-
-export function resetRequestRegisterStatus() {
-	return {
-		type: REGISTER_INITIAL,
+		type: GET_NOTIFICATIONS_REQUESTED,
+		params,
 	}
 }

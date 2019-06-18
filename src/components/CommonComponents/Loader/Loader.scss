@@ -1,9 +1,9 @@
 @import '../../../assets/styles/index';
 
 .Loader {
-	position: relative;
 	width: 100%;
-	text-align: center;
+	display: flex;
+	justify-content: center;
 
 	&::after {
 		content: '\f110';
@@ -11,6 +11,7 @@
 		font-family: 'Font Awesome 5 Free';
 		font-weight: 900;
 		padding: 3px;
+		width: min-content;
 		color: $primary_light_blue;
 		animation: rotate infinite 1.3s cubic-bezier(0.28, 0.81, 1, 1);
 	}

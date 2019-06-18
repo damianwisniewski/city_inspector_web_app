@@ -9,23 +9,24 @@ $icons: (
 	menu: '\f0c9',
 	help: '\f059',
 	exit: '\f057',
+	loader: '\f110',
+	search-lock: '\f689',
 	correct: '\f058',
 	error: '\f06a',
 	warning: '\f071',
+	damage: '\f7d9',
+	nature: '\f4d8',
+	trashes: '\f1b8',
+	dangerous: '\f071',
 );
-
-@mixin commonIonStyles {
-	display: block;
-	font-family: 'Font Awesome 5 Free';
-	font-size: 20px;
-	font-weight: 900;
-	padding: 5px;
-}
 
 @each $name, $code in $icons {
 	.#{$name} {
 		&::before {
-			@include commonIonStyles;
+			display: block;
+			font-family: 'Font Awesome 5 Free';
+			font-size: 20px;
+			font-weight: 900;
 			content: $code;
 		}
 	}

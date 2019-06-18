@@ -4,6 +4,7 @@
 	display: flex;
 	align-items: center;
 	width: 100%;
+	height: 60px;
 
 	@media only screen and (max-width: 950px) {
 		height: 50px;
@@ -26,7 +27,7 @@
 		box-shadow: $shadow;
 
 		font-family: $secondary_font;
-		font-size: $secondary_small;
+		font-size: 14px;
 
 		@media only screen and (max-width: 950px) {
 			height: 50px;
@@ -86,6 +87,10 @@
 
 	&_menu_button {
 		display: none;
+
+		&::before {
+			padding: 5px;
+		}
 
 		@media only screen and (max-width: 950px) {
 			display: block;

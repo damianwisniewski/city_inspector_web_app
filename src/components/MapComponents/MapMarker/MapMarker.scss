@@ -1,0 +1,75 @@
+@import '../../../assets/styles/index';
+
+.marker-info {
+	&__header {
+		@include sectionHeader(12px);
+		text-transform: capitalize;
+	}
+
+	&__title {
+		color: $dark_gray;
+		font-weight: bold;
+		margin: 0;
+		font-size: 14px;
+	}
+
+	p.marker-info__sub-header {
+		font-weight: bold;
+		margin: 10px 0;
+	}
+
+	p.marker-info__date {
+		color: $dark_gray;
+		margin: 10px 0;
+	}
+
+	p.marker-info__description {
+		margin: 0;
+		max-height: 50px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	a.marker-info__button {
+		display: block;
+		text-decoration: none;
+		color: $white;
+		background-color: $primary_light_blue;
+		padding: 5px;
+		border-radius: 3px;
+		margin: 10px 15px;
+		text-align: center;
+		transition: background-color 0.1s linear;
+
+		&:hover {
+			background-color: darken($primary_light_blue, 20%);
+		}
+
+		&:active {
+			background-color: darken($primary_light_blue, 10%);
+		}
+	}
+}
+
+.marker-icon {
+	&[class*=' icons_nature__']::before {
+		color: $green;
+	}
+
+	&[class*=' icons_damage__']::before {
+		color: $yellow;
+	}
+
+	&[class*=' icons_dangerous__']::before {
+		color: $red;
+	}
+
+	&[class*=' icons_trashes__']::before {
+		color: $darker_gray;
+	}
+
+	&::before {
+		font-size: 30px;
+		text-shadow: -1px 2px 3px $darker-gray;
+	}
+}

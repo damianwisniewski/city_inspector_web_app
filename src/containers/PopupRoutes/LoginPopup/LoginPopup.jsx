@@ -97,13 +97,15 @@ class LoginPopup extends Component {
 					>
 						Zapomniałeś hasła?
 					</Button>
-					<RequestStatus size='small' requestState={loginRequestState}>
-						{isUserAuth ? (
-							<Status id='login-status' type='correct' message='Jesteś zalogowany' />
-						) : (
-							<Status id='login-status' type='error' message='Niepoprawny email lub hasło' />
-						)}
-					</RequestStatus>
+					<div className='login__request-status'>
+						<RequestStatus size='small' requestState={loginRequestState}>
+							{isUserAuth ? (
+								<Status id='login-status' type='correct' message='Jesteś zalogowany' />
+							) : (
+								<Status id='login-status' type='error' message='Niepoprawny email lub hasło' />
+							)}
+						</RequestStatus>
+					</div>
 					<div className='login__buttons-wrapper'>
 						<Button id='login-close-button' color='white' onClick={closePopup}>
 							Anuluj

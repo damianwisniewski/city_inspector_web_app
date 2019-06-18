@@ -1,0 +1,12 @@
+@mixin sectionHeader($font-size) {
+	font-size: $font-size;
+	text-align: center;
+	font-family: $secondary_font;
+	color: $light_gray;
+	background-color: $primary_blue;
+	margin: 1em 0.66em;
+	padding: 0.66em;
+	border-radius: 0.33em;
+	box-shadow: $inset-shadow;
+	text-shadow: $text-shadow;
+}

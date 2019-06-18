@@ -1,0 +1,46 @@
+@import '../../../assets/styles/index';
+
+.map-view {
+	width: 100%;
+	height: calc(100% - 60px);
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+
+	@media only screen and (max-width: 950px) {
+		height: calc(100% - 50px);
+	}
+
+	&__loader-wrapper {
+		position: absolute;
+		z-index: 550;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		color: $blue;
+		font-weight: bold;
+		margin: 0;
+		display: -webkit-flex;
+		display: flex;
+		font-size: 13px;
+
+		& .Loader {
+			text-align: center;
+
+			&::after {
+				color: $blue;
+			}
+		}
+
+		& .status-component {
+			text-align: center;
+			background-color: $white;
+			border-radius: 5px;
+			padding: 5px;
+
+			&::after {
+				color: $blue;
+			}
+		}
+	}
+}

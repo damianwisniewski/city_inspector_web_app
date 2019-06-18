@@ -4,21 +4,15 @@ import {
 	CHECK_LOGIN_FAILED,
 	CHECK_LOGIN_INITIAL,
 	//
-	PASS_REMIND_FAILED,
-	PASS_REMIND_INITIAL,
-	PASS_REMIND_REQUESTED,
-	PASS_REMIND_SUCCEEDED,
-	//
-	REGISTER_FAILED,
-	REGISTER_INITIAL,
-	REGISTER_REQUESTED,
-	REGISTER_SUCCEEDED,
+	GET_NOTIFICATIONS_REQUESTED,
+	GET_NOTIFICATIONS_SUCCEEDED,
+	GET_NOTIFICATIONS_FAILED,
+	GET_NOTIFICATIONS_INITIAL,
 } from '../actionTypes/requestActionTypes'
 
 const initialState = {
 	loginRequestStatus: 'initial',
-	passReminderRequestStatus: 'initial',
-	registerRequestStatus: 'initial',
+	getNotificationsRequestStatus: 'initial',
 }
 
 const requestReducer = (state = initialState, action) => {
@@ -45,48 +39,26 @@ const requestReducer = (state = initialState, action) => {
 				loginRequestStatus: 'initial',
 			}
 
-		// PASS REMAINDER
-		case PASS_REMIND_REQUESTED:
+		// GET NOTIFICATIONS
+		case GET_NOTIFICATIONS_REQUESTED:
 			return {
 				...state,
-				passReminderRequestStatus: 'pending',
+				getNotificationsRequestStatus: 'pending',
 			}
-		case PASS_REMIND_SUCCEEDED:
+		case GET_NOTIFICATIONS_SUCCEEDED:
 			return {
 				...state,
-				passReminderRequestStatus: 'succeeded',
+				getNotificationsRequestStatus: 'succeeded',
 			}
-		case PASS_REMIND_FAILED:
+		case GET_NOTIFICATIONS_FAILED:
 			return {
 				...state,
-				passReminderRequestStatus: 'failed',
+				getNotificationsRequestStatus: 'failed',
 			}
-		case PASS_REMIND_INITIAL:
+		case GET_NOTIFICATIONS_INITIAL:
 			return {
 				...state,
-				passReminderRequestStatus: 'initial',
-			}
-
-		// PASS REMAINDER
-		case REGISTER_REQUESTED:
-			return {
-				...state,
-				registerRequestStatus: 'pending',
-			}
-		case REGISTER_SUCCEEDED:
-			return {
-				...state,
-				registerRequestStatus: 'succeeded',
-			}
-		case REGISTER_FAILED:
-			return {
-				...state,
-				registerRequestStatus: 'failed',
-			}
-		case REGISTER_INITIAL:
-			return {
-				...state,
-				registerRequestStatus: 'initial',
+				getNotificationsRequestStatus: 'initial',
 			}
 
 		default:

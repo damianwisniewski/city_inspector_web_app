@@ -29,6 +29,13 @@ export const getFeedType = feedType => {
 			}
 			break
 
+		case 'notificationsAll':
+			feedTarget = {
+				target: '/notifications/',
+				params: '',
+			}
+			break
+
 		default:
 			feedTarget = {
 				target: '',
