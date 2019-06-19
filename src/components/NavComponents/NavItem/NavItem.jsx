@@ -6,12 +6,12 @@ import './NavItem.scss'
 import iconAssets from '../../../assets/styleModules/icons.module.scss'
 import { ModalLink } from '../../ModalComponents/ModalRouting'
 
-const NavItem = ({ id, children, type, className, icon, exact, to }) => {
+const NavItem = ({ children, type, className, icon, exact, to, ...rest }) => {
 	function createProperChild() {
 		if (type === 'link') {
 			return (
 				<NavLink
-					id={id}
+					{...rest}
 					type={type}
 					exact={exact}
 					to={to}
@@ -24,7 +24,7 @@ const NavItem = ({ id, children, type, className, icon, exact, to }) => {
 		} else {
 			return (
 				<ModalLink
-					id={id}
+					{...rest}
 					type={type}
 					to={to}
 					activeClassName='navigation_active'
@@ -47,7 +47,6 @@ NavItem.defaultProps = {
 }
 
 NavItem.propTypes = {
-	id: PropTypes.string,
 	children: PropTypes.node,
 	icon: PropTypes.string,
 	exact: PropTypes.bool,

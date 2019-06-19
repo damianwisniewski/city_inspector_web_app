@@ -23,7 +23,6 @@ Status.defaultProps = {
 }
 
 Status.propTypes = {
-	id: PropTypes.string.isRequired,
 	message: PropTypes.string,
 	type: PropTypes.oneOf(['error', 'warning', 'correct']).isRequired,
 	position: PropTypes.oneOf(['horizontal', 'vertical']),

@@ -163,9 +163,8 @@ MapSearch.defaultProps = {
 }
 
 MapSearch.propTypes = {
-	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	onSelectOption: PropTypes.func.isRequired,
+	onSelect: PropTypes.func.isRequired,
 }
 
 export default withLeaflet(MapSearch)

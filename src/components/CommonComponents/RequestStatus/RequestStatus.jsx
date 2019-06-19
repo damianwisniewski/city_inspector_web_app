@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Loader from '../Loader/Loader'
 import Status from '../Status/Status'
 
-const RequestStatus = ({ id, requestState, children, errorMessage, direction, size }) => (
+const RequestStatus = ({ id, children, requestState, errorMessage, direction, size }) => (
 	<Fragment>
 		{requestState === 'pending' && <Loader size={size} id={`${id}-loader`} />}
 		{requestState === 'failed' && (
@@ -23,7 +23,6 @@ RequestStatus.defaultProps = {
 
 RequestStatus.propTypes = {
 	requestState: PropTypes.string.isRequired,
-	children: PropTypes.node.isRequired,
 	errorMessage: PropTypes.string,
 	direction: PropTypes.oneOf(['horizontal', 'vertical']),
 	size: PropTypes.oneOf(['small', 'medium', 'large']),

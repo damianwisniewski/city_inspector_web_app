@@ -31,11 +31,12 @@ class App extends Component {
 							<Switch>
 								{mainRoutes.map(route => {
 									if (!route.path) {
-										return <Route component={route.component} />
+										return <Route key={route.path || 'NotFound'} component={route.component} />
 									}
 
 									return (
 										<Route
+											key={route.path || 'NotFound'}
 											exact={route.exact}
 											path={route.path}
 											component={route.authNeeded ? withAuth(route.component) : route.component}
@@ -47,6 +48,7 @@ class App extends Component {
 						<ModalSwitch>
 							{modalRoutes.map(route => (
 								<ModalRoute
+									key={route.path || 'NotFound'}
 									darkOverlay={route.darkOverlay}
 									closeButton={route.closeButton}
 									path={route.path}

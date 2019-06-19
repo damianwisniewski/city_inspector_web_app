@@ -20,13 +20,15 @@ const Input = ({ id, placeholder, label, floatingLabel, inputRef, ...rest }) => 
 Input.defaultProps = {
 	label: '',
 	inputRef: () => {},
+	placeholder: '',
+	floatingLabel: false,
 }
 
 Input.propTypes = {
 	id: PropTypes.string.isRequired,
-	placeholder: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
 	label: PropTypes.string,
-	floatingLabel: PropTypes.bool.isRequired,
+	floatingLabel: PropTypes.bool,
 	inputRef: PropTypes.func,
 }
 

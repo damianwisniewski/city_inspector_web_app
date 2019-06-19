@@ -18,13 +18,15 @@ const Textarea = ({ id, placeholder, label, floatingLabel, ...rest }) => (
 
 Textarea.propTypes = {
 	label: '',
+	placeholder: '',
+	floatingLabel: false,
 }
 
 Textarea.propTypes = {
 	id: PropTypes.string.isRequired,
-	placeholder: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
 	label: PropTypes.string,
-	floatingLabel: PropTypes.bool.isRequired,
+	floatingLabel: PropTypes.bool,
 }
 
 export default Textarea

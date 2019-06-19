@@ -55,9 +55,8 @@ MapTypeControl.defaultProps = {
 }
 
 MapTypeControl.propTypes = {
-	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	onSelectOption: PropTypes.func.isRequired,
+	onClick: PropTypes.func.isRequired,
 }
 
 export default MapTypeControl

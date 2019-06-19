@@ -91,6 +91,7 @@ class MapView extends Component {
 							Boolean(notificationList.length) &&
 							notificationList.map(notification => (
 								<MapMarker
+									key={notification.id}
 									position={notification.localization}
 									data={{
 										type: notification.category,
