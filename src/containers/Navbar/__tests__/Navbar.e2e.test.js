@@ -70,40 +70,40 @@ function NonAuthNaigationTests() {
 			expect($('#MapView').isDisplayed()).to.be.true
 		})
 
-		it('POMOC - should open help popup, after click navigation button with id "helpLink"', () => {
+		it('POMOC - should open help Modal, after click navigation button with id "helpLink"', () => {
 			browserHelper.customClick('#helpLink')
-			const HelpPopup = browser.$('#HelpPopup')
+			const HelpModal = browser.$('#HelpModal')
 
 			browser.pause(500)
-			expect(HelpPopup.isExisting()).to.be.true
-			expect(HelpPopup.isDisplayedInViewport()).to.be.true
+			expect(HelpModal.isExisting()).to.be.true
+			expect(HelpModal.isDisplayedInViewport()).to.be.true
 
-			browserHelper.customClick('#popupCloseButton')
-			expect(HelpPopup.isExisting()).to.be.false
+			browserHelper.customClick('#ModalCloseButton')
+			expect(HelpModal.isExisting()).to.be.false
 		})
 
-		it(`REJESTRACJA - should open signup popup, after click navigation button with id "registerButton" and close it after click close button`, () => {
+		it(`REJESTRACJA - should open signup Modal, after click navigation button with id "registerButton" and close it after click close button`, () => {
 			browserHelper.customClick('#registerButton')
-			const SignupPopup = browser.$('#SignupPopup')
+			const SignupModal = browser.$('#SignupModal')
 
 			browser.pause(500)
-			expect(SignupPopup.isExisting()).to.be.true
-			expect(SignupPopup.isDisplayedInViewport()).to.be.true
+			expect(SignupModal.isExisting()).to.be.true
+			expect(SignupModal.isDisplayedInViewport()).to.be.true
 
-			browserHelper.customClick('#popupCloseButton')
-			expect(SignupPopup.isExisting()).to.be.false
+			browserHelper.customClick('#ModalCloseButton')
+			expect(SignupModal.isExisting()).to.be.false
 		})
 
-		it(`LOGOWANIE - should open signup popup, after click navigation button with id "registerButton" and close it after click close button`, () => {
+		it(`LOGOWANIE - should open signup Modal, after click navigation button with id "registerButton" and close it after click close button`, () => {
 			browserHelper.customClick('#loginButton')
-			const LoginPopup = browser.$('#LoginPopup')
+			const LoginModal = browser.$('#LoginModal')
 
 			browser.pause(500)
-			expect(LoginPopup.isExisting()).to.be.true
-			expect(LoginPopup.isDisplayedInViewport()).to.be.true
+			expect(LoginModal.isExisting()).to.be.true
+			expect(LoginModal.isDisplayedInViewport()).to.be.true
 
-			browserHelper.customClick('#popupCloseButton')
-			expect(LoginPopup.isExisting()).to.be.false
+			browserHelper.customClick('#ModalCloseButton')
+			expect(LoginModal.isExisting()).to.be.false
 		})
 	})
 }
@@ -145,16 +145,16 @@ function AuthNaigationTests() {
 			expect($('#Settings').isDisplayed()).to.be.true
 		})
 
-		it('should open help popup, after click navigation button with id "helpLink"', () => {
+		it('should open help Modal, after click navigation button with id "helpLink"', () => {
 			browserHelper.customClick('#helpLink')
-			const HelpPopup = browser.$('#HelpPopup')
+			const HelpModal = browser.$('#HelpModal')
 
 			browser.pause(500)
-			expect(HelpPopup.isExisting()).to.be.true
-			expect(HelpPopup.isDisplayedInViewport()).to.be.true
+			expect(HelpModal.isExisting()).to.be.true
+			expect(HelpModal.isDisplayedInViewport()).to.be.true
 
-			browserHelper.customClick('#popupCloseButton')
-			expect(HelpPopup.isExisting()).to.be.false
+			browserHelper.customClick('#ModalCloseButton')
+			expect(HelpModal.isExisting()).to.be.false
 		})
 	})
 }

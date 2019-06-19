@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 
-import { PopupRedirect } from '../../components/PopupComponents/PopupRouting'
+import { ModalRedirect } from '../../components/ModalComponents/ModalRouting'
 
 export default function withAuth(WrappedComponent) {
 	const mapStateToProps = state => ({
@@ -17,9 +17,9 @@ export default function withAuth(WrappedComponent) {
 				) : (
 					<Fragment>
 						<Redirect to='/' />
-						<PopupRedirect
+						<ModalRedirect
 							message='Nie masz dostępu do tych zasobów. Aby korzystać w pełni z aplikacji musisz się zalogować!'
-							to='LoginPopup'
+							to='LoginModal'
 						/>
 					</Fragment>
 				)

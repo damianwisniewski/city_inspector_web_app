@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import './ImageGallery.scss'
-import Popup from '../../PopupComponents/Popup/Popup'
+import Modal from '../../ModalComponents/Modal/Modal'
 import RequestStatus from '../RequestStatus/RequestStatus'
 import Loader from '../Loader/Loader'
 
@@ -29,7 +29,7 @@ class ImageGallery extends Component {
 		this.setState({ selectedImage: [e.target.src] })
 	}
 
-	handleClosePopup = () => {
+	handleCloseModal = () => {
 		this.setState({ selectedImage: '', selectedImageLoading: true })
 	}
 
@@ -61,11 +61,11 @@ class ImageGallery extends Component {
 					))}
 				</ul>
 				{selectedImage && (
-					<Popup
+					<Modal
 						darkOverlay
 						closeButton
-						onButtonClose={this.handleClosePopup}
-						onOverlayClick={this.handleClosePopup}
+						onButtonClose={this.handleCloseModal}
+						onOverlayClick={this.handleCloseModal}
 					>
 						<img
 							data-image='selectedImageLoading'
@@ -78,7 +78,7 @@ class ImageGallery extends Component {
 								<Loader size='medium' />
 							</div>
 						)}
-					</Popup>
+					</Modal>
 				)}
 			</div>
 		)

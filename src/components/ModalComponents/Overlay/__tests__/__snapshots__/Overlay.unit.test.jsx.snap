@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Modal) <Overlay /> should render correctly Overlay with proper classNames, for dark prop equal false 1`] = `
+<div
+  className="Modal-overlay Modal-overlay--transparent"
+  id="overlay"
+  onClick={[Function]}
+>
+  <div />
+</div>
+`;
+
+exports[`(Modal) <Overlay /> should render correctly Overlay with proper classNames, for dark prop equal true 1`] = `
+<div
+  className="Modal-overlay Modal-overlay--dark"
+  id="overlay"
+  onClick={[Function]}
+>
+  <div />
+</div>
+`;

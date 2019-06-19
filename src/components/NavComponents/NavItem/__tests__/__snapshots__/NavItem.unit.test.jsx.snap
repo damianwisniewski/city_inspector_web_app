@@ -4,14 +4,14 @@ exports[`<NavItem /> should render correctly NavItem type BUTTOM 1`] = `
 <li
   className="nav_item"
 >
-  <PopupLink
+  <ModalLink
     activeClassName="navigation_active"
     className="nav_button test  "
     to="/"
     type="button"
   >
     ExampleText
-  </PopupLink>
+  </ModalLink>
 </li>
 `;
 

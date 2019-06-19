@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 import './NavItem.scss'
 import iconAssets from '../../../assets/styleModules/icons.module.scss'
-import { PopupLink } from '../../PopupComponents/PopupRouting'
+import { ModalLink } from '../../ModalComponents/ModalRouting'
 
 const NavItem = ({ id, children, type, className, icon, exact, to }) => {
 	function createProperChild() {
@@ -23,7 +23,7 @@ const NavItem = ({ id, children, type, className, icon, exact, to }) => {
 			)
 		} else {
 			return (
-				<PopupLink
+				<ModalLink
 					id={id}
 					type={type}
 					to={to}
@@ -31,7 +31,7 @@ const NavItem = ({ id, children, type, className, icon, exact, to }) => {
 					className={`nav_button ${iconAssets[icon]} ${className} `}
 				>
 					{children}
-				</PopupLink>
+				</ModalLink>
 			)
 		}
 	}

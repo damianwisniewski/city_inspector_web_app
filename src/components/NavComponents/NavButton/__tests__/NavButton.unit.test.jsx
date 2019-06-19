@@ -15,7 +15,7 @@ describe('<NavButton />', () => {
 
 	beforeEach(() => {
 		NavButtonComponent = shallow(
-			<NavButton color={'blue'} to='MockPopup'>
+			<NavButton color={'blue'} to='MockModal'>
 				Example Text
 			</NavButton>,
 		)

@@ -61,7 +61,7 @@ class Navbar extends Component {
 				<NavItem id='cogsLink' exact icon='cogs' type='link' to='/ustawienia'>
 					Ustawienia
 				</NavItem>
-				<NavItem id='logoutLink' icon='logout' type='button' to='LogoutPopup'>
+				<NavItem id='logoutLink' icon='logout' type='button' to='LogoutModal'>
 					Wyloguj
 				</NavItem>
 			</ul>
@@ -80,13 +80,13 @@ class Navbar extends Component {
 				<NavItem id='mapLink' exact icon='map' type='link' to='/'>
 					Mapa
 				</NavItem>
-				<NavItem id='helpLink' icon='help' type='button' to='HelpPopup'>
+				<NavItem id='helpLink' icon='help' type='button' to='HelpModal'>
 					Pomoc
 				</NavItem>
-				<NavButton id='registerButton' color='white' to='SignupPopup'>
+				<NavButton id='registerButton' color='white' to='SignupModal'>
 					Rejestracja
 				</NavButton>
-				<NavButton id='loginButton' color='blue' to='LoginPopup'>
+				<NavButton id='loginButton' color='blue' to='LoginModal'>
 					Logowanie
 				</NavButton>
 			</ul>

@@ -12,40 +12,40 @@ describe('<App />', () => {
 			expect($('#MapView').isDisplayed()).to.be.true
 		})
 
-		it('should redirect from "/nowe_zgloszenie" to "/" and show Login Popup', () => {
+		it('should redirect from "/nowe_zgloszenie" to "/" and show Login Modal', () => {
 			browser.url('http://localhost:3000/nowe_zgloszenie')
 			browser.pause(500)
 			expect($('#NewNotification').isExisting()).to.be.false
 			expect(browser.getUrl()).to.match(/\/$/)
 			expect(browser.getTitle()).to.be.equal(`Mapa | ${REACT_APP_TITLE}`)
-			expect($('#LoginPopup').isDisplayed()).to.be.true
+			expect($('#LoginModal').isDisplayed()).to.be.true
 		})
 
-		it('should redirect from "/twoje_zgloszenia" to "/" and show Login Popup', () => {
+		it('should redirect from "/twoje_zgloszenia" to "/" and show Login Modal', () => {
 			browser.url('http://localhost:3000/twoje_zgloszenia')
 			browser.pause(500)
 			expect($('#NewNotification').isExisting()).to.be.false
 			expect(browser.getUrl()).to.match(/\/$/)
 			expect(browser.getTitle()).to.be.equal(`Mapa | ${REACT_APP_TITLE}`)
-			expect($('#LoginPopup').isDisplayed()).to.be.true
+			expect($('#LoginModal').isDisplayed()).to.be.true
 		})
 
-		it('should redirect from "/ustawienia" to "/" and show Login Popup', () => {
+		it('should redirect from "/ustawienia" to "/" and show Login Modal', () => {
 			browser.url('http://localhost:3000/ustawienia')
 			browser.pause(500)
 			expect($('#NewNotification').isExisting()).to.be.false
 			expect(browser.getUrl()).to.match(/\/$/)
 			expect(browser.getTitle()).to.be.equal(`Mapa | ${REACT_APP_TITLE}`)
-			expect($('#LoginPopup').isDisplayed()).to.be.true
+			expect($('#LoginModal').isDisplayed()).to.be.true
 		})
 
-		it('should redirect from "/subskrypcje" to "/" and show Login Popup', () => {
+		it('should redirect from "/subskrypcje" to "/" and show Login Modal', () => {
 			browser.url('http://localhost:3000/subskrypcje')
 			browser.pause(500)
 			expect($('#NewNotification').isExisting()).to.be.false
 			expect(browser.getUrl()).to.match(/\/$/)
 			expect(browser.getTitle()).to.be.equal(`Mapa | ${REACT_APP_TITLE}`)
-			expect($('#LoginPopup').isDisplayed()).to.be.true
+			expect($('#LoginModal').isDisplayed()).to.be.true
 		})
 
 		it('should render NotFound for enter to location "/fake_location"', () => {

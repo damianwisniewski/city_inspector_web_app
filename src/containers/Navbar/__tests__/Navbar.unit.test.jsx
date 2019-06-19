@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { HashRouter } from 'react-router-dom'
 import toJson from 'enzyme-to-json'
 
-import { PopupRouter } from '../../../components/PopupComponents/PopupRouting'
+import { ModalRouter } from '../../../components/ModalComponents/ModalRouting'
 import Navbar from '../Navbar'
 
 configure({ adapter: new Adapter() })
@@ -28,9 +28,9 @@ describe('<Navbar />', () => {
 	test('should set state "isDrawerOpen" to false, after click NavItem, for case it was true before', () => {
 		NavbarComponent = mount(
 			<HashRouter>
-				<PopupRouter>
+				<ModalRouter>
 					<Navbar.WrappedComponent isUserAuth={true} />
-				</PopupRouter>
+				</ModalRouter>
 			</HashRouter>,
 		).find('Navbar')
 
@@ -42,9 +42,9 @@ describe('<Navbar />', () => {
 	test('should not change state property "isDrawerOpen", for case it has value false', () => {
 		NavbarComponent = mount(
 			<HashRouter>
-				<PopupRouter>
+				<ModalRouter>
 					<Navbar.WrappedComponent isUserAuth={true} />
-				</PopupRouter>
+				</ModalRouter>
 			</HashRouter>,
 		).find('Navbar')
 

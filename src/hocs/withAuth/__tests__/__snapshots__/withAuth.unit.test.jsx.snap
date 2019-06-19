@@ -11,9 +11,9 @@ exports[`withAuth() HOC should render Redirections for non-authorized user 1`] =
   <Redirect
     to="/"
   />
-  <PopupRedirect
+  <ModalRedirect
     message="Nie masz dostępu do tych zasobów. Aby korzystać w pełni z aplikacji musisz się zalogować!"
-    to="LoginPopup"
+    to="LoginModal"
   />
 </Fragment>
 `;

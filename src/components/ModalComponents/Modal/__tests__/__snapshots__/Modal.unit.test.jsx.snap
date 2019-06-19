@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavItem /> should pass props for overlay to Overlay component 1`] = `
+<Overlay
+  dark={true}
+  onOverlayClick={[Function]}
+>
+  <div
+    className="Modal-container"
+  >
+    <div />
+  </div>
+</Overlay>
+`;
+
+exports[`<NavItem /> should render also CloseButton for property closeButton=true 1`] = `
+<Overlay
+  dark={true}
+  onOverlayClick={[Function]}
+>
+  <div
+    className="Modal-container"
+  >
+    <CloseButton
+      onClose={[Function]}
+    />
+    <div />
+  </div>
+</Overlay>
+`;
+
+exports[`<NavItem /> should render correctly without specyfi any props 1`] = `
+<Overlay
+  dark={false}
+  onOverlayClick={[Function]}
+>
+  <div
+    className="Modal-container"
+  >
+    <div />
+  </div>
+</Overlay>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Modal) <CloseButton /> (Non-Auth) should contains proper Navigation items 1`] = `
+<button
+  className="close-button exit"
+  id="ModalCloseButton"
+  onClick={[MockFunction]}
+/>
+`;

@@ -4,12 +4,12 @@ exports[`<NavButton /> should render properly, with props like color and to 1`] 
 <li
   className="nav-button-wrapper"
 >
-  <PopupLink
+  <ModalLink
     className="nav-button blue"
     color="blue"
-    to="MockPopup"
+    to="MockModal"
   >
     Example Text
-  </PopupLink>
+  </ModalLink>
 </li>
 `;

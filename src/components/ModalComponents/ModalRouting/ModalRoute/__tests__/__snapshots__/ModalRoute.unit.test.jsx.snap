@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalRoute /> should render correctly 1`] = `
+<Modal
+  closeButton={false}
+  darkOverlay={false}
+>
+  <MockComponent />
+</Modal>
+`;

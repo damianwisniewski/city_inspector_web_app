@@ -1,7 +1,7 @@
-import HelpPopup from '../containers/ModalViews/HelpPopup/HelpPopup'
-import LoginPopup from '../containers/ModalViews/LoginPopup/LoginPopup'
-import ForgottenPassPopup from '../containers/ModalViews/ForgottenPassPopup/ForgottenPassPopup'
-import SignupPopup from '../containers/ModalViews/SignupPopup/SignupPopup'
+import HelpModal from '../containers/ModalViews/HelpModal/HelpModal'
+import LoginModal from '../containers/ModalViews/LoginModal/LoginModal'
+import ForgottenPassModal from '../containers/ModalViews/ForgottenPassModal/ForgottenPassModal'
+import SignupModal from '../containers/ModalViews/SignupModal/SignupModal'
 
 /**
  * @typedef {Object} ModalRoute
@@ -17,32 +17,32 @@ import SignupPopup from '../containers/ModalViews/SignupPopup/SignupPopup'
  */
 export default [
 	{
-		path: 'HelpPopup',
-		component: HelpPopup,
+		path: 'HelpModal',
+		component: HelpModal,
 		darkOverlay: true,
 		closeButton: true,
 	},
 	{
-		path: 'LoginPopup',
-		component: LoginPopup,
+		path: 'LoginModal',
+		component: LoginModal,
 		darkOverlay: true,
 		closeButton: true,
 	},
 	{
-		path: 'ForgottenPassPopup',
-		component: ForgottenPassPopup,
+		path: 'ForgottenPassModal',
+		component: ForgottenPassModal,
 		darkOverlay: true,
 		closeButton: true,
 	},
 	{
-		path: 'SignupPopup',
-		component: SignupPopup,
+		path: 'SignupModal',
+		component: SignupModal,
 		darkOverlay: true,
 		closeButton: true,
 	},
 	{
-		path: 'LogoutPopup',
-		component: LoginPopup,
+		path: 'LogoutModal',
+		component: LoginModal,
 		darkOverlay: true,
 		closeButton: true,
 	},

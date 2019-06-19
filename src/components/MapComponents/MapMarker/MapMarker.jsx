@@ -40,7 +40,7 @@ const MapMarker = ({ position, data }) => {
 			return
 		}
 
-		return divIcon({ className: `${icons[iconType]} marker-icon`, popupAnchor: [10, 0] })
+		return divIcon({ className: `${icons[iconType]} marker-icon`, ModalAnchor: [10, 0] })
 	}
 
 	return (

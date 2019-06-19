@@ -82,7 +82,7 @@ exports[`<Navbar /> (Auth) should contains proper Navigation items 1`] = `
         exact={false}
         icon="logout"
         id="logoutLink"
-        to="LogoutPopup"
+        to="LogoutModal"
         type="button"
       >
         Wyloguj
@@ -129,7 +129,7 @@ exports[`<Navbar /> (Non-Auth) should contains proper Navigation items 1`] = `
         exact={false}
         icon="help"
         id="helpLink"
-        to="HelpPopup"
+        to="HelpModal"
         type="button"
       >
         Pomoc
@@ -137,14 +137,14 @@ exports[`<Navbar /> (Non-Auth) should contains proper Navigation items 1`] = `
       <NavButton
         color="white"
         id="registerButton"
-        to="SignupPopup"
+        to="SignupModal"
       >
         Rejestracja
       </NavButton>
       <NavButton
         color="blue"
         id="loginButton"
-        to="LoginPopup"
+        to="LoginModal"
       >
         Logowanie
       </NavButton>

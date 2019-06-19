@@ -7,7 +7,7 @@ import './App.scss'
 
 import Navbar from '../Navbar/Navbar'
 
-// Popup Routing
+// Modal Routing
 import { ModalRouter, ModalSwitch, ModalRoute } from '../../components/ModalComponents/ModalRouting'
 
 // Routes

@@ -1,0 +1,31 @@
+.Modal-overlay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	width: 100vw;
+	height: 100%;
+
+	&--dark {
+		background-color: rgba(0, 0, 0, 0.6);
+		animation-delay: 0.2s;
+		animation: 0.4s 1 forwards darken;
+	}
+
+	&--transparent {
+		background-color: transparent;
+	}
+}
+
+@keyframes darken {
+	from {
+		background-color: rgba(0, 0, 0, 0);
+	}
+
+	to {
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+}

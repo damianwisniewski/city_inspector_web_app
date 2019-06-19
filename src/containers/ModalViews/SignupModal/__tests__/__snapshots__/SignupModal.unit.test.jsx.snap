@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignupModal /> should render correctly SignupModal 1`] = `
+<div
+  className="signup"
+  id="SignupModal"
+>
+  <h2
+    className="signup__header"
+  >
+    Rejestracja
+  </h2>
+  <p
+    className="signup__description"
+  >
+    Wpisz następujące dane aby się zarejestrować
+  </p>
+  <Form
+    className="signup__form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="signup__required"
+    >
+      <Input
+        autoComplete="email"
+        data-type="email"
+        floatingLabel={true}
+        id="email-field"
+        inputRef={[Function]}
+        label="E-mail*"
+        onChange={[Function]}
+        pattern=".+@.+"
+        placeholder="Podaj swój adres email..."
+        required={true}
+        type="email"
+        value=""
+      />
+      <Input
+        autoComplete="new-password"
+        data-type="password"
+        floatingLabel={true}
+        id="password-field"
+        inputRef={[Function]}
+        label="Hasło*"
+        maxLength="12"
+        minLength="6"
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Podaj hasło..."
+        required={true}
+        type="password"
+        value=""
+      />
+      <Input
+        autoComplete="new-password"
+        data-type="repeatedPassword"
+        floatingLabel={true}
+        id="repeat-password-field"
+        inputRef={[Function]}
+        label="Powtórz hasło*"
+        maxLength="12"
+        minLength="6"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Powtórz hasło..."
+        required={true}
+        type="password"
+        value=""
+      />
+      <Input
+        data-type="nickname"
+        floatingLabel={true}
+        id="nickname-field"
+        inputRef={[Function]}
+        label="Nickname*"
+        onChange={[Function]}
+        placeholder="Podaj swój adres email..."
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <Group
+      direction="column"
+      name="opcjonalnie"
+    >
+      <Input
+        autoComplete="given-name"
+        data-type="firstname"
+        floatingLabel={true}
+        id="name-field"
+        inputRef={[Function]}
+        label="Imię"
+        onChange={[Function]}
+        placeholder="Podaj swoje imię..."
+        type="text"
+        value=""
+      />
+      <Input
+        autoComplete="family-name"
+        data-type="lastname"
+        floatingLabel={true}
+        id="lastname-field"
+        inputRef={[Function]}
+        label="Nazwisko"
+        onChange={[Function]}
+        placeholder="Podaj swoje nazwisko..."
+        type="text"
+        value=""
+      />
+      <Input
+        autoComplete="address-level2"
+        data-type="city"
+        floatingLabel={true}
+        id="city-field"
+        inputRef={[Function]}
+        label="Miasto"
+        name="city"
+        onChange={[Function]}
+        placeholder="Podaj swoje miasto..."
+        type="text"
+        value=""
+      />
+    </Group>
+    <div
+      className="signup__agreements-wrapper"
+    >
+      <Checkbox
+        id="agreement_1"
+        label="Czy wyrażasz zgodę na otrzymywanie informacji mailowych od serwisu \\"City Inspector\\", dotyczących zmian w serwisie oraz aktualizacji zgłoszeń."
+      />
+      <Checkbox
+        id="agreement_2"
+        label="Czy twoje dane takie jak e-mail, imię i nazwisko oraz miasto, mają być widocznie dla innych zarejestowanych użytkowników."
+      />
+    </div>
+    <RequestStatus
+      direction="horizontal"
+      errorMessage="Przepraszamy coś poszło nie tak!"
+      requestState="initial"
+      size="small"
+    >
+      <Status
+        id="login-status"
+        message="Konto zostało utworzone, możesz się zalogować"
+        position="horizontal"
+        type="correct"
+      />
+    </RequestStatus>
+    <div
+      className="signup__buttons-wrapper"
+    >
+      <Button
+        category="button"
+        className=""
+        color="white"
+        id="inform-close-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Anuluj
+      </Button>
+      <Button
+        category="button"
+        className=""
+        color="blue"
+        id="submit-button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Zarejestruj
+      </Button>
+    </div>
+  </Form>
+</div>
+`;
