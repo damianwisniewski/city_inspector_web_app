@@ -1,8 +1,4 @@
 /**
- * POLYFILL
- */
-
-/**
  * [Object.assign]
  */
 export * from 'core-js/fn/object/assign'

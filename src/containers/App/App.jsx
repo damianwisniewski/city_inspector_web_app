@@ -5,27 +5,16 @@ import { connect } from 'react-redux'
 // Styles
 import './App.scss'
 
-// Popup Routing
-import { PopupRouter, PopupSwitch, PopupRoute } from '../../components/PopupComponents/PopupRouting'
+import Navbar from '../Navbar/Navbar'
 
-import withAuth from '../../HOCs/withAuth/withAuth'
+// Popup Routing
+import { ModalRouter, ModalSwitch, ModalRoute } from '../../components/ModalComponents/ModalRouting'
 
 // Routes
-import Navbar from '../Navbar/Navbar'
-import MapView from '../Routes/MapView/MapView'
-import NewNotification from '../Routes/NewNotification/NewNotification'
-import Settings from '../Routes/Settings/Settings'
-import Subscription from '../Routes/Subscription/Subscription'
-import YourNotification from '../Routes/YourNotification/YourNotification'
-import NotFound from '../Routes/NotFound/NotFound'
+import mainRoutes from '../../routes/mainRoutes'
+import modalRoutes from '../../routes/modalRoutes'
 
-// PopupRoutes
-import HelpPopup from '../PopupRoutes/HelpPopup/HelpPopup'
-import LoginPopup from '../PopupRoutes/LoginPopup/LoginPopup'
-import SignupPopup from '../PopupRoutes/SignupPopup/SignupPopup'
-import LogoutPopup from '../PopupRoutes/LogoutPopup/LogoutPopup'
-import ForgottenPassPopup from '../PopupRoutes/ForgottenPassPopup/ForgottenPassPopup'
-import Notification from '../Routes/Notification/Notification'
+import withAuth from '../../HOCs/withAuth/withAuth'
 
 class App extends Component {
 	static defaultProps = {
@@ -35,34 +24,38 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<PopupRouter>
+				<ModalRouter>
 					<div className='App'>
 						<Navbar />
 						<main className='content'>
 							<Switch>
-								<Route exact path='/' component={MapView} />
-								<Route exact path='/zgloszenie/:id' component={Notification} />
-								<Route exact path='/nowe_zgloszenie' component={withAuth(NewNotification)} />
-								<Route exact path='/twoje_zgloszenia' component={withAuth(YourNotification)} />
-								<Route exact path='/subskrypcje' component={withAuth(Subscription)} />
-								<Route exact path='/ustawienia' component={withAuth(Settings)} />
-								<Route component={NotFound} />
+								{mainRoutes.map(route => {
+									if (!route.path) {
+										return <Route component={route.component} />
+									}
+
+									return (
+										<Route
+											exact={route.exact}
+											path={route.path}
+											component={route.authNeeded ? withAuth(route.component) : route.component}
+										/>
+									)
+								})}
 							</Switch>
 						</main>
-						<PopupSwitch>
-							<PopupRoute darkOverlay closeButton path='HelpPopup' component={HelpPopup} />
-							<PopupRoute darkOverlay closeButton path='LoginPopup' component={LoginPopup} />
-							<PopupRoute
-								darkOverlay
-								closeButton
-								path='ForgottenPassPopup'
-								component={ForgottenPassPopup}
-							/>
-							<PopupRoute darkOverlay closeButton path='SignupPopup' component={SignupPopup} />
-							<PopupRoute darkOverlay closeButton path='LogoutPopup' component={LogoutPopup} />
-						</PopupSwitch>
+						<ModalSwitch>
+							{modalRoutes.map(route => (
+								<ModalRoute
+									darkOverlay={route.darkOverlay}
+									closeButton={route.closeButton}
+									path={route.path}
+									component={route.component}
+								/>
+							))}
+						</ModalSwitch>
 					</div>
-				</PopupRouter>
+				</ModalRouter>
 			</BrowserRouter>
 		)
 	}

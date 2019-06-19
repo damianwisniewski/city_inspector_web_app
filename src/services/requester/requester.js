@@ -1,5 +1,5 @@
-import { objectToQueryString } from './helpers/assets'
-import { getFeedType } from './helpers/feedTypes'
+import { objectToQueryString } from '../../helpers/index'
+import { getFeedType } from './feedTypes'
 
 export const requester = {
 	/**
