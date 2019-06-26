@@ -34,7 +34,7 @@ class MapSearch extends Component {
 			.then(res => res.results.filter(place => place.type === 'city'))
 			.then(res => this.setState({ searchResult: res }))
 			.catch(() => this.setState({ error: true }))
-			.finally(() => this.setState({ pending: false }))
+			.then(() => this.setState({ pending: false }))
 	}, 250)
 
 	selectLocalization = e => {
@@ -136,7 +136,7 @@ class MapSearch extends Component {
 					) : (
 						searchResult &&
 						Boolean(searchResult.length) && (
-							<ul id='search-list' className='search__list'>
+							<ul id='search-list' className='search__list scroller'>
 								{searchResult.map((result, index) => (
 									<li
 										key={`${result.name}_${index}`}

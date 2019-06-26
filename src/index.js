@@ -3,6 +3,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
+import './assets/globalStyles/globalStyles.scss'
+
 import App from './containers/App/App'
 
 import reduxStore from './reduxStore'

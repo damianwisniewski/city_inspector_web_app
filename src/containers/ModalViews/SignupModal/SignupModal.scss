@@ -1,12 +1,14 @@
-@import '../../../assets/styles/index';
+@import '../../../assets/styleHelpers/index';
 
 .signup {
-	position: relative;
-	min-width: 310px;
-	max-width: 600px;
-	min-height: 530px;
-	max-height: 530px;
+	width: 450px;
+	min-height: 320px;
 	text-align: center;
+	position: relative;
+
+	@include phone-size {
+		width: unset;
+	}
 
 	&__request-status {
 		min-width: 100%;
@@ -37,29 +39,21 @@
 
 	&__form {
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: column;
+	}
 
-		& > * {
-			flex: 1;
-		}
+	&__required {
+		margin-bottom: 20px;
 	}
 
 	&__buttons-wrapper {
 		margin-top: 15px;
 		margin-bottom: 10px;
-		width: 100%;
 	}
 
 	&__agreements-wrapper {
 		text-align: center;
 		padding: 10px;
 		min-width: 100%;
-	}
-
-	@media only screen and (max-width: 550px) {
-		&__required {
-			min-width: 100%;
-			margin-bottom: 20px;
-		}
 	}
 }

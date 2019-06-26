@@ -1,9 +1,10 @@
-@import '../../../assets/styles/index';
+@import '../../../assets/styleHelpers/index';
 
 .gallery {
 	display: flex;
 	flex-direction: row;
 	overflow: auto hidden;
+	height: 170px;
 	padding: 5px;
 	margin: 10px 0;
 	border-radius: 3px;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { requester } from '../../../services/requester/requester'
@@ -81,10 +80,6 @@ class Notification extends Component {
 								<span className='description-linear__data'>{data.status}</span>
 							</p>
 							<p>
-								<span className='description-linear__header'>Adres:</span>
-								<span className='description-linear__data'>{data.address}</span>
-							</p>
-							<p>
 								<span className='description-linear__header'>Data zgłoszenia:</span>
 								<span className='description-linear__data'>{data.date}</span>
 							</p>
@@ -94,6 +89,12 @@ class Notification extends Component {
 								<p className='description-vertical__header'>Tytuł:</p>
 								<p className='description-vertical__data'>{data.title}</p>
 							</div>
+
+							<div className='description-vertical__wrapper'>
+								<p className='description-vertical__header'>Adres:</p>
+								<p className='description-vertical__data'>{data.address}</p>
+							</div>
+
 							<div className='description-vertical__wrapper description-vertical__wrapper--large'>
 								<p className='description-vertical__header'>Opis:</p>
 								<p className='description-vertical__data'>{data.description}</p>
@@ -119,8 +120,6 @@ class Notification extends Component {
 		)
 	}
 }
-
-// Notification.propTypes = {}
 
 function mapStateToProps(state) {
 	return {

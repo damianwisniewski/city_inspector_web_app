@@ -21,7 +21,6 @@ class ImageGallery extends Component {
 	}
 
 	handleImageLoaded = e => {
-		console.log(e.target.dataset)
 		this.setState({ [e.target.dataset.image]: false })
 	}
 
@@ -40,25 +39,29 @@ class ImageGallery extends Component {
 		return (
 			<div>
 				<ul className='gallery'>
-					{imgSources.map((source, index) => (
-						<li className='gallery__item' key={`image-gallery-${index}`}>
-							<img
-								data-image={`image_${index}`}
-								onLoad={this.handleImageLoaded}
-								onClick={this.handleImageClick}
-								className={`gallery__image ${
-									this.state[`image_${index}`] ? 'gallery__image--hidden' : ''
-								}`}
-								src={source}
-								alt={`gallery-${index}`}
-							/>
-							{this.state[`image_${index}`] && (
-								<div className='loader-wrapper'>
-									<Loader size='small' />
-								</div>
-							)}
-						</li>
-					))}
+					{imgSources.length ? (
+						imgSources.map((source, index) => (
+							<li className='gallery__item' key={`image-gallery-${index}`}>
+								<img
+									data-image={`image_${index}`}
+									onLoad={this.handleImageLoaded}
+									onClick={this.handleImageClick}
+									className={`gallery__image ${
+										this.state[`image_${index}`] ? 'gallery__image--hidden' : ''
+									}`}
+									src={source}
+									alt={`gallery-${index}`}
+								/>
+								{this.state[`image_${index}`] && (
+									<div className='loader-wrapper'>
+										<Loader size='small' />
+									</div>
+								)}
+							</li>
+						))
+					) : (
+						<li>Brak zdjęć...</li>
+					)}
 				</ul>
 				{selectedImage && (
 					<Modal
@@ -85,6 +88,12 @@ class ImageGallery extends Component {
 	}
 }
 
-ImageGallery.propTypes = {}
+ImageGallery.defaultProps = {
+	imgSources: [],
+}
+
+ImageGallery.propTypes = {
+	imgSources: PropTypes.arrayOf(PropTypes.string),
+}
 
 export default ImageGallery

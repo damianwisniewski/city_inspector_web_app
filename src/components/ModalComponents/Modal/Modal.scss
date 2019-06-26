@@ -1,4 +1,4 @@
-@import '../../../assets/styles/index';
+@import '../../../assets/styleHelpers/index';
 
 .Modal-container {
 	display: flex;
@@ -14,10 +14,14 @@
 	box-shadow: $shadow;
 	padding: 15px;
 	margin: 13px;
-	animation: 0.5s 1 forwards resize;
+	animation: 0.4s 1 forwards resize;
+
+	@include phone-size {
+		padding: 5px;
+		margin: 10px;
+	}
 
 	& > *:not(button) {
-		min-width: 100%;
 		min-height: 100%;
 		border-radius: 5px;
 		overflow-x: hidden;
@@ -40,7 +44,7 @@
 	}
 
 	70% {
-		transform: scale(1.1);
+		transform: scale(1.05);
 	}
 
 	100% {

@@ -1,12 +1,12 @@
-@import '../../../assets/styles/colors';
+@import '../../../assets/styleHelpers/colors';
 
 .close-button {
 	position: absolute;
-	top: -15px;
-	right: -15px;
+	top: -20px;
+	right: -20px;
 	border-radius: 50%;
-	width: 37px;
-	height: 37px;
+	width: 45px;
+	height: 45px;
 	background-color: transparent;
 	z-index: 600;
 	display: flex;
@@ -22,6 +22,7 @@
 		color: aliceblue;
 		font-size: 26px !important;
 		border-radius: 50%;
+		line-height: 1em;
 		border: 3px solid $primary_dark_blue;
 		background-color: $primary_dark_blue;
 		box-shadow: -1px 1px 3px 0 rgb(65, 65, 65);

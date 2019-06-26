@@ -1,4 +1,4 @@
-@import '../../../assets/styles/index';
+@import '../../../assets/styleHelpers/index';
 
 .map-view {
 	width: 100%;
@@ -16,11 +16,10 @@
 		z-index: 550;
 		top: 50%;
 		left: 50%;
-		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
 		color: $blue;
 		font-weight: bold;
 		margin: 0;
-		display: -webkit-flex;
 		display: flex;
 		font-size: 13px;
 
