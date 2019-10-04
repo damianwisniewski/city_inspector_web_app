@@ -1,6 +1,5 @@
 import { objectToQueryString } from '../../helpers/index'
 import { getFeedType } from './feedTypes'
-
 export const requester = {
 	/**
 	 *
@@ -72,4 +71,19 @@ export const requester = {
 			body: body,
 		})
 	},
+}
+
+/**
+ *
+ * @param {*} feedType
+ * @param {*} options
+ */
+const request = (feedType, options = {}) => {
+	const { params, data } = options
+	const requestDetails = getFeedType(feedType)
+
+	fetch(requestDetails, {
+		method: requestDetails.method,
+		body: options.body,
+	})
 }
