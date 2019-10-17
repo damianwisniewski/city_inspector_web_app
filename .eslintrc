@@ -27,7 +27,8 @@
 		"rest-spread-spacing": "error",
 		"prettier/prettier": "error",
 		"no-unused-expressions": 0,
-		"chai-friendly/no-unused-expressions": 2
+		"chai-friendly/no-unused-expressions": 2,
+		"default-case": "off"
 	},
 	"globals": {
 		"browser": true
