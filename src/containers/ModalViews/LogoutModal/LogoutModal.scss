@@ -1,0 +1,20 @@
+@import '../../../assets/styleHelpers/index';
+
+.logout {
+	text-align: center;
+
+	&__header {
+		@include sectionHeader(20px);
+	}
+
+	&__context {
+		font-size: 15px;
+		margin: 20px;
+		color: $dark_gray;
+	}
+
+	&__buttons-wrapper {
+		padding: 10px;
+		width: 100%;
+	}
+}
