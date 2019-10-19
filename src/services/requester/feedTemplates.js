@@ -3,8 +3,8 @@
  * @param {feedTypeUnion} feedType
  * @return {object}
  */
-export const getFeedType = feedType => {
-	let feedTarget = {}
+export const getFeedTemplate = feedType => {
+	let feedTemplate = {}
 
 	switch (feedType) {
 		/**
@@ -14,65 +14,70 @@ export const getFeedType = feedType => {
 		 */
 
 		case 'login':
-			feedTarget = {
+			feedTemplate = {
 				method: 'POST',
-				path: '/user/login/',
+				pathTemplate: '/user/login',
 			}
 			break
 
 		case 'logout':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/user/logout/',
+				pathTemplate: '/user/logout',
+				headersTemplate: ['Token-Refresh', 'Authorization'],
 			}
 			break
 
 		case 'refreshTokens':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/user/refresh/',
+				pathTemplate: '/user/refresh',
+				headersTemplate: ['Token-Refresh', 'Authorization'],
 			}
 			break
 
 		case 'initResetPassword':
-			feedTarget = {
+			feedTemplate = {
 				method: 'POST',
-				path: '/user/password/',
+				pathTemplate: '/user/password',
 			}
 			break
 
 		case 'resetPassword':
-			feedTarget = {
+			feedTemplate = {
 				method: 'PUT',
-				path: '/user/password/',
+				pathTemplate: '/user/password',
 			}
 			break
 
 		case 'registerUser':
-			feedTarget = {
+			feedTemplate = {
 				method: 'POST',
-				path: '/user/',
+				pathTemplate: '/user',
 			}
 			break
 
 		case 'updateUserData':
-			feedTarget = {
+			feedTemplate = {
 				method: 'PUT',
-				path: '/user/',
+				pathTemplate: '/user',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'deleteUser':
-			feedTarget = {
+			feedTemplate = {
 				method: 'DELETE',
-				path: '/user/',
+				pathTemplate: '/user',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'getUserData':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/user/',
+				pathTemplate: '/user',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
@@ -83,44 +88,48 @@ export const getFeedType = feedType => {
 		 */
 
 		case 'getAllNotification':
-			feedTarget = {
-				method: 'POST',
-				path: '/subscription/all/',
+			feedTemplate = {
+				method: 'GET',
+				pathTemplate: '/notification/all',
 			}
 			break
 
 		case 'getAllOwnNotification':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/notification/own/',
+				pathTemplate: '/notification/own',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'getSingleNotifiacation':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/notification/single/#{notificationId}/',
+				pathTemplate: '/notification/single/#{notificationId}',
 			}
 			break
 
 		case 'createNotification':
-			feedTarget = {
+			feedTemplate = {
 				method: 'POST',
-				path: '/notification/',
+				pathTemplate: '/notification',
+				headersTemplate: ['Authorization', 'Form-Data'],
 			}
 			break
 
 		case 'updateNotification':
-			feedTarget = {
+			feedTemplate = {
 				method: 'PUT',
-				path: '/notification/#{notificationId}/',
+				pathTemplate: '/notification/#{notificationId}',
+				headersTemplate: ['Authorization', 'Form-Data'],
 			}
 			break
 
 		case 'deleteNotification':
-			feedTarget = {
+			feedTemplate = {
 				method: 'DELETE',
-				path: '/notification/#{notificationId}/',
+				pathTemplate: '/notification/#{notificationId}',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
@@ -131,37 +140,42 @@ export const getFeedType = feedType => {
 		 */
 
 		case 'subscribeNotification':
-			feedTarget = {
+			feedTemplate = {
 				method: 'POST',
-				path: '/subscription/#{notificationId}/',
+				pathTemplate: '/subscription/#{notificationId}',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'getAllSubscriptions':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/subscription/',
+				pathTemplate: '/subscription',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'getSingleSubscription':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/subscription/#{subscriptionId}/',
+				pathTemplate: '/subscription/#{subscriptionId}',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'deleteAllSubscriptions':
-			feedTarget = {
+			feedTemplate = {
 				method: 'DELETE',
-				path: '/subscription/',
+				pathTemplate: '/subscription',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'deleteSingleSubscription':
-			feedTarget = {
+			feedTemplate = {
 				method: 'DELETE',
-				path: '/subscription/#{subscriptionId}/',
+				pathTemplate: '/subscription/#{subscriptionId}',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
@@ -172,49 +186,52 @@ export const getFeedType = feedType => {
 		 */
 
 		case 'getAllComments':
-			feedTarget = {
-				method: 'POST',
-				path: '/comment/#{notificationId}/all/',
+			feedTemplate = {
+				method: 'GET',
+				pathTemplate: '/comment/#{notificationId}/all',
 			}
 			break
 
 		case 'getSingleComment':
-			feedTarget = {
+			feedTemplate = {
 				method: 'GET',
-				path: '/comment/#{notificationId}/single/#{commentId}/',
+				pathTemplate: '/comment/#{notificationId}/single/#{commentId}',
 			}
 			break
 
 		case 'createNewComment':
-			feedTarget = {
-				method: 'GET',
-				path: '/comment/#{notificationId}/',
+			feedTemplate = {
+				method: 'POST',
+				pathTemplate: '/comment/#{notificationId}',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'deleteComment':
-			feedTarget = {
+			feedTemplate = {
 				method: 'DELETE',
-				path: '/comment/#{commentId}/',
+				pathTemplate: '/comment/#{commentId}',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		case 'updateComment':
-			feedTarget = {
-				method: 'DELETE',
-				path: '/comment/#{commentId}/',
+			feedTemplate = {
+				method: 'PUT',
+				pathTemplate: '/comment/#{commentId}',
+				headersTemplate: ['Authorization'],
 			}
 			break
 
 		default:
-			feedTarget = {
+			feedTemplate = {
 				method: '',
-				path: '',
+				pathTemplate: '',
 			}
 			break
 	}
 
-	return feedTarget
+	return feedTemplate
 }
 
 /**
