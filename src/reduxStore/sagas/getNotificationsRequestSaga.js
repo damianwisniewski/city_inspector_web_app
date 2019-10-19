@@ -1,5 +1,5 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { requester } from '../../services/requester/requester'
+import { Requester } from '../../services/requester/requester'
 
 // USER ACTIONS
 import { setNotifications } from '../actionCreators/notificationsActions'
@@ -13,11 +13,10 @@ import {
 
 export function* getNotificationsSaga({ params }) {
 	try {
-		const responseData = yield call(requester.get, 'notificationsAll', params)
+		const responseData = yield call([Requester, 'send'], 'getAllNotification', { queries: params })
 		yield put(setNotifications(responseData))
 		yield put({ type: GET_NOTIFICATIONS_SUCCEEDED })
 	} catch (error) {
-		console.log(error)
 		yield put({
 			type: GET_NOTIFICATIONS_FAILED,
 		})

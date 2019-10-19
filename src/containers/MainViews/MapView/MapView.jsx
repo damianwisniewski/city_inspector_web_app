@@ -92,13 +92,13 @@ class MapView extends Component {
 							notificationList.map(notification => (
 								<MapMarker
 									key={notification.id}
-									position={notification.localization}
+									position={[notification.lat, notification.lon]}
 									data={{
 										type: notification.category,
 										number: notification.id,
 										title: notification.title,
 										description: notification.description,
-										date: notification.date,
+										date: notification.createdAt,
 									}}
 								/>
 							))}

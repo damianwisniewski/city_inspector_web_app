@@ -4,18 +4,16 @@ import PropTypes from 'prop-types'
 import iconAssets from '../../../assets/styleModules/icons.module.scss'
 import './Status.scss'
 
-const Status = ({ id, message, type, position }) => {
-	return (
-		<p
-			id={id}
-			className={`status-component status-component--${type} status-component--${position} ${
-				iconAssets[type]
-			}`}
-		>
-			{message}
-		</p>
-	)
-}
+const Status = ({ id, message, type, position }) => (
+	<p
+		id={id}
+		className={`status-component status-component--${type} status-component--${position} ${
+			iconAssets[type]
+		}`}
+	>
+		{message}
+	</p>
+)
 
 Status.defaultProps = {
 	message: '',

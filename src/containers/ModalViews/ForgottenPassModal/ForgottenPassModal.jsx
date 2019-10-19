@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import './ForgottenPassModal.scss'
 
-import { requester } from '../../../services/requester/requester'
+import { Requester } from '../../../services/requester/requester'
 
 import { Form, Input } from '../../../components/FormComponents'
 import Button from '../../../components/CommonComponents/Button/Button'
@@ -20,8 +20,7 @@ class ForgottenPassModal extends Component {
 
 		this.setState({ sendRequestStatus: 'pending' })
 
-		requester
-			.post('remind_pass', { email: this.state.email })
+		Requester.send('initResetPassword', { body: { email: this.state.email } })
 			.then(() => {
 				this.setState({ sendRequestStatus: 'succeeded' })
 			})

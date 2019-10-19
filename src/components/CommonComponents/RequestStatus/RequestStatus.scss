@@ -1,0 +1,20 @@
+@import '../../../assets/styleHelpers/index';
+
+.StatusScreen {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+
+	&--fullview {
+		height: 100vh;
+	}
+
+	&--transparent {
+		background-color: transparent;
+	}
+
+	&--blue {
+		background-color: $primary_light_blue;
+	}
+}

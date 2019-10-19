@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import './ImageGallery.scss'
 import Modal from '../../ModalComponents/Modal/Modal'
-import RequestStatus from '../RequestStatus/RequestStatus'
 import Loader from '../Loader/Loader'
 
 class ImageGallery extends Component {
@@ -15,9 +14,13 @@ class ImageGallery extends Component {
 			selectedImageLoading: true,
 		}
 
+		const images = {}
+
 		props.imgSources.forEach((value, index) => {
-			this.state[`image_${index}`] = true
+			images[`image_${index}`] = true
 		})
+
+		this.setState({ ...images })
 	}
 
 	handleImageLoaded = e => {
@@ -60,7 +63,7 @@ class ImageGallery extends Component {
 							</li>
 						))
 					) : (
-						<li>Brak zdjęć...</li>
+						<li className='gallery__placeholder'>Brak zdjęć...</li>
 					)}
 				</ul>
 				{selectedImage && (

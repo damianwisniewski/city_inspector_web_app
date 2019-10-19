@@ -14,7 +14,7 @@
 	box-shadow: $shadow;
 	padding: 15px;
 	margin: 13px;
-	animation: 0.4s 1 forwards resize;
+	animation: 0.3s 1 forwards resize;
 
 	@include phone-size {
 		padding: 5px;
@@ -32,8 +32,9 @@
 		font-size: 12px;
 		background-color: $red;
 		color: $white;
+		margin: 10px 10px 0 10px;
 		padding: 5px;
-		width: 250px;
+		width: 280px;
 		text-align: center;
 	}
 }
@@ -41,10 +42,6 @@
 @keyframes resize {
 	0% {
 		transform: scale(0);
-	}
-
-	70% {
-		transform: scale(1.05);
 	}
 
 	100% {

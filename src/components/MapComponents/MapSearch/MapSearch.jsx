@@ -47,7 +47,6 @@ class MapSearch extends Component {
 	}
 
 	handleSearchLostFocus = e => {
-		console.log(e)
 		if (e.target.id !== 'search-list' || e.target.id !== 'search-form') {
 			this.setState({ focused: false })
 		}

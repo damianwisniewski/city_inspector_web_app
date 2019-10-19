@@ -6,38 +6,32 @@ import './NavItem.scss'
 import iconAssets from '../../../assets/styleModules/icons.module.scss'
 import { ModalLink } from '../../ModalComponents/ModalRouting'
 
-const NavItem = ({ children, type, className, icon, exact, to, ...rest }) => {
-	function createProperChild() {
-		if (type === 'link') {
-			return (
-				<NavLink
-					{...rest}
-					type={type}
-					exact={exact}
-					to={to}
-					activeClassName='navigation_active'
-					className={`nav_link ${iconAssets[icon]} ${className} `}
-				>
-					{children}
-				</NavLink>
-			)
-		} else {
-			return (
-				<ModalLink
-					{...rest}
-					type={type}
-					to={to}
-					activeClassName='navigation_active'
-					className={`nav_button ${iconAssets[icon]} ${className} `}
-				>
-					{children}
-				</ModalLink>
-			)
-		}
-	}
-
-	return <li className='nav_item'>{createProperChild()}</li>
-}
+const NavItem = ({ children, type, className, icon, exact, to, ...rest }) => (
+	<li className='nav_item'>
+		{type === 'link' ? (
+			<NavLink
+				{...rest}
+				type={type}
+				exact={exact}
+				to={to}
+				activeClassName='navigation_active'
+				className={`nav_link ${iconAssets[icon]} ${className} `}
+			>
+				{children}
+			</NavLink>
+		) : (
+			<ModalLink
+				{...rest}
+				type={type}
+				to={to}
+				activeClassName='navigation_active'
+				className={`nav_button ${iconAssets[icon]} ${className} `}
+			>
+				{children}
+			</ModalLink>
+		)}
+	</li>
+)
 
 NavItem.defaultProps = {
 	children: '',

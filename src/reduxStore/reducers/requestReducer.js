@@ -4,6 +4,9 @@ import {
 	CHECK_LOGIN_FAILED,
 	CHECK_LOGIN_INITIAL,
 	//
+	CHECK_SESSION_REQUESTED,
+	CHECK_SESSION_ENDED,
+	//
 	GET_NOTIFICATIONS_REQUESTED,
 	GET_NOTIFICATIONS_SUCCEEDED,
 	GET_NOTIFICATIONS_FAILED,
@@ -13,6 +16,7 @@ import {
 const initialState = {
 	loginRequestStatus: 'initial',
 	getNotificationsRequestStatus: 'initial',
+	checkSessionStatus: 'pending',
 }
 
 const requestReducer = (state = initialState, action) => {
@@ -37,6 +41,19 @@ const requestReducer = (state = initialState, action) => {
 			return {
 				...state,
 				loginRequestStatus: 'initial',
+			}
+
+		// CHECK SESSION
+		case CHECK_SESSION_REQUESTED:
+			return {
+				...state,
+				checkSessionStatus: 'pending',
+			}
+
+		case CHECK_SESSION_ENDED:
+			return {
+				...state,
+				checkSessionStatus: 'succeeded',
 			}
 
 		// GET NOTIFICATIONS

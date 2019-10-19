@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 
 import './Loader.scss'
 
-const Loader = ({ id, size }) => {
-	return <div id={id} className={`Loader Loader--${size}`} />
-}
+const Loader = ({ id, size }) => <div id={id} className={`Loader Loader--${size}`} />
 
 Loader.defaultProps = {
 	size: 'medium',

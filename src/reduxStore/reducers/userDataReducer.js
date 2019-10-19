@@ -1,4 +1,8 @@
-import { SET_USER_AUTH } from '../actionTypes/userDataActionTypes'
+import {
+	SET_USER_AUTH,
+	SET_TOKEN_EXPIRED,
+	CLEAR_USER_AUTH_DATA,
+} from '../actionTypes/userDataActionTypes'
 
 const initialState = {
 	isUserAuth: false,
@@ -6,6 +10,7 @@ const initialState = {
 		nickname: '',
 		email: '',
 	},
+	isTokenExpired: false,
 }
 
 const userDataReducer = (state = initialState, action) => {
@@ -15,6 +20,20 @@ const userDataReducer = (state = initialState, action) => {
 				...state,
 				isUserAuth: action.userData.isAuth,
 				data: action.userData.data,
+			}
+		case SET_TOKEN_EXPIRED:
+			return {
+				...state,
+				isTokenExpired: action.isTokenExpired,
+			}
+		case CLEAR_USER_AUTH_DATA:
+			return {
+				isUserAuth: false,
+				data: {
+					nickname: '',
+					email: '',
+				},
+				isTokenExpired: false,
 			}
 		default:
 			return state

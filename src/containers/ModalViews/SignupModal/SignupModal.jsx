@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import './SignupModal.scss'
 
-import { requester } from '../../../services/requester/requester'
+import { Requester } from '../../../services/requester/requester'
 
 import { Form, Input, Group, Checkbox } from '../../../components/FormComponents'
 import Button from '../../../components/CommonComponents/Button/Button'
@@ -14,6 +14,7 @@ class SignupModal extends Component {
 		super(props)
 
 		this.state = {
+			sendRequestStatus: '',
 			requestState: 'initial',
 			email: '',
 			password: '',
@@ -41,11 +42,11 @@ class SignupModal extends Component {
 		const newUserData = { ...this.state }
 		delete newUserData.requestState
 		delete newUserData.repeatedPassword
+		delete newUserData.sendRequestStatus
 
 		this.setState({ requestState: 'pending' })
 
-		requester
-			.post('create_user', newUserData)
+		Requester.send('registerUser', { body: newUserData })
 			.then(() => {
 				this.setState({ sendRequestStatus: 'succeeded' })
 			})
@@ -187,10 +188,6 @@ class SignupModal extends Component {
 						<Checkbox
 							id='agreement_1'
 							label='Czy wyrażasz zgodę na otrzymywanie informacji mailowych od serwisu "City Inspector", dotyczących zmian w serwisie oraz aktualizacji zgłoszeń.'
-						/>
-						<Checkbox
-							id='agreement_2'
-							label='Czy twoje dane takie jak e-mail, imię i nazwisko oraz miasto, mają być widocznie dla innych zarejestowanych użytkowników.'
 						/>
 					</div>
 					<div className='signup__request-status'>
