@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Textarea = ({ id, placeholder, label, floatingLabel, ...rest }) => (
+const Textarea = ({ id, placeholder, label, floatingLabel, className, ...rest }) => (
 	<div className='input-wrapper'>
 		<textarea
-			{...rest}
 			data-animate={floatingLabel}
-			className='input-wrapper__field'
+			className={'input-wrapper__field' + (className ? ' ' + className : '')}
 			id={id}
 			placeholder={placeholder}
+			{...rest}
 		/>
 		<label className='input-wrapper__label' htmlFor={id}>
 			{label}
