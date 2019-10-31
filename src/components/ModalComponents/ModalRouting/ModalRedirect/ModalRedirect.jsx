@@ -7,7 +7,7 @@ class ModalRedirect extends Component {
 
 	componentDidMount() {
 		const { to, ...rest } = this.props
-		this.context.handleOpenModal(this.props.to, rest)
+		this.context.handleOpenModal(to, rest)
 	}
 
 	render() {

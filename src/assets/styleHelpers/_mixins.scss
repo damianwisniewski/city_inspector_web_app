@@ -10,3 +10,12 @@
 	box-shadow: $inset-shadow;
 	text-shadow: $text-shadow;
 }
+
+@mixin sectionContainer {
+	max-width: 1000px;
+	margin: 20px auto;
+	padding: 20px;
+	box-shadow: $shadow;
+	border-radius: 3px;
+	background-color: $white;
+}

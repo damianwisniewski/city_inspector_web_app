@@ -2,7 +2,7 @@ import { put, takeEvery, call, all } from 'redux-saga/effects'
 import { Requester } from '../../services/requester/requester'
 
 // USER ACTIONS
-import { authUser, removeUserAuthData, setTokenExpired } from '../actionCreators/userDataActions'
+import { authUser, removeUserAuthData } from '../actionCreators/userDataActions'
 
 // ACTION TYPES
 import {
@@ -33,9 +33,9 @@ export function* userLogin({ loginData }) {
 					nickname: responseData.nickname,
 					email: responseData.email,
 				},
+				isTokenExpired: false,
 			}),
 		)
-		yield put(setTokenExpired(false))
 		yield put({ type: CHECK_LOGIN_SUCCEEDED })
 	} catch (error) {
 		yield put({

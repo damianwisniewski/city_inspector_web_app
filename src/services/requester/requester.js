@@ -54,11 +54,11 @@ export const Requester = {
 			headers,
 		})
 
-		if (response.status > 400) {
+		if (response.status >= 400) {
 			throw new Error(response.message)
 		}
 
-		const responseBody = response.status !== 204 ? await response.json() : undefined
+		const responseBody = response.status === 200 ? await response.json() : undefined
 
 		return responseBody
 	},
@@ -70,10 +70,6 @@ export const Requester = {
 		this.send('refreshTokens')
 			.then(res => res.json())
 			.then(res => {
-				if (!res.token) {
-					throw new Error(res.message)
-				}
-
 				localStorage.setItem('token', res.token)
 				localStorage.setItem('expiresIn', res.expiresIn)
 				localStorage.setItem('secondaryToken', res.refreshToken)
@@ -87,7 +83,11 @@ export const Requester = {
 				localStorage.removeItem('expiresIn')
 				localStorage.removeItem('secondaryToken')
 
-				store.dispatch(setTokenExpired(true))
+				store.dispatch(
+					setTokenExpired(
+						'Pozostawałeś zbyt długo nieaktywy, dlatego twoja sesja wygasła. Zaloguj się ponownie',
+					),
+				)
 			})
 	},
 

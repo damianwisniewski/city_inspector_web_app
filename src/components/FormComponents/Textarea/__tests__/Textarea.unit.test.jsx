@@ -25,7 +25,7 @@ describe('<Textarea />', () => {
 
 	test('should render correctly Textarea, with floatingLabel value equal false', () => {
 		TextareaElement = shallow(
-			<Textarea floatingLabel={false} placeholder={placeholder} id={id} label={TextareaContent} />,
+			<Textarea labelType='basic' placeholder={placeholder} id={id} label={TextareaContent} />,
 		)
 		expect(toJson(TextareaElement)).toMatchSnapshot()
 	})

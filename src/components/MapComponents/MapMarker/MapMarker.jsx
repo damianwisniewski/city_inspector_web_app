@@ -8,9 +8,9 @@ import './MapMarker.scss'
 
 import icons from '../../../assets/styleModules/icons.module.scss'
 
-const MapMarker = ({ position, data, popupEnabled }) => {
+const MapMarker = ({ position, data = {}, popupEnabled, ...rest }) => {
 	const cutOverflowDescription = value => {
-		if (value.length > 145) {
+		if (value && value.length > 145) {
 			return value.slice(0, 145) + '...'
 		}
 
@@ -20,7 +20,7 @@ const MapMarker = ({ position, data, popupEnabled }) => {
 	const createIcon = type => {
 		let iconType
 
-		switch (type) {
+		switch (type.toLowerCase()) {
 			case 'niebezpieczne miejsca':
 				iconType = 'dangerous'
 				break
@@ -42,7 +42,12 @@ const MapMarker = ({ position, data, popupEnabled }) => {
 	}
 
 	return (
-		<Marker key={`${data.type} ${data.number}`} position={position} icon={createIcon(data.type)}>
+		<Marker
+			key={`${data.type} ${data.number}`}
+			position={position}
+			icon={createIcon(data.type)}
+			{...rest}
+		>
 			{popupEnabled && (
 				<Popup className='marker-info'>
 					<h3 className='marker-info__header'>{data.type}</h3>
@@ -63,6 +68,7 @@ const MapMarker = ({ position, data, popupEnabled }) => {
 
 MapMarker.defaultProps = {
 	popupEnabled: true,
+	draggable: false,
 }
 
 MapMarker.propTypes = {

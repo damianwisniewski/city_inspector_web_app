@@ -18,6 +18,7 @@ $icons: (
 	nature: '\f4d8',
 	trashes: '\f1b8',
 	dangerous: '\f071',
+	remove: '\f1f8',
 );
 
 @each $name, $code in $icons {

@@ -17,10 +17,10 @@ export function removeUserAuthData() {
 	}
 }
 
-export function setTokenExpired(isTokenExpired) {
+export function setTokenExpired(message = '') {
 	return {
 		type: SET_TOKEN_EXPIRED,
-		isTokenExpired,
-		...(isTokenExpired && { isUserAuth: false }),
+		isTokenExpired: true,
+		expireMessage: message,
 	}
 }

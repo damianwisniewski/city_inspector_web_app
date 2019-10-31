@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+// SCSS
 import './ImageGallery.scss'
+import { remove } from '../../../assets/styleModules/icons.module.scss'
+
+// Components
 import Modal from '../../ModalComponents/Modal/Modal'
 import Loader from '../Loader/Loader'
 
@@ -14,13 +18,9 @@ class ImageGallery extends Component {
 			selectedImageLoading: true,
 		}
 
-		const images = {}
-
 		props.imgSources.forEach((value, index) => {
-			images[`image_${index}`] = true
+			this.state[`image_${index}`] = true
 		})
-
-		this.setState({ ...images })
 	}
 
 	handleImageLoaded = e => {
@@ -35,8 +35,22 @@ class ImageGallery extends Component {
 		this.setState({ selectedImage: '', selectedImageLoading: true })
 	}
 
+	handleRemoveClick = e => {
+		if (this.props.onRemoveImage) {
+			const imageElement = e.target.nextSibling
+			const imgName = imageElement.dataset.imageName
+			const stateKey = imageElement.dataset.image
+
+			this.setState({ [stateKey]: null })
+
+			this.props.onRemoveImage({
+				removed: imgName,
+			})
+		}
+	}
+
 	render() {
-		const { imgSources } = this.props
+		const { imgSources, editable } = this.props
 		const { selectedImage, selectedImageLoading } = this.state
 
 		return (
@@ -45,14 +59,22 @@ class ImageGallery extends Component {
 					{imgSources.length ? (
 						imgSources.map((source, index) => (
 							<li className='gallery__item' key={`image-gallery-${index}`}>
+								{editable && (
+									<button
+										type='button'
+										className={`gallery__remove ${remove}`}
+										onClick={this.handleRemoveClick}
+									/>
+								)}
 								<img
 									data-image={`image_${index}`}
+									data-image-name={source.name}
 									onLoad={this.handleImageLoaded}
 									onClick={this.handleImageClick}
 									className={`gallery__image ${
 										this.state[`image_${index}`] ? 'gallery__image--hidden' : ''
 									}`}
-									src={source}
+									src={source.imageData}
 									alt={`gallery-${index}`}
 								/>
 								{this.state[`image_${index}`] && (

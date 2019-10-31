@@ -27,6 +27,4 @@ describe('<ModalRoute />', () => {
 			darkOverlay: true,
 		})
 	})
-
-	//TODO: tests related to context
 })

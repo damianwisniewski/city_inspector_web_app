@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import './Group.scss'
 
-const Group = ({ name, direction, children }) => (
-	<section data-name={name} className={`form-group form-group--${direction}`}>
+const Group = ({ name, direction, children, ...rest }) => (
+	<section data-name={name} className={`form-group form-group--${direction}`} {...rest}>
 		{children}
 	</section>
 )

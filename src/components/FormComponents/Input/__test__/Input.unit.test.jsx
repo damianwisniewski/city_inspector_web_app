@@ -25,7 +25,7 @@ describe('<Input />', () => {
 
 	test('should render correctly Input, with floatingLabel value equal false', () => {
 		InputElement = shallow(
-			<Input floatingLabel={false} placeholder={placeholder} id={id} label={InputText} />,
+			<Input labelType='basic' placeholder={placeholder} id={id} label={InputText} />,
 		)
 		expect(toJson(InputElement)).toMatchSnapshot()
 	})

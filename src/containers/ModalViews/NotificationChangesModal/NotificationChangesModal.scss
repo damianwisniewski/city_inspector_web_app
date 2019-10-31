@@ -1,0 +1,28 @@
+@import '../../../assets/styleHelpers/index';
+
+.changes-modal {
+	min-width: 285px;
+
+	&__header {
+		@include sectionHeader(14px);
+		margin-top: 0;
+	}
+
+	&__link {
+		display: flex;
+		padding: 5px;
+		background-color: $primary-light-blue;
+		font-size: 11px;
+		text-decoration: none;
+
+		&:first-of-type {
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+
+		&:last-of-type {
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+	}
+}

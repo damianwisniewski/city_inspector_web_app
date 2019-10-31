@@ -11,6 +11,7 @@ const initialState = {
 		email: '',
 	},
 	isTokenExpired: false,
+	expireMessage: '',
 }
 
 const userDataReducer = (state = initialState, action) => {
@@ -25,6 +26,8 @@ const userDataReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isTokenExpired: action.isTokenExpired,
+				isUserAuth: false,
+				expireMessage: action.expireMessage,
 			}
 		case CLEAR_USER_AUTH_DATA:
 			return {

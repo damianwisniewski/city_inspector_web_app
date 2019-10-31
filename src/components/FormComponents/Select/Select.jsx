@@ -20,7 +20,15 @@ class Select extends Component {
 	}
 
 	toggleSelectFocus = e => {
-		e.preventDefault()
+		// Prevent default actions for select button only
+		if (e.target.dataset.type === 'select-field') {
+			e.preventDefault()
+		}
+
+		/**
+		 * Focus and do not loose focus on select button,
+		 * when you click custom option list (ul tag or li tags)
+		 */
 		if (this.field.contains(e.target) || this.label.contains(e.target)) {
 			this.setState({ focused: true })
 		} else {
@@ -29,9 +37,15 @@ class Select extends Component {
 	}
 
 	setValue = e => {
-		const { onSelectOption } = this.props
-		this.setState({ selected: e.target.textContent })
-		if (onSelectOption) onSelectOption(e)
+		e.persist()
+
+		const { onChange } = this.props
+		this.setState({ selected: e.target.textContent }, () => {
+			if (onChange) {
+				e.target = this.field
+				onChange(e)
+			}
+		})
 	}
 
 	render() {
@@ -44,15 +58,15 @@ class Select extends Component {
 				<div className={`input-wrapper__field input-wrapper__field--select ${focusClass}`}>
 					<select
 						{...rest}
+						data-type='select-field'
 						className='field__output'
 						ref={field => (this.field = field)}
 						id={id}
 						value={selected}
-						onChange={() => {}}
 					>
 						{children}
 					</select>
-					<ul data-amount={3} className='input-wrapper__select-list'>
+					<ul className='input-wrapper__select-list'>
 						{children.map((option, index) => (
 							<li data-type='list-item' onClick={this.setValue} key={option + '_' + index}>
 								{option.props.children}
@@ -75,7 +89,7 @@ Select.defaultProps = {
 Select.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	onSelectOption: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
 }
 
 export default Select

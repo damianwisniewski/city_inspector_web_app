@@ -71,7 +71,7 @@ class LoginModal extends Component {
 						value={email}
 						label='e-mail'
 						placeholder='Wpisz tutaj swój email...'
-						floatingLabel
+						labelType='floating'
 						type='email'
 						autoComplete='username'
 						pattern='.+@.+'
@@ -84,7 +84,7 @@ class LoginModal extends Component {
 						value={password}
 						label='hasło'
 						placeholder='Podaj hasło...'
-						floatingLabel
+						labelType='floating'
 						type='password'
 						autoComplete='current-password'
 						required

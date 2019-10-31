@@ -20,7 +20,7 @@ exports[`<ForgottenPassModal /> should render correctly ForgottenPassModal 1`] =
   >
     <Input
       autocomplete="email"
-      floatingLabel={true}
+      labelType='floating'
       id="reminder-email-field"
       inputRef={[Function]}
       label="e-mail"

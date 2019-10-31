@@ -25,7 +25,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="email"
         data-type="email"
-        floatingLabel={true}
+        labelType='floating'
         id="email-field"
         inputRef={[Function]}
         label="E-mail*"
@@ -39,7 +39,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="new-password"
         data-type="password"
-        floatingLabel={true}
+        labelType='floating'
         id="password-field"
         inputRef={[Function]}
         label="Hasło*"
@@ -56,7 +56,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="new-password"
         data-type="repeatedPassword"
-        floatingLabel={true}
+        labelType='floating'
         id="repeat-password-field"
         inputRef={[Function]}
         label="Powtórz hasło*"
@@ -71,7 +71,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       />
       <Input
         data-type="nickname"
-        floatingLabel={true}
+        labelType='floating'
         id="nickname-field"
         inputRef={[Function]}
         label="Nickname*"
@@ -89,7 +89,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="given-name"
         data-type="firstname"
-        floatingLabel={true}
+        labelType='floating'
         id="name-field"
         inputRef={[Function]}
         label="Imię"
@@ -101,7 +101,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="family-name"
         data-type="lastname"
-        floatingLabel={true}
+        labelType='floating'
         id="lastname-field"
         inputRef={[Function]}
         label="Nazwisko"
@@ -113,7 +113,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="address-level2"
         data-type="city"
-        floatingLabel={true}
+        labelType='floating'
         id="city-field"
         inputRef={[Function]}
         label="Miasto"

@@ -21,7 +21,7 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
     <Input
       autoComplete="username"
       data-type="email"
-      floatingLabel={true}
+      labelType='floating'
       id="login-email-field"
       inputRef={[Function]}
       label="e-mail"
@@ -35,7 +35,7 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
     <Input
       autoComplete="current-password"
       data-type="password"
-      floatingLabel={true}
+      labelType='floating'
       id="login-password-field"
       inputRef={[Function]}
       label="hasło"
@@ -117,7 +117,7 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
     <Input
       autoComplete="username"
       data-type="email"
-      floatingLabel={true}
+      labelType='floating'
       id="login-email-field"
       inputRef={[Function]}
       label="e-mail"
@@ -131,7 +131,7 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
     <Input
       autoComplete="current-password"
       data-type="password"
-      floatingLabel={true}
+      labelType='floating'
       id="login-password-field"
       inputRef={[Function]}
       label="hasło"

@@ -9,5 +9,6 @@
 	"files.autoSave": "onFocusChange",
 	"editor.trimAutoWhitespace": false,
 	"prettier.htmlWhitespaceSensitivity": "ignore",
-	"prettier.eslintIntegration": true
+	"prettier.eslintIntegration": true,
+	"cSpell.language": "en-GB,en"
 }

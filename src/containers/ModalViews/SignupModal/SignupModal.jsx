@@ -4,7 +4,7 @@ import './SignupModal.scss'
 
 import { Requester } from '../../../services/requester/requester'
 
-import { Form, Input, Group, Checkbox } from '../../../components/FormComponents'
+import { Form, Input, Group, Checkbox, Radio } from '../../../components/FormComponents'
 import Button from '../../../components/CommonComponents/Button/Button'
 import Status from '../../../components/CommonComponents/Status/Status'
 import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
@@ -14,15 +14,18 @@ class SignupModal extends Component {
 		super(props)
 
 		this.state = {
-			sendRequestStatus: '',
 			requestState: 'initial',
 			email: '',
 			password: '',
 			repeatedPassword: '',
+			emailAgreement: '',
+			gender: '',
 			nickname: '',
 			firstname: '',
 			lastname: '',
 			city: '',
+
+			dataToSend: {},
 		}
 
 		this.repeatPassInput = React.createRef()
@@ -39,28 +42,30 @@ class SignupModal extends Component {
 	registerUser = e => {
 		e.preventDefault()
 
-		const newUserData = { ...this.state }
-		delete newUserData.requestState
-		delete newUserData.repeatedPassword
-		delete newUserData.sendRequestStatus
-
 		this.setState({ requestState: 'pending' })
 
-		Requester.send('registerUser', { body: newUserData })
+		// TODO: remove empty values if happends in dataToSend (create helper function, it will be usefull in other places also)
+		Requester.send('registerUser', { body: this.state.dataToSend })
 			.then(() => {
-				this.setState({ sendRequestStatus: 'succeeded' })
+				this.setState({ requestState: 'succeeded' })
 			})
 			.catch(() => {
-				this.setState({ sendRequestStatus: 'failed' })
+				this.setState({ requestState: 'failed' })
 			})
 	}
 
 	handleInputChanges = e => {
 		const field = e.target.dataset.type
 		const isPassInput = field === 'password' || field === 'repeatedPassword'
+		const isAgreementField = field === 'emailAgreement'
+
+		const property = {
+			[field]: isAgreementField ? (e.target.checked ? 'Y' : 'N') : e.target.value,
+		}
 
 		this.setState({
-			[field]: e.target.value,
+			...property,
+			dataToSend: { ...this.state.dataToSend, ...property },
 		})
 
 		if (isPassInput) {
@@ -77,6 +82,8 @@ class SignupModal extends Component {
 			lastname,
 			nickname,
 			password,
+			gender,
+			emailAgreement,
 			repeatedPassword,
 			requestState,
 		} = this.state
@@ -96,7 +103,7 @@ class SignupModal extends Component {
 							value={email}
 							label='E-mail*'
 							placeholder='Podaj swój adres email...'
-							floatingLabel
+							labelType='floating'
 							type='email'
 							pattern='.+@.+'
 							autoComplete='email'
@@ -110,7 +117,7 @@ class SignupModal extends Component {
 							value={password}
 							label='Hasło*'
 							placeholder='Podaj hasło...'
-							floatingLabel
+							labelType='floating'
 							type='password'
 							name='password'
 							autoComplete='new-password'
@@ -127,7 +134,7 @@ class SignupModal extends Component {
 							value={repeatedPassword}
 							label='Powtórz hasło*'
 							placeholder='Powtórz hasło...'
-							floatingLabel
+							labelType='floating'
 							type='password'
 							autoComplete='new-password'
 							minLength='6'
@@ -141,7 +148,7 @@ class SignupModal extends Component {
 							value={nickname}
 							label='Nickname*'
 							placeholder='Podaj swój adres email...'
-							floatingLabel
+							labelType='floating'
 							type='text'
 							required
 						/>
@@ -155,7 +162,7 @@ class SignupModal extends Component {
 							value={firstname}
 							label='Imię'
 							placeholder='Podaj swoje imię...'
-							floatingLabel
+							labelType='floating'
 							type='text'
 							autoComplete='given-name'
 						/>
@@ -166,7 +173,7 @@ class SignupModal extends Component {
 							value={lastname}
 							label='Nazwisko'
 							placeholder='Podaj swoje nazwisko...'
-							floatingLabel
+							labelType='floating'
 							type='text'
 							autoComplete='family-name'
 						/>
@@ -177,16 +184,36 @@ class SignupModal extends Component {
 							value={city}
 							label='Miasto'
 							placeholder='Podaj swoje miasto...'
-							floatingLabel
+							labelType='floating'
 							type='text'
 							name='city'
 							autoComplete='address-level2'
 						/>
+						<Group name='Płeć' onChange={this.handleInputChanges}>
+							<Radio
+								data-type='gender'
+								name='gender'
+								value='M'
+								label='Mężczyzna'
+								checked={gender === 'M'}
+							/>
+							<Radio
+								data-type='gender'
+								name='gender'
+								value='F'
+								label='Kobieta'
+								checked={gender === 'F'}
+							/>
+						</Group>
 					</Group>
 					{/* Agreements checkbox */}
 					<div className='signup__agreements-wrapper'>
 						<Checkbox
-							id='agreement_1'
+							id='emailAgreement'
+							data-type='emailAgreement'
+							name='emailAgreement'
+							checked={emailAgreement === 'Y'}
+							onChange={this.handleInputChanges}
 							label='Czy wyrażasz zgodę na otrzymywanie informacji mailowych od serwisu "City Inspector", dotyczących zmian w serwisie oraz aktualizacji zgłoszeń.'
 						/>
 					</div>

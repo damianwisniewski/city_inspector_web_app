@@ -26,6 +26,4 @@ describe('<ModalLink />', () => {
 
 		expect(toJson(ModalLinkComponent)).toMatchSnapshot()
 	})
-
-	//TODO: tests related to context
 })

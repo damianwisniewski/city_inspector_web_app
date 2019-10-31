@@ -52,7 +52,7 @@ class ForgottenPassModal extends Component {
 						value={email}
 						label='e-mail'
 						placeholder='Wpisz tutaj swój email...'
-						floatingLabel
+						labelType='floating'
 						type='email'
 						autocomplete='email'
 						pattern='.+@.+'

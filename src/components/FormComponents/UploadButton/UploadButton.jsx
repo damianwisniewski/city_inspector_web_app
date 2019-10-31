@@ -33,7 +33,7 @@ class UploadButton extends Component {
 							const reader = new FileReader()
 
 							reader.addEventListener('load', event => {
-								resolve(<img src={event.target.result} alt={file.name} />)
+								resolve({ imageData: event.target.result, name: file.name })
 							})
 
 							reader.addEventListener('error', () => {
@@ -132,7 +132,7 @@ class UploadButton extends Component {
 				<input
 					{...rest}
 					ref={input => (this.input = input)}
-					accept='image/*'
+					accept={acceptsFile}
 					onDrop={this.handleDrop}
 					onDragEnter={this.inDropArea}
 					onDragLeave={this.outOfDropArea}
