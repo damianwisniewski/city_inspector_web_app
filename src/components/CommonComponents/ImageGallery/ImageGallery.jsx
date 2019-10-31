@@ -100,6 +100,7 @@ class ImageGallery extends Component {
 							onLoad={this.handleImageLoaded}
 							src={selectedImage}
 							alt='gallery__image'
+							className='gallery__large-image'
 						/>
 						{selectedImageLoading && (
 							<div className='loader-wrapper'>

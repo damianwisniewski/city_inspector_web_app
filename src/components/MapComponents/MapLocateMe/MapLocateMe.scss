@@ -1,0 +1,11 @@
+@import '../../../assets/styleHelpers/index';
+
+.locate-control {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+
+	[class*='icons_loader']::before {
+		animation: rotate infinite 2s cubic-bezier(0.28, 0.81, 1, 1);
+	}
+}

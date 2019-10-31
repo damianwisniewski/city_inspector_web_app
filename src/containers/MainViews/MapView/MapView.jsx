@@ -11,6 +11,7 @@ import { checkPropertiesEquality, translateParams } from '../../../helpers'
 
 import { sagaRequestNotifications } from '../../../reduxStore/actionCreators/requestActions'
 import { clearNotifications } from '../../../reduxStore/actionCreators/notificationsActions'
+import MapLocateMe from '../../../components/MapComponents/MapLocateMe/MapLocateMe'
 
 // const { REACT_APP_TITLE } = process.env
 
@@ -113,6 +114,7 @@ class MapView extends Component {
 						/>
 					</div>
 					<ZoomControl position='topright' />
+					<MapLocateMe onClick={() => {}} />
 					<MapSearch onSelect={this.handleSearchLoc} placeholder='Wyszukaj miasto...' />
 					<MapTypeControl onClick={this.handleTypeControlClick} {...typeControlsStatuses} />
 				</MapLayout>
