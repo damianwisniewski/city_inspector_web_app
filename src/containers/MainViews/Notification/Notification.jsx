@@ -12,7 +12,7 @@ import './Notification.scss'
 import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
 import CommentsWrapper from '../../../components/CommentsComponents/CommentsWrapper/CommentsWrapper'
 
-const { REACT_APP_TITLE } = process.env
+// const { REACT_APP_TITLE } = process.env
 
 class Notification extends Component {
 	constructor(props) {

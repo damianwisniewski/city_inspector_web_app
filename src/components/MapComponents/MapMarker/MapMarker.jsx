@@ -34,7 +34,7 @@ const MapMarker = ({ position, data = {}, popupEnabled, ...rest }) => {
 				iconType = 'trashes'
 				break
 			default:
-				iconType = ''
+				iconType = 'default-map-marker'
 				break
 		}
 

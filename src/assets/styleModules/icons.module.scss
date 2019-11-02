@@ -20,6 +20,7 @@ $icons: (
 	dangerous: '\f071',
 	remove: '\f1f8',
 	locate: '\f3c5',
+	default-map-marker: '\f3c5',
 );
 
 @each $name, $code in $icons {

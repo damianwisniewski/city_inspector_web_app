@@ -4,7 +4,7 @@ import './NewNotification.scss'
 import icons from '../../../assets/styleModules/icons.module.scss'
 
 import { Form, Select, Input, Textarea, UploadButton } from '../../../components/FormComponents'
-import { MapLayout, MapMarker } from '../../../components/MapComponents'
+import { MapLayout, MapMarker, MapLocateMe } from '../../../components/MapComponents'
 import ImageGallery from '../../../components/CommonComponents/ImageGallery/ImageGallery'
 import Button from '../../../components/CommonComponents/Button/Button'
 
@@ -46,6 +46,10 @@ class NewNotification extends Component {
 	handleRemoveImage = eventData => {
 		const filteredPhotos = this.state.photos.filter(photo => photo.name !== eventData.removed)
 		this.setState({ photos: filteredPhotos })
+	}
+
+	handleLocalize = locCoords => {
+		this.setState({ localization: locCoords })
 	}
 
 	render() {
@@ -154,7 +158,7 @@ class NewNotification extends Component {
 							/>
 						</div>
 						<section className='section__map'>
-							<MapLayout center={[52.2297, 21.0122]} zoom={10}>
+							<MapLayout center={this.state.localization} zoom={10}>
 								<MapMarker
 									popupEnabled={false}
 									onDragEnd={this.handlePointerMove}
@@ -164,6 +168,7 @@ class NewNotification extends Component {
 									}}
 									draggable
 								/>
+								<MapLocateMe onLocalize={this.handleLocalize} />
 							</MapLayout>
 						</section>
 					</section>

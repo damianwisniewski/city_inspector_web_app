@@ -13,16 +13,26 @@ class ImageGallery extends Component {
 	constructor(props) {
 		super(props)
 
+		/**
+		 * Creates properties with key of following pattern "image_[indexNumber]"
+		 * It's necessary to proper image loading handle
+		 */
+		const images = props.imgSources.reduce((accumulator, currentValue, currentIndex) => {
+			accumulator[`image_${currentIndex}`] = true
+			return accumulator
+		}, {})
+
 		this.state = {
 			selectedImage: '',
 			selectedImageLoading: true,
+			...images,
 		}
-
-		props.imgSources.forEach((value, index) => {
-			this.state[`image_${index}`] = true
-		})
 	}
 
+	/**
+	 * Sets states property image_index ("image_1") to false
+	 * That means image is not loading
+	 */
 	handleImageLoaded = e => {
 		this.setState({ [e.target.dataset.image]: false })
 	}

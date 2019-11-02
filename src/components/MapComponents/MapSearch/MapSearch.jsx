@@ -56,10 +56,6 @@ class MapSearch extends Component {
 		this.setState({ focused: true })
 	}
 
-	handleClickForm = e => {
-		console.log(e.target)
-	}
-
 	handleSubmit = e => {
 		e.preventDefault()
 		const firstResult = this.state.searchResult[0]
@@ -94,7 +90,6 @@ class MapSearch extends Component {
 			<form
 				ref={wrapper => (this.scrollWrapper = wrapper)}
 				onFocus={this.handleFocusInput}
-				onClick={this.handleClickForm}
 				id='search-form'
 				className={`leaflet-control leaflet-bar search${focused ? ' search--focused' : ''}`}
 				onSubmit={this.handleSubmit}

@@ -162,6 +162,8 @@ export const Requester = {
 				case 'Form-Data':
 					headers['Content-Type'] = 'multipart/form-data'
 					break
+				default:
+					break
 			}
 		})
 

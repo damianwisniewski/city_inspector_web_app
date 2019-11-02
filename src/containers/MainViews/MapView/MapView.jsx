@@ -6,12 +6,17 @@ import MarkerClusterGroup from 'react-leaflet-markercluster'
 import './MapView.scss'
 
 import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
-import { MapLayout, MapMarker, MapSearch, MapTypeControl } from '../../../components/MapComponents/'
+import {
+	MapLayout,
+	MapMarker,
+	MapSearch,
+	MapTypeControl,
+	MapLocateMe,
+} from '../../../components/MapComponents/'
 import { checkPropertiesEquality, translateParams } from '../../../helpers'
 
 import { sagaRequestNotifications } from '../../../reduxStore/actionCreators/requestActions'
 import { clearNotifications } from '../../../reduxStore/actionCreators/notificationsActions'
-import MapLocateMe from '../../../components/MapComponents/MapLocateMe/MapLocateMe'
 
 // const { REACT_APP_TITLE } = process.env
 
@@ -21,6 +26,9 @@ class MapView extends Component {
 	state = {
 		center: [52.2297, 21.0122],
 		bounds: MapView.initialBounds,
+		zoom: 6,
+
+		myLocation: null,
 
 		damage: true,
 		nature: true,
@@ -43,6 +51,10 @@ class MapView extends Component {
 	handleTypeControlClick = e => {
 		const isButtonEnabled = this.state[e.target.dataset.type]
 		this.setState({ [e.target.dataset.type]: !isButtonEnabled })
+	}
+
+	handleLocalize = locCoords => {
+		this.setState({ myLocation: locCoords })
 	}
 
 	requestForNotifications = () => {
@@ -81,12 +93,12 @@ class MapView extends Component {
 	}
 
 	render() {
-		const { center, bounds, ...typeControlsStatuses } = this.state
+		const { center, bounds, zoom, myLocation, ...typeControlsStatuses } = this.state
 		const { notificationList, getNotificationsRequestStatus } = this.props
 
 		return (
 			<div className='map-view'>
-				<MapLayout bounds={bounds} center={center} maxBounds={MapView.initialBounds} zoom={6}>
+				<MapLayout bounds={bounds} center={center} maxBounds={MapView.initialBounds} zoom={zoom}>
 					<MarkerClusterGroup>
 						{notificationList &&
 							Boolean(notificationList.length) &&
@@ -104,6 +116,15 @@ class MapView extends Component {
 								/>
 							))}
 					</MarkerClusterGroup>
+					{myLocation && (
+						<MapMarker
+							popupEnabled={false}
+							position={myLocation}
+							data={{
+								type: 'default',
+							}}
+						/>
+					)}
 					<div className='map-view__loader-wrapper'>
 						<RequestStatus
 							className='map-view__loader-wrapper'
@@ -114,7 +135,7 @@ class MapView extends Component {
 						/>
 					</div>
 					<ZoomControl position='topright' />
-					<MapLocateMe onClick={() => {}} />
+					<MapLocateMe onLocalize={this.handleLocalize} />
 					<MapSearch onSelect={this.handleSearchLoc} placeholder='Wyszukaj miasto...' />
 					<MapTypeControl onClick={this.handleTypeControlClick} {...typeControlsStatuses} />
 				</MapLayout>

@@ -15,6 +15,7 @@ const MapLayout = ({ children, bounds, center, maxBounds, zoom }) => (
 		minZoom={6}
 		maxZoom={18}
 		zoomControl={false}
+		useFlyTo
 	>
 		<TileLayer
 			attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>'
@@ -31,7 +32,6 @@ MapLayout.defaultProps = {
 	zoomControl: false,
 	mapSearch: false,
 	mapTypeControl: false,
-	setPosition: {},
 }
 
 MapLayout.propTypes = {
@@ -41,7 +41,6 @@ MapLayout.propTypes = {
 	zoomControl: PropTypes.bool,
 	mapSearch: PropTypes.bool,
 	mapTypeControl: PropTypes.bool,
-	setPosition: PropTypes.object,
 }
 
 export default MapLayout
