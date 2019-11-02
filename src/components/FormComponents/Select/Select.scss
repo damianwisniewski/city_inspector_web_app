@@ -1,34 +1,41 @@
 @import '../../../assets/styleHelpers/index';
 
 .input-wrapper--select {
-	z-index: 50;
 	position: relative;
+	z-index: 50;
 
 	&::after {
-		content: '\f107';
-		font-family: 'Font Awesome 5 Free';
-		font-size: 18px;
-		font-weight: 900;
 		position: absolute;
-		z-index: 1;
-		right: 20px;
 		top: 50%;
+		right: 20px;
+		z-index: 1;
+
+		font-weight: 900;
+		font-size: 18px;
+		font-family: 'Font Awesome 5 Free';
+
 		transform: translateY(-50%);
+
+		content: '\f107';
 	}
 
 	.field__output {
 		position: relative;
 		z-index: 1;
-		font-size: 16px;
-		background-color: transparent;
-		margin: 0;
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
 		width: 100%;
 		height: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
+		margin: 0;
 		padding: 0 10px;
+
+		font-size: 16px;
+
+		background-color: transparent;
 		border: none;
+
 		appearance: none;
 
 		&::-ms-expand {
@@ -46,21 +53,25 @@
 		top: 33px;
 		left: 50%;
 		z-index: -1;
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
-		background-color: $white;
-		color: $dark_gray;
-		box-shadow: $shadow;
+
 		width: 98%;
-		list-style: none;
+		max-height: 200px;
 		margin: 0;
 		padding: 0;
-		opacity: 0;
 		overflow: hidden;
-		visibility: hidden;
+
+		color: $dark_gray;
+
+		list-style: none;
+		background-color: $white;
 		border-top: none;
-		max-height: 200px;
+		border-bottom-right-radius: 3px;
+		border-bottom-left-radius: 3px;
+		box-shadow: $shadow;
 		transform: translateX(-50%) translateY(-35px);
+		visibility: hidden;
+		opacity: 0;
+
 		transition: opacity 0.3s linear, transform 0.3s linear, visibility 0.3s linear;
 		transition-delay: 0.1s;
 
@@ -78,8 +89,9 @@
 		box-shadow: $shine;
 
 		& li:hover {
-			background-color: $primary_blue;
 			color: $white;
+
+			background-color: $primary_blue;
 		}
 
 		& ~ .input-wrapper__label {
@@ -87,9 +99,9 @@
 		}
 
 		& .input-wrapper__select-list {
+			transform: translateX(-50%) translateY(0%);
 			visibility: visible;
 			opacity: 1;
-			transform: translateX(-50%) translateY(0%);
 		}
 	}
 }

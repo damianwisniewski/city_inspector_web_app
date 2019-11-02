@@ -1,23 +1,29 @@
 @import '../../../assets/styleHelpers/index';
 
 @mixin arrow-down {
-	content: '';
 	position: absolute;
+
 	width: 0;
 	height: 0;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
+
 	border-top: 15px solid $light_gray;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+
+	content: '';
 }
 
 @mixin arrow-up {
-	content: '';
 	position: absolute;
+
 	width: 0;
 	height: 0;
-	border-left: 5px solid transparent;
+
 	border-right: 5px solid transparent;
 	border-bottom: 15px solid $light_gray;
+	border-left: 5px solid transparent;
+
+	content: '';
 }
 
 .drop-down-parent {
@@ -25,26 +31,32 @@
 
 	.drop-down {
 		position: absolute;
-		visibility: hidden;
+		z-index: 1000;
+
+		padding: 5px;
+
+		font-size: 11px;
+
 		background-color: $light_gray;
 		border-radius: 5px;
-		font-size: 11px;
 		box-shadow: $shadow;
-		padding: 5px;
+		visibility: hidden;
 		opacity: 0;
-		z-index: 1000;
+
 		transition: opacity 0.2s linear;
 
 		&--top {
 			&-center {
 				top: 0;
 				left: 50%;
+
 				transform: translate(-50%, calc(-100% - 14px));
 
 				&::before {
 					@include arrow-down();
 					bottom: -15px;
 					left: 50%;
+
 					transform: translateX(-50%);
 					filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.6));
 				}
@@ -53,12 +65,14 @@
 			&-left {
 				top: 0;
 				left: 0;
+
 				transform: translate(-90%, calc(-100% - 14px));
 
 				&::before {
 					@include arrow-down();
-					bottom: -15px;
 					right: 0;
+					bottom: -15px;
+
 					transform: translateX(-50%);
 					filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.6));
 				}
@@ -67,12 +81,14 @@
 			&-right {
 				top: 0;
 				right: 0;
+
 				transform: translate(90%, calc(-100% - 14px));
 
 				&::before {
 					@include arrow-down();
 					bottom: -15px;
 					left: 0;
+
 					transform: translateX(50%);
 					filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.6));
 				}
@@ -81,14 +97,16 @@
 
 		&--bottom {
 			&-center {
-				left: 50%;
 				bottom: 0;
+				left: 50%;
+
 				transform: translate(-50%, calc(100% + 14px));
 
 				&::before {
 					@include arrow-up();
 					top: -15px;
 					left: 50%;
+
 					transform: translateX(-50%);
 					filter: drop-shadow(0px -2px 1px rgba(0, 0, 0, 0.17));
 				}
@@ -97,26 +115,30 @@
 			&-left {
 				bottom: 0;
 				left: 0;
+
 				transform: translate(-90%, calc(100% + 14px));
 
 				&::before {
 					@include arrow-up();
 					top: -15px;
 					right: 0;
+
 					transform: translateX(-50%);
 					filter: drop-shadow(0px -2px 1px rgba(0, 0, 0, 0.17));
 				}
 			}
 
 			&-right {
-				bottom: 0;
 				right: 0;
+				bottom: 0;
+
 				transform: translate(90%, calc(100% + 14px));
 
 				&::before {
 					@include arrow-up();
 					top: -15px;
 					left: 0;
+
 					transform: translateX(50%);
 					filter: drop-shadow(0px -2px 1px rgba(0, 0, 0, 0.17));
 				}

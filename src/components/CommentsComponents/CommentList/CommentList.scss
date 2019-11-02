@@ -5,9 +5,10 @@
 }
 
 .comment {
-	list-style: none;
-	padding: 15px;
 	margin: 10px 0;
+	padding: 15px;
+
+	list-style: none;
 	background: lighten($primary_light_blue, 30%);
 
 	&__header-wrapper {
@@ -20,8 +21,9 @@
 		font-size: 12px;
 
 		& > p {
-			color: $dark-gray;
 			margin: 0;
+
+			color: $dark-gray;
 		}
 	}
 

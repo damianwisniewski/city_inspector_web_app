@@ -1,21 +1,24 @@
 @mixin sectionHeader($font-size) {
-	font-size: $font-size;
-	text-align: center;
-	font-family: $secondary_font;
-	color: $light_gray;
-	background-color: $primary_blue;
 	margin: 1em 0.66em;
 	padding: 0.66em;
+
+	color: $light_gray;
+	font-size: $font-size;
+	font-family: $secondary_font;
+	text-align: center;
+	text-shadow: $text-shadow;
+
+	background-color: $primary_blue;
 	border-radius: 0.33em;
 	box-shadow: $inset-shadow;
-	text-shadow: $text-shadow;
 }
 
 @mixin sectionContainer {
 	max-width: 1000px;
 	margin: 20px auto;
 	padding: 20px;
-	box-shadow: $shadow;
-	border-radius: 3px;
+
 	background-color: $white;
+	border-radius: 3px;
+	box-shadow: $shadow;
 }

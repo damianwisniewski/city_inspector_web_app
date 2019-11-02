@@ -2,13 +2,15 @@
 
 .type-controls {
 	position: absolute;
-	bottom: 0;
 	right: 0;
+	bottom: 0;
+
 	margin: 10px;
 	margin-bottom: 25px;
 }
 
 a.leaflet-control--inactive {
-	background-color: #f4f4f4 !important;
 	color: #bbb !important;
+
+	background-color: #f4f4f4 !important;
 }

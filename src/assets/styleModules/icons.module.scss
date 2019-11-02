@@ -27,9 +27,11 @@ $icons: (
 	.#{$name} {
 		&::before {
 			display: block;
-			font-family: 'Font Awesome 5 Free';
-			font-size: 20px;
+
 			font-weight: 900;
+			font-size: 20px;
+			font-family: 'Font Awesome 5 Free';
+
 			content: $code;
 		}
 	}

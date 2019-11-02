@@ -7,38 +7,45 @@
 	}
 
 	&__title {
+		margin: 0;
+
 		color: $dark_gray;
 		font-weight: bold;
-		margin: 0;
 		font-size: 14px;
 	}
 
 	p.marker-info__sub-header {
-		font-weight: bold;
 		margin: 10px 0;
+
+		font-weight: bold;
 	}
 
 	p.marker-info__date {
-		color: $dark_gray;
 		margin: 10px 0;
+
+		color: $dark_gray;
 	}
 
 	p.marker-info__description {
-		margin: 0;
-		max-height: 50px;
 		position: relative;
+
+		max-height: 50px;
+		margin: 0;
 		overflow: hidden;
 	}
 
 	a.marker-info__button {
 		display: block;
-		text-decoration: none;
-		color: $white;
-		background-color: $primary_light_blue;
-		padding: 5px;
-		border-radius: 3px;
 		margin: 10px 15px;
+		padding: 5px;
+
+		color: $white;
 		text-align: center;
+		text-decoration: none;
+
+		background-color: $primary_light_blue;
+		border-radius: 3px;
+
 		transition: background-color 0.1s linear;
 
 		&:hover {

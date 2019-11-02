@@ -1,19 +1,22 @@
 @import '../../../assets/styleHelpers/index';
 
 .Loader {
-	width: 100%;
 	display: flex;
 	justify-content: center;
+	width: 100%;
 
 	&::after {
-		content: '\f110';
 		display: block;
-		font-family: 'Font Awesome 5 Free';
-		font-weight: 900;
-		padding: 3px;
 		width: min-content;
+		padding: 3px;
+
 		color: $primary_light_blue;
+		font-weight: 900;
+		font-family: 'Font Awesome 5 Free';
+
 		animation: rotate infinite 1.3s cubic-bezier(0.28, 0.81, 1, 1);
+
+		content: '\f110';
 	}
 
 	&--small {

@@ -2,15 +2,17 @@
 
 .status-component {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	font-size: inherit;
-	color: inherit;
+	justify-content: center;
 	margin: 10px;
 
+	color: inherit;
+	font-size: inherit;
+
 	&::before {
-		font-size: inherit;
 		padding: 0 5px 0 0;
+
+		font-size: inherit;
 	}
 
 	&--error::before {

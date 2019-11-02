@@ -11,9 +11,11 @@
 	&__link {
 		display: flex;
 		padding: 5px;
-		background-color: $primary-light-blue;
+
 		font-size: 11px;
 		text-decoration: none;
+
+		background-color: $primary-light-blue;
 
 		&:first-of-type {
 			border-top-left-radius: 5px;
@@ -21,8 +23,8 @@
 		}
 
 		&:last-of-type {
-			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
+			border-bottom-left-radius: 5px;
 		}
 	}
 }

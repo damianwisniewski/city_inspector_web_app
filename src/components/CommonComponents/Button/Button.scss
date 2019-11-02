@@ -14,19 +14,23 @@ $fontSizes: (
 );
 
 .button {
-	font-family: $secondary_font;
-	font-weight: 900;
-	padding: 10px 20px;
 	margin: 0 10px;
-	box-shadow: $small_shadow;
-	border-radius: 5px;
+	padding: 10px 20px;
+
+	font-weight: 900;
+	font-family: $secondary_font;
+
 	border: none;
+	border-radius: 5px;
 	outline: none;
-	transition: background-color 0.1s ease-out;
+	box-shadow: $small_shadow;
 	cursor: pointer;
+
+	transition: background-color 0.1s ease-out;
 
 	&:disabled {
 		color: $white !important;
+
 		background-color: $gray !important;
 		cursor: not-allowed;
 	}
@@ -40,8 +44,9 @@ $fontSizes: (
 		}
 
 		&.#{$name} {
-			background-color: $color;
 			color: $font-color;
+
+			background-color: $color;
 
 			&:active {
 				background-color: darken($color: $color, $amount: 10%);
@@ -54,23 +59,27 @@ $fontSizes: (
 		$padding-horizontal: $size + 4px;
 
 		&.button--#{$name} {
-			font-size: $size;
 			padding: $padding-vertical $padding-horizontal;
+
+			font-size: $size;
 		}
 	}
 }
 
 .text-button {
 	font-family: $secondary_font;
+	text-decoration: underline;
+
+	background-color: transparent;
 	border: none;
 	outline: none;
-	background-color: transparent;
-	text-decoration: underline;
-	transition: color 0.1s ease-out;
 	cursor: pointer;
+
+	transition: color 0.1s ease-out;
 
 	&:disabled {
 		color: $gray !important;
+
 		cursor: not-allowed;
 	}
 
@@ -89,8 +98,9 @@ $fontSizes: (
 		$padding-horizontal: $size + 4px;
 
 		&.button--#{$name} {
-			font-size: $size;
 			padding: $padding-vertical $padding-horizontal;
+
+			font-size: $size;
 		}
 	}
 }

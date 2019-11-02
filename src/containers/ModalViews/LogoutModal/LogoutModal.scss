@@ -8,13 +8,14 @@
 	}
 
 	&__context {
-		font-size: 15px;
 		margin: 20px;
+
 		color: $dark_gray;
+		font-size: 15px;
 	}
 
 	&__buttons-wrapper {
-		padding: 10px;
 		width: 100%;
+		padding: 10px;
 	}
 }

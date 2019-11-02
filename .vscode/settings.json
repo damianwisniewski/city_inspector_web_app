@@ -1,13 +1,8 @@
 {
 	"editor.formatOnSave": true,
-	"[javascript]": {
-		"editor.formatOnSave": false
-	},
-	"eslint.autoFixOnSave": true,
-	"eslint.alwaysShowStatus": true,
-	"prettier.disableLanguages": ["js"],
 	"files.autoSave": "onFocusChange",
 	"editor.trimAutoWhitespace": false,
 	"prettier.htmlWhitespaceSensitivity": "ignore",
-	"cSpell.language": "en-GB,en"
+	"cSpell.language": "en-GB,en",
+	"prettier.stylelintIntegration": true
 }

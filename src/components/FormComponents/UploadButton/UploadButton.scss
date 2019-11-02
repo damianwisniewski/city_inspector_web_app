@@ -6,16 +6,20 @@
 		top: 35px;
 		left: 35px;
 		z-index: 10;
-		width: calc(100% - 70px);
-		height: 100px;
-		border: 1px dashed $dark-gray;
-		background-color: $white;
-		border-radius: 3px;
-		font-size: 13px;
+
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
+		width: calc(100% - 70px);
+		height: 100px;
+
+		font-size: 13px;
+
+		background-color: $white;
+		border: 1px dashed $dark-gray;
+		border-radius: 3px;
+
 		transition: border 0.4s linear;
 
 		p {
@@ -27,18 +31,22 @@
 		}
 
 		&::before {
-			content: '';
-			z-index: -5;
 			position: absolute;
 			top: -25px;
 			left: -25px;
-			padding: 24px;
-			border-radius: 3px;
+			z-index: -5;
+
 			display: block;
-			border: 1px solid $gray;
 			width: 100%;
 			height: 100%;
+			padding: 24px;
+
+			border: 1px solid $gray;
+			border-radius: 3px;
+
 			transition: border-color 0.3s linear;
+
+			content: '';
 		}
 
 		&--active::before {
@@ -46,17 +54,21 @@
 		}
 
 		&::after {
-			content: '';
 			position: absolute;
 			top: -20px;
 			left: -20px;
-			padding: 5px;
-			border-radius: 3px;
+
 			display: block;
-			border: 15px solid $white;
 			width: 100%;
 			height: 100%;
+			padding: 5px;
+
+			border: 15px solid $white;
+			border-radius: 3px;
+
 			transition: border-color 0.3s linear;
+
+			content: '';
 		}
 
 		&--active::after {
@@ -66,20 +78,24 @@
 
 	.input-wrapper__upload-instruction {
 		padding: 5px;
-		font-style: italic;
+
 		color: $dark-gray;
+		font-style: italic;
 	}
 
 	.input-wrapper__upload-status {
 		min-height: 32px;
+
 		text-align: center;
 	}
 
 	.input-wrapper__field[type='file'] {
 		position: relative;
 		z-index: 15;
+
 		height: 150px;
 		padding: 50px;
+
 		opacity: 0;
 	}
 }

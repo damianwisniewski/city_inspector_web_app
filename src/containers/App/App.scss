@@ -13,6 +13,7 @@ body {
 	min-height: 100%;
 	margin: 0;
 	padding: 0;
+
 	font-family: $primary_font;
 }
 
@@ -21,8 +22,10 @@ main {
 }
 
 .App {
-	background-color: $light-gray;
-	color: $darker_gray;
 	min-width: 100%;
 	min-height: 100vh;
+
+	color: $darker_gray;
+
+	background-color: $light-gray;
 }

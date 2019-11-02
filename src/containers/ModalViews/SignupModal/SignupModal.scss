@@ -1,10 +1,12 @@
 @import '../../../assets/styleHelpers/index';
 
 .signup {
+	position: relative;
+
 	width: 450px;
 	min-height: 320px;
+
 	text-align: center;
-	position: relative;
 
 	@include phone-size {
 		width: unset;
@@ -20,21 +22,24 @@
 	}
 
 	&__header {
-		font-size: 20px;
-		font-family: $secondary_font;
-		color: $light_gray;
-		background-color: $primary_blue;
 		margin: 15px 10px;
 		padding: 10px;
+
+		color: $light_gray;
+		font-size: 20px;
+		font-family: $secondary_font;
+		text-shadow: $text-shadow;
+
+		background-color: $primary_blue;
 		border-radius: 5px;
 		box-shadow: $inset-shadow;
-		text-shadow: $text-shadow;
 	}
 
 	&__description {
-		font-size: 15px;
 		margin: 10px;
+
 		color: $dark_gray;
+		font-size: 15px;
 	}
 
 	&__form {
@@ -52,8 +57,9 @@
 	}
 
 	&__agreements-wrapper {
-		text-align: center;
-		padding: 10px;
 		min-width: 100%;
+		padding: 10px;
+
+		text-align: center;
 	}
 }

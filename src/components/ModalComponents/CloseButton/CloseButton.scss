@@ -4,27 +4,31 @@
 	position: absolute;
 	top: -20px;
 	right: -20px;
-	border-radius: 50%;
+	z-index: 600;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 45px;
 	height: 45px;
+
 	background-color: transparent;
-	z-index: 600;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	border: 0;
+	border-radius: 50%;
 	outline: 0;
 	cursor: pointer;
 
 	&::before {
-		padding: 0 !important;
 		margin: 0;
+		padding: 0 !important;
+
 		color: aliceblue;
 		font-size: 26px !important;
-		border-radius: 50%;
 		line-height: 1em;
-		border: 3px solid $primary_dark_blue;
+
 		background-color: $primary_dark_blue;
+		border: 3px solid $primary_dark_blue;
+		border-radius: 50%;
 		box-shadow: -1px 1px 3px 0 rgb(65, 65, 65);
 	}
 }

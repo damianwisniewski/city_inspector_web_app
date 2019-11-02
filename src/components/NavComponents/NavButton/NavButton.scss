@@ -13,26 +13,28 @@ $buttonColors: (
 
 	& .nav-button {
 		width: 100%;
-		font-family: $secondary_font;
-		font-size: 14px;
-		font-weight: 900;
-
-		padding: 10px 20px;
 		margin: 0 10px;
 
-		box-shadow: $small_shadow;
-		border-radius: 5px;
+		padding: 10px 20px;
+
+		font-weight: 900;
+		font-size: 14px;
+		font-family: $secondary_font;
 
 		border: none;
+		border-radius: 5px;
 		outline: none;
 
-		transition: background-color 0.1s ease-out;
+		box-shadow: $small_shadow;
 
 		cursor: pointer;
+
+		transition: background-color 0.1s ease-out;
 
 		@media only screen and (max-width: 950px) {
 			margin-top: 10px;
 			margin-bottom: 10px;
+
 			box-shadow: none;
 		}
 
@@ -45,8 +47,9 @@ $buttonColors: (
 			}
 
 			&.#{$name} {
-				background-color: $color;
 				color: $font-color;
+
+				background-color: $color;
 
 				&:active {
 					background-color: darken($color: $color, $amount: 10%);
