@@ -1,6 +1,6 @@
 {
-	"extends": ["react-app", "prettier", "prettier/react"],
-	"plugins": ["prettier", "react", "compat", "webdriverio", "chai-friendly"],
+	"extends": ["react-app", "prettier", "prettier/react", "plugin:compat/recommended"],
+	"plugins": ["prettier", "react", "webdriverio", "chai-friendly"],
 	"env": {
 		"webdriverio/wdio": true,
 		"jest": true,
@@ -34,6 +34,13 @@
 		"browser": true
 	},
 	"settings": {
-		"polyfills": ["Object.assign", "Promise", "fetch"]
+		"polyfills": [
+			"Object.assign",
+			"Object.entries",
+			"Array.find",
+			"Promise",
+			"fetch",
+			"string.startsWith"
+		]
 	}
 }

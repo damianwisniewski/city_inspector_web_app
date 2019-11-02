@@ -1,22 +1,22 @@
 /**
  * [Object.assign]
  */
-export * from 'core-js/fn/object/assign'
+export * from 'core-js/es/object/assign'
 
 /**
  * [Object.entries]
  */
-export * from 'core-js/fn/object/entries'
+export * from 'core-js/es/object/entries'
 
 /**
  * [Array.find]
  */
-export * from 'core-js/fn/array/find'
+export * from 'core-js/es/array/find'
 
 /**
  * [Promise]
  */
-export * from 'core-js/es6/promise'
+export * from 'core-js/es/promise'
 
 /**
  * [fetch]
@@ -26,4 +26,4 @@ export * from 'whatwg-fetch'
 /**
  * [string.startsWith]
  */
-export * from 'core-js/fn/string/starts-with'
+export * from 'core-js/es/string/starts-with'

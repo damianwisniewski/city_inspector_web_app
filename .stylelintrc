@@ -5,6 +5,7 @@
     "stylelint-config-rational-order/plugin"
   ],
   "rules": {
+		"prettier/prettier": true,
     "order/properties-order": [],
     "plugin/rational-order": [true, {
       "border-in-box-model": false,

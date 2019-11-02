@@ -1,8 +1,17 @@
 {
 	"editor.formatOnSave": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"eslint.autoFixOnSave": true,
+	"eslint.alwaysShowStatus": true,
 	"files.autoSave": "onFocusChange",
 	"editor.trimAutoWhitespace": false,
 	"prettier.htmlWhitespaceSensitivity": "ignore",
 	"cSpell.language": "en-GB,en",
-	"prettier.stylelintIntegration": true
+	"prettier.stylelintIntegration": true,
+	"cSpell.words": ["browserlist", "browserslist", "markercluster", "wdio"]
 }

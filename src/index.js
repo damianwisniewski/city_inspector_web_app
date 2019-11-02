@@ -3,12 +3,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
+// SCSS
 import './assets/globalStyles/globalStyles.scss'
 
+// Components
 import App from './containers/App/App'
 
+// Redux Store
 import reduxStore from './reduxStore'
 
+// Others
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
