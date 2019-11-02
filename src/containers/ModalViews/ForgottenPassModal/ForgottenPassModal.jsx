@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
+// SCSS
 import './ForgottenPassModal.scss'
 
-import { Requester } from '../../../services/requester/requester'
-
+// Components
 import { Form, Input } from '../../../components/FormComponents'
-import Button from '../../../components/CommonComponents/Button/Button'
-import Status from '../../../components/CommonComponents/Status/Status'
-import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
+import { Button, Status, RequestStatus } from '../../../components/CommonComponents'
+
+// Others
+import { Requester } from '../../../services/requester/requester'
 
 class ForgottenPassModal extends Component {
 	state = {
@@ -15,6 +16,11 @@ class ForgottenPassModal extends Component {
 		email: '',
 	}
 
+	/**
+	 * Sends requests for initialize remains password procedure
+	 * User will receive mail with reset password link
+	 * @param {Event} e
+	 */
 	handleRemainPass = e => {
 		e.preventDefault()
 
@@ -29,6 +35,11 @@ class ForgottenPassModal extends Component {
 			})
 	}
 
+	/**
+	 * Handler for input changes.
+	 * Sets their values in state
+	 * @param {Event} e
+	 */
 	handleInputChanges = e => {
 		this.setState({
 			email: e.target.value,

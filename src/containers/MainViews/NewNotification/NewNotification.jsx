@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 
+// SCSS
 import './NewNotification.scss'
 import icons from '../../../assets/styleModules/icons.module.scss'
 
+// Components
 import { Form, Select, Input, Textarea, UploadButton } from '../../../components/FormComponents'
 import { MapLayout, MapMarker, MapLocateMe } from '../../../components/MapComponents'
-import ImageGallery from '../../../components/CommonComponents/ImageGallery/ImageGallery'
-import Button from '../../../components/CommonComponents/Button/Button'
-
-const { REACT_APP_TITLE } = process.env
+import { ImageGallery, Button } from '../../../components/CommonComponents'
 
 class NewNotification extends Component {
 	state = {
@@ -24,18 +23,27 @@ class NewNotification extends Component {
 	}
 
 	componentDidMount() {
-		document.title = `Nowe zgłoszenie | ${REACT_APP_TITLE}`
+		document.title = `Nowe zgłoszenie | ${process.env.REACT_APP_TITLE}`
 	}
 
+	/**
+	 * Handler for mover marker on Map
+	 */
 	handlePointerMove = e => {
 		const { lat, lng } = e.target.getLatLng()
 		this.setState({ localization: [lat, lng] })
 	}
 
+	/**
+	 * Handler for upload image
+	 */
 	handleUploadImage = (eventData = []) => {
 		this.setState({ photos: [...this.state.photos, ...eventData] })
 	}
 
+	/**
+	 * Handler for input value changes
+	 */
 	handleFormFieldChanges = e => {
 		const key = e.target.dataset.stateName
 		const value = e.target.value
@@ -43,11 +51,17 @@ class NewNotification extends Component {
 		this.setState({ [key]: value })
 	}
 
+	/**
+	 * Hander for remove image from gallery of uploaded images
+	 */
 	handleRemoveImage = eventData => {
 		const filteredPhotos = this.state.photos.filter(photo => photo.name !== eventData.removed)
 		this.setState({ photos: filteredPhotos })
 	}
 
+	/**
+	 * Handler for localize of your location
+	 */
 	handleLocalize = locCoords => {
 		this.setState({ localization: locCoords })
 	}
@@ -196,7 +210,5 @@ class NewNotification extends Component {
 		)
 	}
 }
-
-// NewNotification.propTypes = {}
 
 export default NewNotification

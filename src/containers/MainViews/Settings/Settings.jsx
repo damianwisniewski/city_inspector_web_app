@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+// SCSS
 import './Settings.scss'
 
+// Components
 import { Form, Input, Checkbox, Group, Radio } from '../../../components/FormComponents'
-import Button from '../../../components/CommonComponents/Button/Button'
-import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
-import Status from '../../../components/CommonComponents/Status/Status'
+import { Button, RequestStatus, Status } from '../../../components/CommonComponents'
 import Modal from '../../../components/ModalComponents/Modal/Modal'
 
-import { Requester } from '../../../services/requester/requester'
-
+// Actions
 import {
 	removeUserAuthData,
 	setTokenExpired,
 } from '../../../reduxStore/actionCreators/userDataActions'
 
-const { REACT_APP_TITLE } = process.env
+// Others
+import { Requester } from '../../../services/requester/requester'
 
 class Settings extends Component {
 	state = {
@@ -25,7 +25,7 @@ class Settings extends Component {
 		deleteRequestInProgress: 'initial',
 		updateUserRequest: 'initial',
 
-		// data
+		// user data
 		email: '',
 		password: '',
 		repeatedPassword: '',
@@ -35,14 +35,14 @@ class Settings extends Component {
 		lastname: '',
 		city: '',
 
-		// changes user data
+		// changed user data
 		changed: {},
 	}
 
 	repeatPassInput = React.createRef()
 
 	componentDidMount() {
-		document.title = `Ustawienia | ${REACT_APP_TITLE}`
+		document.title = `Ustawienia | ${process.env.REACT_APP_TITLE}`
 
 		Requester.send('getUserData')
 			.then(res => {
@@ -53,6 +53,9 @@ class Settings extends Component {
 			})
 	}
 
+	/**
+	 * Opens modal to confirm or cancel delete account
+	 */
 	onDeleteAccountClick = () => {
 		this.setState({ isDeleteConfirmModalOpen: true })
 	}
@@ -82,6 +85,12 @@ class Settings extends Component {
 		}
 	}
 
+	/**
+	 * Handler for input changes.
+	 * Saves provided input values in state
+	 * and in "changed" object to update proper user data in database
+	 * @param {Event} e
+	 */
 	handleInputChanges = e => {
 		const field = e.target.dataset.type
 		const isPassInput = field === 'password' || field === 'repeatedPassword'
@@ -101,6 +110,10 @@ class Settings extends Component {
 		}
 	}
 
+	/**
+	 * Sends new user data to update if anything changed
+	 * @param {Event} e
+	 */
 	onSubmitData = e => {
 		e.preventDefault()
 
@@ -130,6 +143,8 @@ class Settings extends Component {
 			isDeleteConfirmModalOpen,
 			deleteRequestInProgress,
 			updateUserRequest,
+
+			// User data
 			emailAgreement,
 			nickname,
 			name,

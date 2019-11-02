@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+// SCSS
 import './Navbar.scss'
 import iconAssets from '../../assets/styleModules/icons.module.scss'
 
+// Images
 import logo from '../../assets/images/logo.svg'
 
+// Components
 import NavItem from '../../components/NavComponents/NavItem/NavItem'
 import NavButton from '../../components/NavComponents/NavButton/NavButton'
 
@@ -34,6 +37,9 @@ class Navbar extends Component {
 		}
 	}
 
+	/**
+	 * Creates navigation buttons for authorized user
+	 */
 	createAuthNavigation = () => {
 		const { isDrawerOpen } = this.state
 
@@ -68,6 +74,9 @@ class Navbar extends Component {
 		)
 	}
 
+	/**
+	 * Creates navigation buttons for non-authorized user
+	 */
 	createNavigation = () => {
 		const { isDrawerOpen } = this.state
 
@@ -100,6 +109,7 @@ class Navbar extends Component {
 			<nav className='navigation'>
 				<div className='navigation__container'>
 					<img src={logo} className='logo' alt='logo' />
+					{/* For better readability, list theme for different auth state were split to functions */}
 					{isUserAuth ? this.createAuthNavigation() : this.createNavigation()}
 					<button
 						id='menuToggleButton'

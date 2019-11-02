@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import iconAssets from '../../../assets/styleModules/icons.module.scss'
+// SCSS
 import './Status.scss'
+import iconAssets from '../../../assets/styleModules/icons.module.scss'
 
 const Status = ({ id, message, type, position }) => (
 	<p

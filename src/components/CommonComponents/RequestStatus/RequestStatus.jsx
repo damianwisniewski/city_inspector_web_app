@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
+// SCSS
 import './RequestStatus.scss'
 
 // Components

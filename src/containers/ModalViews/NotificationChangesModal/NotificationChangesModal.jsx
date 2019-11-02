@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-// import PropTypes from 'prop-types'
 
+// SCSS
 import './NotificationChangesModal.scss'
 
 class NotificationChangesModal extends Component {
+	/**
+	 * TODO: Component to notify about changes in subscribed notifications
+	 * Idea to use WebSockets to be always up-to-date
+	 */
+
 	render() {
 		return (
 			<div id='NotificationChangesModal' className='changes-modal'>
@@ -18,7 +23,5 @@ class NotificationChangesModal extends Component {
 		)
 	}
 }
-
-// NotificationChangesModal.propTypes = {}
 
 export default NotificationChangesModal

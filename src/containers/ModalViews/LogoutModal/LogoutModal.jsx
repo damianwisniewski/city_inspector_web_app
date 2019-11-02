@@ -1,11 +1,19 @@
 import React from 'react'
-import Button from '../../../components/CommonComponents/Button/Button'
 import { connect } from 'react-redux'
-import { sagaRequestLogout } from '../../../reduxStore/actionCreators/requestActions'
 
+// SCSS
 import './LogoutModal.scss'
 
+// Components
+import { Button } from '../../../components/CommonComponents'
+
+// Actions
+import { sagaRequestLogout } from '../../../reduxStore/actionCreators/requestActions'
+
 const LogoutModal = ({ closeModal, onSagaRequestLogout }) => {
+	/**
+	 * Handler on click, logout confirm
+	 */
 	const handleLogout = () => {
 		onSagaRequestLogout()
 		closeModal()
@@ -26,8 +34,6 @@ const LogoutModal = ({ closeModal, onSagaRequestLogout }) => {
 		</div>
 	)
 }
-
-// LogoutModal.propTypes = {}
 
 export default connect(
 	null,

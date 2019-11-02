@@ -1,18 +1,9 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import React from 'react'
 
-const { REACT_APP_TITLE } = process.env
+const Settings = () => {
+	document.title = `404 - Not Found | ${process.env.REACT_APP_TITLE}`
 
-class Settings extends Component {
-	componentDidMount() {
-		document.title = `404 - Not Found | ${REACT_APP_TITLE}`
-	}
-
-	render() {
-		return <div id='NotFound'>404 - NOT FOUND</div>
-	}
+	return <div id='NotFound'>404 - NOT FOUND</div>
 }
-
-// Settings.propTypes = {}
 
 export default Settings

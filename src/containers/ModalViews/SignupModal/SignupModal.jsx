@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
+// SCSS
 import './SignupModal.scss'
 
-import { Requester } from '../../../services/requester/requester'
-
+// Components
 import { Form, Input, Group, Checkbox, Radio } from '../../../components/FormComponents'
-import Button from '../../../components/CommonComponents/Button/Button'
-import Status from '../../../components/CommonComponents/Status/Status'
-import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
+import { Button, Status, RequestStatus } from '../../../components/CommonComponents'
+
+// Others
+import { Requester } from '../../../services/requester/requester'
 
 class SignupModal extends Component {
 	constructor(props) {
@@ -15,6 +16,8 @@ class SignupModal extends Component {
 
 		this.state = {
 			requestState: 'initial',
+
+			// Data to signup
 			email: '',
 			password: '',
 			repeatedPassword: '',
@@ -24,13 +27,15 @@ class SignupModal extends Component {
 			firstname: '',
 			lastname: '',
 			city: '',
-
-			dataToSend: {},
 		}
 
 		this.repeatPassInput = React.createRef()
 	}
 
+	/**
+	 * Compares passwords and shows validity popup when they are different.
+	 * Invalidates form in this way, when passwords are different.
+	 */
 	comparePasswords = () => {
 		if (this.state.password !== this.state.repeatedPassword) {
 			this.repeatPassInput.setCustomValidity('Hasła muszą być identyczne!')
@@ -39,13 +44,20 @@ class SignupModal extends Component {
 		}
 	}
 
+	/**
+	 * Sends request request with provided data to register user.
+	 */
 	registerUser = e => {
 		e.preventDefault()
 
+		// filter out requestState param and empty values
+		const dataToSend = Object.entries(this.state).filter(
+			([key, value]) => value && key !== 'requestState',
+		)
+
 		this.setState({ requestState: 'pending' })
 
-		// TODO: remove empty values if happends in dataToSend (create helper function, it will be usefull in other places also)
-		Requester.send('registerUser', { body: this.state.dataToSend })
+		Requester.send('registerUser', { body: dataToSend })
 			.then(() => {
 				this.setState({ requestState: 'succeeded' })
 			})
@@ -54,18 +66,16 @@ class SignupModal extends Component {
 			})
 	}
 
+	/**
+	 * Handler for input changes to update component state
+	 */
 	handleInputChanges = e => {
 		const field = e.target.dataset.type
 		const isPassInput = field === 'password' || field === 'repeatedPassword'
 		const isAgreementField = field === 'emailAgreement'
 
-		const property = {
-			[field]: isAgreementField ? (e.target.checked ? 'Y' : 'N') : e.target.value,
-		}
-
 		this.setState({
-			...property,
-			dataToSend: { ...this.state.dataToSend, ...property },
+			[field]: isAgreementField ? (e.target.checked ? 'Y' : 'N') : e.target.value,
 		})
 
 		if (isPassInput) {
@@ -91,8 +101,8 @@ class SignupModal extends Component {
 		return (
 			<div id='SignupModal' className='signup'>
 				<h2 className='signup__header'>Rejestracja</h2>
-				{/* <Status id='signup-status' type='error' message='Niepoprawny email lub hasło' /> */}
 				<p className='signup__description'>Wpisz następujące dane aby się zarejestrować</p>
+
 				<Form className='signup__form' onSubmit={this.registerUser}>
 					{/* Required data */}
 					<div className='signup__required'>
@@ -153,6 +163,7 @@ class SignupModal extends Component {
 							required
 						/>
 					</div>
+
 					{/* Optionals data */}
 					<Group name='opcjonalnie'>
 						<Input
@@ -206,7 +217,8 @@ class SignupModal extends Component {
 							/>
 						</Group>
 					</Group>
-					{/* Agreements checkbox */}
+
+					{/* Agreement checkbox */}
 					<div className='signup__agreements-wrapper'>
 						<Checkbox
 							id='emailAgreement'
@@ -217,6 +229,8 @@ class SignupModal extends Component {
 							label='Czy wyrażasz zgodę na otrzymywanie informacji mailowych od serwisu "City Inspector", dotyczących zmian w serwisie oraz aktualizacji zgłoszeń.'
 						/>
 					</div>
+
+					{/* Agreement checkbox */}
 					<div className='signup__request-status'>
 						<RequestStatus size='small' requestState={requestState}>
 							<Status
@@ -226,6 +240,7 @@ class SignupModal extends Component {
 							/>
 						</RequestStatus>
 					</div>
+
 					{/* Buttons*/}
 					<div className='signup__buttons-wrapper'>
 						<Button id='inform-close-button' color='white' onClick={closeModal}>

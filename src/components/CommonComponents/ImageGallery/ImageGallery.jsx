@@ -45,6 +45,9 @@ class ImageGallery extends Component {
 		this.setState({ selectedImage: '', selectedImageLoading: true })
 	}
 
+	/**
+	 * Handler for remove image click
+	 */
 	handleRemoveClick = e => {
 		if (this.props.onRemoveImage) {
 			const imageElement = e.target.nextSibling

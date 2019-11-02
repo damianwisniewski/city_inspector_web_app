@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// SCSS
 import './Button.scss'
 
 const Button = ({ color, className, type, children, category, size, onClick, ...props }) => (

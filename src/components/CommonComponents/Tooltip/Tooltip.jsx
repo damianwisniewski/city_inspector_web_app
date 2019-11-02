@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import './Tooltip.scss'
 
 class Tooltip extends Component {
-	constructor(props) {
-		super(props)
-		this.htmlRef = React.createRef()
-	}
+	htmlRef = React.createRef()
 
 	componentDidMount() {
+		/**
+		 * Search for parent element of tooltip to add css class
+		 */
 		this.htmlRef.current.parentNode.classList.add('drop-down-parent')
 	}
 

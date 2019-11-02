@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+// SCSS
 import './LoginModal.scss'
 
+// Components
 import { Form, Input } from '../../../components/FormComponents'
-import Button from '../../../components/CommonComponents/Button/Button'
-import Status from '../../../components/CommonComponents/Status/Status'
-import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
+import { Button, Status, RequestStatus } from '../../../components/CommonComponents'
 import { ModalRedirect } from '../../../components/ModalComponents/ModalRouting'
 
-// actions
+// Actions
 import {
 	sagaRequestLogin,
 	resetLoginRequestStatus,
@@ -32,10 +32,19 @@ class LoginModal extends Component {
 		}
 	}
 
+	/**
+	 * Handler for forgotten password button click
+	 * Sets forgottenPass state to true and redirects to ForgottenPassModal
+	 */
 	handleForgottenPassword = () => {
 		this.setState({ forgottenPass: true })
 	}
 
+	/**
+	 * Handler for input changes.
+	 * Sets their values in state
+	 * @param {Event} e
+	 */
 	handleInputChanges = e => {
 		const field = e.target.dataset.type
 
@@ -44,6 +53,10 @@ class LoginModal extends Component {
 		})
 	}
 
+	/**
+	 * Sends provided credentials to saga responsible for login user
+	 * @param {Event} e
+	 */
 	handleUserLogin = e => {
 		e.preventDefault()
 
@@ -55,6 +68,7 @@ class LoginModal extends Component {
 		const { isUserAuth, loginRequestState, closeModal } = this.props
 		const { email, password, forgottenPass } = this.state
 
+		// Redirects to forgotten password modal
 		if (forgottenPass) {
 			return <ModalRedirect to='ForgottenPassModal' />
 		}

@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Requester } from '../../../services/requester/requester'
-import { MapMarker, MapLayout } from '../../../components/MapComponents'
-import ImageGallery from '../../../components/CommonComponents/ImageGallery/ImageGallery'
-import Button from '../../../components/CommonComponents/Button/Button'
-import Tooltip from '../../../components/CommonComponents/Tooltip/Tooltip'
-import NotificationDataRow from '../../../components/OtherComponents/NotificationDataRow/NotificationDataRow'
-
+// SCSS
 import './Notification.scss'
-import RequestStatus from '../../../components/CommonComponents/RequestStatus/RequestStatus'
+
+// Components
+import { MapMarker, MapLayout } from '../../../components/MapComponents'
+import { ImageGallery, Button, Tooltip, RequestStatus } from '../../../components/CommonComponents'
+import NotificationDataRow from '../../../components/OtherComponents/NotificationDataRow/NotificationDataRow'
 import CommentsWrapper from '../../../components/CommentsComponents/CommentsWrapper/CommentsWrapper'
 
-// const { REACT_APP_TITLE } = process.env
+// Others
+import { Requester } from '../../../services/requester/requester'
 
 class Notification extends Component {
 	constructor(props) {
@@ -28,7 +27,10 @@ class Notification extends Component {
 		}
 	}
 
-	componentDidMount() {
+	/**
+	 * Fetches all data of notification
+	 */
+	getNotificationData = () => {
 		Requester.send('getSingleNotifiacation', {
 			params: {
 				notificationId: this.state.id,
@@ -36,24 +38,33 @@ class Notification extends Component {
 		})
 			.then(res => {
 				this.setState({ data: res, fetchDataStatus: 'succeeded' })
-				document.title = `Zgłoszenie - ${res.id}`
+				document.title = `Zgłoszenie - ${res.id} | ${process.env.REACT_APP_TITLE}`
 			})
 			.catch(() => {
 				this.setState({ fetchDataStatus: 'failed' })
 			})
+	}
 
+	/**
+	 * Fetches comments
+	 */
+	getComments = () => {
 		Requester.send('getAllComments', {
 			params: {
 				notificationId: this.state.id,
 			},
 		})
 			.then(res => {
-				console.warn(res)
 				this.setState({ comments: res, fetchCommentsStatus: 'succeeded' })
 			})
 			.catch(() => {
 				this.setState({ fetchCommentsStatus: 'failed' })
 			})
+	}
+
+	componentDidMount() {
+		this.getNotificationData()
+		this.getComments()
 	}
 
 	isNotifyBelongsToUser = () => {}
