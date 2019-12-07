@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import { Form, Textarea } from '../../FormComponents'
 import Button from '../../CommonComponents/Button/Button'
@@ -15,8 +15,8 @@ const NewComment = () => (
 	</Form>
 )
 
-NewComment.defaultProps = {}
+// NewComment.defaultProps = {}
 
-NewComment.propTypes = {}
+// NewComment.propTypes = {}
 
 export default NewComment

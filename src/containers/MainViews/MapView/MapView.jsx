@@ -57,6 +57,7 @@ class MapView extends Component {
 			[selectedLoc.boundingbox[1], selectedLoc.boundingbox[0]],
 			[selectedLoc.boundingbox[3], selectedLoc.boundingbox[2]],
 		]
+
 		this.setState(
 			{ center: selectedLocCenter, bounds: selectedLocBounding },
 			this.props.onSearchCity,
@@ -137,7 +138,7 @@ class MapView extends Component {
 							notificationList.map(notification => (
 								<MapMarker
 									key={notification.id}
-									position={[notification.lat, notification.lon]}
+									position={[notification.lat, notification.lng]}
 									data={{
 										type: notification.category,
 										number: notification.id,

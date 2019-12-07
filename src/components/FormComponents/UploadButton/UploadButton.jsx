@@ -11,40 +11,24 @@ class UploadButton extends Component {
 		loading: false,
 		loadingFromDropEvent: false,
 		loaded: false,
-		files: [],
 		error: '',
 	}
 
-	initImageLoaders = files => {
+	initImageLoader = files => {
 		const { acceptsFile } = this.props
-
 		const imageLoaders = []
 
 		if (!files.length) {
 			// IE11 for catalog instead of file will have file equal empty array
-			imageLoaders.push(Promise.reject('Wybrano niepoprawny plik!'))
+			throw new Error('Wybrano niepoprawny plik!')
 		} else {
 			for (let i = 0; i < files.length; i++) {
 				const file = files[i]
 
 				if (file.type.startsWith(acceptsFile)) {
-					imageLoaders.push(
-						new Promise((resolve, reject) => {
-							const reader = new FileReader()
-
-							reader.addEventListener('load', event => {
-								resolve({ imageData: event.target.result, name: file.name })
-							})
-
-							reader.addEventListener('error', () => {
-								reject('Przepraszamy wystąpił błąd!')
-							})
-
-							reader.readAsDataURL(file)
-						}),
-					)
+					imageLoaders.push(file)
 				} else {
-					imageLoaders.push(Promise.reject('Wybrano niepoprawny plik!'))
+					throw new Error('Wybrano niepoprawny plik!')
 				}
 			}
 		}
@@ -53,30 +37,27 @@ class UploadButton extends Component {
 	}
 
 	getFiles = files => {
-		const imageLoaders = this.initImageLoaders(files)
+		try {
+			const lodaedFiles = this.initImageLoader(files)
 
-		Promise.all(imageLoaders)
-			.then(images => {
-				this.setState({
-					loading: false,
-					loadingFromDropEvent: false,
-					loaded: true,
-					error: '',
-					files: images,
-				})
+			this.setState({
+				loading: false,
+				loadingFromDropEvent: false,
+				loaded: true,
+				error: '',
+			})
 
-				if (this.props.onAddImages) {
-					this.props.onAddImages(images)
-				}
+			if (this.props.onAddImages) {
+				this.props.onAddImages(lodaedFiles)
+			}
+		} catch (err) {
+			this.setState({
+				error: err.message,
+				loading: false,
+				loaded: false,
+				loadingFromDropEvent: false,
 			})
-			.catch(errorMessage => {
-				this.setState({
-					error: errorMessage,
-					loading: false,
-					loaded: false,
-					loadingFromDropEvent: false,
-				})
-			})
+		}
 	}
 
 	/**
@@ -125,7 +106,7 @@ class UploadButton extends Component {
 	render() {
 		// eslint-disable-next-line no-unused-vars
 		const { id, label, onAddImages, acceptsFile, ...rest } = this.props
-		const { onDropArea, loaded, loading, files, error } = this.state
+		const { onDropArea, loaded, loading, error } = this.state
 
 		return (
 			<div className='input-wrapper input-wrapper--upload'>
@@ -155,13 +136,7 @@ class UploadButton extends Component {
 						{error && <Status id={`${id}-status`} type='error' message={this.state.error} />}
 						{loading && <Loader id={`${id}-loader`} size='small' />}
 						{loaded && (
-							<Status
-								id={`${id}-status`}
-								type='correct'
-								message={`Załadowano ${files.length} ${
-									files.length === 1 ? 'plik' : files.length <= 4 ? 'pliki' : 'plików'
-								}`}
-							/>
+							<Status id={`${id}-status`} type='correct' message='Pomyślnie załadowano plik/i' />
 						)}
 					</div>
 				</label>

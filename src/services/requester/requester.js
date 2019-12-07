@@ -39,6 +39,7 @@ export const Requester = {
 	send: async function(feedType, options = {}) {
 		const { params, queries, body } = options
 		const { method, pathTemplate, headersTemplate } = getFeedTemplate(feedType)
+		const isFormData = headersTemplate && headersTemplate.includes('Form-Data')
 
 		if (feedType !== 'refreshTokens' && this.isTokenExpired) {
 			await this.refreshToken()
@@ -48,9 +49,15 @@ export const Requester = {
 		const query = queries ? this.objectToQueryString(queries) : ''
 		const headers = this.prepareHeaders(headersTemplate)
 
+		console.log(this.feedDomain + path + query, {
+			method,
+			body: body && (isFormData ? body : JSON.stringify(body)),
+			headers,
+		})
+
 		const response = await fetch(this.feedDomain + path + query, {
 			method,
-			body: body && JSON.stringify(body),
+			body: body && (isFormData ? body : JSON.stringify(body)),
 			headers,
 		})
 
@@ -160,7 +167,16 @@ export const Requester = {
 					headers['Token-Refresh'] = this.secondaryToken
 					break
 				case 'Form-Data':
-					headers['Content-Type'] = 'multipart/form-data'
+					/**
+					 * Using FormData, it's forbidden to use Content-Type on your own.
+					 * Browser will add it automatically after FormData in body will be detected.
+					 * Header will be created with special boundary value,
+					 * to establish where one field’s data ends and where the next one starts.
+					 *
+					 * @example Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryIn312MOjBWdkffIM
+					 * @link [https://muffinman.io/uploading-files-using-fetch-multipart-form-data/]
+					 */
+					delete headers['Content-Type']
 					break
 				default:
 					break

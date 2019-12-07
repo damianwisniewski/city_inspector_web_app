@@ -14,6 +14,11 @@ export * from 'core-js/es/object/entries'
 export * from 'core-js/es/array/find'
 
 /**
+ * [Array.from]
+ */
+export * from 'core-js/es/array/from'
+
+/**
  * [Promise]
  */
 export * from 'core-js/es/promise'

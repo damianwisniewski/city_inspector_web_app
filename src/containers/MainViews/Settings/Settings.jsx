@@ -7,13 +7,15 @@ import './Settings.scss'
 // Components
 import { Form, Input, Checkbox, Group, Radio } from '../../../components/FormComponents'
 import { Button, RequestStatus, Status } from '../../../components/CommonComponents'
-import Modal from '../../../components/ModalComponents/Modal/Modal'
 
 // Actions
 import {
 	removeUserAuthData,
 	setTokenExpired,
 } from '../../../reduxStore/actionCreators/userDataActions'
+
+// Components
+import { ConfirmModal } from '../../../components/CommonComponents'
 
 // Others
 import { Requester } from '../../../services/requester/requester'
@@ -169,12 +171,20 @@ class Settings extends Component {
 					<Form onSubmit={this.onSubmitData}>
 						<div className='settings__row'>
 							<div>
-								<Input label='Pseudonim: ' labelType='solid' value={nickname} disabled />
 								<Input
-									id='email-field'
+									id='settings-nickname-field'
+									label='Pseudonim: '
+									autoComplete='nickname'
+									labelType='solid'
+									value={nickname}
+									disabled
+								/>
+								<Input
+									id='settings-email-field'
 									data-type='email'
 									onChange={this.handleInputChanges}
 									label='E-mail: '
+									autoComplete='email'
 									labelType='solid'
 									type='email'
 									pattern='.+@.+'
@@ -184,7 +194,7 @@ class Settings extends Component {
 
 							<Group name='Zmiana hasła'>
 								<Input
-									id='password-field'
+									id='settings-password-field'
 									data-type='password'
 									onChange={this.handleInputChanges}
 									label='Nowe hasło: '
@@ -199,7 +209,7 @@ class Settings extends Component {
 								/>
 								<Input
 									inputRef={ref => (this.repeatPassInput = ref)}
-									id='repeat-password-field'
+									id='settings-repeat-password-field'
 									data-type='repeatedPassword'
 									onChange={this.handleInputChanges}
 									label='Potwórz hasło: '
@@ -216,28 +226,31 @@ class Settings extends Component {
 						<div className='settings__row'>
 							<div>
 								<Input
-									id='name-field'
+									id='settings-name-field'
 									data-type='name'
 									onChange={this.handleInputChanges}
 									label='Imię: '
+									autoComplete='given-name'
 									labelType='solid'
 									value={name}
 									type='text'
 								/>
 								<Input
-									id='lastname-field'
+									id='settings-lastname-field'
 									data-type='surname'
 									onChange={this.handleInputChanges}
 									label='Nazwisko: '
+									autoComplete='family-name'
 									labelType='solid'
 									value={surname}
 									type='text'
 								/>
 								<Input
-									id='city-field'
+									id='settings-city-field'
 									data-type='city'
 									onChange={this.handleInputChanges}
 									label='Miasto: '
+									autoComplete='address-level2'
 									labelType='solid'
 									value={city}
 									type='text'
@@ -246,18 +259,20 @@ class Settings extends Component {
 							<div>
 								<Group name='Płeć' onChange={this.handleInputChanges}>
 									<Radio
+										id='settings-gender-field-1'
 										data-type='gender'
 										name='gender'
 										value='M'
 										label='Mężczyzna'
-										checked={gender === 'M'}
+										defaultChecked={gender === 'M'}
 									/>
 									<Radio
+										id='settings-gender-field-2'
 										data-type='gender'
 										name='gender'
 										value='F'
 										label='Kobieta'
-										checked={gender === 'F'}
+										defaultChecked={gender === 'F'}
 									/>
 								</Group>
 								<Checkbox
@@ -292,34 +307,16 @@ class Settings extends Component {
 						</Button>
 					</Group>
 				</div>
-
-				{/* Confirm deletion modal */}
 				{isDeleteConfirmModalOpen && (
-					<Modal
-						darkOverlay
-						closeButton
-						onButtonClose={this.onCloseConfirmModal}
-						onOverlayClick={this.onCloseConfirmModal}
-					>
-						<section className='delete__confirm'>
-							<h2 className='delete__confirm__header'>Uwaga!</h2>
-							<p className='delete__confirm__context'>
-								Czy jesteś pewien ze chcesz usuniąc konto? Operacja jest nieodrwacalna!!!
-							</p>
-
+					<ConfirmModal onCancel={this.onCloseConfirmModal} onConfirm={this.onConfirmDeleteAccount}>
+						<ConfirmModal.Header>Uwaga!</ConfirmModal.Header>
+						<ConfirmModal.Content>
+							Czy jesteś pewien ze chcesz usuniąc konto? Operacja jest nieodrwacalna!!!
 							<div className='update-status-wrapper'>
 								<RequestStatus size='small' requestState={deleteRequestInProgress} />
 							</div>
-							<div className='delete__confirm__buttons-wrapper'>
-								<Button color='white' onClick={this.onCloseConfirmModal}>
-									Anuluj
-								</Button>
-								<Button color='red' onClick={this.onConfirmDeleteAccount}>
-									Tak
-								</Button>
-							</div>
-						</section>
-					</Modal>
+						</ConfirmModal.Content>
+					</ConfirmModal>
 				)}
 			</RequestStatus>
 		)

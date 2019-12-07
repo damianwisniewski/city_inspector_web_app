@@ -1,0 +1,162 @@
+@import '../../../assets/styleHelpers/index';
+
+.table-wrapper {
+	@include sectionContainer;
+	padding: 10px 15px;
+
+	@include sm-tablet-size {
+		margin: 0;
+		padding: 0;
+
+		background-color: unset;
+		box-shadow: none;
+	}
+
+	.table {
+		width: 100%;
+
+		border-collapse: separate;
+		border-spacing: 0 5px;
+
+		&__header {
+			& .table__row,
+			& .table__row:hover {
+				color: white;
+				font-size: 14px;
+
+				background-color: $primary_light_blue;
+				border-radius: 3px;
+				cursor: default;
+			}
+
+			@include sm-tablet-size {
+				display: none;
+			}
+		}
+
+		&__row {
+			font-size: 13px;
+
+			background-color: $white;
+
+			&:nth-child(even) {
+				background-color: $light_gray;
+			}
+
+			&:hover {
+				background-color: $gray;
+			}
+
+			@include sm-tablet-size {
+				position: relative;
+
+				&:nth-child(even) {
+					background-color: $gray;
+
+					&:hover {
+						background-color: $gray;
+					}
+				}
+
+				&:hover {
+					background-color: unset;
+				}
+			}
+		}
+
+		&__cell {
+			position: relative;
+
+			padding: 10px 15px;
+
+			text-align: center;
+
+			&:not(:last-of-type)::after {
+				position: absolute;
+				top: 50%;
+				right: 0;
+
+				display: block;
+				height: calc(100% - 15px);
+
+				border-left: 1px solid $gray;
+				transform: translateY(-50%);
+
+				content: '';
+
+				@include sm-tablet-size {
+					display: none;
+				}
+			}
+
+			@include sm-tablet-size {
+				padding: 5px 15px;
+			}
+		}
+
+		&--scrollable {
+			height: 100%;
+
+			& .table__body {
+				display: block;
+				height: 100%;
+				overflow-y: scroll;
+
+				@include sm-tablet-size {
+					width: 100%;
+				}
+			}
+
+			& .table__row {
+				display: table;
+				width: 100%;
+
+				table-layout: fixed;
+
+				@include sm-tablet-size {
+					display: flex;
+					flex-direction: column;
+					min-height: 100px;
+					margin: 15px 0;
+					padding: 10px 0;
+
+					border-radius: 3px;
+					box-shadow: $shadow;
+				}
+			}
+		}
+
+		&--no-wrap .table__cell {
+			overflow: hidden;
+
+			white-space: nowrap;
+
+			text-overflow: ellipsis;
+
+			@include sm-tablet-size {
+				font-size: 15px;
+				text-align: left;
+
+				&::before {
+					display: block;
+
+					width: min-content;
+					margin-right: 15px;
+					padding: 3px 10px;
+
+					color: $white;
+					font-size: 10px;
+
+					background-color: $primary_blue;
+					border-radius: 3px;
+
+					content: attr(data-name);
+				}
+			}
+		}
+
+		@include sm-tablet-size {
+			display: flex;
+		}
+	}
+}

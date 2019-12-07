@@ -17,7 +17,7 @@ class ImageGallery extends Component {
 		 * Creates properties with key of following pattern "image_[indexNumber]"
 		 * It's necessary to proper image loading handle
 		 */
-		const images = props.imgSources.reduce((accumulator, currentValue, currentIndex) => {
+		const images = props.imageFiles.reduce((accumulator, currentValue, currentIndex) => {
 			accumulator[`image_${currentIndex}`] = true
 			return accumulator
 		}, {})
@@ -63,14 +63,14 @@ class ImageGallery extends Component {
 	}
 
 	render() {
-		const { imgSources, editable } = this.props
+		const { imageFiles, editable } = this.props
 		const { selectedImage, selectedImageLoading } = this.state
 
 		return (
 			<div>
 				<ul className='gallery'>
-					{imgSources.length ? (
-						imgSources.map((source, index) => (
+					{imageFiles.length ? (
+						imageFiles.map((source, index) => (
 							<li className='gallery__item' key={`image-gallery-${index}`}>
 								{editable && (
 									<button
@@ -128,11 +128,11 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.defaultProps = {
-	imgSources: [],
+	imageFiles: [],
 }
 
 ImageGallery.propTypes = {
-	imgSources: PropTypes.arrayOf(PropTypes.string),
+	imageFiles: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default ImageGallery

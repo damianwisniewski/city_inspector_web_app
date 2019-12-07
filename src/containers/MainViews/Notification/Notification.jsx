@@ -24,6 +24,9 @@ class Notification extends Component {
 			id: pathArr[pathArr.length - 1],
 			data: {},
 			comments: {},
+			isNotifyBelongsToUser: false,
+			isEditEnabled: false,
+			modificationInProgress: false,
 		}
 	}
 
@@ -37,7 +40,20 @@ class Notification extends Component {
 			},
 		})
 			.then(res => {
-				this.setState({ data: res, fetchDataStatus: 'succeeded' })
+				const notifyData = res
+				console.log(res)
+				notifyData.photos = notifyData.photos.map((photo, index) => {
+					return {
+						imageData: photo,
+						name: photo.split('__')[1] || `image-${index}`,
+					}
+				})
+
+				this.setState({
+					data: res,
+					fetchDataStatus: 'succeeded',
+					isNotifyBelongsToUser: res.user === this.props.nickname,
+				})
 				document.title = `Zgłoszenie - ${res.id} | ${process.env.REACT_APP_TITLE}`
 			})
 			.catch(() => {
@@ -67,7 +83,44 @@ class Notification extends Component {
 		this.getComments()
 	}
 
-	isNotifyBelongsToUser = () => {}
+	renderActionButton = () => {
+		const { isNotifyBelongsToUser } = this.props
+		const { modificationInProgress } = this.state
+		const isSubscribed = false
+
+		if (isNotifyBelongsToUser && modificationInProgress) {
+			return (
+				<div>
+					<Button size='small' color='blue'>
+						Anuluj
+					</Button>
+					<Button size='small' color='blue'>
+						Zatwierdź
+					</Button>
+				</div>
+			)
+		} else if (isNotifyBelongsToUser && !modificationInProgress) {
+			return (
+				<Button size='small' color='blue'>
+					Edycja
+				</Button>
+			)
+		} else if (!isNotifyBelongsToUser && isSubscribed) {
+			return (
+				<Button size='small' color='red'>
+					Anuluj obserwowanie
+				</Button>
+			)
+		} else if (!isNotifyBelongsToUser && !isSubscribed) {
+			return (
+				<Button size='small' color='green'>
+					Obserwuj
+				</Button>
+			)
+		} else {
+			return null
+		}
+	}
 
 	render() {
 		const {
@@ -75,8 +128,8 @@ class Notification extends Component {
 			comments,
 			fetchDataStatus,
 			fetchCommentsStatus,
+			isEditEnabled,
 		} = this.state
-		const { isUserAuth } = this.props
 
 		return (
 			<RequestStatus
@@ -89,44 +142,60 @@ class Notification extends Component {
 				<div className='notification'>
 					<section className='notification__row'>
 						<NotificationDataRow linear label='Użytkownik:' content={user} />
-						<Button
-							size='small'
-							color='green'
-							disabled={!isUserAuth || this.isNotifyBelongsToUser()}
-						>
-							Edycja
-							<Tooltip hoverable>Musisz być zalogowany aby mieć dostęp do edycji</Tooltip>
-						</Button>
+						{this.renderActionButton()}
 					</section>
 					<div className='notification__col-1'>
+						{/** BASIC INFO */}
 						<section className='notification__basic-info'>
 							<NotificationDataRow linear label='Nr zgłoszenia:' content={id} />
-							<NotificationDataRow linear label='Kategoria:' content={category} />
-							<NotificationDataRow linear label='Status:' content={status} />
+							<NotificationDataRow
+								linear
+								label='Kategoria:'
+								content={category}
+								editable={isEditEnabled}
+							/>
+							<NotificationDataRow
+								linear
+								label='Status:'
+								content={status}
+								editable={isEditEnabled}
+							/>
 							<NotificationDataRow linear label='Data:' content={date} />
 						</section>
+
+						{/** MORE INFO */}
 						<section className='notification__more-info'>
-							<NotificationDataRow vertical label='Tytuł:' content={title} />
+							<NotificationDataRow
+								vertical
+								label='Tytuł:'
+								content={title}
+								editable={isEditEnabled}
+							/>
 							<NotificationDataRow
 								vertical
 								label='Adres:'
 								content={`
-								${localization.street}
-								${localization.number},
-								${localization.post}
-								${localization.city}
+								${localization.street || ''}
+								${localization.number ? localization.number + ', ' : ''}
+								${localization.post || ''}
+								${localization.city || ''}
 							`}
 							/>
-							<NotificationDataRow vertical label='Opis:' content={description} />
+							<NotificationDataRow
+								vertical
+								label='Opis:'
+								content={description}
+								editable={isEditEnabled}
+							/>
 						</section>
 					</div>
 					<div className='notification__col-2'>
 						<section className='notification__map'>
-							<MapLayout center={[localization.lat, localization.lon]} zoom={10}>
+							<MapLayout center={[localization.lat, localization.lng]} zoom={10}>
 								<MapMarker
 									key={id}
 									popupEnabled={false}
-									position={[localization.lat, localization.lon]}
+									position={[localization.lat, localization.lng]}
 									data={{
 										type: category,
 									}}
@@ -135,7 +204,7 @@ class Notification extends Component {
 						</section>
 
 						<section className='notification__photos'>
-							{photos && <ImageGallery imgSources={photos} />}
+							{photos && <ImageGallery imageFiles={photos} />}
 						</section>
 					</div>
 					<section className='notification__row'>
@@ -151,7 +220,7 @@ class Notification extends Component {
 
 function mapStateToProps(state) {
 	return {
-		isUserAuth: state.user.isUserAuth,
+		nickname: state.user.data.nickname,
 	}
 }
 

@@ -38,6 +38,7 @@
 			"Object.assign",
 			"Object.entries",
 			"Array.find",
+			"Array.from",
 			"Promise",
 			"fetch",
 			"string.startsWith"

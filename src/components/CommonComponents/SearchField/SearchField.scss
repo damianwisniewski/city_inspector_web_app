@@ -1,0 +1,108 @@
+@import '../../../assets/styleHelpers/index';
+
+.search-field {
+	display: flex;
+	flex-direction: column;
+
+	&__form {
+		margin: 20px auto 10px;
+		overflow: hidden;
+
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		box-shadow: $small_shadow;
+	}
+
+	&__input {
+		width: 200px;
+		padding: 8px;
+
+		font-size: 14px;
+
+		border: none;
+	}
+
+	&__select {
+		width: 100px;
+		padding: 8px !important;
+
+		font-size: 14px;
+		text-align: center;
+
+		border: none;
+		border-right: 1px solid #ccc;
+		border-radius: 0;
+		cursor: pointer;
+
+		appearance: none;
+	}
+
+	&__chips-wrapper {
+		display: flex;
+		flex-wrap: nowrap;
+		height: 42px;
+		padding-bottom: 18px;
+		overflow-x: auto;
+	}
+
+	&__chip {
+		display: flex;
+		align-items: center;
+		margin: 0 10px;
+		padding: 5px 10px;
+
+		color: $white;
+		font-size: 13px;
+		line-height: 1;
+		white-space: nowrap;
+
+		background-color: $darker_gray;
+		border-radius: 15px;
+
+		pointer-events: none;
+
+		&::before {
+			margin-right: 7px;
+
+			font-size: 15px;
+
+			cursor: pointer;
+
+			pointer-events: auto;
+		}
+
+		// COLOR CLASSES
+		$colors: (
+			red: $red,
+			blue: $blue,
+			yellow: $yellow,
+			green: $green,
+			gray: $dark_gray,
+		);
+
+		@mixin hover($main-color) {
+			&:hover {
+				background-color: darken($color: $main-color, $amount: 5%);
+
+				transition: background-color 0.3s linear;
+			}
+		}
+
+		@each $name, $color in $colors {
+			&--#{$name} {
+				background-color: $color;
+				@include hover($color);
+			}
+
+			&--#{$name}-light {
+				background-color: lighten($color: $color, $amount: 10%);
+				@include hover($color);
+			}
+
+			&--#{$name}-dark {
+				background-color: darken($color: $color, $amount: 20%);
+				@include hover($color);
+			}
+		}
+	}
+}

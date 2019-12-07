@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import './CommentList.scss'
 
-import { Textarea } from '../../FormComponents'
+// import { Textarea } from '../../FormComponents'
 
 const CommentList = ({ comments }) => {
 	const parseTime = timestring => {

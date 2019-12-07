@@ -202,18 +202,20 @@ class SignupModal extends Component {
 						/>
 						<Group name='Płeć' onChange={this.handleInputChanges}>
 							<Radio
+								id='gender-field-1'
 								data-type='gender'
 								name='gender'
 								value='M'
 								label='Mężczyzna'
-								checked={gender === 'M'}
+								defaultChecked={gender === 'M'}
 							/>
 							<Radio
+								id='gender-field-2'
 								data-type='gender'
 								name='gender'
 								value='F'
 								label='Kobieta'
-								checked={gender === 'F'}
+								defaultChecked={gender === 'F'}
 							/>
 						</Group>
 					</Group>
