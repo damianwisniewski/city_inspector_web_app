@@ -2,7 +2,11 @@ import { put, takeEvery, call, all } from 'redux-saga/effects'
 import { Requester } from '../../services/requester/requester'
 
 // USER ACTIONS
-import { authUser, removeUserAuthData } from '../actionCreators/userDataActions'
+import {
+	authUser,
+	removeUserAuthData,
+	setCollectionOfSubscriptions,
+} from '../actionCreators/userDataActions'
 
 // ACTION TYPES
 import {
@@ -12,8 +16,31 @@ import {
 	LOGOUT_REQUESTED,
 	CHECK_SESSION_REQUESTED,
 	CHECK_SESSION_ENDED,
+	GET_SUBSCRIPTIONS_REQUESTED,
+	GET_SUBSCRIPTIONS_SUCCEEDED,
+	GET_SUBSCRIPTIONS_FAILED,
 } from '../actionTypes/requestActionTypes'
 
+/**
+ * Saves user subscriptions in redux state
+ */
+export function* getSubscriptionCollection() {
+	try {
+		const subscriptions = yield call([Requester, 'send'], 'getAllSubscriptions')
+		yield put(setCollectionOfSubscriptions(subscriptions))
+		yield put({ type: GET_SUBSCRIPTIONS_SUCCEEDED })
+	} catch (error) {
+		yield put({
+			type: GET_SUBSCRIPTIONS_FAILED,
+		})
+	}
+}
+
+/**
+ * Sends user auth data to request for login
+ * Sets tokens and expire time on localStorage
+ * Sets information of authorization and user notification and subscriptions in redux store
+ */
 export function* userLogin({ loginData }) {
 	try {
 		const responseData = yield call([Requester, 'send'], 'login', { body: loginData })
@@ -37,6 +64,7 @@ export function* userLogin({ loginData }) {
 			}),
 		)
 		yield put({ type: CHECK_LOGIN_SUCCEEDED })
+		yield put({ type: GET_SUBSCRIPTIONS_REQUESTED })
 	} catch (error) {
 		yield put({
 			type: CHECK_LOGIN_FAILED,
@@ -44,6 +72,11 @@ export function* userLogin({ loginData }) {
 	}
 }
 
+/**
+ * Refreshes user session.
+ * Sets tokens and expire time on localStorage
+ * Sets information of authorization and user notification and subscriptions in redux store
+ */
 export function* checkSession() {
 	if (
 		localStorage.getItem('token') &&
@@ -76,12 +109,17 @@ export function* checkSession() {
 			localStorage.removeItem('secondaryToken')
 		} finally {
 			yield put({ type: CHECK_SESSION_ENDED })
+			yield put({ type: GET_SUBSCRIPTIONS_REQUESTED })
 		}
 	} else {
 		yield put({ type: CHECK_SESSION_ENDED })
 	}
 }
 
+/**
+ * Logout user
+ * Clears user auth data
+ */
 export function* userLogout() {
 	try {
 		yield call([Requester, 'send'], 'logout')
@@ -96,8 +134,12 @@ export function* userLogout() {
 	}
 }
 
+/**
+ * Watcher for all action types
+ */
 export function* watchForLoginRequests() {
 	yield all([
+		takeEvery(GET_SUBSCRIPTIONS_REQUESTED, getSubscriptionCollection),
 		takeEvery(CHECK_LOGIN_REQUESTED, userLogin),
 		takeEvery(CHECK_SESSION_REQUESTED, checkSession),
 		takeEvery(LOGOUT_REQUESTED, userLogout),

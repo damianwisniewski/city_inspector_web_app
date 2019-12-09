@@ -11,12 +11,17 @@ import {
 	GET_NOTIFICATIONS_SUCCEEDED,
 	GET_NOTIFICATIONS_FAILED,
 	GET_NOTIFICATIONS_INITIAL,
+	//
+	GET_SUBSCRIPTIONS_REQUESTED,
+	GET_SUBSCRIPTIONS_SUCCEEDED,
+	GET_SUBSCRIPTIONS_FAILED,
 } from '../actionTypes/requestActionTypes'
 
 const initialState = {
 	loginRequestStatus: 'initial',
 	getNotificationsRequestStatus: 'initial',
 	checkSessionStatus: 'pending',
+	getSubscriptionStatus: 'initial',
 }
 
 const requestReducer = (state = initialState, action) => {
@@ -76,6 +81,23 @@ const requestReducer = (state = initialState, action) => {
 			return {
 				...state,
 				getNotificationsRequestStatus: 'initial',
+			}
+
+		// GET SUBSCRIPTIONS
+		case GET_SUBSCRIPTIONS_REQUESTED:
+			return {
+				...state,
+				getSubscriptionStatus: 'pending',
+			}
+		case GET_SUBSCRIPTIONS_SUCCEEDED:
+			return {
+				...state,
+				getSubscriptionStatus: 'succeeded',
+			}
+		case GET_SUBSCRIPTIONS_FAILED:
+			return {
+				...state,
+				getSubscriptionStatus: 'failed',
 			}
 
 		default:

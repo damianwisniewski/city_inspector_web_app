@@ -4,6 +4,7 @@ import {
 	GET_NOTIFICATIONS_REQUESTED,
 	LOGOUT_REQUESTED,
 	CHECK_SESSION_REQUESTED,
+	GET_SUBSCRIPTIONS_REQUESTED,
 } from '../actionTypes/requestActionTypes'
 
 export function sagaRequestLogin(loginData) {
@@ -35,5 +36,11 @@ export function sagaRequestLogout() {
 export function checkSession() {
 	return {
 		type: CHECK_SESSION_REQUESTED,
+	}
+}
+
+export function sagaRequestSubscriptions() {
+	return {
+		type: GET_SUBSCRIPTIONS_REQUESTED,
 	}
 }

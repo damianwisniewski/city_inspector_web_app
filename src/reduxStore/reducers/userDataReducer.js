@@ -2,6 +2,7 @@ import {
 	SET_USER_AUTH,
 	SET_TOKEN_EXPIRED,
 	CLEAR_USER_AUTH_DATA,
+	SET_COLLECTION_OF_SUBSCRIPTIONS,
 } from '../actionTypes/userDataActionTypes'
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
 	},
 	isTokenExpired: false,
 	expireMessage: '',
+	collectionOfSubscriptions: [],
 }
 
 const userDataReducer = (state = initialState, action) => {
@@ -31,12 +33,13 @@ const userDataReducer = (state = initialState, action) => {
 			}
 		case CLEAR_USER_AUTH_DATA:
 			return {
-				isUserAuth: false,
-				data: {
-					nickname: '',
-					email: '',
-				},
-				isTokenExpired: false,
+				...initialState,
+			}
+
+		case SET_COLLECTION_OF_SUBSCRIPTIONS:
+			return {
+				...state,
+				collectionOfSubscriptions: action.subscriptions,
 			}
 		default:
 			return state

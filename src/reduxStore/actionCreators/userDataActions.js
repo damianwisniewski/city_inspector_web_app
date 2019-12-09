@@ -2,6 +2,7 @@ import {
 	SET_USER_AUTH,
 	SET_TOKEN_EXPIRED,
 	CLEAR_USER_AUTH_DATA,
+	SET_COLLECTION_OF_SUBSCRIPTIONS,
 } from '../actionTypes/userDataActionTypes'
 
 export function authUser(userData) {
@@ -22,5 +23,12 @@ export function setTokenExpired(message = '') {
 		type: SET_TOKEN_EXPIRED,
 		isTokenExpired: true,
 		expireMessage: message,
+	}
+}
+
+export function setCollectionOfSubscriptions(subscriptions) {
+	return {
+		type: SET_COLLECTION_OF_SUBSCRIPTIONS,
+		subscriptions,
 	}
 }
