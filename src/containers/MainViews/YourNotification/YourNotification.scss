@@ -46,7 +46,7 @@
 			top: 50%;
 			right: -1px;
 
-			display: flex;
+			display: none;
 			flex-direction: column;
 
 			font-size: 20px;
@@ -58,5 +58,11 @@
 	.table-wrapper {
 		height: 100%;
 		margin-top: 3px;
+	}
+
+	.table__row:hover {
+		.your-notification__actions {
+			display: flex;
+		}
 	}
 }

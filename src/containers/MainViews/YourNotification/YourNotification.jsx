@@ -206,7 +206,7 @@ class YourNotification extends Component {
 					<Table.Body>
 						{getNotificationRequestStatus === 'pending' && (
 							<Table.Row>
-								<Table.Cell colspan={Object.keys(YourNotification.categories).length + 1}>
+								<Table.Cell colSpan={Object.keys(YourNotification.categories).length + 1}>
 									<Loader />
 								</Table.Cell>
 							</Table.Row>
@@ -231,7 +231,7 @@ class YourNotification extends Component {
 								))
 							) : (
 								<Table.Row>
-									<Table.Cell colspan={Object.keys(YourNotification.categories).length + 1}>
+									<Table.Cell colSpan={Object.keys(YourNotification.categories).length + 1}>
 										Brak zgłoszeń...
 									</Table.Cell>
 								</Table.Row>

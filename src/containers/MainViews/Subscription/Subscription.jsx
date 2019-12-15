@@ -195,7 +195,7 @@ class Subscription extends Component {
 					<Table.Body>
 						{getSubscriptionRequestStatus === 'pending' && (
 							<Table.Row>
-								<Table.Cell colspan={Object.keys(Subscription.categories).length + 1}>
+								<Table.Cell colSpan={Object.keys(Subscription.categories).length + 1}>
 									<Loader />
 								</Table.Cell>
 							</Table.Row>
@@ -215,7 +215,7 @@ class Subscription extends Component {
 								))
 							) : (
 								<Table.Row>
-									<Table.Cell colspan={Object.keys(Subscription.categories).length + 1}>
+									<Table.Cell colSpan={Object.keys(Subscription.categories).length + 1}>
 										Brak Subsckrypcji...
 									</Table.Cell>
 								</Table.Row>
