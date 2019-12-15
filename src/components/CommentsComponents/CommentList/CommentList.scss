@@ -20,7 +20,8 @@
 		color: $black;
 		font-size: 12px;
 
-		& > p {
+		& > span {
+			display: block;
 			margin: 0;
 
 			color: $dark-gray;

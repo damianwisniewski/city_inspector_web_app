@@ -1,9 +1,6 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 import './CommentList.scss'
-
-// import { Textarea } from '../../FormComponents'
 
 const CommentList = ({ comments }) => {
 	const parseTime = timestring => {
@@ -13,16 +10,16 @@ const CommentList = ({ comments }) => {
 
 	return comments.length ? (
 		<ul className='comment-list'>
-			{comments.map(({ text, nickname, createdAt }) => {
+			{comments.map(({ text, nickname, createdAt }, index) => {
 				return (
-					<li className='comment'>
+					<li key={nickname + index} className='comment'>
 						<div className='comment__header-wrapper'>
 							<p className='comment__header'>
-								<p>Autor: </p>
+								<span>Autor: </span>
 								{nickname}
 							</p>
 							<p className='comment__header'>
-								<p>Data wystawienia: </p>
+								<span>Data wystawienia: </span>
 								{parseTime(createdAt)}
 							</p>
 						</div>

@@ -1,14 +1,19 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 import { Form, Textarea } from '../../FormComponents'
-import Button from '../../CommonComponents/Button/Button'
+import { Button } from '../../CommonComponents'
 
 import './NewComment.scss'
 
-const NewComment = () => (
-	<Form>
-		<Textarea label='Napisz swój komentarz:' className='textfield' />
+const NewComment = ({ value, onCommentChange, onSubmitComment }) => (
+	<Form onSubmit={onSubmitComment}>
+		<Textarea
+			id={'new-comment' + Date.now()}
+			label='Napisz swój komentarz:'
+			className='textfield'
+			value={value}
+			onChange={onCommentChange}
+		/>
 		<Button type='submit' color='blue'>
 			Zatwierdź
 		</Button>
