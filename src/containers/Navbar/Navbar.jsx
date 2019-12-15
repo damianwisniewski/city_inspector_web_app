@@ -61,9 +61,6 @@ class Navbar extends Component {
 				<NavItem id='eyeLink' exact icon='eye' type='link' to='/subskrypcje'>
 					Subskrypcje
 				</NavItem>
-				<NavItem id='bellLink' icon='bell' type='button' to='NotificationChangesModal'>
-					Powiadomienia
-				</NavItem>
 				<NavItem id='cogsLink' exact icon='cogs' type='link' to='/ustawienia'>
 					Ustawienia
 				</NavItem>

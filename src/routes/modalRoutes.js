@@ -1,9 +1,9 @@
-import HelpModal from '../containers/ModalViews/HelpModal/HelpModal'
+// import HelpModal from '../containers/ModalViews/HelpModal/HelpModal'
 import LoginModal from '../containers/ModalViews/LoginModal/LoginModal'
 import ForgottenPassModal from '../containers/ModalViews/ForgottenPassModal/ForgottenPassModal'
 import SignupModal from '../containers/ModalViews/SignupModal/SignupModal'
 import LogoutModal from '../containers/ModalViews/LogoutModal/LogoutModal'
-import NotificationChangesModal from '../containers/ModalViews/NotificationChangesModal/NotificationChangesModal'
+// import NotificationChangesModal from '../containers/ModalViews/NotificationChangesModal/NotificationChangesModal'
 
 /**
  * @typedef {Object} ModalRoute
@@ -18,12 +18,12 @@ import NotificationChangesModal from '../containers/ModalViews/NotificationChang
  * @type {ModalRoute[]}
  */
 export default [
-	{
-		path: 'HelpModal',
-		component: HelpModal,
-		darkOverlay: true,
-		closeButton: true,
-	},
+	// {
+	// 	path: 'HelpModal',
+	// 	component: HelpModal,
+	// 	darkOverlay: true,
+	// 	closeButton: true,
+	// },
 	{
 		path: 'LoginModal',
 		component: LoginModal,
@@ -48,10 +48,10 @@ export default [
 		darkOverlay: true,
 		closeButton: true,
 	},
-	{
-		path: 'NotificationChangesModal',
-		component: NotificationChangesModal,
-		darkOverlay: true,
-		closeButton: true,
-	},
+	// {
+	// 	path: 'NotificationChangesModal',
+	// 	component: NotificationChangesModal,
+	// 	darkOverlay: true,
+	// 	closeButton: true,
+	// },
 ]
