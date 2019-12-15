@@ -10,6 +10,7 @@ import {
 	ConfirmModal,
 	Table,
 	SearchField,
+	Loader,
 } from '../../../components/CommonComponents'
 
 // Others
@@ -168,7 +169,12 @@ class Subscription extends Component {
 	}
 
 	render() {
-		const { subscription, isDeleteConfirmModalOpen, deleteRequestInProgress } = this.state
+		const {
+			subscription,
+			isDeleteConfirmModalOpen,
+			deleteRequestInProgress,
+			getSubscriptionRequestStatus,
+		} = this.state
 
 		return (
 			<div id='Subscription' className='subscription'>
@@ -187,8 +193,16 @@ class Subscription extends Component {
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
-						{subscription.length
-							? subscription.map((row, rowIndex) => (
+						{getSubscriptionRequestStatus === 'pending' && (
+							<Table.Row>
+								<Table.Cell colspan={Object.keys(Subscription.categories).length + 1}>
+									<Loader />
+								</Table.Cell>
+							</Table.Row>
+						)}
+						{getSubscriptionRequestStatus !== 'pending' &&
+							(subscription.length ? (
+								subscription.map((row, rowIndex) => (
 									<Table.Row key={`row_${rowIndex}`}>
 										<Table.Cell name={Object.keys(Subscription.categories)[0]} data-id={row.id}>
 											{row.NotificationId}
@@ -198,8 +212,14 @@ class Subscription extends Component {
 											<span onClick={this.handleToNotifyClick} className={styles['go-to']} />
 										</Table.Cell>
 									</Table.Row>
-							  ))
-							: null}
+								))
+							) : (
+								<Table.Row>
+									<Table.Cell colspan={Object.keys(Subscription.categories).length + 1}>
+										Brak Subsckrypcji...
+									</Table.Cell>
+								</Table.Row>
+							))}
 					</Table.Body>
 				</Table>
 

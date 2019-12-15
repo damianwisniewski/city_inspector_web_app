@@ -10,6 +10,7 @@ import {
 	ConfirmModal,
 	Table,
 	SearchField,
+	Loader,
 } from '../../../components/CommonComponents'
 
 // Others
@@ -179,7 +180,12 @@ class YourNotification extends Component {
 	]
 
 	render() {
-		const { notifications, isDeleteConfirmModalOpen, deleteRequestInProgress } = this.state
+		const {
+			notifications,
+			isDeleteConfirmModalOpen,
+			deleteRequestInProgress,
+			getNotificationRequestStatus,
+		} = this.state
 
 		return (
 			<div id='YourNotification' className='your-notification'>
@@ -198,8 +204,16 @@ class YourNotification extends Component {
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
-						{notifications.length
-							? notifications.map((row, rowIndex) => (
+						{getNotificationRequestStatus === 'pending' && (
+							<Table.Row>
+								<Table.Cell colspan={Object.keys(YourNotification.categories).length + 1}>
+									<Loader />
+								</Table.Cell>
+							</Table.Row>
+						)}
+						{getNotificationRequestStatus !== 'pending' &&
+							(notifications.length ? (
+								notifications.map((row, rowIndex) => (
 									<Table.Row key={`row_${rowIndex}`}>
 										{this.PrepareValues(row).map((cell, cellIndex) => (
 											<Table.Cell
@@ -214,8 +228,14 @@ class YourNotification extends Component {
 											<span onClick={this.handleToNotifyClick} className={styles['go-to']} />
 										</Table.Cell>
 									</Table.Row>
-							  ))
-							: null}
+								))
+							) : (
+								<Table.Row>
+									<Table.Cell colspan={Object.keys(YourNotification.categories).length + 1}>
+										Brak zgłoszeń...
+									</Table.Cell>
+								</Table.Row>
+							))}
 					</Table.Body>
 				</Table>
 
