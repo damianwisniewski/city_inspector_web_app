@@ -49,12 +49,12 @@ class Select extends Component {
 	}
 
 	render() {
-		const { id, children, label, ...rest } = this.props
+		const { id, children, label, labelType, ...rest } = this.props
 		const { focused, selected } = this.state
 		const focusClass = focused ? 'input-wrapper__field--focused' : ''
 
 		return (
-			<div className='input-wrapper input-wrapper--select'>
+			<div className={`input-wrapper input-wrapper--select input-wrapper--${labelType}`}>
 				<div className={`input-wrapper__field input-wrapper__field--select ${focusClass}`}>
 					<select
 						{...rest}
@@ -74,7 +74,11 @@ class Select extends Component {
 						))}
 					</ul>
 				</div>
-				<label ref={label => (this.label = label)} className='input-wrapper__label' htmlFor={id}>
+				<label
+					ref={label => (this.label = label)}
+					className={`input-wrapper__label input-wrapper__label--${labelType}`}
+					htmlFor={id}
+				>
 					{label}
 				</label>
 			</div>
@@ -84,11 +88,13 @@ class Select extends Component {
 
 Select.defaultProps = {
 	label: '',
+	labelType: 'basic',
 }
 
 Select.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
+	labelType: PropTypes.oneOf(['basic', 'solid', 'inline-solid']),
 	onChange: PropTypes.func.isRequired,
 }
 

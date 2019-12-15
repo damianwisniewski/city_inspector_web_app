@@ -4,6 +4,8 @@
 	position: relative;
 	z-index: 50;
 
+	width: 100%;
+
 	&::after {
 		position: absolute;
 		top: 50%;
@@ -17,6 +19,12 @@
 		transform: translateY(-50%);
 
 		content: '\f107';
+	}
+
+	&.input-wrapper--solid {
+		&::after {
+			top: unset;
+		}
 	}
 
 	.field__output {

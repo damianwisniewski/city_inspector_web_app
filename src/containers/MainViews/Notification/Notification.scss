@@ -71,4 +71,18 @@
 			margin-left: 0;
 		}
 	}
+
+	.button.notification__subscribe {
+		&--long {
+			width: 156px;
+			height: 28px;
+			padding: 0;
+		}
+
+		&--short {
+			width: 86px;
+			height: 28px;
+			padding: 0;
+		}
+	}
 }

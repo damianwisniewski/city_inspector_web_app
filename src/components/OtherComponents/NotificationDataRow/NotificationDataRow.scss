@@ -4,12 +4,36 @@
 	&__wrapper {
 		display: flex;
 
+		&:nth-child(2n + 1) {
+			position: relative;
+			z-index: 10;
+		}
+
 		&--linear {
 			flex-direction: row;
 		}
 
 		&--vertical {
 			flex-direction: column;
+		}
+
+		// OVERRIDE SOME STYLES OF FORM COMPONENTS
+		& .input-wrapper {
+			padding: 0;
+		}
+
+		& .input-wrapper__label {
+			@extend .description__header;
+			justify-content: flex-start;
+		}
+
+		& .input-wrapper__field {
+			@extend .description__data;
+			width: unset;
+		}
+
+		& .field__output {
+			font-size: 13px;
 		}
 	}
 

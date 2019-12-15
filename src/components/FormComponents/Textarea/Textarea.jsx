@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Textarea = ({ id, placeholder, label, labelType, className, ...rest }) => (
-	<div className='input-wrapper'>
+const Textarea = ({ id, placeholder, label, labelType, className, noresize, ...rest }) => (
+	<div className={`input-wrapper input-wrapper--${labelType}`}>
 		<textarea
 			data-animate={labelType === 'floating'}
-			className={'input-wrapper__field' + (className ? ' ' + className : '')}
+			className={
+				'input-wrapper__field' +
+				(noresize ? ' input-wrapper__field--noresize' : '') +
+				(className ? ' ' + className : '')
+			}
 			id={id}
 			placeholder={placeholder}
 			{...rest}
@@ -22,6 +26,7 @@ Textarea.propTypes = {
 	label: '',
 	placeholder: '',
 	labelType: 'basic',
+	noresize: false,
 }
 
 Textarea.propTypes = {
