@@ -1,4 +1,4 @@
-// import HelpModal from '../containers/ModalViews/HelpModal/HelpModal'
+import AboutModal from '../containers/ModalViews/AboutModal/AboutModal'
 import LoginModal from '../containers/ModalViews/LoginModal/LoginModal'
 import ForgottenPassModal from '../containers/ModalViews/ForgottenPassModal/ForgottenPassModal'
 import SignupModal from '../containers/ModalViews/SignupModal/SignupModal'
@@ -18,12 +18,12 @@ import LogoutModal from '../containers/ModalViews/LogoutModal/LogoutModal'
  * @type {ModalRoute[]}
  */
 export default [
-	// {
-	// 	path: 'HelpModal',
-	// 	component: HelpModal,
-	// 	darkOverlay: true,
-	// 	closeButton: true,
-	// },
+	{
+		path: 'AboutModal',
+		component: AboutModal,
+		darkOverlay: true,
+		closeButton: true,
+	},
 	{
 		path: 'LoginModal',
 		component: LoginModal,

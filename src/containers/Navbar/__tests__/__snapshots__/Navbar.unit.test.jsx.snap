@@ -129,7 +129,7 @@ exports[`<Navbar /> (Non-Auth) should contains proper Navigation items 1`] = `
         exact={false}
         icon="help"
         id="helpLink"
-        to="HelpModal"
+        to="AboutModal"
         type="button"
       >
         Pomoc

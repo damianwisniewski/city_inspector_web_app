@@ -30,7 +30,7 @@
 		background-color: $primary_blue;
 		box-shadow: $shadow;
 
-		@media only screen and (max-width: 950px) {
+		@include tablet-size {
 			height: 50px;
 			padding-right: 15px;
 		}
@@ -46,7 +46,7 @@
 
 		list-style-type: none;
 
-		@media only screen and (max-width: 950px) {
+		@include tablet-size {
 			position: absolute;
 
 			top: 50px;
@@ -78,7 +78,7 @@
 			& > button {
 				width: 100%;
 
-				@media only screen and (max-width: 950px) {
+				@include tablet-size {
 					margin-top: 10px;
 					margin-bottom: 10px;
 
@@ -95,7 +95,7 @@
 			padding: 5px;
 		}
 
-		@media only screen and (max-width: 950px) {
+		@include tablet-size {
 			display: block;
 
 			color: $primary_light_blue;
@@ -117,8 +117,6 @@
 	}
 
 	.logo {
-		position: relative;
-
-		width: 65px;
+		margin-left: 10px;
 	}
 }

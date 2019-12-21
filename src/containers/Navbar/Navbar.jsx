@@ -5,12 +5,10 @@ import { connect } from 'react-redux'
 import './Navbar.scss'
 import iconAssets from '../../assets/styleModules/icons.module.scss'
 
-// Images
-import logo from '../../assets/images/logo.svg'
-
 // Components
 import NavItem from '../../components/NavComponents/NavItem/NavItem'
 import NavButton from '../../components/NavComponents/NavButton/NavButton'
+import { Logo } from '../../components/CommonComponents'
 
 class Navbar extends Component {
 	static defaultProps = {
@@ -61,6 +59,9 @@ class Navbar extends Component {
 				<NavItem id='eyeLink' exact icon='eye' type='link' to='/subskrypcje'>
 					Subskrypcje
 				</NavItem>
+				<NavItem id='helpLink' icon='help' type='button' to='AboutModal'>
+					O aplikacji
+				</NavItem>
 				<NavItem id='cogsLink' exact icon='cogs' type='link' to='/ustawienia'>
 					Ustawienia
 				</NavItem>
@@ -86,8 +87,8 @@ class Navbar extends Component {
 				<NavItem id='mapLink' exact icon='map' type='link' to='/'>
 					Mapa
 				</NavItem>
-				<NavItem id='helpLink' icon='help' type='button' to='HelpModal'>
-					Pomoc
+				<NavItem id='helpLink' icon='help' type='button' to='AboutModal'>
+					O aplikacji
 				</NavItem>
 				<NavButton id='registerButton' color='white' to='SignupModal'>
 					Rejestracja
@@ -105,7 +106,7 @@ class Navbar extends Component {
 		return (
 			<nav className='navigation'>
 				<div className='navigation__container'>
-					<img src={logo} className='logo' alt='logo' />
+					<Logo title='City Inspector' size='small' />
 					{/* For better readability, list theme for different auth state were split to functions */}
 					{isUserAuth ? this.createAuthNavigation() : this.createNavigation()}
 					<button
