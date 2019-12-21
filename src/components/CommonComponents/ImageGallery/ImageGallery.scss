@@ -39,16 +39,12 @@
 		list-style-type: none;
 	}
 
-	&__item:hover > &__remove {
-		display: block;
-	}
-
 	&__remove {
 		position: absolute;
 		top: 0;
 		right: 0;
 
-		display: none;
+		display: block;
 
 		color: $red;
 

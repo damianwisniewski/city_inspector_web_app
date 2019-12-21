@@ -12,9 +12,5 @@
 	"eslint.alwaysShowStatus": true,
 	"files.autoSave": "onFocusChange",
 	"editor.trimAutoWhitespace": false,
-	"prettier.htmlWhitespaceSensitivity": "ignore",
-	"prettier.eslintIntegration": true,
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
-	}
+	"prettier.htmlWhitespaceSensitivity": "ignore"
 }

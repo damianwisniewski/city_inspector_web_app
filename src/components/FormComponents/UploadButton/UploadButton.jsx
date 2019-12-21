@@ -24,8 +24,9 @@ class UploadButton extends Component {
 		} else {
 			for (let i = 0; i < files.length; i++) {
 				const file = files[i]
+				const fileType = acceptsFile.split('/')[0]
 
-				if (file.type.startsWith(acceptsFile)) {
+				if (file.type.startsWith(fileType)) {
 					imageLoaders.push(file)
 				} else {
 					throw new Error('Wybrano niepoprawny plik!')

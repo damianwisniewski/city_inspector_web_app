@@ -71,6 +71,7 @@
 
 			text-align: center;
 
+			&:not(.no-after-label)::after,
 			&:not(:last-of-type)::after {
 				position: absolute;
 				top: 50%;

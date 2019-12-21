@@ -22,5 +22,5 @@ Logo.defaultProps = {
 
 Logo.propTypes = {
 	title: PropTypes.string,
-	size: PropTypes.oneOf('small', 'large'),
+	size: PropTypes.oneOf(['small', 'large']),
 }

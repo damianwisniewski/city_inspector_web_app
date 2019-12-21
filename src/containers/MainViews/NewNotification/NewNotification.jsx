@@ -95,22 +95,24 @@ class NewNotification extends Component {
 
 		const { ...formData } = this.state
 
-		const forms = new FormData()
-		Object.entries(formData).forEach(([key, value]) => {
-			if (value) {
-				if (key === 'photos') {
-					value.forEach(photo => {
-						forms.append(key, photo.file)
-					})
-				} else {
-					forms.append(key, String(value).toLowerCase())
+		if (formData.title && formData.description && formData.city) {
+			const forms = new FormData()
+			Object.entries(formData).forEach(([key, value]) => {
+				if (value) {
+					if (key === 'photos') {
+						value.forEach(photo => {
+							forms.append(key, photo.file)
+						})
+					} else {
+						forms.append(key, String(value).toLowerCase())
+					}
 				}
-			}
-		})
+			})
 
-		Requester.send('createNotification', { body: forms })
-			.then(res => this.props.history.push(`/zgloszenie/${res.id}`))
-			.catch(err => console.error(err))
+			Requester.send('createNotification', { body: forms })
+				.then(res => this.props.history.push(`/zgloszenie/${res.id}`))
+				.catch(err => console.error(err))
+		}
 	}
 
 	render() {
@@ -119,7 +121,7 @@ class NewNotification extends Component {
 
 		return (
 			<div id='NewNotification' className='new-notification'>
-				<Form>
+				<Form onSubmit={this.handleCreateNotification}>
 					<section className='section category-section'>
 						<h2 className='section__header'>Kategoria</h2>
 						<p className='section__description'>
@@ -170,17 +172,19 @@ class NewNotification extends Component {
 							data-state-name='title'
 							value={title}
 							onChange={this.handleFormFieldChanges}
-							label='Tytuł:'
+							label='Tytuł: *'
 							placeholder='Wpisz tytuł dla zgłoszenia'
+							required
 						/>
 						<Textarea
 							id='new-notification-description'
 							data-state-name='description'
 							value={description}
 							onChange={this.handleFormFieldChanges}
-							label='Opis miejsa:'
+							label='Opis miejsa: *'
 							placeholder='Wpisz opis dotyczący zgłaszanego miejsca'
 							className='section__desctiption-field'
+							required
 						/>
 					</section>
 					<section className='section localization-section'>
@@ -216,8 +220,9 @@ class NewNotification extends Component {
 								data-state-name='city'
 								value={city}
 								onChange={this.handleFormFieldChanges}
-								label='Miasto:'
+								label='Miasto: *'
 								placeholder='Wpisz nazwę miasta...'
+								required
 							/>
 							<Input
 								id='new-notification-post'
@@ -252,9 +257,10 @@ class NewNotification extends Component {
 						</p>
 						<UploadButton
 							id='new-notification-upload-button'
-							acceptsFile='image/png'
+							acceptsFile='image/*'
 							onAddImages={this.handleUploadImage}
 							mobile={isMobile.toString()}
+							capture
 						/>
 						<ImageGallery
 							imageFiles={this.state.photos}
@@ -263,7 +269,7 @@ class NewNotification extends Component {
 						/>
 					</section>
 					<section className='button-section'>
-						<Button type='submit' color='blue' onClick={this.handleCreateNotification}>
+						<Button type='submit' color='blue'>
 							Zapisz zgłoszenie
 						</Button>
 					</section>
