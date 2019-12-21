@@ -49,12 +49,6 @@ export const Requester = {
 		const query = queries ? this.objectToQueryString(queries) : ''
 		const headers = this.prepareHeaders(headersTemplate)
 
-		console.log(this.feedDomain + path + query, {
-			method,
-			body: body && (isFormData ? body : JSON.stringify(body)),
-			headers,
-		})
-
 		const response = await fetch(this.feedDomain + path + query, {
 			method,
 			body: body && (isFormData ? body : JSON.stringify(body)),

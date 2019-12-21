@@ -35,7 +35,7 @@
 		cursor: pointer;
 	}
 
-	@media screen and (max-width: 600px) {
+	@include phone-size {
 		&--focused {
 			position: fixed;
 			top: 0;
@@ -55,7 +55,7 @@
 				display: block;
 			}
 
-			@media screen and (max-width: 600px) {
+			@include phone-size {
 				& .search__control {
 					align-items: center;
 					height: unset;
@@ -116,7 +116,7 @@
 		border-radius: 3px;
 		box-shadow: $small_shadow;
 
-		@media screen and (max-width: 600px) {
+		@include phone-size {
 			position: static;
 
 			width: unset;

@@ -5,13 +5,13 @@ import './NotificationDataRow.scss'
 import { Textarea, Select, Input } from '../../FormComponents'
 
 const NotificationDataRow = ({
-	children,
 	label,
 	linear,
 	vertical,
 	editable,
 	fieldType,
 	options,
+	value,
 	...props
 }) => {
 	const renderProperField = () => {
@@ -24,20 +24,28 @@ const NotificationDataRow = ({
 						id={label + Date.now()}
 						label={label}
 						labelType={labelType}
-						value={children}
+						defaultValue={value}
 						{...props}
 					/>
 				)
 			case 'select':
 				return (
-					<Select label={label} labelType={labelType} value={children} {...props}>
+					<Select
+						id={label + Date.now()}
+						label={label}
+						labelType={labelType}
+						value={value}
+						{...props}
+					>
 						{options.map(optionItem => (
-							<Select.option value={optionItem}>{optionItem}</Select.option>
+							<Select.option key={optionItem} value={optionItem}>
+								{optionItem}
+							</Select.option>
 						))}
 					</Select>
 				)
 			default:
-				return <Input label={label} labelType={labelType} value={children} {...props} />
+				return <Input label={label} labelType={labelType} defaultValue={value} {...props} />
 		}
 	}
 
@@ -51,7 +59,7 @@ const NotificationDataRow = ({
 			) : (
 				<>
 					<p className='description__header'>{label}</p>
-					<p className='description__data'>{children}</p>
+					<p className='description__data'>{value}</p>
 				</>
 			)}
 		</div>

@@ -3,6 +3,10 @@
 .settings {
 	@include sectionContainer;
 
+	@include sm-phone-size {
+		padding: 5px;
+	}
+
 	&__header {
 		width: 100%;
 

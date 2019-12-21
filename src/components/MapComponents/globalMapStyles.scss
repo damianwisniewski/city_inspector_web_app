@@ -27,7 +27,7 @@ div.leaflet-bar {
 
 	transform: translateX(-50%);
 
-	@media screen and (max-width: 600px) {
+	@include phone-size {
 		left: 0;
 
 		transform: none;

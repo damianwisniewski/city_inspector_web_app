@@ -1,3 +1,9 @@
+@mixin sm-phone-size {
+	@media screen and (max-width: 450px) {
+		@content;
+	}
+}
+
 @mixin phone-size {
 	@media screen and (max-width: 600px) {
 		@content;
@@ -15,9 +21,3 @@
 		@content;
 	}
 }
-
-// @mixin desktop-size {
-// 	@media screen and (max-width: 1400px) {
-// 		@content;
-// 	}
-// }

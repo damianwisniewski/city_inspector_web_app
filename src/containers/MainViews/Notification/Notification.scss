@@ -8,40 +8,60 @@
 
 	&__row {
 		display: flex;
-		align-items: center;
-		justify-content: space-around;
 		width: 100%;
 		margin: 10px;
-		padding: 10px;
 
-		background-color: $white;
-		border-radius: 3px;
-		box-shadow: $shadow;
+		@include sm-tablet-size {
+			&:not(:first-of-type) {
+				flex-direction: column;
+			}
+		}
+
+		@include sm-phone-size {
+			flex-direction: column;
+		}
 	}
 
 	&__col-1,
 	&__col-2 {
-		flex: 2;
-		min-width: 300px;
-		margin: 10px;
-	}
-
-	&__col-1 {
 		display: flex;
 		flex: 1;
 		flex-direction: column;
-		margin: 10px;
-		margin-bottom: 20px;
-		overflow: hidden;
+		min-width: 300px;
 
+		&:not(:last-of-type) {
+			margin-right: 20px;
+		}
+
+		@include sm-tablet-size {
+			margin-right: 0 !important;
+
+			&:not(:last-of-type) {
+				margin-bottom: 20px;
+			}
+		}
+	}
+
+	&__col-2 {
+		flex: 2;
+	}
+
+	&__container {
 		background-color: $white;
 		border-radius: 3px;
 		box-shadow: $shadow;
 	}
 
+	&__header,
 	&__basic-info,
 	&__more-info {
 		padding: 10px;
+	}
+
+	&__header {
+		align-items: center;
+		justify-content: space-around;
+		margin: 10px;
 	}
 
 	&__basic-info {
@@ -50,6 +70,7 @@
 		color: $light_gray;
 
 		background-color: $primary_light_blue;
+		border-radius: 3px;
 	}
 
 	&__more-info {
@@ -58,7 +79,8 @@
 
 	&__map {
 		width: 100%;
-		height: 45vh;
+		height: 100%;
+		min-height: 50vh;
 		overflow: hidden;
 
 		border-radius: 3px;
@@ -69,6 +91,10 @@
 		& .gallery {
 			margin-right: 0;
 			margin-left: 0;
+		}
+
+		& .input-wrapper {
+			margin: auto;
 		}
 	}
 

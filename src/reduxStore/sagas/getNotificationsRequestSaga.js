@@ -17,7 +17,6 @@ export function* getNotificationsSaga({ params }) {
 		yield put(setNotifications(responseData))
 		yield put({ type: GET_NOTIFICATIONS_SUCCEEDED })
 	} catch (error) {
-		console.log(error)
 		yield put({
 			type: GET_NOTIFICATIONS_FAILED,
 		})

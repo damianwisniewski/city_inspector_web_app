@@ -31,7 +31,7 @@ $buttonColors: (
 
 		transition: background-color 0.1s ease-out;
 
-		@media only screen and (max-width: 950px) {
+		@include tablet-size {
 			margin-top: 10px;
 			margin-bottom: 10px;
 

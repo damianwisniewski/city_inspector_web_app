@@ -1,7 +1,6 @@
 const capabilities = require('./scripts/wdioBrowserFilter')
 const TestserverService = require('./scripts/TestserverService')
 
-console.log(capabilities)
 if (process.argv.includes('--skip')) process.exit(0)
 
 exports.config = {

@@ -21,6 +21,7 @@ import { Requester } from '../../../services/requester/requester'
 
 // Actions
 import { sagaRequestSubscriptions } from '../../../reduxStore/actionCreators/requestActions'
+import { UploadButton } from '../../../components/FormComponents'
 
 class Notification extends Component {
 	static categories = [
@@ -66,7 +67,7 @@ class Notification extends Component {
 		this.getComments()
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps, prevState) {
 		const { subscriptions } = this.props
 		const { id } = this.state
 
@@ -84,10 +85,12 @@ class Notification extends Component {
 		const forms = new FormData()
 		Object.entries(changes).forEach(([key, value]) => {
 			if (value) {
-				if (key === 'photos') {
+				if (key === 'newPhotos') {
 					value.forEach(photo => {
-						forms.append(key, photo.file)
+						forms.append('photos', photo.file)
 					})
+				} else if (key === 'deletePhotos') {
+					forms.append('deletePhotos', changes.deletePhotos.map(photo => photo.imageData))
 				} else {
 					forms.append(key, String(value).toLowerCase())
 				}
@@ -131,28 +134,97 @@ class Notification extends Component {
 		const { id, sendCommentStatus, comments, newComment } = this.state
 		e.preventDefault()
 
-		if (sendCommentStatus === 'pending') return
+		if (sendCommentStatus !== 'pending' && newComment.trim()) {
+			this.setState({ sendCommentStatus: 'pending' })
 
-		this.setState({ sendCommentStatus: 'pending' })
+			Requester.send('createNewComment', {
+				params: { notificationId: id },
+				body: {
+					text: newComment,
+				},
+			})
+				.then(() =>
+					this.setState({
+						sendCommentStatus: 'succeeded',
+						comments: [
+							...comments,
+							{ createdAt: Date.now(), nickname: this.props.nickname, text: newComment },
+						],
+						newComment: '',
+					}),
+				)
+				.catch(() => this.setState({ sendCommentStatus: 'failed' }))
+		}
+	}
 
-		Requester.send('createNewComment', {
-			params: { notificationId: id },
-			body: {
-				text: newComment,
+	onRemoveImage = eventData => {
+		const { data, changes } = this.state
+		const { photos, deletePhotos, newPhotos } = data.photos.reduce(
+			(accumulator, currentValue) => {
+				if (currentValue.name !== eventData.removed) {
+					accumulator.photos.push(currentValue)
+
+					if (
+						changes.newPhotos &&
+						changes.newPhotos.find(newPhoto => newPhoto.name === currentValue.name)
+					) {
+						accumulator.newPhotos.push(currentValue)
+					}
+				} else if (changes.newPhotos) {
+					if (!changes.newPhotos.find(newPhoto => newPhoto.name === currentValue.name)) {
+						accumulator.deletePhotos.push(currentValue)
+					}
+				} else {
+					accumulator.deletePhotos.push(currentValue)
+				}
+
+				return accumulator
+			},
+			{
+				photos: [],
+				deletePhotos: [],
+				newPhotos: [],
+			},
+		)
+
+		this.setState({
+			data: { ...this.state.data, photos },
+			changes: {
+				...this.state.changes,
+				deletePhotos,
+				newPhotos,
 			},
 		})
-			.then(() =>
-				this.setState({
-					sendCommentStatus: 'succeeded',
-					comments: [
-						...comments,
-						{ createdAt: Date.now(), nickname: this.props.nickname, text: newComment },
-					],
-					newComment: '',
-				}),
-			)
-			.catch(() => this.setState({ sendCommentStatus: 'failed' }))
 	}
+
+	onUploadImage = async eventData => {
+		const { data, changes } = this.state
+		const newImages = await Promise.all(eventData.map(this.getImageDataFromFile))
+
+		this.setState({
+			data: {
+				...data,
+				photos: [...data.photos, ...newImages],
+			},
+
+			changes: {
+				...changes,
+				newPhotos: [...(changes.newPhotos ? changes.newPhotos : []), ...newImages],
+			},
+		})
+	}
+
+	getImageDataFromFile = imageData =>
+		new Promise((resolve, reject) => {
+			const reader = new FileReader()
+			reader.addEventListener('load', event => {
+				resolve({ imageData: event.target.result, name: imageData.name, file: imageData })
+			})
+			reader.addEventListener('error', () => {
+				reject('Przepraszamy wystąpił błąd!')
+			})
+			reader.readAsDataURL(imageData)
+		})
 
 	getNotificationData = () => {
 		Requester.send('getSingleNotifiacation', {
@@ -230,8 +302,23 @@ class Notification extends Component {
 	}
 
 	toggleModificationState = () => {
+		const { data, changes, isEditEnabled } = this.state
+		let previousPhotos = data.photos
+
+		if (isEditEnabled && changes.newPhotos) {
+			previousPhotos = data.photos
+				.map(photo => changes.newPhotos.find(newPhotos => newPhotos !== photo))
+				.filter(photo => photo)
+		}
+
 		this.setState({
-			isEditEnabled: !this.state.isEditEnabled,
+			isEditEnabled: !isEditEnabled,
+
+			data: {
+				...data,
+				photos: [...previousPhotos, ...(changes.deletePhotos ? changes.deletePhotos : [])],
+			},
+			changes: {},
 		})
 	}
 
@@ -303,6 +390,8 @@ class Notification extends Component {
 			newComment,
 		} = this.state
 
+		const { isMobile } = this.props
+
 		return (
 			<RequestStatus
 				requestState={fetchDataStatus}
@@ -312,104 +401,116 @@ class Notification extends Component {
 				direction='vertical'
 			>
 				<div className='notification'>
-					<section className='notification__row'>
-						<NotificationDataRow linear label='Użytkownik:'>
-							{user}
-						</NotificationDataRow>
+					<section className='notification__row notification__container notification__header'>
+						<NotificationDataRow linear label='Użytkownik:' value={user} />
 						{this.renderActionButton()}
 					</section>
-					<div className='notification__col-1'>
-						{/** BASIC INFO */}
-						<section className='notification__basic-info'>
-							<NotificationDataRow linear label='Nr zgłoszenia:'>
-								{id}
-							</NotificationDataRow>
-							<NotificationDataRow
-								linear
-								data-name='category'
-								label='Kategoria:'
-								editable={isEditEnabled}
-								fieldType='select'
-								options={Notification.categories}
-								onChange={this.onFieldChange}
-							>
-								{category}
-							</NotificationDataRow>
-							<NotificationDataRow
-								linear
-								data-name='status'
-								label='Status:'
-								editable={isEditEnabled}
-								fieldType='select'
-								options={Notification.statuses}
-								onChange={this.onFieldChange}
-							>
-								{status}
-							</NotificationDataRow>
-							<NotificationDataRow linear label='Data:'>
-								{date}
-							</NotificationDataRow>
-						</section>
-
-						{/** MORE INFO */}
-						<section className='notification__more-info'>
-							<NotificationDataRow
-								vertical
-								data-name='title'
-								label='Tytuł:'
-								editable={isEditEnabled}
-								fieldType='textarea'
-								rows='2'
-								onChange={this.onFieldChange}
-								noresize
-							>
-								{title}
-							</NotificationDataRow>
-							<NotificationDataRow vertical label='Adres:'>
-								{`
-								${localization.street || ''}
-								${localization.number ? localization.number + ', ' : ''}
-								${localization.post || ''}
-								${localization.city || ''}
-							`}
-							</NotificationDataRow>
-							<NotificationDataRow
-								vertical
-								label='Opis:'
-								data-name='description'
-								editable={isEditEnabled}
-								fieldType='textarea'
-								rows='6'
-								onChange={this.onFieldChange}
-								noresize
-							>
-								{description}
-							</NotificationDataRow>
-						</section>
-					</div>
-
-					{/** Right col - map and image gallery */}
-					<div className='notification__col-2'>
-						<section className='notification__map'>
-							<MapLayout center={[localization.lat, localization.lng]} zoom={10}>
-								<MapMarker
-									key={id}
-									popupEnabled={false}
-									position={[localization.lat, localization.lng]}
-									data={{
-										type: category,
-									}}
+					<section className='notification__row'>
+						<div className='notification__col-1 notification__container'>
+							{/** BASIC INFO */}
+							<section className='notification__basic-info'>
+								<NotificationDataRow linear label='Nr zgłoszenia:' value={id} />
+								<NotificationDataRow
+									linear
+									data-name='category'
+									label='Kategoria:'
+									editable={isEditEnabled}
+									fieldType='select'
+									options={Notification.categories}
+									onChange={this.onFieldChange}
+									value={category}
 								/>
-							</MapLayout>
-						</section>
+								<NotificationDataRow
+									linear
+									data-name='status'
+									label='Status:'
+									editable={isEditEnabled}
+									fieldType='select'
+									options={Notification.statuses}
+									onChange={this.onFieldChange}
+									value={status}
+								/>
 
-						<section className='notification__photos'>
-							{photos && <ImageGallery imageFiles={photos} />}
-						</section>
+								<NotificationDataRow linear label='Data:' value={new Date(date).toLocaleString()} />
+							</section>
+
+							{/** MORE INFO */}
+							<section className='notification__more-info'>
+								<NotificationDataRow
+									vertical
+									data-name='title'
+									label='Tytuł:'
+									editable={isEditEnabled}
+									fieldType='textarea'
+									rows='2'
+									onChange={this.onFieldChange}
+									noresize
+									value={title}
+								/>
+								<NotificationDataRow
+									vertical
+									label='Adres:'
+									value={`
+									${localization.street || ''}
+									${localization.number ? localization.number + ', ' : ''}
+									${localization.post || ''}
+									${localization.city || ''}
+								`}
+								/>
+								<NotificationDataRow
+									vertical
+									label='Opis:'
+									data-name='description'
+									editable={isEditEnabled}
+									fieldType='textarea'
+									rows='6'
+									onChange={this.onFieldChange}
+									noresize
+									value={description}
+								/>
+							</section>
+						</div>
+
+						{/** Right col - map and image gallery */}
+						<div className='notification__col-1'>
+							<section className='notification__map'>
+								<MapLayout center={[localization.lat, localization.lng]} zoom={10}>
+									<MapMarker
+										key={id}
+										popupEnabled={false}
+										position={[localization.lat, localization.lng]}
+										data={{
+											type: category,
+										}}
+									/>
+								</MapLayout>
+							</section>
+						</div>
+					</section>
+					<div className='notification__row'>
+						{isEditEnabled ? (
+							<>
+								<section className='notification__col-1 notification__photos'>
+									<UploadButton
+										id='new-notification-upload-button'
+										acceptsFile='image/png'
+										onAddImages={this.onUploadImage}
+										mobile={isMobile.toString()}
+									/>
+								</section>
+								<section className='notification__col-2 notification__photos'>
+									<ImageGallery imageFiles={photos} editable onRemoveImage={this.onRemoveImage} />
+								</section>
+							</>
+						) : (
+							<section className='notification__col-1 notification__photos'>
+								<ImageGallery imageFiles={photos} onRemoveImage={this.onRemoveImage} />
+							</section>
+						)}
 					</div>
 
 					{/** Comments */}
-					<section className='notification__row'>
+					<section className='notification__row notification__container'>
 						<RequestStatus requestState={fetchCommentsStatus} size='medium' direction='vertical'>
 							<CommentWrapper>
 								<CommentList comments={comments} />
@@ -449,6 +550,7 @@ function mapStateToProps(state) {
 		isUserAuth: state.user.isUserAuth,
 		nickname: state.user.data.nickname,
 		subscriptions: state.user.collectionOfSubscriptions,
+		isMobile: state.env.isMobile,
 	}
 }
 

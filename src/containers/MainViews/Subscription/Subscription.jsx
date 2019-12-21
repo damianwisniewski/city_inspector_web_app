@@ -113,7 +113,6 @@ class Subscription extends Component {
 		)
 		const id = idField && idField.dataset.id
 
-		console.log(id)
 		if (id) {
 			this.setState({ isDeleteConfirmModalOpen: true, subscriptionToDelete: id })
 		}
@@ -164,7 +163,6 @@ class Subscription extends Component {
 		)
 		const id = idField && idField.textContent
 
-		console.log(rowElement)
 		this.props.history.push(`/zgloszenie/${id}`)
 	}
 

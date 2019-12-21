@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 // SCSS
 import './NewNotification.scss'
@@ -108,12 +109,13 @@ class NewNotification extends Component {
 		})
 
 		Requester.send('createNotification', { body: forms })
-			.then(res => console.log(res))
+			.then(res => this.props.history.push(`/zgloszenie/${res.id}`))
 			.catch(err => console.error(err))
 	}
 
 	render() {
 		const { category, title, description, city, post, street, number, lat, lng } = this.state
+		const { isMobile } = this.props
 
 		return (
 			<div id='NewNotification' className='new-notification'>
@@ -121,9 +123,9 @@ class NewNotification extends Component {
 					<section className='section category-section'>
 						<h2 className='section__header'>Kategoria</h2>
 						<p className='section__description'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat molestiae suscipit
-							possimus beatae itaque, repellat sunt debitis blanditiis quo temporibus magni esse
-							molestias in? Consequuntur corrupti magni dolore error incidunt.
+							Wybierz kategorię dla problemu który chcesz zgłosić. Poprawnie przydzielona kategoria
+							ułatwi odnalezienie zgłoszenia, przez właściwe osoby, a w konsekwencji może przyczynić
+							się do szybszego rozwiązania problemu.
 						</p>
 						<Select
 							id='new-notification-category-select'
@@ -139,29 +141,29 @@ class NewNotification extends Component {
 
 						<div className='section__legend legend'>
 							<p className={`legend__option ${icons.dangerous}`}>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate et unde dolorum
-								ad itaque ipsam odit voluptatem similique ratione sapiente?
+								Niebezpieczne miejsca, kategoria dotycząca wszelkich problemów które z jakiś
+								powodów, mogą zagrażać życiu lub bezpieczeństwu innych osób.
 							</p>
 							<p className={`legend__option ${icons.nature}`}>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate et unde dolorum
-								ad itaque ipsam odit voluptatem similique ratione sapiente?
+								Zaniedbana zieleń, tą kategorią oznaczany wszystkie miejsca które uważamy za
+								zaniedbane, jak np. zarastające ścieżki w parkach.
 							</p>
 							<p className={`legend__option ${icons.damage}`}>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate et unde dolorum
-								ad itaque ipsam odit voluptatem similique ratione sapiente?
+								Uszkodzenia, dotyczą wszelkich sytuacji, w których natrafimy na problemy wymagające
+								naprawy np. zdewastowana chuśtawka w parku, rozbite lustro drogowe.
 							</p>
 							<p className={`legend__option ${icons.trashes}`}>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate et unde dolorum
-								ad itaque ipsam odit voluptatem similique ratione sapiente?
+								Zanieczyszczona przestrzeń, przewidziana jest dla oznaczenia przypadków gdy,
+								zaobserwujemy miejsca wymagające posprzątania, np. duże ilości śmieci.
 							</p>
 						</div>
 					</section>
 					<section className='section description-section'>
 						<h2 className='section__header'>Opis</h2>
 						<p className='section__description'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat molestiae suscipit
-							possimus beatae itaque, repellat sunt debitis blanditiis quo temporibus magni esse
-							molestias in? Consequuntur corrupti magni dolore error incidunt.
+							Dodaj tytuł złoszenia i postaraj się opisać problem w paru zdaniach. Większa ilość
+							szczegółów pozwoli szybciej przekazać zawiadomienie do właściwych służb i w
+							konsekwencji, przyczyni się do szybszego rozwiązania problemu.
 						</p>
 						<Input
 							id='new-notification-title'
@@ -184,9 +186,11 @@ class NewNotification extends Component {
 					<section className='section localization-section'>
 						<h2 className='section__header'>Lokalizacja</h2>
 						<p className='section__description'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat molestiae suscipit
-							possimus beatae itaque, repellat sunt debitis blanditiis quo temporibus magni esse
-							molestias in? Consequuntur corrupti magni dolore error incidunt.
+							Podaj możliwie najdokładniejszą lokalizacje, gdzie zaobserwowano problem, aby ułatwić
+							właściwym słubom, zlokalizowanie miesca wymagającego ich interwencji. Najbardziej
+							pomocne jest oczywiście oznaczenie miejsca na mapie, jednak prosimy również o podanie
+							pozostałych danych, a przynajmniej miasta. Pomoże to we włąściwym filtrowaniu
+							zgłoszeń.
 						</p>
 						<div className='section__row'>
 							<Input
@@ -242,14 +246,15 @@ class NewNotification extends Component {
 					<section className='section photos-section'>
 						<h2 className='section__header'>Zdjęcia</h2>
 						<p className='section__description'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat molestiae suscipit
-							possimus beatae itaque, repellat sunt debitis blanditiis quo temporibus magni esse
-							molestias in? Consequuntur corrupti magni dolore error incidunt.
+							Często jednak najlepszym sposobem na przedstawienie czegoś jest obraz. Zatem zachęcamy
+							do skorzystania, z moliowści dodania zdjęć aby przedstawić jeszcze lepiej zilustrować
+							zaistniały problem.
 						</p>
 						<UploadButton
 							id='new-notification-upload-button'
 							acceptsFile='image/png'
 							onAddImages={this.handleUploadImage}
+							mobile={isMobile.toString()}
 						/>
 						<ImageGallery
 							imageFiles={this.state.photos}
@@ -268,4 +273,10 @@ class NewNotification extends Component {
 	}
 }
 
-export default NewNotification
+function mapStateToProps(state) {
+	return {
+		isMobile: state.env.isMobile,
+	}
+}
+
+export default connect(mapStateToProps)(NewNotification)
