@@ -1,0 +1,36 @@
+.logo {
+	position: relative;
+
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 1px 2px 3px black;
+
+	&--small {
+		width: 65px;
+
+		font-size: 12px;
+	}
+
+	&--large {
+		width: 260px;
+
+		font-size: 35px;
+	}
+
+	&__image {
+		width: inherit;
+	}
+
+	&::before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		display: block;
+
+		transform: translate(-50%, -50%);
+
+		content: attr(data-title);
+	}
+}

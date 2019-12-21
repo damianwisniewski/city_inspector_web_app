@@ -7,6 +7,7 @@ import Tooltip from './Tooltip/Tooltip'
 import ConfirmModal from './ConfirmModal/ConfirmModal'
 import Table from './Table/Table'
 import SearchField from './SearchField/SearchField'
+import Logo from './Logo/Logo'
 
 export {
 	Button,
@@ -18,4 +19,5 @@ export {
 	ConfirmModal,
 	Table,
 	SearchField,
+	Logo,
 }
