@@ -13,7 +13,8 @@
 	"files.autoSave": "onFocusChange",
 	"editor.trimAutoWhitespace": false,
 	"prettier.htmlWhitespaceSensitivity": "ignore",
-	"cSpell.language": "en-GB,en",
-	"prettier.stylelintIntegration": true,
-	"cSpell.words": ["browserlist", "browserslist", "markercluster", "wdio"]
+	"prettier.eslintIntegration": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	}
 }

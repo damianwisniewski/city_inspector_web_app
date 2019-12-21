@@ -16,7 +16,7 @@ import mainRoutes from '../../routes/mainRoutes'
 import modalRoutes from '../../routes/modalRoutes'
 
 // HOC
-import withAuth from '../../HOCs/withAuth/withAuth'
+import withAuth from '../../hocs/withAuth/withAuth'
 
 // redux actions
 import { checkSession } from '../../reduxStore/actionCreators/requestActions'
