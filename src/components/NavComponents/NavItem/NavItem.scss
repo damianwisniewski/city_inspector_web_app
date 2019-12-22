@@ -12,6 +12,11 @@
 		border-radius: 5px;
 	}
 
+	@include narrow-phone-landscape {
+		min-width: 210px;
+		min-height: 41px;
+	}
+
 	.nav_button {
 		width: 100%;
 		margin: 0;

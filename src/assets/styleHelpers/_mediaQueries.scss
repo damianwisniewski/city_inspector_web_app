@@ -21,3 +21,15 @@
 		@content;
 	}
 }
+
+@mixin narrow-phone-portrait {
+	@media screen and (orientation: portrait) and (max-width: 400px) {
+		@content;
+	}
+}
+
+@mixin narrow-phone-landscape {
+	@media screen and (orientation: landscape) and (max-height: 490px) {
+		@content;
+	}
+}
