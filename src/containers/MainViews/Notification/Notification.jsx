@@ -487,27 +487,27 @@ class Notification extends Component {
 							</section>
 						</div>
 					</section>
-					<div className='notification__row'>
+					<section className='notification__row'>
 						{isEditEnabled ? (
 							<>
-								<section className='notification__col-1 notification__photos'>
+								<div className='notification__col-1 notification__photos'>
 									<UploadButton
 										id='new-notification-upload-button'
 										acceptsFile='image/*'
 										onAddImages={this.onUploadImage}
 										isMobile={isMobile}
 									/>
-								</section>
-								<section className='notification__col-2 notification__photos'>
+								</div>
+								<div className='notification__col-2 notification__photos'>
 									<ImageGallery imageFiles={photos} editable onRemoveImage={this.onRemoveImage} />
-								</section>
+								</div>
 							</>
 						) : (
-							<section className='notification__col-1 notification__photos'>
+							<div className='notification__col-1 notification__photos'>
 								<ImageGallery imageFiles={photos} onRemoveImage={this.onRemoveImage} />
-							</section>
+							</div>
 						)}
-					</div>
+					</section>
 
 					{/** Comments */}
 					<section className='notification__row notification__container'>
