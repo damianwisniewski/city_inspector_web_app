@@ -495,8 +495,7 @@ class Notification extends Component {
 										id='new-notification-upload-button'
 										acceptsFile='image/*'
 										onAddImages={this.onUploadImage}
-										mobile={isMobile.toString()}
-										capture
+										isMobile={isMobile}
 									/>
 								</section>
 								<section className='notification__col-2 notification__photos'>

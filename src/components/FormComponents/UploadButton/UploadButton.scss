@@ -76,6 +76,29 @@
 		}
 	}
 
+	.input-wrapper__mobile-label {
+		position: relative;
+
+		display: flex;
+
+		align-items: center;
+		justify-content: center;
+		margin: 5px;
+
+		text-align: center;
+
+		background-color: $primary_light_blue;
+		border-radius: 4px;
+		box-shadow: $small-shadow;
+
+		&::before {
+			position: absolute;
+
+			color: $white;
+			font-size: 45px;
+		}
+	}
+
 	.input-wrapper__upload-instruction {
 		padding: 5px;
 

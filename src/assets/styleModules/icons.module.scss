@@ -22,6 +22,8 @@ $icons: (
 	locate: '\f3c5',
 	default-map-marker: '\f3c5',
 	go-to: '\f35d',
+	camera: '\f030',
+	upload: '\f093',
 );
 
 @each $name, $code in $icons {

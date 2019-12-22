@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import './UploadButton.scss'
-import Loader from '../../CommonComponents/Loader/Loader'
-import Status from '../../CommonComponents/Status/Status'
+import icons from '../../../assets/styleModules/icons.module.scss'
+
+import { Loader, Status } from '../../CommonComponents'
 
 class UploadButton extends Component {
 	state = {
@@ -106,41 +107,76 @@ class UploadButton extends Component {
 
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const { id, label, onAddImages, acceptsFile, ...rest } = this.props
+		const { id, label, onAddImages, acceptsFile, isMobile, ...rest } = this.props
 		const { onDropArea, loaded, loading, error } = this.state
 
 		return (
 			<div className='input-wrapper input-wrapper--upload'>
-				<input
-					{...rest}
-					ref={input => (this.input = input)}
-					accept={acceptsFile}
-					onDrop={this.handleDrop}
-					onDragEnter={this.inDropArea}
-					onDragLeave={this.outOfDropArea}
-					onDragOver={this.handleDragOver}
-					onChange={this.handleOnChange}
-					type='file'
-					multiple
-					className='input-wrapper__field'
-					id={id}
-				/>
-				<label
-					className={`input-wrapper__upload-label ${
-						onDropArea ? 'input-wrapper__upload-label--active' : ''
-					}`}
-					htmlFor={id}
-				>
-					{label}
-					<p className='input-wrapper__upload-instruction'>Kliknij w pole lub przeciągnij plik</p>
-					<div className='input-wrapper__upload-status'>
-						{error && <Status id={`${id}-status`} type='error' message={this.state.error} />}
-						{loading && <Loader id={`${id}-loader`} size='small' />}
-						{loaded && (
-							<Status id={`${id}-status`} type='correct' message='Pomyślnie załadowano plik/i' />
-						)}
-					</div>
-				</label>
+				{isMobile ? (
+					<>
+						<label className={`input-wrapper__mobile-label ${icons.camera}`}>
+							<input
+								{...rest}
+								accept={acceptsFile}
+								onChange={this.handleOnChange}
+								type='file'
+								className='input-wrapper__field'
+								multiple
+								capture
+								id={id}
+							/>
+						</label>
+						<label className={`input-wrapper__mobile-label ${icons.upload}`}>
+							<input
+								{...rest}
+								accept={acceptsFile}
+								onChange={this.handleOnChange}
+								type='file'
+								className='input-wrapper__field'
+								multiple
+								id={id}
+							/>
+						</label>
+					</>
+				) : (
+					<>
+						<input
+							{...rest}
+							accept={acceptsFile}
+							onDrop={this.handleDrop}
+							onDragEnter={this.inDropArea}
+							onDragLeave={this.outOfDropArea}
+							onDragOver={this.handleDragOver}
+							onChange={this.handleOnChange}
+							type='file'
+							multiple
+							className='input-wrapper__field'
+							id={id}
+						/>
+						<label
+							className={`input-wrapper__upload-label ${
+								onDropArea ? 'input-wrapper__upload-label--active' : ''
+							}`}
+							htmlFor={id}
+						>
+							{label}
+							<p className='input-wrapper__upload-instruction'>
+								Kliknij w pole lub przeciągnij plik
+							</p>
+							<div className='input-wrapper__upload-status'>
+								{error && <Status id={`${id}-status`} type='error' message={this.state.error} />}
+								{loading && <Loader id={`${id}-loader`} size='small' />}
+								{loaded && (
+									<Status
+										id={`${id}-status`}
+										type='correct'
+										message='Pomyślnie załadowano plik/i'
+									/>
+								)}
+							</div>
+						</label>
+					</>
+				)}
 			</div>
 		)
 	}
@@ -148,6 +184,7 @@ class UploadButton extends Component {
 
 UploadButton.propTypes = {
 	label: '',
+	isMobile: false,
 }
 
 UploadButton.propTypes = {
@@ -155,6 +192,7 @@ UploadButton.propTypes = {
 	label: PropTypes.string,
 	onAddImages: PropTypes.func.isRequired,
 	acceptsFile: PropTypes.string.isRequired,
+	isMobile: PropTypes.bool,
 }
 
 export default UploadButton

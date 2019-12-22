@@ -259,8 +259,7 @@ class NewNotification extends Component {
 							id='new-notification-upload-button'
 							acceptsFile='image/*'
 							onAddImages={this.handleUploadImage}
-							mobile={isMobile.toString()}
-							capture
+							isMobile={isMobile}
 						/>
 						<ImageGallery
 							imageFiles={this.state.photos}

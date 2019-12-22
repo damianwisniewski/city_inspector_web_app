@@ -8,7 +8,8 @@ import './App.scss'
 // Containers
 import Navbar from '../Navbar/Navbar'
 
-// Modal Routing
+// Components
+import { RequestStatus } from '../../components/CommonComponents'
 import { ModalRouter, ModalSwitch, ModalRoute } from '../../components/ModalComponents/ModalRouting'
 
 // Routes
@@ -20,11 +21,20 @@ import withAuth from '../../hocs/withAuth/withAuth'
 
 // redux actions
 import { checkSession } from '../../reduxStore/actionCreators/requestActions'
-import RequestStatus from '../../components/CommonComponents/RequestStatus/RequestStatus'
+import { setIsMobile } from '../../reduxStore/actionCreators/envStatusActions'
 
 class App extends Component {
 	static defaultProps = {
 		isUserAuth: false,
+	}
+
+	constructor(props) {
+		super(props)
+
+		const userAgent = navigator.userAgent.toLowerCase()
+		const isMobile = userAgent.indexOf('mobi') > -1 || userAgent.indexOf('android') > -1
+
+		props.onSetIsMobile(isMobile)
 	}
 
 	componentDidMount() {
@@ -90,6 +100,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
 	onCheckSession: checkSession,
+	onSetIsMobile: setIsMobile,
 }
 
 export default connect(
