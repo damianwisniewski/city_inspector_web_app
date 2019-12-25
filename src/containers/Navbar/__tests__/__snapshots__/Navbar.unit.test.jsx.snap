@@ -7,10 +7,9 @@ exports[`<Navbar /> (Auth) should contains proper Navigation items 1`] = `
   <div
     className="navigation__container"
   >
-    <img
-      alt="logo"
-      className="logo"
-      src="logo.svg"
+    <Logo
+      size="small"
+      title="City Inspector"
     />
     <ul
       className="navigation_list "
@@ -60,12 +59,12 @@ exports[`<Navbar /> (Auth) should contains proper Navigation items 1`] = `
       <NavItem
         className=""
         exact={false}
-        icon="bell"
-        id="bellLink"
-        to="Settings"
+        icon="help"
+        id="helpLink"
+        to="AboutModal"
         type="button"
       >
-        Powiadomienia
+        O aplikacji
       </NavItem>
       <NavItem
         className=""
@@ -104,10 +103,9 @@ exports[`<Navbar /> (Non-Auth) should contains proper Navigation items 1`] = `
   <div
     className="navigation__container"
   >
-    <img
-      alt="logo"
-      className="logo"
-      src="logo.svg"
+    <Logo
+      size="small"
+      title="City Inspector"
     />
     <ul
       className="navigation_list "
@@ -132,7 +130,7 @@ exports[`<Navbar /> (Non-Auth) should contains proper Navigation items 1`] = `
         to="AboutModal"
         type="button"
       >
-        Pomoc
+        O aplikacji
       </NavItem>
       <NavButton
         color="white"

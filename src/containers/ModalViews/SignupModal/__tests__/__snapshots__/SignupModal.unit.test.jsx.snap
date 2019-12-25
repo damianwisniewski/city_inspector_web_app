@@ -25,10 +25,10 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="email"
         data-type="email"
-        labelType='floating'
         id="email-field"
         inputRef={[Function]}
         label="E-mail*"
+        labelType="floating"
         onChange={[Function]}
         pattern=".+@.+"
         placeholder="Podaj swój adres email..."
@@ -39,10 +39,10 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="new-password"
         data-type="password"
-        labelType='floating'
         id="password-field"
         inputRef={[Function]}
         label="Hasło*"
+        labelType="floating"
         maxLength="12"
         minLength="6"
         name="password"
@@ -56,10 +56,10 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="new-password"
         data-type="repeatedPassword"
-        labelType='floating'
         id="repeat-password-field"
         inputRef={[Function]}
         label="Powtórz hasło*"
+        labelType="floating"
         maxLength="12"
         minLength="6"
         onBlur={[Function]}
@@ -71,10 +71,10 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       />
       <Input
         data-type="nickname"
-        labelType='floating'
         id="nickname-field"
         inputRef={[Function]}
         label="Nickname*"
+        labelType="floating"
         onChange={[Function]}
         placeholder="Podaj swój adres email..."
         required={true}
@@ -89,10 +89,10 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="given-name"
         data-type="firstname"
-        labelType='floating'
         id="name-field"
         inputRef={[Function]}
         label="Imię"
+        labelType="floating"
         onChange={[Function]}
         placeholder="Podaj swoje imię..."
         type="text"
@@ -101,10 +101,10 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="family-name"
         data-type="lastname"
-        labelType='floating'
         id="lastname-field"
         inputRef={[Function]}
         label="Nazwisko"
+        labelType="floating"
         onChange={[Function]}
         placeholder="Podaj swoje nazwisko..."
         type="text"
@@ -113,42 +113,70 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
       <Input
         autoComplete="address-level2"
         data-type="city"
-        labelType='floating'
         id="city-field"
         inputRef={[Function]}
         label="Miasto"
+        labelType="floating"
         name="city"
         onChange={[Function]}
         placeholder="Podaj swoje miasto..."
         type="text"
         value=""
       />
+      <Group
+        direction="column"
+        name="Płeć"
+        onChange={[Function]}
+      >
+        <Radio
+          data-type="gender"
+          defaultChecked={false}
+          id="gender-field-1"
+          label="Mężczyzna"
+          name="gender"
+          value="M"
+        />
+        <Radio
+          data-type="gender"
+          defaultChecked={false}
+          id="gender-field-2"
+          label="Kobieta"
+          name="gender"
+          value="F"
+        />
+      </Group>
     </Group>
     <div
       className="signup__agreements-wrapper"
     >
       <Checkbox
-        id="agreement_1"
+        checked={false}
+        data-type="emailAgreement"
+        id="emailAgreement"
         label="Czy wyrażasz zgodę na otrzymywanie informacji mailowych od serwisu \\"City Inspector\\", dotyczących zmian w serwisie oraz aktualizacji zgłoszeń."
-      />
-      <Checkbox
-        id="agreement_2"
-        label="Czy twoje dane takie jak e-mail, imię i nazwisko oraz miasto, mają być widocznie dla innych zarejestowanych użytkowników."
+        name="emailAgreement"
+        onChange={[Function]}
       />
     </div>
-    <RequestStatus
-      direction="horizontal"
-      errorMessage="Przepraszamy coś poszło nie tak!"
-      requestState="initial"
-      size="small"
+    <div
+      className="signup__request-status"
     >
-      <Status
-        id="login-status"
-        message="Konto zostało utworzone, możesz się zalogować"
-        position="horizontal"
-        type="correct"
-      />
-    </RequestStatus>
+      <RequestStatus
+        color="transparent"
+        direction="horizontal"
+        errorMessage="Przepraszamy coś poszło nie tak!"
+        fullview={false}
+        requestState="initial"
+        size="small"
+      >
+        <Status
+          id="login-status"
+          message="Konto zostało utworzone, możesz się zalogować"
+          position="horizontal"
+          type="correct"
+        />
+      </RequestStatus>
+    </div>
     <div
       className="signup__buttons-wrapper"
     >
@@ -158,6 +186,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
         color="white"
         id="inform-close-button"
         onClick={[Function]}
+        size="medium"
         type="button"
       >
         Anuluj
@@ -168,6 +197,7 @@ exports[`<SignupModal /> should render correctly SignupModal 1`] = `
         color="blue"
         id="submit-button"
         onClick={[Function]}
+        size="medium"
         type="submit"
       >
         Zarejestruj

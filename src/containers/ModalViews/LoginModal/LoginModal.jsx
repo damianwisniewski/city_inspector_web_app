@@ -74,7 +74,7 @@ class LoginModal extends Component {
 		}
 
 		return (
-			<div id='login-Modal' className='login'>
+			<div id='login-modal' className='login'>
 				<h2 className='login__header'>Logowanie</h2>
 				<p className='login__description'>Wpisz następujące dane aby się zalogować</p>
 				<Form onSubmit={this.handleUserLogin}>

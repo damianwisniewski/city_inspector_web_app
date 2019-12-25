@@ -1,5 +1,9 @@
+const path = require('path')
+require('dotenv').config({ path: path.resolve(process.cwd(), '.env.test') })
 const capabilities = require('./scripts/wdioBrowserFilter')
 const TestserverService = require('./scripts/TestserverService')
+
+const { REACT_APP_FEED_DOMAIN } = process.env
 
 if (process.argv.includes('--skip')) process.exit(0)
 
@@ -11,7 +15,7 @@ exports.config = {
 	capabilities,
 	logLevel: 'error',
 	bail: 0,
-	baseUrl: 'http://localhost:3000',
+	baseUrl: REACT_APP_FEED_DOMAIN,
 	waitforTimeout: 10000,
 	connectionRetryTimeout: 90000,
 	connectionRetryCount: 3,

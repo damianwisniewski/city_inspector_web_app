@@ -5,7 +5,7 @@ exports[`<UploadButton /> should render correctly UploadButton 1`] = `
   className="input-wrapper input-wrapper--upload"
 >
   <input
-    accept="image/*"
+    accept="image/"
     className="input-wrapper__field"
     id="mockId"
     multiple={true}
@@ -38,7 +38,7 @@ exports[`<UploadButton /> should render correctly UploadButton with error state 
   className="input-wrapper input-wrapper--upload"
 >
   <input
-    accept="image/*"
+    accept="image/"
     className="input-wrapper__field"
     id="mockId"
     multiple={true}
@@ -78,7 +78,7 @@ exports[`<UploadButton /> should render correctly UploadButton with loaded state
   className="input-wrapper input-wrapper--upload"
 >
   <input
-    accept="image/*"
+    accept="image/"
     className="input-wrapper__field"
     id="mockId"
     multiple={true}
@@ -104,7 +104,7 @@ exports[`<UploadButton /> should render correctly UploadButton with loaded state
     >
       <Status
         id="mockId-status"
-        message="Załadowano 3 pliki"
+        message="Pomyślnie załadowano plik/i"
         position="horizontal"
         type="correct"
       />
@@ -118,7 +118,7 @@ exports[`<UploadButton /> should render correctly UploadButton with loading stat
   className="input-wrapper input-wrapper--upload"
 >
   <input
-    accept="image/*"
+    accept="image/"
     className="input-wrapper__field"
     id="mockId"
     multiple={true}
@@ -156,7 +156,7 @@ exports[`<UploadButton /> should render correctly UploadButton with onDropArea s
   className="input-wrapper input-wrapper--upload"
 >
   <input
-    accept="image/*"
+    accept="image/"
     className="input-wrapper__field"
     id="mockId"
     multiple={true}

@@ -5,7 +5,7 @@ const http = require('http')
 module.exports = class TestserverService {
 	constructor() {
 		this.url = 'http://localhost:3000/'
-		this.testserver = undefined
+		this.testserver = null
 	}
 
 	/**
@@ -75,6 +75,13 @@ module.exports = class TestserverService {
 				}
 			}
 
+			const onError = () => {
+				console.log(
+					`${chalk.black.bgGreen(' TESTSERVER ')} testserver connection ${chalk.red('✖')}`,
+				)
+				reject()
+			}
+
 			if (options.retry) {
 				this.repeatableRequest(
 					{
@@ -87,12 +94,7 @@ module.exports = class TestserverService {
 					reject()
 				})
 			} else {
-				http.get(this.url, callback).on('error', () => {
-					console.log(
-						`${chalk.black.bgGreen(' TESTSERVER ')} testserver connection ${chalk.red('✖')}`,
-					)
-					reject()
-				})
+				http.get(this.url, callback).on('error', onError)
 			}
 		})
 	}

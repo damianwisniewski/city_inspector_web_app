@@ -130,7 +130,7 @@ class MapView extends Component {
 		const { notificationList, getNotificationsRequestStatus } = this.props
 
 		return (
-			<div className='map-view'>
+			<div id='map-view' className='map-view'>
 				<MapLayout bounds={bounds} center={center} maxBounds={MapView.initialBounds} zoom={zoom}>
 					<MarkerClusterGroup>
 						{notificationList &&

@@ -2,21 +2,29 @@
 
 exports[`<RequestStatus /> should render correctly RequestStatus with requestState failed 1`] = `
 <Fragment>
-  <Status
-    id="FakeID-status"
-    message="Fake error message"
-    position="horizontal"
-    type="error"
-  />
+  <div
+    className="StatusScreen StatusScreen--transparent"
+  >
+    <Status
+      id="FakeID-status"
+      message="Fake error message"
+      position="horizontal"
+      type="error"
+    />
+  </div>
 </Fragment>
 `;
 
 exports[`<RequestStatus /> should render correctly RequestStatus with requestState pending 1`] = `
 <Fragment>
-  <Loader
-    id="FakeID-loader"
-    size="medium"
-  />
+  <div
+    className="StatusScreen StatusScreen--transparent"
+  >
+    <Loader
+      id="FakeID-loader"
+      size="medium"
+    />
+  </div>
 </Fragment>
 `;
 

@@ -24,10 +24,10 @@ const LogoutModal = ({ closeModal, onSagaRequestLogout }) => {
 			<h2 className='logout__header'>Wyloguj</h2>
 			<p className='logout__context'>Czy jesteś pewien że chcesz się wylogować?</p>
 			<div className='logout__buttons-wrapper'>
-				<Button color='blue' onClick={closeModal}>
+				<Button id='logout-cancel' color='blue' onClick={closeModal}>
 					Nie
 				</Button>
-				<Button color='white' onClick={handleLogout}>
+				<Button id='logout-confirm' color='white' onClick={handleLogout}>
 					Tak
 				</Button>
 			</div>

@@ -12,8 +12,8 @@
 		"lint:fix": "npm run lint -- --fix",
 		"stylelint": "stylelint src/**/*.scss",
 		"stylelint:fix": "npm run stylelint -- --fix",
-		"test:unit": "react-scripts test --testMatch '<rootDir>/src/**/?(*.)unit.test.{js,jsx}'",
-		"test:unit:watch": "npm run test:unit -- --watch",
+		"test:unit": "react-scripts test --testPathPattern='src/.*/__tests__/.*.unit.test.(jsx|js)' --watchAll=false",
+		"test:unit:watch": "npm run test:unit -- --watchAll=true",
 		"test:e2e": "wdio wdio.conf.js",
 		"release": "git push heroku master"
 	},
@@ -25,7 +25,7 @@
 	],
 	"husky": {
 		"hooks": {
-			"pre-commit": ""
+			"pre-commit": "npm run lint && npm run stylelint && npm run test:unit"
 		}
 	},
 	"dependencies": {

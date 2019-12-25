@@ -6,7 +6,6 @@ exports[`<NavButton /> should render properly, with props like color and to 1`] 
 >
   <ModalLink
     className="nav-button blue"
-    color="blue"
     to="MockModal"
   >
     Example Text

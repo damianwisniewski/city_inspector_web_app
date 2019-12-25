@@ -35,7 +35,7 @@ describe('<Navbar />', () => {
 		).find('Navbar')
 
 		NavbarComponent.setState({ isDrawerOpen: true })
-		NavbarComponent.find('button#bellLink').simulate('click')
+		NavbarComponent.find('button#helpLink').simulate('click')
 		expect(NavbarComponent.state().isDrawerOpen).toBe(false)
 	})
 
@@ -49,7 +49,7 @@ describe('<Navbar />', () => {
 		).find('Navbar')
 
 		NavbarComponent.setState({ isDrawerOpen: false })
-		NavbarComponent.find('button#bellLink').simulate('click')
+		NavbarComponent.find('button#helpLink').simulate('click')
 		expect(NavbarComponent.state().isDrawerOpen).toBe(false)
 	})
 

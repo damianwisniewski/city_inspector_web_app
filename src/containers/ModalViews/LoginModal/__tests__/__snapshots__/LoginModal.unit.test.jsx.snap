@@ -3,7 +3,7 @@
 exports[`<LoginModal /> should render correctly LoginModal 1`] = `
 <div
   className="login"
-  id="login-Modal"
+  id="login-modal"
 >
   <h2
     className="login__header"
@@ -21,10 +21,10 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
     <Input
       autoComplete="username"
       data-type="email"
-      labelType='floating'
       id="login-email-field"
       inputRef={[Function]}
       label="e-mail"
+      labelType="floating"
       onChange={[Function]}
       pattern=".+@.+"
       placeholder="Wpisz tutaj swój email..."
@@ -35,10 +35,10 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
     <Input
       autoComplete="current-password"
       data-type="password"
-      labelType='floating'
       id="login-password-field"
       inputRef={[Function]}
       label="hasło"
+      labelType="floating"
       onChange={[Function]}
       placeholder="Podaj hasło..."
       required={true}
@@ -51,23 +51,30 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
       color="blue"
       id="login-forgotten-pass-button"
       onClick={[Function]}
+      size="medium"
       type="button"
     >
       Zapomniałeś hasła?
     </Button>
-    <RequestStatus
-      direction="horizontal"
-      errorMessage="Przepraszamy coś poszło nie tak!"
-      requestState="initial"
-      size="small"
+    <div
+      className="login__request-status"
     >
-      <Status
-        id="login-status"
-        message="Niepoprawny email lub hasło"
-        position="horizontal"
-        type="error"
-      />
-    </RequestStatus>
+      <RequestStatus
+        color="transparent"
+        direction="horizontal"
+        errorMessage="Przepraszamy coś poszło nie tak!"
+        fullview={false}
+        requestState="initial"
+        size="small"
+      >
+        <Status
+          id="login-status"
+          message="Niepoprawny email lub hasło"
+          position="horizontal"
+          type="error"
+        />
+      </RequestStatus>
+    </div>
     <div
       className="login__buttons-wrapper"
     >
@@ -77,6 +84,7 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
         color="white"
         id="login-close-button"
         onClick={[Function]}
+        size="medium"
         type="button"
       >
         Anuluj
@@ -87,6 +95,7 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
         color="blue"
         id="login-submit-button"
         onClick={[Function]}
+        size="medium"
         type="submit"
       >
         Zaloguj
@@ -99,7 +108,7 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
 exports[`<LoginModal /> should render correctly LoginModal with remember password for state forgottenPassword true 1`] = `
 <div
   className="login"
-  id="login-Modal"
+  id="login-modal"
 >
   <h2
     className="login__header"
@@ -117,10 +126,10 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
     <Input
       autoComplete="username"
       data-type="email"
-      labelType='floating'
       id="login-email-field"
       inputRef={[Function]}
       label="e-mail"
+      labelType="floating"
       onChange={[Function]}
       pattern=".+@.+"
       placeholder="Wpisz tutaj swój email..."
@@ -131,10 +140,10 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
     <Input
       autoComplete="current-password"
       data-type="password"
-      labelType='floating'
       id="login-password-field"
       inputRef={[Function]}
       label="hasło"
+      labelType="floating"
       onChange={[Function]}
       placeholder="Podaj hasło..."
       required={true}
@@ -147,23 +156,30 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
       color="blue"
       id="login-forgotten-pass-button"
       onClick={[Function]}
+      size="medium"
       type="button"
     >
       Zapomniałeś hasła?
     </Button>
-    <RequestStatus
-      direction="horizontal"
-      errorMessage="Przepraszamy coś poszło nie tak!"
-      requestState="initial"
-      size="small"
+    <div
+      className="login__request-status"
     >
-      <Status
-        id="login-status"
-        message="Niepoprawny email lub hasło"
-        position="horizontal"
-        type="error"
-      />
-    </RequestStatus>
+      <RequestStatus
+        color="transparent"
+        direction="horizontal"
+        errorMessage="Przepraszamy coś poszło nie tak!"
+        fullview={false}
+        requestState="initial"
+        size="small"
+      >
+        <Status
+          id="login-status"
+          message="Niepoprawny email lub hasło"
+          position="horizontal"
+          type="error"
+        />
+      </RequestStatus>
+    </div>
     <div
       className="login__buttons-wrapper"
     >
@@ -173,6 +189,7 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
         color="white"
         id="login-close-button"
         onClick={[Function]}
+        size="medium"
         type="button"
       >
         Anuluj
@@ -183,6 +200,7 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
         color="blue"
         id="login-submit-button"
         onClick={[Function]}
+        size="medium"
         type="submit"
       >
         Zaloguj

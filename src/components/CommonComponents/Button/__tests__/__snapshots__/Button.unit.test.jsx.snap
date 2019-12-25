@@ -2,7 +2,7 @@
 
 exports[`<Button /> should render correctly with some additionally props 1`] = `
 <button
-  className="text-button green test-class"
+  className="text-button button--medium green test-class"
   onClick={[Function]}
   type="submit"
 >
@@ -12,7 +12,7 @@ exports[`<Button /> should render correctly with some additionally props 1`] = `
 
 exports[`<Button /> should render correctly without any props 1`] = `
 <button
-  className="button white "
+  className="button button--medium white "
   onClick={[Function]}
   type="button"
 >

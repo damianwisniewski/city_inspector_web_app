@@ -19,11 +19,11 @@ exports[`<ForgottenPassModal /> should render correctly ForgottenPassModal 1`] =
     onSubmit={[Function]}
   >
     <Input
-      autocomplete="email"
-      labelType='floating'
+      autoComplete="email"
       id="reminder-email-field"
       inputRef={[Function]}
       label="e-mail"
+      labelType="floating"
       onChange={[Function]}
       pattern=".+@.+"
       placeholder="Wpisz tutaj swój email..."
@@ -32,10 +32,12 @@ exports[`<ForgottenPassModal /> should render correctly ForgottenPassModal 1`] =
       value=""
     />
     <RequestStatus
+      color="transparent"
       direction="horizontal"
       errorMessage="Przepraszamy coś poszło nie tak!"
+      fullview={false}
       requestState="initial"
-      size="small"
+      size="medium"
     >
       <Status
         id="reminder-status"
@@ -53,6 +55,7 @@ exports[`<ForgottenPassModal /> should render correctly ForgottenPassModal 1`] =
         color="white"
         id="reminder-close-button"
         onClick={[Function]}
+        size="medium"
         type="button"
       >
         Anuluj
@@ -63,6 +66,7 @@ exports[`<ForgottenPassModal /> should render correctly ForgottenPassModal 1`] =
         color="blue"
         id="reminder-submit-button"
         onClick={[Function]}
+        size="medium"
         type="submit"
       >
         Resetuj

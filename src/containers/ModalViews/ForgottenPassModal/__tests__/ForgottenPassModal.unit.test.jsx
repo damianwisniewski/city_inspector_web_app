@@ -8,23 +8,8 @@ import ForgottenPassModal from '../ForgottenPassModal'
 configure({ adapter: new Adapter() })
 
 describe('<ForgottenPassModal />', () => {
-	let ForgottenPassModalElement
-	const resetState = jest.fn()
-
-	beforeEach(() => {
-		ForgottenPassModalElement = shallow(
-			<ForgottenPassModal.WrappedComponent
-				resetPassRemindRequestStatus={resetState}
-				passReminderRequestStatus='initial'
-			/>,
-		)
-	})
-
-	test('should call resetState after mount', () => {
-		expect(resetState).toBeCalled()
-	})
-
 	test('should render correctly ForgottenPassModal', () => {
+		const ForgottenPassModalElement = shallow(<ForgottenPassModal />)
 		expect(toJson(ForgottenPassModalElement)).toMatchSnapshot()
 	})
 })

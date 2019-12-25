@@ -2,7 +2,7 @@
 
 exports[`<Input /> should render correctly Input, with floatingLabel value equal false 1`] = `
 <div
-  className="input-wrapper"
+  className="input-wrapper input-wrapper--basic"
 >
   <input
     className="input-wrapper__field"
@@ -11,7 +11,7 @@ exports[`<Input /> should render correctly Input, with floatingLabel value equal
     placeholder="mock placeholder"
   />
   <label
-    className="input-wrapper__label"
+    className="input-wrapper__label input-wrapper__label--basic"
     htmlFor="mockId"
   >
     mockText
@@ -21,16 +21,17 @@ exports[`<Input /> should render correctly Input, with floatingLabel value equal
 
 exports[`<Input /> should render correctly Input, with floatingLabel value equal true 1`] = `
 <div
-  className="input-wrapper"
+  className="input-wrapper input-wrapper--basic"
 >
   <input
     className="input-wrapper__field"
-    data-animate={true}
+    data-animate={false}
+    floatingLabel={true}
     id="mockId"
     placeholder="mock placeholder"
   />
   <label
-    className="input-wrapper__label"
+    className="input-wrapper__label input-wrapper__label--basic"
     htmlFor="mockId"
   >
     mockText

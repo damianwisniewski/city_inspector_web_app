@@ -9,9 +9,13 @@ module.exports = {
 	 * Request failed due to element not interactable: Element <a ... > could not be scrolled into view
 	 */
 	customClick: selector => {
-		return browser.execute(function(element) {
+		const clickPromise = browser.execute(function(element) {
 			document.querySelector(element).click()
 		}, selector)
+
+		browser.pause(500)
+
+		return clickPromise
 	},
 
 	/**
@@ -19,6 +23,6 @@ module.exports = {
 	 * @param {string} selector
 	 */
 	waitUntilHide: selector => {
-		browser.waitUntil(() => $(selector).isDisplayedInViewport() === false)
+		browser.waitUntil(() => $(selector).isDisplayedInViewport() === false, 10000)
 	},
 }

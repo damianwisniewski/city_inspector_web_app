@@ -8,23 +8,8 @@ import SignupModal from '../SignupModal'
 configure({ adapter: new Adapter() })
 
 describe('<SignupModal />', () => {
-	let SignupModalElement
-	const resetState = jest.fn()
-
-	beforeEach(() => {
-		SignupModalElement = shallow(
-			<SignupModal.WrappedComponent
-				resetRequestRegisterStatus={resetState}
-				registerRequestStatus='initial'
-			/>,
-		)
-	})
-
-	test('should call resetState after mount', () => {
-		expect(resetState).toBeCalled()
-	})
-
 	test('should render correctly SignupModal', () => {
+		const SignupModalElement = shallow(<SignupModal />)
 		expect(toJson(SignupModalElement)).toMatchSnapshot()
 	})
 })

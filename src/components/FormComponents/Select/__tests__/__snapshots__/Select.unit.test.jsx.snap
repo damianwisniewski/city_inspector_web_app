@@ -2,16 +2,16 @@
 
 exports[`<Select /> should render correctly Select 1`] = `
 <div
-  className="input-wrapper input-wrapper--select"
+  className="input-wrapper input-wrapper--select input-wrapper--basic"
 >
   <div
     className="input-wrapper__field input-wrapper__field--select "
   >
     <select
       className="field__output"
+      data-type="select-field"
       id="mockId"
       onChange={[Function]}
-      onSelectOption={[Function]}
       value=""
     >
       <option
@@ -37,7 +37,6 @@ exports[`<Select /> should render correctly Select 1`] = `
     </select>
     <ul
       className="input-wrapper__select-list"
-      data-amount={3}
     >
       <li
         data-type="list-item"
@@ -70,7 +69,7 @@ exports[`<Select /> should render correctly Select 1`] = `
     </ul>
   </div>
   <label
-    className="input-wrapper__label"
+    className="input-wrapper__label input-wrapper__label--basic"
     htmlFor="mockId"
   />
 </div>
@@ -78,16 +77,16 @@ exports[`<Select /> should render correctly Select 1`] = `
 
 exports[`<Select /> should render correctly Select with focus state 1`] = `
 <div
-  className="input-wrapper input-wrapper--select"
+  className="input-wrapper input-wrapper--select input-wrapper--basic"
 >
   <div
     className="input-wrapper__field input-wrapper__field--select input-wrapper__field--focused"
   >
     <select
       className="field__output"
+      data-type="select-field"
       id="mockId"
       onChange={[Function]}
-      onSelectOption={[Function]}
       value=""
     >
       <option
@@ -113,7 +112,6 @@ exports[`<Select /> should render correctly Select with focus state 1`] = `
     </select>
     <ul
       className="input-wrapper__select-list"
-      data-amount={3}
     >
       <li
         data-type="list-item"
@@ -146,7 +144,7 @@ exports[`<Select /> should render correctly Select with focus state 1`] = `
     </ul>
   </div>
   <label
-    className="input-wrapper__label"
+    className="input-wrapper__label input-wrapper__label--basic"
     htmlFor="mockId"
   />
 </div>
@@ -154,16 +152,16 @@ exports[`<Select /> should render correctly Select with focus state 1`] = `
 
 exports[`<Select /> should render correctly Select with selected value in state 1`] = `
 <div
-  className="input-wrapper input-wrapper--select"
+  className="input-wrapper input-wrapper--select input-wrapper--basic"
 >
   <div
     className="input-wrapper__field input-wrapper__field--select "
   >
     <select
       className="field__output"
+      data-type="select-field"
       id="mockId"
       onChange={[Function]}
-      onSelectOption={[Function]}
       value="Value1"
     >
       <option
@@ -189,7 +187,6 @@ exports[`<Select /> should render correctly Select with selected value in state 
     </select>
     <ul
       className="input-wrapper__select-list"
-      data-amount={3}
     >
       <li
         data-type="list-item"
@@ -222,7 +219,7 @@ exports[`<Select /> should render correctly Select with selected value in state 
     </ul>
   </div>
   <label
-    className="input-wrapper__label"
+    className="input-wrapper__label input-wrapper__label--basic"
     htmlFor="mockId"
   />
 </div>

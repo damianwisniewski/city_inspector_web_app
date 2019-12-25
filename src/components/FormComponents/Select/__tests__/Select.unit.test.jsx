@@ -17,7 +17,7 @@ describe('<Select />', () => {
 
 	beforeEach(() => {
 		SelectElement = shallow(
-			<Select onSelectOption={onSelectOption} id={id}>
+			<Select onChange={onSelectOption} id={id}>
 				<option value=''>placeholder</option>
 				<option value='Value1'>Value1</option>
 				<option value='Value2'>Value2</option>
@@ -39,36 +39,5 @@ describe('<Select />', () => {
 	test('should render correctly Select with selected value in state', () => {
 		SelectElement.setState({ selected: 'Value1' })
 		expect(toJson(SelectElement)).toMatchSnapshot()
-	})
-
-	test('should set target.context to state selected, after click list item (option)', () => {
-		SelectElement.find('[data-type="list-item"]')
-			.at(1)
-			.simulate('click', {
-				target: {
-					textContent: 'Value1',
-				},
-			})
-
-		expect(SelectElement.state().selected).toBe('Value1')
-	})
-
-	test('should call onSelectOption function from props, after click list item (option)', () => {
-		const spy = jest.fn()
-		SelectElement.setProps({ onSelectOption: spy })
-		SelectElement.find('[data-type="list-item"]')
-			.at(1)
-			.simulate('click', {
-				target: {
-					textContent: 'Value1',
-				},
-			})
-
-		expect(spy).toBeCalledTimes(1)
-		expect(spy).toBeCalledWith({
-			target: {
-				textContent: 'Value1',
-			},
-		})
 	})
 })

@@ -120,7 +120,7 @@ class NewNotification extends Component {
 		const { isMobile } = this.props
 
 		return (
-			<div id='NewNotification' className='new-notification'>
+			<div id='new-notification' className='new-notification'>
 				<Form onSubmit={this.handleCreateNotification}>
 					<section className='section category-section'>
 						<h2 className='section__header'>Kategoria</h2>
