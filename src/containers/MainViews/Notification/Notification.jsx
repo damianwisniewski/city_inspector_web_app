@@ -67,7 +67,7 @@ class Notification extends Component {
 		this.getComments()
 	}
 
-	componentDidUpdate(prevProps, prevState) {
+	componentDidUpdate(prevProps) {
 		const { subscriptions } = this.props
 		const { id } = this.state
 
