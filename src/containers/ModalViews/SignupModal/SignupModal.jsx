@@ -57,7 +57,7 @@ class SignupModal extends Component {
 
 		this.setState({ requestState: 'pending' })
 
-		Requester.send('registerUser', { body: dataToSend })
+		Requester.send('registerUser', { body: Object.fromEntries(dataToSend) })
 			.then(() => {
 				this.setState({ requestState: 'succeeded' })
 			})
