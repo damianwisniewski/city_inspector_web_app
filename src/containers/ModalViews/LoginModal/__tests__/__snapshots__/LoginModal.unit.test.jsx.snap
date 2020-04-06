@@ -45,17 +45,6 @@ exports[`<LoginModal /> should render correctly LoginModal 1`] = `
       type="password"
       value=""
     />
-    <Button
-      category="text"
-      className=""
-      color="blue"
-      id="login-forgotten-pass-button"
-      onClick={[Function]}
-      size="medium"
-      type="button"
-    >
-      Zapomniałeś hasła?
-    </Button>
     <div
       className="login__request-status"
     >
@@ -150,17 +139,6 @@ exports[`<LoginModal /> should render correctly LoginModal with remember passwor
       type="password"
       value=""
     />
-    <Button
-      category="text"
-      className=""
-      color="blue"
-      id="login-forgotten-pass-button"
-      onClick={[Function]}
-      size="medium"
-      type="button"
-    >
-      Zapomniałeś hasła?
-    </Button>
     <div
       className="login__request-status"
     >

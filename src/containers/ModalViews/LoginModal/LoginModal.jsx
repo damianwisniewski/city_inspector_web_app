@@ -103,14 +103,14 @@ class LoginModal extends Component {
 						autoComplete='current-password'
 						required
 					/>
-					<Button
+					{/* <Button
 						id='login-forgotten-pass-button'
 						category='text'
 						color='blue'
 						onClick={this.handleForgottenPassword}
 					>
 						Zapomniałeś hasła?
-					</Button>
+					</Button> */}
 					<div className='login__request-status'>
 						<RequestStatus size='small' requestState={loginRequestState}>
 							{isUserAuth ? (
