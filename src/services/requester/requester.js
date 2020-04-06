@@ -49,11 +49,17 @@ export const Requester = {
 		const query = queries ? this.objectToQueryString(queries) : ''
 		const headers = this.prepareHeaders(headersTemplate)
 
-		const response = await fetch(this.feedDomain + path + query, {
-			method,
-			body: body && (isFormData ? body : JSON.stringify(body)),
-			headers,
-		})
+		let response
+
+		try {
+			response = await fetch(this.feedDomain + path + query, {
+				method,
+				body: body && (isFormData ? body : JSON.stringify(body)),
+				headers,
+			})
+		} catch (err) {
+			throw new Error('Wystąpił bład!')
+		}
 
 		if (response.status >= 400) {
 			throw new Error(response.message)
