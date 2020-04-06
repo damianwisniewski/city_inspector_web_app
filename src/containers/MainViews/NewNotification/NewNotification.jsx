@@ -8,7 +8,7 @@ import icons from '../../../assets/styleModules/icons.module.scss'
 // Components
 import { Form, Select, Input, Textarea, UploadButton } from '../../../components/FormComponents'
 import { MapLayout, MapMarker, MapLocateMe } from '../../../components/MapComponents'
-import { ImageGallery, Button } from '../../../components/CommonComponents'
+import { ImageGallery, Button, RequestStatus } from '../../../components/CommonComponents'
 
 // Others
 import { Requester } from '../../../services/requester/requester'
@@ -26,6 +26,7 @@ class NewNotification extends Component {
 		lat: 52.2297,
 		lng: 21.0122,
 		photos: [],
+		creationStatus: '',
 	}
 
 	componentDidMount() {
@@ -49,7 +50,7 @@ class NewNotification extends Component {
 	 */
 	handlePointerMove = e => {
 		const { lat, lng } = e.target.getLatLng()
-		this.setState({ lat, lng })
+		this.setState({ lat, lng, creationStatus: '' })
 	}
 
 	/**
@@ -57,7 +58,7 @@ class NewNotification extends Component {
 	 */
 	handleUploadImage = async (eventData = []) => {
 		const newImages = await Promise.all(eventData.map(this.getImageDataFromFile))
-		this.setState({ photos: [...this.state.photos, ...newImages] })
+		this.setState({ photos: [...this.state.photos, ...newImages], creationStatus: '' })
 	}
 
 	/**
@@ -67,7 +68,7 @@ class NewNotification extends Component {
 		const key = e.target.dataset.stateName
 		const value = e.target.value
 
-		this.setState({ [key]: value })
+		this.setState({ [key]: value, creationStatus: '' })
 	}
 
 	/**
@@ -75,7 +76,7 @@ class NewNotification extends Component {
 	 */
 	handleRemoveImage = eventData => {
 		const filteredPhotos = this.state.photos.filter(photo => photo.name !== eventData.removed)
-		this.setState({ photos: filteredPhotos })
+		this.setState({ photos: filteredPhotos, creationStatus: '' })
 	}
 
 	/**
@@ -83,7 +84,7 @@ class NewNotification extends Component {
 	 */
 	handleLocalize = locCoords => {
 		if (locCoords) {
-			this.setState({ lat: locCoords[0], lng: locCoords[1] })
+			this.setState({ lat: locCoords[0], lng: locCoords[1], creationStatus: '' })
 		}
 	}
 
@@ -93,7 +94,7 @@ class NewNotification extends Component {
 	handleCreateNotification = e => {
 		e.preventDefault()
 
-		const { ...formData } = this.state
+		const { creationStatus, ...formData } = this.state
 
 		if (formData.title && formData.description && formData.city) {
 			const forms = new FormData()
@@ -109,14 +110,27 @@ class NewNotification extends Component {
 				}
 			})
 
+			this.setState({ creationStatus: 'pending' })
+
 			Requester.send('createNotification', { body: forms })
 				.then(res => this.props.history.push(`/zgloszenie/${res.id}`))
-				.catch(err => console.error(err))
+				.catch(() => this.setState({ creationStatus: 'failed' }))
 		}
 	}
 
 	render() {
-		const { category, title, description, city, post, street, number, lat, lng } = this.state
+		const {
+			category,
+			title,
+			description,
+			city,
+			post,
+			street,
+			number,
+			lat,
+			lng,
+			creationStatus,
+		} = this.state
 		const { isMobile } = this.props
 
 		return (
@@ -267,6 +281,13 @@ class NewNotification extends Component {
 							onRemoveImage={this.handleRemoveImage}
 						/>
 					</section>
+					<div className='login__request-status'>
+						<RequestStatus
+							size='small'
+							requestState={creationStatus}
+							errorMessage='Podałeś nieprawidłowe dane!'
+						/>
+					</div>
 					<section className='button-section'>
 						<Button type='submit' color='blue'>
 							Zapisz zgłoszenie

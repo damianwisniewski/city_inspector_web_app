@@ -102,14 +102,17 @@ class Settings extends Component {
 			[field]: isAgreementField ? (e.target.checked ? 'Y' : 'N') : e.target.value,
 		}
 
-		this.setState({
-			...changedProperty,
-			changed: { ...this.state.changed, ...changedProperty },
-		})
-
-		if (isPassInput) {
-			this.comparePasswords()
-		}
+		this.setState(
+			{
+				...changedProperty,
+				changed: { ...this.state.changed, ...changedProperty },
+			},
+			() => {
+				if (isPassInput) {
+					this.comparePasswords()
+				}
+			},
+		)
 	}
 
 	/**

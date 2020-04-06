@@ -58,11 +58,6 @@ class Notification extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({
-			isSubscribed: Boolean(
-				this.props.subscriptions.find(item => item.notificationId === this.state.id),
-			),
-		})
 		this.getNotificationData()
 		this.getComments()
 	}
@@ -244,6 +239,9 @@ class Notification extends Component {
 					data: res,
 					fetchDataStatus: 'succeeded',
 					isNotifyBelongsToUser: res.user === this.props.nickname,
+					isSubscribed: Boolean(
+						this.props.subscriptions.find(item => item.NotificationId === this.state.id),
+					),
 				})
 				document.title = `Zgłoszenie - ${res.id} | ${process.env.REACT_APP_TITLE}`
 			})
